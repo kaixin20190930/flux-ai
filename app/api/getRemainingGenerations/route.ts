@@ -3,7 +3,7 @@ import {getGenerationData, setGenerationData} from '../../../utils/cookieUtils';
 import {logWithTimestamp} from '../../..//utils/logUtils';
 
 const MAX_DAILY_GENERATIONS = 3;
-
+export const runtime = 'edge';
 export async function GET(req: NextRequest) {
     const generationData = getGenerationData();
     const today = new Date().toDateString();

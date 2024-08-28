@@ -3,6 +3,7 @@ import Replicate from "replicate";
 import {getGenerationData, setGenerationData} from '../../../utils/cookieUtils';
 import {logWithTimestamp} from '../../..//utils/logUtils';
 
+
 const replicate = new Replicate({
     auth: process.env.REPLICATE_API_TOKEN,
 });
@@ -10,6 +11,7 @@ const replicate = new Replicate({
 const MAX_DAILY_GENERATIONS = 3;
 const COOKIE_NAME = 'fluxAIGenerations';
 
+export const runtime = 'edge';
 export async function POST(req: NextRequest) {
     let generationData = getGenerationData(req);
     const today = new Date().toDateString();
