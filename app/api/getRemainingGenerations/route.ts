@@ -1,13 +1,13 @@
 import {NextRequest, NextResponse} from 'next/server';
-import {getGenerationData, setGenerationData} from '@/utils/cookieUtils';
-import { logWithTimestamp } from '@/utils/logUtils';
+import {getGenerationData, setGenerationData} from '../../../utils/cookieUtils';
+import {logWithTimestamp} from '../../..//utils/logUtils';
 
 const MAX_DAILY_GENERATIONS = 3;
 
 export async function GET(req: NextRequest) {
     const generationData = getGenerationData();
     const today = new Date().toDateString();
-    logWithTimestamp('Current generation data:' , generationData); // 添加日志
+    logWithTimestamp('Current generation data:', generationData); // 添加日志
 
     let remainingGenerations;
     if (generationData.date !== today) {
