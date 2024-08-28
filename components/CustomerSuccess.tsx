@@ -29,7 +29,7 @@ export const CustomerSuccess: React.FC = () => {
                     {testimonials.map((testimonial, index) => (
                         <div key={index}
                              className="bg-white/10 backdrop-filter backdrop-blur-sm p-6 rounded-xl shadow-lg">
-                            <p className="text-indigo-200 mb-4 italic">"{testimonial.quote}"</p>
+                            <p className="text-indigo-200 mb-4 italic">{testimonial.quote}</p>
                             <div className="flex items-center">
                                 <Image src={testimonial.avatarSrc} alt={testimonial.name} width={50} height={50}
                                        className="rounded-full mr-4"/>

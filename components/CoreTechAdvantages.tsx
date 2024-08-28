@@ -48,7 +48,7 @@ export const CoreTechAdvantages: React.FC = () => {
 
             <div className="container relative mx-auto px-4 z-10">
                 <h2 className="text-4xl font-bold text-center mb-4 text-white">Core Technology Advantages</h2>
-                <p className="text-xl text-center mb-12 text-indigo-200">Discover how Flux AI's cutting-edge technology
+                <p className="text-xl text-center mb-12 text-indigo-200">Discover how Flux AI cutting-edge technology
                     revolutionizes image generation</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -13,7 +13,6 @@ const COOKIE_NAME = 'fluxAIGenerations';
 export async function POST(req: NextRequest) {
     let generationData = getGenerationData(req);
     const today = new Date().toDateString();
-
     logWithTimestamp('Generation request received', {generationData});
 
     if (generationData.date !== today) {
