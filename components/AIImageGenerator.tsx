@@ -62,6 +62,18 @@ export const AIImageGenerator: React.FC = () => {
         }
     }
 
+    const handleDownload = () => {
+        if (generatedImage) {
+            // 创建一个临时的 a 标签
+            const link = document.createElement('a');
+            link.href = generatedImage;
+            link.download = 'generated-image.png'; // 您可以根据需要更改文件名
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    };
+
     return (
         <section
             className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white flex items-center justify-center px-4 py-12 overflow-hidden relative">
@@ -112,6 +124,7 @@ export const AIImageGenerator: React.FC = () => {
                             ) : generatedImage ? (
                                 <div className="relative h-full group">
                                     <Image
+                                        onClick={handleDownload}
                                         src={generatedImage}
                                         alt="Generated image"
                                         layout="fill"
@@ -119,6 +132,7 @@ export const AIImageGenerator: React.FC = () => {
                                         className="rounded-lg"
                                     />
                                     <button
+                                        onClick={handleDownload}
                                         className="absolute bottom-4 right-4 bg-white text-indigo-600 px-4 py-2 rounded-md opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600">
                                         Download
                                     </button>
