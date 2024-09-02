@@ -1,5 +1,5 @@
 import {NextRequest, NextResponse} from 'next/server';
-import {getGenerationData, setGenerationData} from '../../../utils/cookieUtils';
+import {getGenerationData} from '../../../utils/cookieUtils';
 import {logWithTimestamp} from '../../..//utils/logUtils';
 
 const MAX_DAILY_GENERATIONS = 3;
