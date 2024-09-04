@@ -33,7 +33,7 @@ const Header: React.FC = () => {
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center">
                     <Link href="/" className="flex items-center space-x-2">
-                        <Image src="/logo.png" alt="Flux AI Logo" width={40} height={40} className="rounded-full"/>
+                        <Image src="/fluxai.svg" alt="Flux AI Logo" width={40} height={40} className="rounded-full"/>
                         <span className="text-xl font-bold text-white">Flux AI</span>
                     </Link>
                     <nav>
@@ -44,14 +44,8 @@ const Header: React.FC = () => {
                             <li><Link href="/pricing"
                                       className="text-indigo-200 hover:text-white transition duration-300">Pricing</Link>
                             </li>
-                            <li><Link href="/login"
+                            <li><Link href="/auth"
                                       className="text-indigo-200 hover:text-white transition duration-300">Login</Link>
-                            </li>
-                            <li>
-                                <Link href="/signup"
-                                      className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition duration-300">
-                                    Sign Up
-                                </Link>
                             </li>
                         </ul>
                     </nav>

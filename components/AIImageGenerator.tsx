@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import Image from 'next/image'
 
 const MAX_DAILY_GENERATIONS = 3;
@@ -11,6 +11,7 @@ export const AIImageGenerator: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [remainingGenerations, setRemainingGenerations] = useState<number>(MAX_DAILY_GENERATIONS)
+    const [imageDimensions, setImageDimensions] = useState<{ width: number; height: number } | null>(null)
 
     const fetchRemainingGenerations = async () => {
         try {
@@ -74,6 +75,21 @@ export const AIImageGenerator: React.FC = () => {
         }
     };
 
+    const handleImageLoad = useCallback((image: HTMLImageElement) => {
+        setImageDimensions({
+            width: image.naturalWidth,
+            height: image.naturalHeight
+        });
+    }, []);
+
+    const getObjectFit = () => {
+        if (!imageDimensions) return 'contain';
+        const containerAspectRatio = 400 / 400; // 假设容器是 400x400
+        const imageAspectRatio = imageDimensions.width / imageDimensions.height;
+        const aspectRatioDifference = Math.abs(containerAspectRatio - imageAspectRatio);
+        return aspectRatioDifference > 0.2 ? 'contain' : 'cover';
+    };
+
     return (
         <section
             className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white flex items-center justify-center px-4 py-12 overflow-hidden relative">
@@ -83,7 +99,7 @@ export const AIImageGenerator: React.FC = () => {
 
             <div className="container mx-auto z-10 max-w-4xl">
                 <h1 className="text-4xl md:text-6xl font-bold text-center mb-6 animate-fade-in-down">
-                    Create Stunning Images with AI
+                    Create Stunning Images with Flux AI
                 </h1>
                 <p className="text-xl md:text-2xl text-center mb-10 animate-fade-in-up">
                     Transform your ideas into visual masterpieces in seconds
@@ -128,8 +144,9 @@ export const AIImageGenerator: React.FC = () => {
                                         src={generatedImage}
                                         alt="Generated image"
                                         layout="fill"
-                                        objectFit="contain"
+                                        objectFit={getObjectFit()}
                                         className="rounded-lg"
+                                        onLoadingComplete={handleImageLoad}
                                     />
                                     <button
                                         onClick={handleDownload}
