@@ -1,10 +1,11 @@
-import {NextRequest, NextResponse} from 'next/server';
+import {NextRequest} from 'next/server';
 import {D1Database} from '@cloudflare/workers-types';
 import bcrypt from 'bcryptjs';
 
 declare global {
     const DB: D1Database;
 }
+export const runtime = 'edge';
 
 export async function POST(request: NextRequest) {
     const {name, email, password} = await request.json();

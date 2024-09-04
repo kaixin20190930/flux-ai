@@ -2,6 +2,7 @@ import {NextRequest, NextResponse} from 'next/server';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+export const runtime = 'edge';
 export async function POST(request: NextRequest) {
     const {email, password} = await request.json();
 
