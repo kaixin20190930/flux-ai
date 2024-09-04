@@ -13,7 +13,7 @@ const TermsOfService = () => {
 
                     <h2 className="text-2xl font-semibold mb-4 text-pink-300">2. Description of Service</h2>
                     <p className="mb-4 text-indigo-200">Our AI Image Generator creates images based on text prompts
-                        provided by users. The service is provided "as is" and we do not guarantee the accuracy,
+                        provided by users. The service is provided&quot;as is&quot;and we do not guarantee the accuracy,
                         quality, or appropriateness of generated images.</p>
 
                     <h2 className="text-2xl font-semibold mb-4 text-pink-300">3. User Responsibilities</h2>

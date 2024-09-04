@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
                     <p className="mb-4 text-indigo-200">We may use third-party services for analytics or infrastructure.
                         These services have their own privacy policies, and we encourage users to review them.</p>
 
-                    <h2 className="text-2xl font-semibold mb-4 text-pink-300">6. Children's Privacy</h2>
+                    <h2 className="text-2xl font-semibold mb-4 text-pink-300">6. Children&apos;s Privacy</h2>
                     <p className="mb-4 text-indigo-200">Our service is not intended for children under 13. We do not
                         knowingly collect personal information from children under 13.</p>
 
