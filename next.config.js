@@ -4,6 +4,9 @@ const nextConfig = {
     images: {
         domains: ['replicate.delivery'],
     },
+    experimental: {
+        runtime: 'edge',
+    },
 };
 
 module.exports = nextConfig;

@@ -1,13 +1,20 @@
-import {NextRequest, NextResponse} from 'next/server';
+import {NextRequest} from 'next/server';
+import {D1Database} from '@cloudflare/workers-types';
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import * as jose from 'jose';
+
+interface Env {
+    DB: D1Database;
+    JWT_SECRET: string;
+}
 
 export const runtime = 'edge';
-export async function POST(request: NextRequest) {
+
+export async function POST(request: NextRequest, ctx: { env: Env }) {
     const {email, password} = await request.json();
 
     try {
-        const user = await DB.prepare('SELECT * FROM users WHERE email = ?').bind(email).first();
+        const user = await ctx.env.DB.prepare('SELECT * FROM users WHERE email = ?').bind(email).first();
 
         if (!user) {
             return Response.json({message: 'User not found'}, {status: 404});
@@ -19,15 +26,17 @@ export async function POST(request: NextRequest) {
             return Response.json({message: 'Invalid password'}, {status: 401});
         }
 
-        const token = jwt.sign({userId: user.id}, process.env.JWT_SECRET as string, {expiresIn: '1h'});
+        const secret = new TextEncoder().encode(ctx.env.JWT_SECRET);
+        const token = await new jose.SignJWT({userId: user.id})
+            .setProtectedHeader({alg: 'HS256'})
+            .setExpirationTime('1h')
+            .sign(secret);
 
-        const response = NextResponse.json({message: 'Login successful', token});
-        response.cookies.set('token' as any, token as any, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'strict',
-            maxAge: 3600
-        } as any);
+        const response = Response.json({message: 'Login successful', token}, {status: 200});
+        response.headers.set(
+            'Set-Cookie',
+            `token=${token}; HttpOnly; Secure; SameSite=Strict; Max-Age=3600; Path=/`
+        );
 
         return response;
     } catch (error) {
