@@ -1,4 +1,16 @@
-[[d1_databases]]
-binding = "DB" # 这是你在代码中使用的绑定名称
-database_name = "flux-ai" # 替换为你在 Cloudflare 中创建的数据库名称
-database_id = "011af577-7121-4de9-99b9-d925387ffacc" # 替换为你的数据库 ID
+name = "flux-ai"
+main = "src/index.ts"
+compatibility_date = "2023-08-23"
+
+[env.production]
+d1_databases = [
+    { binding = "DB", database_name = "flux-ai", database_id = "011af577-7121-4de9-99b9-d925387ffacc" }
+]
+workers_dev = false
+route = "auth.flux-ai-img.com/*"
+
+[env.development]
+d1_databases = [
+    { binding = "DB-DEV", database_name = "flux-ai-dev", database_id = "6cb4fc8d-02b7-40ad-833e-838b48c3ebbf" }
+]
+workers_dev = true

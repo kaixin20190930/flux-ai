@@ -15,7 +15,8 @@ const AuthForm: React.FC = () => {
         e.preventDefault();
         setError('');
 
-        const endpoint = isLogin ? '/api/login' : '/api/register';
+        const workerUrl = 'https://flux-ai.liukai19911010.workers.dev';
+        const endpoint = isLogin ? `${workerUrl}/login` : `${workerUrl}/register`;
         const body = isLogin ? {email, password} : {name, email, password};
 
         try {
@@ -25,6 +26,8 @@ const AuthForm: React.FC = () => {
                 body: JSON.stringify(body),
             });
 
+            const data = await response.json();
+
             if (response.ok) {
                 router.push('/dashboard'); // 登录或注册成功后跳转到仪表板
             } else {
@@ -32,7 +35,7 @@ const AuthForm: React.FC = () => {
                 setError(data.message || 'Authentication failed');
             }
         } catch (err) {
-            setError('An error occurred. Please try again.');
+            setError('An error occurred. Please try again.' + err);
         }
     };
 
