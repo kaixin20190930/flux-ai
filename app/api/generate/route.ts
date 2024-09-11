@@ -12,6 +12,7 @@ const MAX_DAILY_GENERATIONS = 3;
 const COOKIE_NAME = 'fluxAIGenerations';
 
 export const runtime = 'edge';
+
 export async function POST(req: NextRequest) {
     let generationData = getGenerationData(req);
     const today = new Date().toDateString();
@@ -28,7 +29,7 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-        const {prompt} = await req.json();
+        const {prompt} = await req.json() as { prompt: string };
 
         if (!prompt) {
             logWithTimestamp('No prompt provided');
