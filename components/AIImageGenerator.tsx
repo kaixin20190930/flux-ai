@@ -17,7 +17,7 @@ export const AIImageGenerator: React.FC = () => {
     const fetchRemainingGenerations = async () => {
         try {
             const response = await fetch('/api/getRemainingGenerations');
-            const data = await response.json();
+            const data = await response.json() as any;
             setRemainingGenerations(data.remainingGenerations);
         } catch (error) {
             console.error('Error fetching remaining generations:', error);
