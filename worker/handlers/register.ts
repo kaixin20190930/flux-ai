@@ -1,15 +1,11 @@
 import {Env} from '../types';
 import {hashPassword} from '@/utils/auth';
-
-const corsHeaders = {
-    'Access-Control-Allow-Origin': 'http://localhost:3001',
-    'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Vary': 'Origin'
-};
+import {logWithTimestamp} from "@/utils/logUtils";
 
 export async function handleRegister(request: Request, env: Env): Promise<Response> {
     const {username, email, password} = await request.json();
+
+    logWithTimestamp('start register');
 
     if (!username || !email || !password) {
         return new Promise((resolve) => resolve(new Response('Missing required fields', {status: 400})));
@@ -27,7 +23,6 @@ export async function handleRegister(request: Request, env: Env): Promise<Respon
         return new Promise((resolve) => resolve(new Response('User registered successfully', {
             status: 201, headers: {
                 'Content-Type': 'application/json',
-                ...corsHeaders
             }
         },)));
     } catch (error) {

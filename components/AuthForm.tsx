@@ -2,6 +2,7 @@
 
 import React, {useState} from 'react';
 import {useRouter} from 'next/navigation';
+import {logWithTimestamp} from "@/utils/logUtils";
 
 const AuthForm: React.FC = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -22,13 +23,16 @@ const AuthForm: React.FC = () => {
         try {
             const response = await fetch(endpoint, {
                 method: 'POST',
+                mode: 'no-cors',
                 body: JSON.stringify(body),
             });
+
+            logWithTimestamp('get response from worker is:' + response.ok);
 
             if (response.ok) {
                 router.push('/dashboard'); // 登录或注册成功后跳转到仪表板
             } else {
-                const data = await response.json();
+                const data = await response.json() as any;
                 setError(data.message || 'Authentication failed');
             }
         } catch (err) {
