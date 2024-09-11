@@ -2,6 +2,7 @@
 
 import React, {useState, useEffect, useCallback} from 'react'
 import Image from 'next/image'
+import {NextResponse} from "next/server";
 
 const MAX_DAILY_GENERATIONS = 3;
 
@@ -42,7 +43,7 @@ export const AIImageGenerator: React.FC = () => {
                 },
                 body: JSON.stringify({prompt}),
             })
-            const data = await response.json()
+            const data = await response.json() as any;
             if (data.image) {
                 setGeneratedImage(data.image)
                 if (typeof data.remainingGenerations === 'number') {

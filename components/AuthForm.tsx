@@ -22,11 +22,8 @@ const AuthForm: React.FC = () => {
         try {
             const response = await fetch(endpoint, {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(body),
             });
-
-            const data = await response.json();
 
             if (response.ok) {
                 router.push('/dashboard'); // 登录或注册成功后跳转到仪表板
