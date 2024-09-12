@@ -24,7 +24,6 @@ const AuthForm: React.FC = () => {
             const response = await fetch(endpoint, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                'X-Custom-Header': 'customValue',
                 body: JSON.stringify(body),
             });
             logWithTimestamp('endpoint:' + endpoint);
