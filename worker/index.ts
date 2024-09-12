@@ -1,10 +1,11 @@
 import {Env} from './types';
 import {handleRegister} from './handlers/register';
 import {handleLogin} from './handlers/login';
+import {logWithTimestamp} from "@/utils/logUtils";
 
 
 const corsHeaders = {
-    'Access-Control-Allow-Origin': 'http://localhost:3001/',  // 根据请求设置允许的源
+    'Access-Control-Allow-Origin': '*',  // 根据请求设置允许的源
     'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Credentials': 'true', // 如果需要处理凭证（例如 cookies）
@@ -13,7 +14,7 @@ const corsHeaders = {
 export default {
     async fetch(request: Request, env: Env): Response {
 
-
+        logWithTimestamp('request url is:' + request.url);
         // 处理 OPTIONS 请求 (预检请求)
         if (request.method === 'OPTIONS') {
             return handleOptions();

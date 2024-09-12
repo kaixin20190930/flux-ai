@@ -23,10 +23,11 @@ const AuthForm: React.FC = () => {
         try {
             const response = await fetch(endpoint, {
                 method: 'POST',
-                mode: 'no-cors',
+                headers: {'Content-Type': 'application/json'},
+                'X-Custom-Header': 'customValue',
                 body: JSON.stringify(body),
             });
-
+            logWithTimestamp('endpoint:' + endpoint);
             logWithTimestamp('get response from worker is:' + response.ok);
 
             if (response.ok) {
