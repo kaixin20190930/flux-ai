@@ -3,7 +3,7 @@ import {hashPassword} from '@/utils/auth';
 import {logWithTimestamp} from "@/utils/logUtils";
 
 export async function handleRegister(request: Request, env: Env): Promise<Response> {
-    const {username, email, password} = await request.json();
+    const {username, email, password} = await request.json() as any;
 
     logWithTimestamp('start register');
 

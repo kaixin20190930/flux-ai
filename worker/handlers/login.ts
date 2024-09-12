@@ -1,13 +1,12 @@
 import {Env} from '../types';
 import {verifyPassword, createJWT} from '@/utils/auth';
-import {NextResponse} from "next/server";
 const corsHeaders = {
     'Access-Control-Allow-Origin': 'http://localhost:3001',
     'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
 };
 export async function handleLogin(request: Request, env: Env): Promise<Response> {
-    const {email, password} = await request.json();
+    const {email, password} = await request.json() as any;
 
     if (!email || !password) {
         return new Promise((resolve) => resolve(new Response('Missing required fields', {status: 400})));

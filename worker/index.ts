@@ -14,9 +14,10 @@ const corsHeaders = {
 export default {
     async fetch(request: Request, env: Env): Response {
 
-        logWithTimestamp('request url is:' + request.url);
         // 处理 OPTIONS 请求 (预检请求)
         if (request.method === 'OPTIONS') {
+            logWithTimestamp('request url is:' + request.url);
+
             return handleOptions();
         }
         const url = new URL(request.url);
