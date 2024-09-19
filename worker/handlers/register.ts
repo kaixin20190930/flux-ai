@@ -2,31 +2,46 @@ import {Env} from '../types';
 import {hashPassword} from '@/utils/auth';
 import {logWithTimestamp} from "@/utils/logUtils";
 
+const corsHeaders = {
+    'Access-Control-Allow-Origin': 'http://localhost:3000',
+    'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+};
+
 export async function handleRegister(request: Request, env: Env): Promise<Response> {
-    const {username, email, password} = await request.json() as any;
-
     logWithTimestamp('start register');
-
-    if (!username || !email || !password) {
-        return new Promise((resolve) => resolve(new Response('Missing required fields', {status: 400})));
-    }
-
-    const hashedPassword = await hashPassword(password);
+    logWithTimestamp('Database:', env.DB.toString());
 
     try {
+        const {name, email, password} = await request.json() as any;
+
+        if (!name || !email || !password) {
+            return new Response('Missing required fields', {
+                status: 400,
+                headers: corsHeaders,
+            });
+        }
+
+        const hashedPassword = await hashPassword(password);
+
         await env.DB.prepare(
-            'INSERT INTO users (username, email, password) VALUES (?, ?, ?)'
+            'INSERT INTO users (name, email, password) VALUES (?, ?, ?)'
         )
-            .bind(username, email, hashedPassword)
+            .bind(name, email, hashedPassword)
             .run();
 
-        return new Promise((resolve) => resolve(new Response('User registered successfully', {
-            status: 201, headers: {
+        return new Response('User registered successfully', {
+            status: 201,
+            headers: {
                 'Content-Type': 'application/json',
-            }
-        },)));
+                ...corsHeaders,
+            },
+        });
     } catch (error) {
         console.error('Registration error:', error);
-        return new Promise((resolve) => resolve(new Response('Error registering user', {status: 500})));
+        return new Response('Error registering user', {
+            status: 500,
+            headers: corsHeaders,
+        });
     }
 }
