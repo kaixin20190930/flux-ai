@@ -3,21 +3,27 @@ import {handleRegister} from './handlers/register';
 import {handleLogin} from './handlers/login';
 import {logWithTimestamp} from "@/utils/logUtils";
 
-
-const corsHeaders = {
-    'Access-Control-Allow-Origin': 'https://flux-ai-img.com',  // 根据请求设置允许的源
-    'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Credentials': 'true',
-};
+const allowedOrigins = [
+    'http://localhost:3000',          // 本地开发环境
+    'https://flux-ai-img.com'  // 生产环境
+]
 export default {
     async fetch(request: Request, env: Env): Promise<Response> {
+
+        const origin = request.headers.get('Origin')
+
+        const corsHeaders = {
+            'Access-Control-Allow-Origin': allowedOrigins.includes(origin) ? origin : allowedOrigins[0],  // 根据请求设置允许的源
+            'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Credentials': 'true',
+        };
 
         logWithTimestamp('get request :' + request.url);
 
         // 处理 OPTIONS 请求 (预检请求)
         if (request.method === 'OPTIONS') {
-            return new Promise((resolve) => resolve(handleOptions()));
+            return new Promise((resolve) => resolve(handleOptions(request)));
         }
         const url = new URL(request.url);
 
@@ -46,10 +52,11 @@ export default {
 };
 
 // 处理 CORS 预检请求
-function handleOptions() {
+function handleOptions(request: Request) {
+    const origin = request.headers.get('Origin')
     return new Response(null, {
         headers: {
-            'Access-Control-Allow-Origin': 'http://localhost:3000',  // 允许所有域名，或指定具体域名
+            'Access-Control-Allow-Origin': allowedOrigins.includes(origin) ? origin : allowedOrigins[0],  // 允许所有域名，或指定具体域名
             'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Allow-Credentials': 'true',

@@ -1,13 +1,21 @@
 import {Env} from '../types';
 import {verifyPassword, createJWT} from '@/utils/auth';
+import {logWithTimestamp} from "@/utils/logUtils";
 
-const corsHeaders = {
-    'Access-Control-Allow-Origin': 'https://flux-ai-img.com',
-    'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-};
+const allowedOrigins = [
+    'http://localhost:3000',          // 本地开发环境
+    'https://flux-ai-img.com'  // 生产环境
+]
 
 export async function handleLogin(request: Request, env: Env): Promise<Response> {
+    const origin = request.headers.get('Origin')
+
+    const corsHeaders = {
+        'Access-Control-Allow-Origin': allowedOrigins.includes(origin) ? origin : allowedOrigins[0],  // 根据请求设置允许的源
+        'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Credentials': 'true',
+    };
     try {
         const {email, password} = await request.json() as any;
 
@@ -22,7 +30,7 @@ export async function handleLogin(request: Request, env: Env): Promise<Response>
             .bind(email)
             .first();
 
-        if (!user || !(await verifyPassword(password, user.password as any))) {
+        if (!user || !(await verifyPassword(password, user.password as string))) {
             return new Promise((resolve) => resolve(new Response('Invalid credentials', {
                 status: 401,
                 headers: corsHeaders,
@@ -40,7 +48,7 @@ export async function handleLogin(request: Request, env: Env): Promise<Response>
         })));
     } catch (error) {
         console.error('Login error:', error);
-        return new Promise((resolve) => resolve(new Response('Error during login', {
+        return new Promise((resolve) => resolve(new Response('Error during login: ' + (error as Error).message, {
             status: 500,
             headers: corsHeaders,
         })));
