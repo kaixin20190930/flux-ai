@@ -67,7 +67,7 @@ export const AIImageGenerator: React.FC = () => {
                 },
                 body: JSON.stringify({prompt}),
             })
-            const data = await response.json();
+            const data = await response.json() as any;
             if (data.image) {
                 setGeneratedImage(data.image)
                 fetchGenerationData(); // 重新获取生成数据
