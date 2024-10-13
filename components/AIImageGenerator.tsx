@@ -2,7 +2,9 @@
 
 import React, {useState, useEffect, useCallback} from 'react'
 import Image from 'next/image'
-import {NextResponse} from "next/server";
+import Link from 'next/link'
+import {logWithTimestamp} from "@/utils/logUtils";
+
 
 const MAX_DAILY_GENERATIONS = 3;
 
@@ -11,28 +13,50 @@ export const AIImageGenerator: React.FC = () => {
     const [generatedImage, setGeneratedImage] = useState<string | null>(null)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
-    const [remainingGenerations, setRemainingGenerations] = useState<number>(MAX_DAILY_GENERATIONS)
+    const [remainingFreeGenerations, setRemainingFreeGenerations] = useState<number>(MAX_DAILY_GENERATIONS)
     const [imageDimensions, setImageDimensions] = useState<{ width: number; height: number } | null>(null)
-
-    const fetchRemainingGenerations = async () => {
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+    const [userPoints, setUserPoints] = useState<number | null>(null)
+    const fetchGenerationData = async () => {
         try {
             const response = await fetch('/api/getRemainingGenerations');
+            logWithTimestamp('start get user points in web:')
+
+            const response2 = await fetch('https://flux-ai.liukai19911010.workers.dev/getuserpoints', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjE2LCJ1c2VybmFtZSI6ImFrYWkiLCJleHAiOjE3Mjg2NTYzMDksImlhdCI6MTcyODY1MjcwOX0.Me6mDARpDoQDejN7kF_AaN5_htRZ_NBSLq0hpFjYFWY`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            logWithTimestamp('get response is:', response2.status)
+            logWithTimestamp('end get user points in web:')
+
             const data = await response.json() as any;
-            setRemainingGenerations(data.remainingGenerations);
+            setRemainingFreeGenerations(data.remainingFreeGenerations);
+            setIsLoggedIn(data.isLoggedIn);
+            setUserPoints(data.userPoints);
+            logWithTimestamp('Fetched data: ', data)
         } catch (error) {
             console.error('Error fetching remaining generations:', error);
         }
     };
     useEffect(() => {
-        fetchRemainingGenerations();
+        // 从 localStorage 获取用户信息
+        fetchGenerationData();
     }, []);
 
     const handleGenerate = async () => {
-        if (remainingGenerations !== null && remainingGenerations <= 0) {
-            setError('Daily limit reached. Please try again tomorrow.');
+        if (remainingFreeGenerations <= 0 && !isLoggedIn) {
+            setError('Daily free limit reached. Please login to continue.');
             return;
         }
 
+        if (isLoggedIn && userPoints !== null && userPoints <= 0) {
+            setError('You have no points left. Please purchase more to continue.');
+            return;
+        }
         setIsLoading(true)
         setError(null)
         try {
@@ -43,14 +67,10 @@ export const AIImageGenerator: React.FC = () => {
                 },
                 body: JSON.stringify({prompt}),
             })
-            const data = await response.json() as any;
+            const data = await response.json();
             if (data.image) {
                 setGeneratedImage(data.image)
-                if (typeof data.remainingGenerations === 'number') {
-                    setRemainingGenerations(data.remainingGenerations)
-                } else {
-                    await fetchRemainingGenerations();
-                }
+                fetchGenerationData(); // 重新获取生成数据
             } else if (data.error) {
                 setError(data.error)
             } else {
@@ -117,8 +137,8 @@ export const AIImageGenerator: React.FC = () => {
                             />
                             <button
                                 onClick={handleGenerate}
-                                // 修改：添加 remainingGenerations 到禁用条件
-                                disabled={isLoading || !prompt || remainingGenerations <= 0}
+                                // 修改：添加 remainingFreeGenerations 到禁用条件
+                                disabled={isLoading || !prompt || remainingFreeGenerations <= 0}
                                 className="px-6 py-3 md:px-8 md:py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 disabled:bg-white/50 disabled:text-indigo-400 transition duration-300 ease-in-out transform hover:scale-105"
                             >
                                 {isLoading ? 'Generating...' : 'Generate Image'}
@@ -127,11 +147,26 @@ export const AIImageGenerator: React.FC = () => {
                         {error && (
                             <p className="text-red-300 mb-4">{error}</p>
                         )}
-                        {/* 修改：移除 null 检查，因为 remainingGenerations 现在总是一个数字 */}
                         <p className="text-sm text-indigo-200 mb-4">
-                            Remaining generations today:
-                            {remainingGenerations}/ {MAX_DAILY_GENERATIONS}
+                            Remaining free generations today: {remainingFreeGenerations} / {MAX_DAILY_GENERATIONS}
                         </p>
+                        {isLoggedIn && userPoints !== null && (
+                            <p className="text-sm text-indigo-200 mb-4">
+                                Your points: {userPoints}
+                            </p>
+                        )}
+                        {remainingFreeGenerations <= 0 && !isLoggedIn && (
+                            <p className="text-sm text-indigo-200 mb-4">
+                                <Link href="/auth" className="underline hover:text-white">Login</Link> to use your
+                                points or wait until tomorrow for more free generations.
+                            </p>
+                        )}
+                        {isLoggedIn && userPoints !== null && userPoints <= 0 && (
+                            <p className="text-sm text-indigo-200 mb-4">
+                                <Link href="/pricing" className="underline hover:text-white">Purchase more
+                                    points</Link> to continue generating images.
+                            </p>
+                        )}
                         <div className="bg-white/5 p-4 rounded-lg overflow-hidden" style={{height: '400px'}}>
                             {isLoading ? (
                                 <div className="flex justify-center items-center h-full">

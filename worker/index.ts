@@ -2,8 +2,10 @@ import {Env} from './types';
 import {handleRegister} from './handlers/register';
 import {handleLogin} from './handlers/login';
 import {logWithTimestamp} from "@/utils/logUtils";
+import {handleGetUserPoints} from "@/worker/handlers/getUserPoints";
 
 const allowedOrigins = [
+    'http://45.129.228.105:*',          // 本地开发环境
     'http://localhost:3000',          // 本地开发环境
     'https://flux-ai-img.com'  // 生产环境
 ]
@@ -15,7 +17,7 @@ export default {
         const corsHeaders = {
             'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
             'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
             'Access-Control-Allow-Credentials': 'true',
         };
 
@@ -45,6 +47,11 @@ export default {
             return handleLogin(request, env);
         }
 
+        // 处理登录请求
+        if (url.pathname === '/getuserpoints' && request.method === 'POST') {
+            return handleGetUserPoints(request, env);
+        }
+
         // 404 未找到的响应
         return new Promise((resolve) => resolve(new Response('Not Found', {status: 404, headers: corsHeaders})));
     }
@@ -58,7 +65,7 @@ function handleOptions(request: Request) {
         headers: {
             'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
             'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
             'Access-Control-Allow-Credentials': 'true',
             'Access-Control-Max-Age': '86400'  // 预检请求的缓存时间
         }

@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
                     prompt: prompt,
                     image_dimensions: "1024*1024",
                     num_outputs: 1,
-                    num_inference_steps: 50,
+                    num_inference_steps: 4,
                     guidance_scale: 7.5,
                     scheduler: "DPMSolverMultistep",
                 }

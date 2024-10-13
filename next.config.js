@@ -6,6 +6,12 @@ const nextConfig = {
     },
     experimental: {
         runtime: 'edge',
+        edge: {
+            env: ['JWT_SECRET'],
+        },
+    },
+    env: {
+        JWT_SECRET: process.env.JWT_SECRET,
     },
 };
 

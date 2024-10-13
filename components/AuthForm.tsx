@@ -3,6 +3,7 @@
 import React, {useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {logWithTimestamp} from "@/utils/logUtils";
+import Cookies from 'js-cookie';  // 需要安装: npm install js-cookie @types/js-cookie
 
 const AuthForm: React.FC = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -26,17 +27,35 @@ const AuthForm: React.FC = () => {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(body),
             });
+
             logWithTimestamp('endpoint:' + endpoint);
             logWithTimestamp('get response from worker is:' + response.ok);
-
             if (response.ok) {
-                router.push('/dashboard'); // 登录或注册成功后跳转到仪表板
+                const data = await response.json();
+                logWithTimestamp('response is:' + JSON.stringify(data));
+
+                if (data.token && data.user) {
+                    Cookies.set('token', data.token, {expires: 7}); // 令牌有效期7天
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    logWithTimestamp('user data: ' + JSON.stringify(data.user));
+
+                    if (isLogin) {
+                        // 登录成功，跳转到 hub 页面
+                        router.push('/hub');
+                    } else {
+                        // 注册成功，自动登录后跳转到 about 页面
+                        router.push('/about');
+                    }
+                } else {
+                    setError('Unexpected response format');
+                }
             } else {
-                const data = await response.json() as any;
-                setError(data.message || 'Authentication failed');
+                const errorData = await response.json();
+                setError(errorData.message || 'Authentication failed');
             }
         } catch (err) {
-            setError('An error occurred. Please try again.' + err);
+            setError('An unexpected error occurred. Please try again.');
+            logWithTimestamp('Error during authentication:' + err);
         }
     };
 

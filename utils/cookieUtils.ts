@@ -1,6 +1,7 @@
 import {logWithTimestamp} from './logUtils';
 import {NextRequest} from 'next/server';
 import {cookies} from 'next/headers'
+import {serialize, CookieSerializeOptions, parse} from 'cookie';
 
 
 const COOKIE_NAME = 'fluxAIGenerations';
@@ -53,25 +54,22 @@ export function getGenerationData(req?: NextRequest): GenerationData {
     return defaultData;
 }
 
-export function setGenerationData(data: GenerationData): void {
-    // logWithTimestamp('Setting generation data', data);
-    //
-    // if (typeof window !== 'undefined') {
-    //     // 客户端
-    //     Cookies.set(COOKIE_NAME, JSON.stringify(data), {
-    //         expires: 1, // 1 day
-    //         path: '/',
-    //         sameSite: 'lax',
-    //         secure: process.env.NODE_ENV === 'production',
-    //     });
-    //
-    //     // 验证 cookie 是否被正确设置
-    //     const verifyData = Cookies.get(COOKIE_NAME as any);
-    //     logWithTimestamp('Verifying set cookie data (client)', {verifyData});
-    // } else {
-    //     // 服务器端
-    //     // 注意：在服务器端，我们不能直接设置 cookie。
-    //     // 相反，我们应该在 API 路由中设置 Set-Cookie 头
-    //     logWithTimestamp('Attempted to set cookie on server side');
-    // }
+export function setCookie(name: string, value: string, options: Partial<CookieSerializeOptions> = {}): string {
+    const defaultOptions: CookieSerializeOptions = {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        path: '/',
+        maxAge: 60 * 60 * 24 // 24 hours
+    };
+
+    const cookieOptions = {...defaultOptions, ...options};
+
+    return serialize(name, value, cookieOptions);
+}
+
+
+export function getCookieValue(cookieString: string, name: string): string | undefined {
+    const cookies = parse(cookieString || '');
+    return cookies[name];
 }
