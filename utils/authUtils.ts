@@ -25,7 +25,7 @@ export async function getUserFromLocalStorage() {
     }
 }
 
-export async function getUserFromCookie(req: NextRequest, JWT_SECRET): Promise<User | null> {
+export async function getUserFromCookie(req: NextRequest, JWT_SECRET: string): Promise<User | null> {
 
     const token = req.cookies.get('token' as any)?.value.toString();
 

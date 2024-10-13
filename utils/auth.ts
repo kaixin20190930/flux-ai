@@ -107,7 +107,7 @@ export async function verifyJWT(token: string, secret: string): Promise<any> {
 
         // 2. 解码 token（不验证签名）
         try {
-            const decoded = jwt.decode(token);
+            const decoded = jwt.decode(token) as any;
             console.log('Decoded token:', decoded);
 
             // 检查过期时间

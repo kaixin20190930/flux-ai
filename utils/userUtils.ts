@@ -31,7 +31,7 @@ export async function getUserPoints(req: NextRequest) {
 
         logWithTimestamp('Received token:', token);
         try {
-            const decoded = await verifyJWT(token, process.env.JWT_SECRET);
+            const decoded = await verifyJWT(token, process.env.JWT_SECRET as string);
 
             logWithTimestamp('Token verified successfully in getUserPoints');
         } catch (error) {

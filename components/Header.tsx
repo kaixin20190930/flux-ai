@@ -5,13 +5,24 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {FaUserCircle, FaSignOutAlt} from 'react-icons/fa'
 import Cookies from "js-cookie";
+import internal from "node:stream";
 
 
 const Header: React.FC = () => {
+
+    interface userInfo {
+        id: String,
+        name: String,
+        email: String,
+        // Add any other user information you want to send to the client
+    }
+
     const [isVisible, setIsVisible] = useState(false)
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState<userInfo | null>(null);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const dropdownRef = useRef<HTMLLIElement | null>(null);
+
+
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY

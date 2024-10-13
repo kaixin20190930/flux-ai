@@ -1,8 +1,22 @@
 import React from 'react';
 import {FaUser, FaImage, FaCreditCard, FaCog} from 'react-icons/fa';
 
-const UserDashboard = ({user}) => {
+
+interface userInfo {
+    id: String,
+    name: String,
+    email: String,
+    // Add any other user information you want to send to the client
+}
+
+interface UserDashboardProps {
+    user: userInfo | null;
+}
+
+const UserDashboard: React.FC<UserDashboardProps> = ({user}) => {
     const userName = user?.name || 'User';
+    const userEmail = user?.email || 'User';
+
 
     return (
         <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-indigo-800 min-h-screen py-24 sm:py-32">
@@ -21,11 +35,11 @@ const UserDashboard = ({user}) => {
                             <ul className="mt-6 space-y-4">
                                 <li className="flex items-start">
                                     <FaUser className="flex-shrink-0 h-6 w-6 text-indigo-500"/>
-                                    <p className="ml-3 text-base text-gray-700">Name: {user.name}</p>
+                                    <p className="ml-3 text-base text-gray-700">Name: {userName}</p>
                                 </li>
                                 <li className="flex items-start">
                                     <FaUser className="flex-shrink-0 h-6 w-6 text-indigo-500"/>
-                                    <p className="ml-3 text-base text-gray-700">Email: {user.email}</p>
+                                    <p className="ml-3 text-base text-gray-700">Email: {userEmail}</p>
                                 </li>
                             </ul>
                         </div>

@@ -20,7 +20,10 @@ export async function handleGetUserPoints(request: Request, env: Env): Promise<R
     };
     const token = request.headers.get('Authorization')?.split('Bearer ')[1];
     if (!token) {
-        return new Promise((resolve) => resolve(new Response('Unauthorized', {status: 401}, {headers: corsHeaders})));
+        return new Promise((resolve) => resolve(new Response('Unauthorized', {
+            status: 401,
+            headers: corsHeaders
+        })));
     }
 
     try {
@@ -32,7 +35,10 @@ export async function handleGetUserPoints(request: Request, env: Env): Promise<R
             headers: corsHeaders,
         })));
     } catch (error) {
-        return new Promise((resolve) => resolve(new Response('Error fetching user points', {status: 500}, {headers: corsHeaders})));
+        return new Promise((resolve) => resolve(new Response('Error fetching user points', {
+            status: 500,
+            headers: corsHeaders
+        })));
     }
 }
 
@@ -41,7 +47,8 @@ async function getUserPoints(env: Env, userId: string): Promise<number | null> {
         const result = await env.DB.prepare('SELECT points FROM users WHERE id = ?')
             .bind(userId)
             .first();
-        return new Promise((resolve) => resolve(result?.points ?? null));
+        const points = (result?.points as number | undefined) ?? null;
+        return points;
     } catch (error) {
         console.error('Error fetching user points:', error);
         return null;
