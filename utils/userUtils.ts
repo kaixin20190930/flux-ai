@@ -59,7 +59,7 @@ export async function getUserPoints(req: NextRequest) {
         logWithTimestamp('get response is:', response.json())
 
         if (response.ok) {
-            const data = await response.json();
+            const data = await response.json() as any;
             return data.points;
         } else {
             console.error('Error fetching user points');

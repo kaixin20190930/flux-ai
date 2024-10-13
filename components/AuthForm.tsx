@@ -31,7 +31,7 @@ const AuthForm: React.FC = () => {
             logWithTimestamp('endpoint:' + endpoint);
             logWithTimestamp('get response from worker is:' + response.ok);
             if (response.ok) {
-                const data = await response.json();
+                const data = await response.json() as any;
                 logWithTimestamp('response is:' + JSON.stringify(data));
 
                 if (data.token && data.user) {
