@@ -11,7 +11,7 @@ const Header: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false)
     const [user, setUser] = useState(null)
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-    const dropdownRef = useRef(null)
+    const dropdownRef = useRef<HTMLLIElement | null>(null);
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY
@@ -28,10 +28,20 @@ const Header: React.FC = () => {
         if (userData) {
             setUser(JSON.parse(userData))
         }
+
         // Close dropdown when clicking outside
         const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                setIsDropdownOpen(false)
+            if (!(event.target instanceof Node)) {
+                return;
+            }
+
+            const node = dropdownRef.current;
+            if (!node) {
+                return;
+            }
+
+            if (!node.contains(event.target)) {
+                setIsDropdownOpen(false);
             }
         }
 
