@@ -3,16 +3,17 @@ import {getGenerationData} from '../../../utils/cookieUtils';
 import {logWithTimestamp} from '../../../utils/logUtils';
 import {getUserFromCookie, getUserFromLocalStorage} from '../../../utils/authUtils'; // 假设我们有这个函数来从 token 获取用户信息
 import {getUserPoints, User} from '../../../utils/userUtils'; // 假设我们有这个函数来获取用户点数
+import {Env} from '@/worker/types';
 
 
 const MAX_DAILY_GENERATIONS = 3;
 
 export const runtime = 'edge';
 
-export async function GET(req: NextRequest) {
+export async function GET(req: NextRequest, env: Env) {
     try {
         // 使用 process.env 而不是 env 参数
-        const JWT_SECRET = process.env.JWT_SECRET.toString();
+        const JWT_SECRET = env.JWT_SECRET.toString();
 
         logWithTimestamp('process.env.JWT_SECRETis:', process.env.JWT_SECRET)
 
