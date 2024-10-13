@@ -50,7 +50,7 @@ const AuthForm: React.FC = () => {
                     setError('Unexpected response format');
                 }
             } else {
-                const errorData = await response.json();
+                const errorData = await response.json() as any;
                 setError(errorData.message || 'Authentication failed');
             }
         } catch (err) {
