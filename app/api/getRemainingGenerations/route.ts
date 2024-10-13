@@ -10,10 +10,10 @@ const MAX_DAILY_GENERATIONS = 3;
 
 export const runtime = 'edge';
 
-export async function GET(req: NextRequest, env: Env) {
+export async function GET(req: NextRequest) {
     try {
         // 使用 process.env 而不是 env 参数
-        const JWT_SECRET = env.JWT_SECRET.toString();
+        const JWT_SECRET = process.env.JWT_SECRET;
 
         logWithTimestamp('process.env.JWT_SECRETis:', process.env.JWT_SECRET)
 

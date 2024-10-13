@@ -20,18 +20,6 @@ export const AIImageGenerator: React.FC = () => {
     const fetchGenerationData = async () => {
         try {
             const response = await fetch('/api/getRemainingGenerations');
-            logWithTimestamp('start get user points in web:')
-
-            const response2 = await fetch('https://flux-ai.liukai19911010.workers.dev/getuserpoints', {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjE2LCJ1c2VybmFtZSI6ImFrYWkiLCJleHAiOjE3Mjg2NTYzMDksImlhdCI6MTcyODY1MjcwOX0.Me6mDARpDoQDejN7kF_AaN5_htRZ_NBSLq0hpFjYFWY`,
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            logWithTimestamp('get response is:', response2.status)
-            logWithTimestamp('end get user points in web:')
 
             const data = await response.json() as any;
             setRemainingFreeGenerations(data.remainingFreeGenerations);
