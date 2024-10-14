@@ -4,6 +4,7 @@ import {Env} from '@/worker/types';
 import {logWithTimestamp} from "@/utils/logUtils";
 import {GET} from "@/app/api/getRemainingGenerations/route";
 import {verifyJWT} from "@/utils/auth";
+import {Data} from "@/components/AIImageGenerator";
 
 // import os from 'os';
 
@@ -49,8 +50,8 @@ export async function getUserPoints(req: NextRequest) {
         logWithTimestamp('get response is:', response.json())
 
         if (response.ok) {
-            const data = await response.json() as any;
-            return data.points;
+            const data: Data = await response.json();
+            return data.userPoints;
         } else {
             console.error('Error fetching user points');
             return null;
