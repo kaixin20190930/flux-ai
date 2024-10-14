@@ -12,10 +12,11 @@ export async function handleLogin(request: Request, env: Env): Promise<Response>
     const origin = request.headers.get('Origin')
 
     const corsHeaders = {
-        'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+        // 'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+        'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Access-Control-Allow-Credentials': 'true',
+        // 'Access-Control-Allow-Credentials': 'true',
     };
     try {
         const {email, password} = await request.json() as any;

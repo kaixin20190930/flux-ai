@@ -14,10 +14,11 @@ export default {
         const origin = request.headers.get('Origin')
 
         const corsHeaders = {
-            'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+            // 'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+            'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-            'Access-Control-Allow-Credentials': 'true',
+            // 'Access-Control-Allow-Credentials': 'true',
         };
 
         logWithTimestamp('get request :' + request.url);
@@ -62,10 +63,11 @@ function handleOptions(request: Request) {
     const origin = request.headers.get('Origin')
     return new Response(null, {
         headers: {
-            'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+            // 'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+            'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-            'Access-Control-Allow-Credentials': 'true',
+            // 'Access-Control-Allow-Credentials': 'true',
             'Access-Control-Max-Age': '86400'  // 预检请求的缓存时间
         }
     });

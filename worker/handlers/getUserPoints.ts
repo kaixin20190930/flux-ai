@@ -12,10 +12,11 @@ export async function handleGetUserPoints(request: Request, env: Env): Promise<R
     const origin = request.headers.get('Origin')
 
     const corsHeaders = {
-        'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+        // 'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+        'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Access-Control-Allow-Credentials': 'true',
+        // 'Access-Control-Allow-Credentials': 'true',
     };
     const token = request.headers.get('Authorization')?.split('Bearer ')[1];
     if (!token) {
@@ -36,7 +37,11 @@ export async function handleGetUserPoints(request: Request, env: Env): Promise<R
         logWithTimestamp('get user points is', points)
 
         return new Promise((resolve) => resolve(new Response(JSON.stringify({points}), {
-            headers: corsHeaders,
+            status: 200,
+            headers: {
+                'Content-Type': 'application/json',
+                ...corsHeaders,
+            },
         })));
     } catch (error) {
         return new Promise((resolve) => resolve(new Response('Error fetching user points', {
@@ -48,10 +53,12 @@ export async function handleGetUserPoints(request: Request, env: Env): Promise<R
 
 async function getUserPoints(env: Env, userId: string): Promise<number | null> {
     try {
+        logWithTimestamp('start get userPoints from DB')
         const result = await env.DB.prepare('SELECT points FROM users WHERE id = ?')
             .bind(userId)
             .first();
-        logWithTimestamp('get user result is', result?.toString())
+        // logWithTimestamp('get user result is', result?.toString())
+        logWithTimestamp('end get userPoints from DB')
 
         const points = (result?.points as number | undefined) ?? null;
         return points;
