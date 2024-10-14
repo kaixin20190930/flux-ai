@@ -39,7 +39,7 @@ export async function GET(req: NextRequest) {
         // const user: User | null = await getUserFromLocalStorage()
         const user: User | null = await getUserFromCookie(req, JWT_SECRET)
         logWithTimestamp('user info is:', user);
-        let userPoints = null
+        let userPoints = 0
         if (user) {
             userPoints = await getUserPoints(req)
             logWithTimestamp(`User ${user.userId} points:`, userPoints);
