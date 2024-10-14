@@ -133,7 +133,7 @@ export const AIImageGenerator: React.FC = () => {
                             <button
                                 onClick={handleGenerate}
                                 // 修改：添加 remainingFreeGenerations 到禁用条件
-                                disabled={isLoading || !prompt || (remainingFreeGenerations <= 0 && userPoints <= 0)}
+                                disabled={isLoading || !prompt || (remainingFreeGenerations <= 0 && (userPoints === null || userPoints <= 0))}
                                 className="px-6 py-3 md:px-8 md:py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 disabled:bg-white/50 disabled:text-indigo-400 transition duration-300 ease-in-out transform hover:scale-105"
                             >
                                 {isLoading ? 'Generating...' : 'Generate Image'}
