@@ -26,8 +26,9 @@ export const AIImageGenerator: React.FC = () => {
     const fetchGenerationData = async () => {
         try {
             const response = await fetch('/api/getRemainingGenerations');
-            logWithTimestamp('get response of RemainingGenerations is', response.json())
+            logWithTimestamp('get response of RemainingGenerations is', response)
             const data: Data = await response.json();
+            logWithTimestamp('data is ', data)
             setRemainingFreeGenerations(data.remainingFreeGenerations);
             setIsLoggedIn(data.isLoggedIn);
             setUserPoints(data.userPoints);
