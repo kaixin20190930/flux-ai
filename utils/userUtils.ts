@@ -20,7 +20,7 @@ export interface User {
     // 添加其他可能的用户属性
 }
 
-export interface Data {
+export interface Data2 {
     points: number;
 }
 
@@ -56,7 +56,7 @@ export async function getUserPoints(req: NextRequest) {
         logWithTimestamp('get response ok is:', response.ok)
 
         if (response.ok) {
-            const data: Data = await response.json();
+            const data: Data2 = await response.json();
             logWithTimestamp('get data points is:', data)
             return data.points;
         } else {
