@@ -20,6 +20,11 @@ export interface User {
     // 添加其他可能的用户属性
 }
 
+export interface Data {
+    points: number;
+}
+
+
 export async function getUserPoints(req: NextRequest) {
     const token = req.cookies.get('token' as any)?.value;
 
@@ -51,9 +56,9 @@ export async function getUserPoints(req: NextRequest) {
         logWithTimestamp('get response ok is:', response.ok)
 
         if (response.ok) {
-            const data = await response.json() as any;
+            const data: Data = await response.json();
             logWithTimestamp('get data points is:', data)
-            return data.userPoints;
+            return data.points;
         } else {
             console.error('Error fetching user points');
             return null;

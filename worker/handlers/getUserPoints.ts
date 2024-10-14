@@ -45,6 +45,7 @@ export async function handleGetUserPoints(request: Request, env: Env): Promise<R
                 ...corsHeaders,
             },
         })));
+
     } catch (error) {
         return new Promise((resolve) => resolve(new Response('Error fetching user points', {
             status: 500,
@@ -62,8 +63,7 @@ async function getUserPoints(env: Env, userId: string): Promise<number | null> {
         // logWithTimestamp('get user result is', result?.toString())
         logWithTimestamp('end get userPoints from DB')
 
-        const points = (result?.points as number | undefined) ?? null;
-        return points;
+        return (result?.points as number | undefined) ?? null;
     } catch (error) {
         console.error('Error fetching user points:', error);
         return null;
