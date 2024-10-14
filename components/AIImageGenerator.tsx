@@ -8,6 +8,12 @@ import {logWithTimestamp} from "@/utils/logUtils";
 
 const MAX_DAILY_GENERATIONS = 3;
 
+export interface Data {
+    remainingFreeGenerations: Number,
+    isLoggedIn: boolean,
+    userPoints: Number
+}
+
 export const AIImageGenerator: React.FC = () => {
     const [prompt, setPrompt] = useState('')
     const [generatedImage, setGeneratedImage] = useState<string | null>(null)
@@ -21,7 +27,7 @@ export const AIImageGenerator: React.FC = () => {
         try {
             const response = await fetch('/api/getRemainingGenerations');
 
-            const data = await response.json() as any;
+            const data: Data = await response.json();
             setRemainingFreeGenerations(data.remainingFreeGenerations);
             setIsLoggedIn(data.isLoggedIn);
             setUserPoints(data.userPoints);
