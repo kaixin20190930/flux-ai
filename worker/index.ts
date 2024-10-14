@@ -5,7 +5,6 @@ import {logWithTimestamp} from "@/utils/logUtils";
 import {handleGetUserPoints} from "@/worker/handlers/getUserPoints";
 
 const allowedOrigins = [
-    'http://45.129.228.105:*',          // 本地开发环境
     'http://localhost:3000',          // 本地开发环境
     'https://flux-ai-img.com'  // 生产环境
 ]
@@ -64,7 +63,7 @@ function handleOptions(request: Request) {
     return new Response(null, {
         headers: {
             'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
-            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+            'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type, Authorization',
             'Access-Control-Allow-Credentials': 'true',
             'Access-Control-Max-Age': '86400'  // 预检请求的缓存时间

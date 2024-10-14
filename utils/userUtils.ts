@@ -38,16 +38,6 @@ export async function getUserPoints(req: NextRequest) {
             logWithTimestamp('Token verification failed in getUserPoints:', error);
         }
 
-        const response2 = await fetch('https://flux-ai.liukai19911010.workers.dev/getuserpoints', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjE2LCJ1c2VybmFtZSI6ImFrYWkiLCJleHAiOjE3Mjg2NTYzMDksImlhdCI6MTcyODY1MjcwOX0.Me6mDARpDoQDejN7kF_AaN5_htRZ_NBSLq0hpFjYFWY`,
-                'Content-Type': 'application/json'
-            }
-        });
-        logWithTimestamp('get response is:', response2.status)
-
-
         const response = await fetch('https://flux-ai.liukai19911010.workers.dev/getuserpoints', {
             method: 'POST',
             headers: {

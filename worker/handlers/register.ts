@@ -3,7 +3,6 @@ import {createJWT, hashPassword} from '@/utils/auth';
 import {logWithTimestamp} from "@/utils/logUtils";
 
 const allowedOrigins = [
-    'http://45.129.228.105:*',          // 本地开发环境
     'http://localhost:3000',          // 本地开发环境
     'https://flux-ai-img.com'  // 生产环境
 ]

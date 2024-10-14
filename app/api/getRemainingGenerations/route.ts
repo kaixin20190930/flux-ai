@@ -39,16 +39,16 @@ export async function GET(req: NextRequest) {
         // const user: User | null = await getUserFromLocalStorage()
         const user: User | null = await getUserFromCookie(req, JWT_SECRET)
         logWithTimestamp('user info is:', user);
-        const userPoints = null
+        let userPoints = null
         if (user) {
-            const userPoints = await getUserPoints(req)
+            userPoints = await getUserPoints(req)
             logWithTimestamp(`User ${user.userId} points:`, userPoints);
         }
 
         return Response.json({
             remainingFreeGenerations: remainingFreeGenerations,
             isLoggedIn: !!user,
-            userPoints: user ? userPoints : null
+            userPoints: userPoints
         });
     } catch (error) {
         console.error('Error in GET function:', error);
