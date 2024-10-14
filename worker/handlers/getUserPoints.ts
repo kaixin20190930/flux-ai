@@ -12,11 +12,11 @@ export async function handleGetUserPoints(request: Request, env: Env): Promise<R
     const origin = request.headers.get('Origin')
 
     const corsHeaders = {
-        // 'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+        // 'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        // 'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Allow-Credentials': 'true',
     };
     const token = request.headers.get('Authorization')?.split('Bearer ')[1];
     if (!token) {
@@ -29,6 +29,8 @@ export async function handleGetUserPoints(request: Request, env: Env): Promise<R
     try {
         const decoded = await verifyJWT(token, env.JWT_SECRET);
         const userId = decoded.userId;
+        logWithTimestamp('env.JWT_SECRET is', env.JWT_SECRET)
+        logWithTimestamp('env.ENVIRONMENT is', env.ENVIRONMENT)
 
         logWithTimestamp('get user id is', userId)
 

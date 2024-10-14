@@ -39,12 +39,11 @@ export async function getUserPoints(req: NextRequest) {
             logWithTimestamp('Token verification failed in getUserPoints:', error);
         }
 
-        const response = await fetch('http://localhost:8787/getuserpoints', {
+        const response = await fetch('http://flux-ai.liukai19911010.workers.dev/getuserpoints', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
             }
         });
 
