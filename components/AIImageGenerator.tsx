@@ -43,7 +43,7 @@ export const AIImageGenerator: React.FC = () => {
     }, []);
 
     const handleGenerate = async () => {
-        if (remainingFreeGenerations <= 0 && !isLoggedIn) {
+        if (remainingFreeGenerations <= 0 && !isLoggedIn && (userPoints === null || userPoints <= 0)) {
             setError('Daily free limit reached. Please login to continue.');
             return;
         }
