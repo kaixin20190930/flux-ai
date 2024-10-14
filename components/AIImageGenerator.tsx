@@ -9,9 +9,9 @@ import {logWithTimestamp} from "@/utils/logUtils";
 const MAX_DAILY_GENERATIONS = 3;
 
 export interface Data {
-    remainingFreeGenerations: Number,
+    remainingFreeGenerations: number,
     isLoggedIn: boolean,
-    userPoints: Number
+    userPoints: number
 }
 
 export const AIImageGenerator: React.FC = () => {
