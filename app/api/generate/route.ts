@@ -23,14 +23,18 @@ export async function POST(req: NextRequest) {
         logWithTimestamp('New day, reset generation count');
     }
 
-    if (generationData.count >= MAX_DAILY_GENERATIONS) {
-        logWithTimestamp('Daily limit reached');
-        return Response.json({error: 'Daily limit reached. Please try again tomorrow.'}, {status: 403});
-    }
+    // if (generationData.count >= MAX_DAILY_GENERATIONS) {
+    //     logWithTimestamp('Daily limit reached');
+    //     return Response.json({error: 'Daily limit reached. Please try again tomorrow.'}, {status: 403});
+    // }
 
     try {
-        const {prompt} = await req.json() as { prompt: string };
+        const {prompt, userPoints} = await req.json() as { prompt: string, userPoints: number };
 
+        if (generationData.count >= MAX_DAILY_GENERATIONS && userPoints <= 0) {
+            logWithTimestamp('Daily limit reached');
+            return Response.json({error: 'Daily limit reached. Please try again tomorrow.'}, {status: 403});
+        }
         if (!prompt) {
             logWithTimestamp('No prompt provided');
             return Response.json({error: 'Prompt is required'}, {status: 400});
@@ -57,13 +61,13 @@ export async function POST(req: NextRequest) {
 
             generationData.count += 1;
 
-            const remainingGenerations = MAX_DAILY_GENERATIONS - generationData.count;
+            const remainingFreeGenerations = MAX_DAILY_GENERATIONS - generationData.count;
 
-            logWithTimestamp('Image generated successfully', {remainingGenerations, generationData});
+            logWithTimestamp('Image generated successfully', {remainingFreeGenerations, generationData});
 
             const response = NextResponse.json({
                 image: imageUrl,
-                remainingGenerations: remainingGenerations
+                remainingGenerations: remainingFreeGenerations
             });
 
             // 设置 cookie

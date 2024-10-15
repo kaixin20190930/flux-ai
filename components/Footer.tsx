@@ -23,6 +23,12 @@ const Footer: React.FC = () => {
                             <li><Link href="/contact"
                                       className="text-indigo-200 hover:text-pink-300 transition duration-300">Contact</Link>
                             </li>
+                            <li><a href="https://tap4.ai/ai/flux-ai-io" title="Flux Image AI">Flux Image AI</a>
+                            </li>
+                            <li><a href="https://www.soraainow.com/" title="SORA AI">SORA AI</a>
+                            </li>
+                            <li><a href="https://www.aibesttool.com/" title="AI Best Tool">AI Best Tool</a>
+                            </li>
                         </ul>
                     </div>
                     <div>

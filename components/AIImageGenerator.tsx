@@ -43,7 +43,7 @@ export const AIImageGenerator: React.FC = () => {
     }, []);
 
     const handleGenerate = async () => {
-        if (remainingFreeGenerations <= 0 && !isLoggedIn && (userPoints === null || userPoints <= 0)) {
+        if (remainingFreeGenerations <= 0 && !isLoggedIn) {
             setError('Daily free limit reached. Please login to continue.');
             return;
         }
@@ -60,7 +60,7 @@ export const AIImageGenerator: React.FC = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({prompt}),
+                body: JSON.stringify({prompt, userPoints}),
             })
             const data = await response.json() as any;
             if (data.image) {
