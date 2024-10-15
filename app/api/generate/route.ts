@@ -2,6 +2,7 @@ import {NextRequest, NextResponse} from 'next/server';
 import Replicate from "replicate";
 import {getGenerationData} from '../../../utils/cookieUtils';
 import {logWithTimestamp} from '../../..//utils/logUtils';
+import {updateUserPoints} from "@/utils/userUtils";
 
 
 const replicate = new Replicate({
@@ -23,24 +24,29 @@ export async function POST(req: NextRequest) {
         logWithTimestamp('New day, reset generation count');
     }
 
-    // if (generationData.count >= MAX_DAILY_GENERATIONS) {
-    //     logWithTimestamp('Daily limit reached');
-    //     return Response.json({error: 'Daily limit reached. Please try again tomorrow.'}, {status: 403});
-    // }
-
     try {
-        const {prompt, userPoints} = await req.json() as { prompt: string, userPoints: number };
+        const {prompt, userPoints, userId} = await req.json() as {
+            prompt: string,
+            userPoints?: number,
+            userId?: string
+        };
+        const isLoggedIn = userPoints !== undefined && userId !== undefined;
 
-        if (generationData.count >= MAX_DAILY_GENERATIONS && userPoints <= 0) {
-            logWithTimestamp('Daily limit reached');
-            return Response.json({error: 'Daily limit reached. Please try again tomorrow.'}, {status: 403});
-        }
         if (!prompt) {
             logWithTimestamp('No prompt provided');
             return Response.json({error: 'Prompt is required'}, {status: 400});
         }
 
-        logWithTimestamp('Generating image', {prompt});
+        let useUserPoints = false;
+        if (generationData.count >= MAX_DAILY_GENERATIONS) {
+            if (!isLoggedIn || userPoints <= 0) {
+                logWithTimestamp('Daily limit reached and no points available');
+                return Response.json({error: 'Daily limit reached. Please login or purchase more points.'}, {status: 403});
+            }
+            useUserPoints = true;
+        }
+
+        logWithTimestamp('Generating image', {prompt, useUserPoints});
 
         const output = await replicate.run(
             "black-forest-labs/flux-schnell",
@@ -58,16 +64,28 @@ export async function POST(req: NextRequest) {
 
         if (Array.isArray(output) && output.length > 0) {
             const imageUrl = output[0];
+            let updatedUserPoints = userPoints;
+            if (useUserPoints && isLoggedIn) {
+                // 更新用户点数
+                updatedUserPoints = userPoints - 1;
+                const updateSuccess = await updateUserPoints(req, updatedUserPoints);
+                if (!updateSuccess) {
+                    logWithTimestamp('Failed to update user points', {userId, newPoints: updatedUserPoints});
+                    return Response.json({error: 'Failed to update user points'}, {status: 500});
+                }
+                logWithTimestamp('User points updated', {userId, newPoints: updatedUserPoints});
+            } else {
+                generationData.count += 1;
+            }
 
-            generationData.count += 1;
-
-            const remainingFreeGenerations = MAX_DAILY_GENERATIONS - generationData.count;
+            const remainingFreeGenerations = Math.max(0, MAX_DAILY_GENERATIONS - generationData.count);
 
             logWithTimestamp('Image generated successfully', {remainingFreeGenerations, generationData});
 
             const response = NextResponse.json({
                 image: imageUrl,
-                remainingGenerations: remainingFreeGenerations
+                remainingFreeGenerations,
+                userPoints: isLoggedIn ? updatedUserPoints : null
             });
 
             // 设置 cookie

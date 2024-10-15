@@ -68,3 +68,37 @@ export async function getUserPoints(req: NextRequest) {
         return null;
     }
 }
+
+export async function updateUserPoints(req: NextRequest, newPoints: number) {
+    const token = req.cookies.get('token' as any)?.value;
+
+    if (!token) {
+        console.error('No token found');
+        return false;
+    }
+
+    logWithTimestamp('Start updating user points');
+
+    try {
+        const response = await fetch('http://flux-ai.liukai19911010.workers.dev/updateuserpoints', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({points: newPoints})
+        });
+
+        if (response.ok) {
+            const data: { success: boolean, points: number } = await response.json();
+            logWithTimestamp('Update result:', data);
+            return data.success;
+        } else {
+            console.error('Error updating user points');
+            return false;
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
+    }
+}

@@ -48,7 +48,8 @@ export async function GET(req: NextRequest) {
         return Response.json({
             remainingFreeGenerations: remainingFreeGenerations,
             isLoggedIn: !!user,
-            userPoints: userPoints
+            userPoints: userPoints,
+            userId: user?.userId
         });
     } catch (error) {
         console.error('Error in GET function:', error);

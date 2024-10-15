@@ -11,7 +11,8 @@ const MAX_DAILY_GENERATIONS = 3;
 export interface Data {
     remainingFreeGenerations: number,
     isLoggedIn: boolean,
-    userPoints: number
+    userPoints: number,
+    userId: string
 }
 
 export const AIImageGenerator: React.FC = () => {
@@ -23,6 +24,8 @@ export const AIImageGenerator: React.FC = () => {
     const [imageDimensions, setImageDimensions] = useState<{ width: number; height: number } | null>(null)
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
     const [userPoints, setUserPoints] = useState<number | null>(null)
+    const [userId, setUserId] = useState<string | null>(null)
+
     const fetchGenerationData = async () => {
         try {
             const response = await fetch('/api/getRemainingGenerations');
@@ -32,6 +35,7 @@ export const AIImageGenerator: React.FC = () => {
             setRemainingFreeGenerations(data.remainingFreeGenerations);
             setIsLoggedIn(data.isLoggedIn);
             setUserPoints(data.userPoints);
+            setUserId(data.userId);
             logWithTimestamp('Fetched data: ', data)
         } catch (error) {
             console.error('Error fetching remaining generations:', error);
@@ -54,18 +58,24 @@ export const AIImageGenerator: React.FC = () => {
         }
         setIsLoading(true)
         setError(null)
+        const body = isLoggedIn ? {prompt, userPoints, userId} : {prompt};
+
         try {
             const response = await fetch('/api/generate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({prompt, userPoints}),
+                body: JSON.stringify(body),
             })
             const data = await response.json() as any;
             if (data.image) {
                 setGeneratedImage(data.image)
-                fetchGenerationData(); // 重新获取生成数据
+                setRemainingFreeGenerations(data.remainingFreeGenerations);
+                // fetchGenerationData(); // 重新获取生成数据
+                if (isLoggedIn && data.userPoints !== null) {
+                    setUserPoints(data.userPoints);
+                }
             } else if (data.error) {
                 setError(data.error)
             } else {
