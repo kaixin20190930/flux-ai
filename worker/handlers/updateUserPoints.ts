@@ -27,7 +27,7 @@ export async function handleUpdateUserPoints(request: Request, env: Env): Promis
         const decoded = await verifyJWT(token, env.JWT_SECRET);
         const userId = decoded.userId;
 
-        const {points} = await request.json();
+        const {points} = await request.json() as any;
 
         // 更新数据库中的用户点数
         const result = await env.DB.prepare('UPDATE users SET points = ? WHERE id = ?')
