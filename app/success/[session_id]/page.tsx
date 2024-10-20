@@ -5,7 +5,7 @@ import {useSearchParams, useRouter} from 'next/navigation';
 import Link from "next/link";
 
 export const runtime = 'edge';
-export default function SuccessPage() {
+export default function SuccessPage({params}: { params: { session_id: string } }) {
     const [points, setPoints] = useState<number | null>(null);
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -14,14 +14,13 @@ export default function SuccessPage() {
 
 
     useEffect(() => {
-        const session_id = searchParams.get('session_id');
-        if (session_id) {
-            fetchTransactionDetails(session_id);
+        if (params.session_id) {
+            fetchTransactionDetails(params.session_id);
         } else {
             setError('No session ID found');
             setIsLoading(false);
         }
-    }, [searchParams]);
+    }, [params.session_id]);
 
 
     async function fetchTransactionDetails(sessionId: string, retries = 3) {
