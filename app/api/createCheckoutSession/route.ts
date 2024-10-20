@@ -8,7 +8,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 
 export async function POST(req: Request) {
     try {
-        const {priceId} = await req.json();
+        const {priceId} = await req.json() as any;
         logWithTimestamp('priceIs is:', priceId)
         // Create Checkout Sessions from body params.
         const session = await stripe.checkout.sessions.create({
