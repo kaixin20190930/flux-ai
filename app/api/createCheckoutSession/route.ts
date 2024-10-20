@@ -13,10 +13,24 @@ export async function POST(req: NextRequest) {
     try {
         const {priceId} = await req.json() as any;
         const JWT_SECRET = process.env.JWT_SECRET as string;
-        logWithTimestamp('priceIs is:', priceId)
-        const user: User | null = await getUserFromCookie(req, JWT_SECRET)
-        const userId = user?.userId
 
+
+        if (!JWT_SECRET) {
+            logWithTimestamp('JWT_SECRET is not defined in environment variables');
+            return NextResponse.json({error: 'JWT_SECRET is null'}, {status: 401} as any);
+        }
+
+        const user: User | null = await getUserFromCookie(req, JWT_SECRET);
+
+        // 记录用户详情
+        console.log('User from cookie:', user);
+
+        if (!user || !user.userId) {
+            console.error('No user found or userId is missing');
+            return NextResponse.json({error: 'User not authenticated'}, {status: 402} as any);
+        }
+
+        const userId = user.userId;
         // Create Checkout Sessions from body params.
         const session = await stripe.checkout.sessions.create({
             line_items: [
