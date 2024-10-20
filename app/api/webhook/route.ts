@@ -6,29 +6,40 @@ import {Env} from '@/worker/types';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: '2024-09-30.acacia',
+    httpClient: Stripe.createFetchHttpClient()
 });
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 export const runtime = 'edge';
+
 export async function POST(req: Request, env: Env) {
     const body = await req.text();
     const signature = headers().get('stripe-signature') as string;
 
+    if (!signature) {
+        console.error('No Stripe signature found');
+        return NextResponse.json({error: 'No Stripe signature'}, {status: 400} as any);
+    }
     let event: Stripe.Event;
 
     try {
-        event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
+        event = await stripe.webhooks.constructEventAsync(body, signature, webhookSecret);
     } catch (err) {
-        console.error('Webhook signature verification failed.');
+        console.error('Webhook signature verification failed.', err);
         return NextResponse.json({error: (err as Error).message}, {status: 400} as any);
     }
 
-    if (event.type === 'checkout.session.completed') {
-        const session = event.data.object as Stripe.Checkout.Session;
-        await handleCheckoutSessionCompleted(session, env);
-    }
+    try {
+        if (event.type === 'checkout.session.completed') {
+            const session = event.data.object as Stripe.Checkout.Session;
+            await handleCheckoutSessionCompleted(session, env);
+        }
 
-    return NextResponse.json({received: true});
+        return NextResponse.json({received: true});
+    } catch (error) {
+        console.error('Error processing webhook:', error);
+        return NextResponse.json({error: 'Webhook processing failed'}, {status: 500} as any);
+    }
 }
 
 async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, env: Env) {

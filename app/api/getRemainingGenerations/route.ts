@@ -15,9 +15,6 @@ export async function GET(req: NextRequest) {
         // 使用 process.env 而不是 env 参数
         const JWT_SECRET = process.env.JWT_SECRET;
 
-        logWithTimestamp('process.env.JWT_SECRETis:', process.env.JWT_SECRET)
-
-        logWithTimestamp('JWT_SECRET:', JWT_SECRET ? 'defined' : 'undefined');
         if (!JWT_SECRET) {
             logWithTimestamp('JWT_SECRET is not defined in environment variables');
             throw new Error('JWT_SECRET is not configured');

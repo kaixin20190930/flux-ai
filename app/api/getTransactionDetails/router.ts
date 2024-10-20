@@ -13,7 +13,7 @@ export async function GET(req: Request, {env}: { env: Env }) {
 
     try {
         const {results} = await env.DB.prepare(
-            "SELECT points_added FROM transactions WHERE stripe_session_id = ?"
+            'SELECT points_added FROM transactions WHERE stripe_session_id = ?'
         )
             .bind(sessionId)
             .all();
