@@ -12,7 +12,7 @@ export const runtime = 'edge';
 export async function POST(req: NextRequest) {
     try {
         const {priceId} = await req.json() as any;
-        const JWT_SECRET = process.env.JWT_SECRET;
+        const JWT_SECRET = process.env.JWT_SECRET  as string;
         logWithTimestamp('priceIs is:', priceId)
         const user: User | null = await getUserFromCookie(req, JWT_SECRET)
         const userId = user?.userId
