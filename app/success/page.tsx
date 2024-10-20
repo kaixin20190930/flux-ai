@@ -18,7 +18,7 @@ export default function SuccessPage() {
     async function fetchTransactionDetails(sessionId: string) {
         try {
             const response = await fetch(`/api/getTransactionDetails?session_id=${sessionId}`);
-            const data = await response.json();
+            const data = await response.json() as any;
             setPoints(data.pointsAdded);
         } catch (error) {
             console.error('Error fetching transaction details:', error);
