@@ -3,6 +3,7 @@
 import {useEffect, useState} from 'react';
 import {useSearchParams, useRouter} from 'next/navigation';
 
+export const runtime = 'edge';
 export default function SuccessPage() {
     const [points, setPoints] = useState<number | null>(null);
     const searchParams = useSearchParams();

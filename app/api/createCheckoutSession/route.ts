@@ -5,7 +5,7 @@ import {logWithTimestamp} from "@/utils/logUtils";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: '2024-09-30.acacia',
 });
-
+export const runtime = 'edge';
 export async function POST(req: Request) {
     try {
         const {priceId} = await req.json() as any;
