@@ -138,7 +138,6 @@ const Pricing: React.FC = () => {
                                 'No subscription',
                             ]}
                             purchaseType="onetime"
-                            mode="payment"
                             points={200}
                         />
                         <PricingTier
@@ -153,7 +152,6 @@ const Pricing: React.FC = () => {
                             ]}
                             recommended
                             purchaseType="monthly"
-                            mode="subscription"
                             disabled={true}
                         />
                         <PricingTier
@@ -167,7 +165,6 @@ const Pricing: React.FC = () => {
                                 'Annual subscription',
                             ]}
                             purchaseType="yearly"
-                            mode="subscription"
                             disabled={true}
                         />
                     </div>
