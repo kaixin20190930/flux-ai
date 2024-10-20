@@ -46,7 +46,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
                 throw new Error('Failed to create checkout session');
             }
 
-            const session = await response.json();
+            const session = await response.json() as any;
 
             // Redirect to Stripe Checkout
             const result = await stripe!.redirectToCheckout({
