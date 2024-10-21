@@ -28,10 +28,10 @@ export async function handleUpdateUserPointsForPurchase(request: Request, env: E
         // const decoded = await verifyJWT(token, env.JWT_SECRET);
         // const userId = decoded.userId;
 
-        const {points,userId} = await request.json() as any;
-
+        const {points, userId} = await request.json() as any;
+        console.log('update points value is:', points)
         // 更新数据库中的用户点数
-        const result = await env.DB.prepare('UPDATE users SET points =points + ? WHERE id = ?')
+        const result = await env.DB.prepare('UPDATE users SET points = points + ? WHERE id = ?')
             .bind(points, userId)
             .run();
 

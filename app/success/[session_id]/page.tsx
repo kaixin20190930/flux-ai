@@ -10,7 +10,7 @@ const SuccessPage = () => {
     const points = 200; // 固定的点数值
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-purple-500">
+        <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500">
             <motion.div
                 initial={{opacity: 0, y: -50}}
                 animate={{opacity: 1, y: 0}}
@@ -47,7 +47,7 @@ const SuccessPage = () => {
                     onClick={() => router.push('/')}
                     className="px-6 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-full font-semibold text-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out"
                 >
-                    Go to Dashboard
+                    Go to HomePage
                 </motion.button>
             </motion.div>
         </div>
