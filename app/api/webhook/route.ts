@@ -88,7 +88,7 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
         // Add more price IDs and their corresponding points
     };
 
-    const pointsAdded = pointsMap[item.price?.id ?? ''] || 0;
+    const pointsAdded = 200;
 
     try {
         logWithTimestamp('start update user points:')

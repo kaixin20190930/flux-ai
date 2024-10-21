@@ -31,7 +31,7 @@ export async function handleUpdateUserPointsForPurchase(request: Request, env: E
         const {points,userId} = await request.json() as any;
 
         // 更新数据库中的用户点数
-        const result = await env.DB.prepare('UPDATE users SET points = ? WHERE id = ?')
+        const result = await env.DB.prepare('UPDATE users SET points =points + ? WHERE id = ?')
             .bind(points, userId)
             .run();
 
