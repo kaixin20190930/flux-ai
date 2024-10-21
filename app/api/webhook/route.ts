@@ -95,10 +95,10 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
         }
 
         const transaction: Transaction = {
-            client_reference_id: session.client_reference_id || '',
-            amount_total: session.amount_total ? session.amount_total / 100 : 0,
+            client_reference_id: session.client_reference_id ?? '',
+            amount_total: session?.amount_total != null ? session.amount_total / 100 : 0,
             points_added: pointsAdded,
-            session_id: session.id
+            session_id: session.id ?? ''
         };
 
         const insertResponse = await fetch('http://flux-ai.liukai19911010.workers.dev/inserttransaction', {
