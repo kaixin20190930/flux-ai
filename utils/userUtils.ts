@@ -2,7 +2,6 @@ import {getUserFromCookie, getUserFromLocalStorage} from './authUtils';
 import {NextRequest} from 'next/server';
 import {Env} from '@/worker/types';
 import {logWithTimestamp} from "@/utils/logUtils";
-import {GET} from "@/app/api/getRemainingGenerations/route";
 import {verifyJWT} from "@/utils/auth";
 import {Data} from "@/components/AIImageGenerator";
 
@@ -143,5 +142,22 @@ export async function insertTransaction(transaction: Transaction) {
     } else {
         console.error('Error insert transaction');
         return 'failed';
+    }
+}
+
+export async function getTransaction(sessionId) {
+    const response = await fetch('https://flux-ai.liukai19911010.workers.dev/gettransaction', {
+        method: 'POST',
+        headers: {
+            // 'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sessionId)
+    });
+    if (response.ok) {
+        return response;
+    } else {
+        console.error('Error insert transaction');
+        throw new Error('No transaction get');
     }
 }

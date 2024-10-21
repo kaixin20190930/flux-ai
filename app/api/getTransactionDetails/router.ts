@@ -1,5 +1,6 @@
 import {NextResponse} from 'next/server';
 import {Env} from '../../../worker/types'
+import {getTransaction} from "@/utils/userUtils";
 
 export const runtime = 'edge';
 
@@ -12,18 +13,9 @@ export async function GET(req: Request, {env}: { env: Env }) {
     }
 
     try {
-        const {results} = await env.DB.prepare(
-            'SELECT points_added FROM transactions WHERE stripe_session_id = ?'
-        )
-            .bind(sessionId)
-            .all();
+        const pointsAdded = await getTransaction(sessionId)
 
-        if (!results || results.length === 0) {
-            return NextResponse.json({error: 'Transaction not found'}, {status: 404} as any);
-        }
-
-        const transaction = results[0];
-        return NextResponse.json({pointsAdded: transaction.points_added});
+        return NextResponse.json({pointsAdded});
     } catch (error) {
         console.error('Error fetching transaction details:', error);
         return NextResponse.json({error: 'Internal server error'}, {status: 500} as any);
