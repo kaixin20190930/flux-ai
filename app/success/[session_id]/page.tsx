@@ -3,6 +3,8 @@ import React from 'react';
 import {useRouter} from 'next/navigation';
 import {motion} from 'framer-motion';
 
+export const runtime = 'edge';
+
 const SuccessPage = () => {
     const router = useRouter();
     const points = 200; // 固定的点数值
