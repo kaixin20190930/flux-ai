@@ -4,6 +4,7 @@ import {handleLogin} from './handlers/login';
 import {logWithTimestamp} from "@/utils/logUtils";
 import {handleGetUserPoints} from "@/worker/handlers/getUserPoints";
 import {handleUpdateUserPoints} from "@/worker/handlers/updateUserPoints";
+import {handleInsertTransaction} from "@/worker/handlers/insertTransaction";
 
 const allowedOrigins = [
     'http://localhost:3000',          // 本地开发环境
@@ -56,6 +57,10 @@ export default {
         // 处理登录请求
         if (url.pathname === '/updateuserpoints' && request.method === 'POST') {
             return handleUpdateUserPoints(request, env);
+        }
+
+        if (url.pathname === '/inserttransaction' && request.method === 'POST') {
+            return handleInsertTransaction(request, env);
         }
 
         // 404 未找到的响应

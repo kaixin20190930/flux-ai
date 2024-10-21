@@ -30,6 +30,7 @@ export default function SuccessPage({params}: { params: { session_id: string } }
 
             const data = await response.json() as any;
             setPoints(data.pointsAdded);
+            setIsLoading(false)
         } catch (error) {
             if (retries > 0) {
                 console.log(`Retrying... (${retries} attempts left)`);
@@ -37,6 +38,7 @@ export default function SuccessPage({params}: { params: { session_id: string } }
             } else {
                 console.error('Error fetching transaction details:', error);
                 setError('Failed to load transaction details. Please refresh the page.');
+                setIsLoading(false)
             }
         }
     }

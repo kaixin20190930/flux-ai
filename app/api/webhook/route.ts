@@ -1,7 +1,8 @@
-import {NextResponse} from 'next/server';
+import {NextRequest, NextResponse} from 'next/server';
 import {headers} from 'next/headers';
 import Stripe from 'stripe';
 import {Env} from '@/worker/types';
+import {logWithTimestamp} from "@/utils/logUtils";
 
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -9,10 +10,18 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     httpClient: Stripe.createFetchHttpClient()
 });
 
+interface Transaction {
+    client_reference_id: string;
+    amount_total: number
+    points_added: number;
+    session_id: string
+    // 添加其他可能的用户属性
+}
+
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 export const runtime = 'edge';
 
-export async function POST(req: Request, env: Env) {
+export async function POST(req: NextRequest) {
     const body = await req.text();
     const signature = headers().get('stripe-signature') as string;
 
@@ -30,9 +39,13 @@ export async function POST(req: Request, env: Env) {
     }
 
     try {
+        logWithTimestamp('start checkout session:')
         if (event.type === 'checkout.session.completed') {
             const session = event.data.object as Stripe.Checkout.Session;
-            await handleCheckoutSessionCompleted(session, env);
+            logWithTimestamp('start checkout session:')
+            await handleCheckoutSessionCompleted(session, req);
+            logWithTimestamp('end checkout session:')
+
         }
 
         return NextResponse.json({received: true});
@@ -42,9 +55,10 @@ export async function POST(req: Request, env: Env) {
     }
 }
 
-async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, env: Env) {
+async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, req: NextRequest) {
     const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
     const item = lineItems.data[0];
+    const token = req.cookies.get('token' as any)?.value;
 
     if (!item) {
         console.error('No line items found for session', session.id);
@@ -59,27 +73,54 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
     const pointsAdded = pointsMap[item.price?.id ?? ''] || 0;
 
     try {
+        logWithTimestamp('start update user points:')
+
         // Update user points
-        const updateUserPointsResult = await env.DB
-            .prepare('UPDATE users SET points = points + ? WHERE id = ?')
-            .bind(pointsAdded, session.client_reference_id)
-            .run();
+        const response = await fetch('http://flux-ai.liukai19911010.workers.dev/updateuserpoints', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({points: pointsAdded})
+        });
+
+        if (response.ok) {
+            const data: { success: boolean, points: number } = await response.json();
+            logWithTimestamp('Update result:', data);
+            return data.success;
+        } else {
+            console.error('Error updating user points');
+            return false;
+        }
+
+        const transaction: Transaction = {
+            client_reference_id: session.client_reference_id || '',
+            amount_total: session.amount_total ? session.amount_total / 100 : 0,
+            points_added: pointsAdded,
+            session_id: session.id
+        };
+
+        const insertResponse = await fetch('http://flux-ai.liukai19911010.workers.dev/inserttransaction', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(transaction)
+        });
 
         // Record the transaction
-        const insertTransactionResult = await env.DB
-            .prepare('INSERT INTO transactions (user_id, amount, points_added, stripe_session_id) VALUES (?, ?, ?, ?)')
-            .bind(
-                session.client_reference_id,
-                item.amount_total ? item.amount_total / 100 : 0,
-                pointsAdded,
-                session.id
-            )
-            .run();
+        if (!insertResponse.ok) {
+            throw new Error('Failed to insert transaction record');
+        }
+
+        const insertResult = await insertResponse.json();
+        logWithTimestamp('Insert result:', insertResult);
 
         console.log(`Added ${pointsAdded} points to user ${session.client_reference_id}`);
-        console.log('Update result:', updateUserPointsResult);
-        console.log('Insert result:', insertTransactionResult);
     } catch (error) {
-        console.error('Error updating user points:', error);
+        console.error('Error processing checkout session:', error);
+        throw error;
     }
 }
