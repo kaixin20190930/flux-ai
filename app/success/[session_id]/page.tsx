@@ -1,74 +1,54 @@
-'use client'
+import React from 'react';
+import {useRouter} from 'next/navigation';
+import {motion} from 'framer-motion';
 
-import {useEffect, useState} from 'react';
-import {useSearchParams, useRouter} from 'next/navigation';
-import Link from "next/link";
-
-export const runtime = 'edge';
-export default function SuccessPage({params}: { params: { session_id: string } }) {
-    const [points, setPoints] = useState<number | null>(null);
-    const searchParams = useSearchParams();
+const SuccessPage = () => {
     const router = useRouter();
-    const [error, setError] = useState<string | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const points = 200; // 固定的点数值
 
-
-    useEffect(() => {
-        if (params.session_id) {
-            fetchTransactionDetails(params.session_id);
-        } else {
-            setError('No session ID found');
-            setIsLoading(false);
-        }
-    }, [params.session_id]);
-
-
-    async function fetchTransactionDetails(sessionId: string, retries = 3) {
-        try {
-            const response = await fetch(`/api/getTransactionDetails?session_id=${sessionId}`);
-            if (!response.ok) throw new Error('API response was not ok');
-
-            const data = await response.json() as any;
-            setPoints(data.pointsAdded);
-            setIsLoading(false)
-        } catch (error) {
-            if (retries > 0) {
-                console.log(`Retrying... (${retries} attempts left)`);
-                setTimeout(() => fetchTransactionDetails(sessionId, retries - 1), 2000);
-            } else {
-                console.error('Error fetching transaction details:', error);
-                setError('Failed to load transaction details. Please refresh the page.');
-                setIsLoading(false)
-            }
-        }
-    }
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return (
-            <div>
-                <p>Error: {error}</p>
-                <Link href="/dashboard">
-                    <span>Go to Dashboard</span>
-                </Link>
-            </div>
-        );
-    }
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-            <h1 className="text-4xl font-bold mb-4">Payment Successful!</h1>
-            {points !== null && (
-                <p className="text-2xl mb-4">{points} points have been added to your account.</p>
-            )}
-            <button
-                onClick={() => router.push('/dashboard')}
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-purple-500">
+            <motion.div
+                initial={{opacity: 0, y: -50}}
+                animate={{opacity: 1, y: 0}}
+                transition={{duration: 0.5}}
+                className="bg-white p-8 rounded-lg shadow-2xl text-center"
             >
-                Go to Dashboard
-            </button>
+                <motion.div
+                    initial={{scale: 0}}
+                    animate={{scale: 1}}
+                    transition={{delay: 0.2, type: 'spring', stiffness: 120}}
+                    className="mb-6"
+                >
+                    <svg className="w-24 h-24 mx-auto text-green-500" fill="none" stroke="currentColor"
+                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </motion.div>
+
+                <h1 className="text-4xl font-bold mb-4 text-gray-800">Payment Successful!</h1>
+
+                <motion.p
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{delay: 0.4}}
+                    className="text-2xl mb-6 text-gray-600"
+                >
+                    {points} points have been added to your account.
+                </motion.p>
+
+                <motion.button
+                    whileHover={{scale: 1.05}}
+                    whileTap={{scale: 0.95}}
+                    onClick={() => router.push('/')}
+                    className="px-6 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-full font-semibold text-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out"
+                >
+                    Go to Dashboard
+                </motion.button>
+            </motion.div>
         </div>
     );
-}
+};
+
+export default SuccessPage;
