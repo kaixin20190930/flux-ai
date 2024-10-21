@@ -96,7 +96,7 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
 
         const transaction: Transaction = {
             client_reference_id: session.client_reference_id ?? '',
-            amount_total: session?.amount_total != null ? session.amount_total / 100 : 0,
+            amount_total: (session.amount_total ?? 0) / 100,
             points_added: pointsAdded,
             session_id: session.id ?? ''
         };
