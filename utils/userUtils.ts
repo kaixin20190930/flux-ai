@@ -145,7 +145,7 @@ export async function insertTransaction(transaction: Transaction) {
     }
 }
 
-export async function getTransaction(sessionId) {
+export async function getTransaction(sessionId: string) {
     const response = await fetch('https://flux-ai.liukai19911010.workers.dev/gettransaction', {
         method: 'POST',
         headers: {
