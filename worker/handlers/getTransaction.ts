@@ -2,7 +2,7 @@ import {Env} from '../types';
 import {verifyPassword, createJWT, verifyJWT} from '@/utils/auth';
 import {logWithTimestamp} from "@/utils/logUtils";
 import {headers} from "next/headers";
-import {NextResponse} from "next/server";
+import {NextResponse} from 'next/server';
 
 const allowedOrigins = [
     'http://localhost:3000',          // 本地开发环境
