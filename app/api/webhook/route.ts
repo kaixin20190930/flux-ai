@@ -3,6 +3,7 @@ import {headers} from 'next/headers';
 import Stripe from 'stripe';
 import {Env} from '@/worker/types';
 import {logWithTimestamp} from "@/utils/logUtils";
+import {insertTransaction, updateUserPurchase} from "@/utils/userUtils";
 
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -74,12 +75,12 @@ export async function POST(req: NextRequest) {
 async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, req: NextRequest) {
     const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
     const item = lineItems.data[0];
-    let points_status = 'failed';
-    let transaction_status = 'failed';
+    let points_status = 'init value';
+    let transaction_status = 'init value';
 
     if (!item) {
         console.error('No line items found for session', session.id);
-        return {points_status, transaction_status};
+        return {points_status: 'item failed', transaction_status: 'item failed'};
     }
 
     const pointsMap: { [key: string]: number } = {
@@ -93,21 +94,21 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
         logWithTimestamp('start update user points:')
 
         // Update user points
-        const response = await fetch('https://flux-ai.liukai19911010.workers.dev/updateuserpurchase', {
-            method: 'POST',
-            headers: {
-                // 'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({points: pointsAdded, userId: session.client_reference_id})
-        });
-        if (response.ok) {
-            const data: { success: boolean, points: number } = await response.json();
-            logWithTimestamp('Update result:', data);
-            points_status = 'success';
-        } else {
-            console.error('Error updating user points');
-        }
+        // const response = await fetch('https://flux-ai.liukai19911010.workers.dev/updateuserpurchase', {
+        //     method: 'POST',
+        //     headers: {
+        //         // 'Authorization': `Bearer ${token}`,
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({points: pointsAdded, userId: session.client_reference_id})
+        // });
+        // if (response.ok) {
+        //     const data: { success: boolean, points: number } = await response.json();
+        //     logWithTimestamp('Update result:', data);
+        points_status = await updateUserPurchase(pointsAdded, session.client_reference_id ?? '');
+        // } else {
+        //     console.error('Error updating user points');
+        // }
 
         const transaction: Transaction = {
             client_reference_id: session.client_reference_id ?? '',
@@ -116,20 +117,20 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
             session_id: session.id ?? ''
         };
 
-        const insertResponse = await fetch('https://flux-ai.liukai19911010.workers.dev/inserttransaction', {
-            method: 'POST',
-            headers: {
-                // 'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(transaction)
-        });
-
-        if (insertResponse.ok) {
-            transaction_status = 'success';
-        } else {
-            console.error('Error inserting transaction');
-        }
+        // const insertResponse = await fetch('https://flux-ai.liukai19911010.workers.dev/inserttransaction', {
+        //     method: 'POST',
+        //     headers: {
+        //         // 'Authorization': `Bearer ${token}`,
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(transaction)
+        // });
+        //
+        // if (insertResponse.ok) {
+        transaction_status = await insertTransaction(transaction);
+        // } else {
+        //     console.error('Error inserting transaction');
+        // }
 
     } catch (error) {
         console.error('Error processing checkout session:', error);

@@ -24,6 +24,13 @@ export interface Data2 {
     points: number;
 }
 
+interface Transaction {
+    client_reference_id: string;
+    amount_total: number
+    points_added: number;
+    session_id: string
+    // 添加其他可能的用户属性
+}
 
 export async function getUserPoints(req: NextRequest) {
     const token = req.cookies.get('token' as any)?.value;
@@ -100,5 +107,41 @@ export async function updateUserPoints(req: NextRequest, newPoints: number) {
     } catch (error) {
         console.error('Error:', error);
         return false;
+    }
+}
+
+export async function updateUserPurchase(points: number, userId: string) {
+    const response = await fetch('https://flux-ai.liukai19911010.workers.dev/updateuserpurchase', {
+        method: 'POST',
+        headers: {
+            // 'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({points, userId})
+    });
+    if (response.ok) {
+        const data: { success: boolean, points: number } = await response.json();
+        logWithTimestamp('Update result:', data);
+        return 'success';
+    } else {
+        console.error('Error updating user points');
+        return 'failed';
+    }
+}
+
+export async function insertTransaction(transaction: Transaction) {
+    const response = await fetch('https://flux-ai.liukai19911010.workers.dev/inserttransaction', {
+        method: 'POST',
+        headers: {
+            // 'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(transaction)
+    });
+    if (response.ok) {
+        return 'success';
+    } else {
+        console.error('Error insert transaction');
+        return 'failed';
     }
 }
