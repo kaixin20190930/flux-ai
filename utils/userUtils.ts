@@ -44,7 +44,7 @@ export async function getUserPoints(req: NextRequest) {
             logWithTimestamp('Token verification failed in getUserPoints:', error);
         }
 
-        const response = await fetch('http://flux-ai.liukai19911010.workers.dev/getuserpoints', {
+        const response = await fetch('https://flux-ai.liukai19911010.workers.dev/getuserpoints', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,

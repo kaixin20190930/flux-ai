@@ -18,37 +18,53 @@ interface Transaction {
     // 添加其他可能的用户属性
 }
 
+interface ResponseForWebhook {
+    signature_status: string;
+    event_status: string
+    points_status: string;
+    transaction_status: string
+    // 添加其他可能的用户属性
+}
+
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 export const runtime = 'edge';
 
 export async function POST(req: NextRequest) {
     const body = await req.text();
     const signature = headers().get('stripe-signature') as string;
-
+    let responseForWebhook: ResponseForWebhook = {
+        signature_status: '',
+        event_status: '',
+        points_status: '',
+        transaction_status: ''
+    };
     if (!signature) {
         console.error('No Stripe signature found');
         return NextResponse.json({error: 'No Stripe signature'}, {status: 400} as any);
     }
+    responseForWebhook.signature_status = 'signature success'
     let event: Stripe.Event;
 
     try {
         event = await stripe.webhooks.constructEventAsync(body, signature, webhookSecret);
+        responseForWebhook.event_status = 'event success'
     } catch (err) {
         console.error('Webhook signature verification failed.', err);
         return NextResponse.json({error: (err as Error).message}, {status: 400} as any);
     }
 
     try {
-        logWithTimestamp('start checkout session:')
         if (event.type === 'checkout.session.completed') {
             const session = event.data.object as Stripe.Checkout.Session;
             logWithTimestamp('start checkout session:')
-            await handleCheckoutSessionCompleted(session, req);
+            const result = await handleCheckoutSessionCompleted(session, req);
+            logWithTimestamp('get result is:', result)
+            responseForWebhook.points_status = result.points_status;
+            responseForWebhook.transaction_status = result.transaction_status;
             logWithTimestamp('end checkout session:')
-
         }
 
-        return NextResponse.json({received: true});
+        return NextResponse.json(responseForWebhook);
     } catch (error) {
         console.error('Error processing webhook:', error);
         return NextResponse.json({error: 'Webhook processing failed'}, {status: 500} as any);
@@ -59,10 +75,12 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
     const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
     const item = lineItems.data[0];
     const token = req.cookies.get('token' as any)?.value;
+    let points_status = 'failed';
+    let transaction_status = 'failed';
 
     if (!item) {
         console.error('No line items found for session', session.id);
-        return;
+        return {points_status, transaction_status};
     }
 
     const pointsMap: { [key: string]: number } = {
@@ -76,7 +94,7 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
         logWithTimestamp('start update user points:')
 
         // Update user points
-        const response = await fetch('http://flux-ai.liukai19911010.workers.dev/updateuserpoints', {
+        const response = await fetch('https://flux-ai.liukai19911010.workers.dev/updateuserpoints', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -84,14 +102,12 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
             },
             body: JSON.stringify({points: pointsAdded})
         });
-
         if (response.ok) {
             const data: { success: boolean, points: number } = await response.json();
             logWithTimestamp('Update result:', data);
-            return data.success;
+            points_status = 'success';
         } else {
             console.error('Error updating user points');
-            return false;
         }
 
         const transaction: Transaction = {
@@ -101,7 +117,7 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
             session_id: session.id ?? ''
         };
 
-        const insertResponse = await fetch('http://flux-ai.liukai19911010.workers.dev/inserttransaction', {
+        const insertResponse = await fetch('https://flux-ai.liukai19911010.workers.dev/inserttransaction', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -110,17 +126,15 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
             body: JSON.stringify(transaction)
         });
 
-        // Record the transaction
-        if (!insertResponse.ok) {
-            throw new Error('Failed to insert transaction record');
+        if (insertResponse.ok) {
+            transaction_status = 'success';
+        } else {
+            console.error('Error inserting transaction');
         }
 
-        const insertResult = await insertResponse.json();
-        logWithTimestamp('Insert result:', insertResult);
-
-        console.log(`Added ${pointsAdded} points to user ${session.client_reference_id}`);
     } catch (error) {
         console.error('Error processing checkout session:', error);
-        throw error;
     }
+
+    return {points_status, transaction_status};
 }
