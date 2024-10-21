@@ -5,9 +5,11 @@ import {logWithTimestamp} from "@/utils/logUtils";
 import {handleGetUserPoints} from "@/worker/handlers/getUserPoints";
 import {handleUpdateUserPoints} from "@/worker/handlers/updateUserPoints";
 import {handleInsertTransaction} from "@/worker/handlers/insertTransaction";
+import {handleUpdateUserPointsForPurchase} from "@/worker/handlers/updateUserPointsForPurchase";
 
 const allowedOrigins = [
     'http://localhost:3000',          // 本地开发环境
+    'http://10.124.124.163:3000',
     'https://flux-ai-img.com'  // 生产环境
 ]
 export default {
@@ -57,6 +59,10 @@ export default {
         // 处理登录请求
         if (url.pathname === '/updateuserpoints' && request.method === 'POST') {
             return handleUpdateUserPoints(request, env);
+        }
+
+        if (url.pathname === '/updateuserpurchase' && request.method === 'POST') {
+            return handleUpdateUserPointsForPurchase(request, env);
         }
 
         if (url.pathname === '/inserttransaction' && request.method === 'POST') {

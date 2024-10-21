@@ -4,6 +4,7 @@ import {logWithTimestamp} from "@/utils/logUtils";
 
 const allowedOrigins = [
     'http://localhost:3000',          // 本地开发环境
+    'http://10.124.124.163:3000',
     'https://flux-ai-img.com'  // 生产环境
 ]
 

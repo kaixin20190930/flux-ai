@@ -9,7 +9,7 @@ const allowedOrigins = [
     'https://flux-ai-img.com'  // 生产环境
 ]
 
-export async function handleUpdateUserPoints(request: Request, env: Env): Promise<Response> {
+export async function handleUpdateUserPointsForPurchase(request: Request, env: Env): Promise<Response> {
     const origin = request.headers.get('Origin')
 
     const corsHeaders = {
@@ -19,16 +19,16 @@ export async function handleUpdateUserPoints(request: Request, env: Env): Promis
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Access-Control-Allow-Credentials': 'true',
     };
-    const token = request.headers.get('Authorization')?.split('Bearer ')[1];
-    if (!token) {
-        return new Promise((resolve) => resolve(new Response('Unauthorized', {status: 401, headers: corsHeaders})));
-    }
+    // const token = request.headers.get('Authorization')?.split('Bearer ')[1];
+    // if (!token) {
+    //     return new Promise((resolve) => resolve(new Response('Unauthorized', {status: 401, headers: corsHeaders})));
+    // }
 
     try {
-        const decoded = await verifyJWT(token, env.JWT_SECRET);
-        const userId = decoded.userId;
+        // const decoded = await verifyJWT(token, env.JWT_SECRET);
+        // const userId = decoded.userId;
 
-        const {points} = await request.json() as any;
+        const {points,userId} = await request.json() as any;
 
         // 更新数据库中的用户点数
         const result = await env.DB.prepare('UPDATE users SET points = ? WHERE id = ?')

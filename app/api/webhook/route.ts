@@ -74,7 +74,6 @@ export async function POST(req: NextRequest) {
 async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, req: NextRequest) {
     const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
     const item = lineItems.data[0];
-    const token = req.cookies.get('token' as any)?.value;
     let points_status = 'failed';
     let transaction_status = 'failed';
 
@@ -94,13 +93,13 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
         logWithTimestamp('start update user points:')
 
         // Update user points
-        const response = await fetch('https://flux-ai.liukai19911010.workers.dev/updateuserpoints', {
+        const response = await fetch('https://flux-ai.liukai19911010.workers.dev/updateuserpurchase', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${token}`,
+                // 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({points: pointsAdded})
+            body: JSON.stringify({points: pointsAdded, userId: session.client_reference_id})
         });
         if (response.ok) {
             const data: { success: boolean, points: number } = await response.json();
@@ -120,7 +119,7 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
         const insertResponse = await fetch('https://flux-ai.liukai19911010.workers.dev/inserttransaction', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${token}`,
+                // 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(transaction)

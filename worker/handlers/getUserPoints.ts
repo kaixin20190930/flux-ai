@@ -5,12 +5,13 @@ import {headers} from "next/headers";
 
 const allowedOrigins = [
     'http://localhost:3000',          // 本地开发环境
+    'http://10.124.124.163:3000',
     'https://flux-ai-img.com'  // 生产环境
 ]
 
 export async function handleGetUserPoints(request: Request, env: Env): Promise<Response> {
     const origin = request.headers.get('Origin')
-
+    //
     const corsHeaders = {
         'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
         // 'Access-Control-Allow-Origin': '*',

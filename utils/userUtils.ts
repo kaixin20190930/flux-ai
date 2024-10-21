@@ -80,7 +80,7 @@ export async function updateUserPoints(req: NextRequest, newPoints: number) {
     logWithTimestamp('Start updating user points');
 
     try {
-        const response = await fetch('http://flux-ai.liukai19911010.workers.dev/updateuserpoints', {
+        const response = await fetch('https://flux-ai.liukai19911010.workers.dev/updateuserpoints', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,

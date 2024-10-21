@@ -5,6 +5,7 @@ import {headers} from "next/headers";
 
 const allowedOrigins = [
     'http://localhost:3000',          // 本地开发环境
+    'http://10.124.124.163:3000',
     'https://flux-ai-img.com'  // 生产环境
 ]
 
@@ -26,14 +27,14 @@ export async function handleInsertTransaction(request: Request, env: Env): Promi
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Access-Control-Allow-Credentials': 'true',
     };
-    const token = request.headers.get('Authorization')?.split('Bearer ')[1];
-    if (!token) {
-        return new Promise((resolve) => resolve(new Response('Unauthorized', {status: 401, headers: corsHeaders})));
-    }
-
+    // const token = request.headers.get('Authorization')?.split('Bearer ')[1];
+    // if (!token) {
+    //     return new Promise((resolve) => resolve(new Response('Unauthorized', {status: 401, headers: corsHeaders})));
+    // }
+    //
     try {
-        const decoded = await verifyJWT(token, env.JWT_SECRET);
-        const userId = decoded.userId;
+        //     const decoded = await verifyJWT(token, env.JWT_SECRET);
+        //     const userId = decoded.userId;
 
         const transaction: Transaction = await request.json() as any;
 
