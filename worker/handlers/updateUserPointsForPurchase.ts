@@ -38,7 +38,7 @@ export async function handleUpdateUserPointsForPurchase(request: Request, env: E
             .run();
 
         if (result.success) {
-            return new Promise((resolve) => resolve(new Response(JSON.stringify({success: true, points}), {
+            return new Promise((resolve) => resolve(new Response(JSON.stringify({success: true, points2}), {
                 status: 200,
                 headers: {...corsHeaders, 'Content-Type': 'application/json'},
             })));
