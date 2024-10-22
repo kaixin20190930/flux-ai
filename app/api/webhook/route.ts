@@ -91,20 +91,8 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
     const pointsAdded = 200;
 
     try {
-        logWithTimestamp('start update user points:')
+        logWithTimestamp('start update user points:', pointsAdded)
 
-        // Update user points
-        // const response = await fetch('https://flux-ai.liukai19911010.workers.dev/updateuserpurchase', {
-        //     method: 'POST',
-        //     headers: {
-        //         // 'Authorization': `Bearer ${token}`,
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({points: pointsAdded, userId: session.client_reference_id})
-        // });
-        // if (response.ok) {
-        //     const data: { success: boolean, points: number } = await response.json();
-        //     logWithTimestamp('Update result:', data);
         points_status = await updateUserPurchase(pointsAdded, session.client_reference_id ?? '');
         // } else {
         //     console.error('Error updating user points');
