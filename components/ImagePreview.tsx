@@ -34,15 +34,65 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
 
     // 处理下载事件
 
-    const handleDownload = () => {
-        if (generatedImage) {
-            // 创建一个临时的 a 标签
+    // const handleDownload = () => {
+    //     if (generatedImage) {
+    //         // 创建一个临时的 a 标签
+    //         const link = document.createElement('a');
+    //         link.href = generatedImage;
+    //         link.download = 'generated-image.png'; // 您可以根据需要更改文件名
+    //         document.body.appendChild(link);
+    //         link.click();
+    //         document.body.removeChild(link);
+    //     }
+    // };
+    const handleDownload = async () => {
+        if (!generatedImage) return;
+
+        try {
+            // 获取图片数据
+            const response = await fetch(generatedImage);
+            if (!response.ok) throw new Error('Failed to fetch image');
+
+            const blob = await response.blob();
+
+            // 确保使用正确的 MIME 类型
+            let mimeType;
+            switch (outputFormat.toLowerCase()) {
+                case 'png':
+                    mimeType = 'image/png';
+                    break;
+                case 'jpg':
+                case 'jpeg':
+                    mimeType = 'image/jpeg';
+                    break;
+                case 'webp':
+                    mimeType = 'image/webp';
+                    break;
+                default:
+                    mimeType = 'image/png'; // 默认使用 PNG
+            }
+
+            // 创建新的 Blob，确保使用正确的 MIME 类型
+            const newBlob = new Blob([blob], {type: mimeType});
+
+            // 创建 Blob URL
+            const blobUrl = URL.createObjectURL(newBlob);
+
+            // 创建下载链接
             const link = document.createElement('a');
-            link.href = generatedImage;
-            link.download = 'generated-image.png'; // 您可以根据需要更改文件名
+            link.href = blobUrl;
+            link.download = `generated-image.${outputFormat.toLowerCase()}`; // 使用正确的扩展名
+
+            // 添加到文档中并触发点击
             document.body.appendChild(link);
             link.click();
+
+            // 清理
             document.body.removeChild(link);
+            URL.revokeObjectURL(blobUrl);
+        } catch (error) {
+            console.error('Download failed:', error);
+            alert('Failed to download image. Please try again.');
         }
     };
 
@@ -81,7 +131,6 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
                     <div className="relative w-full h-full">
                         <Image
                             src={generatedImage}
-                            onClick={handleDownload}
                             alt="Generated image"
                             fill
                             className="rounded-lg pointer-events-none" // 禁用图片的指针事件
