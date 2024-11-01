@@ -28,17 +28,17 @@ export async function handleUpdateUserPointsForPurchase(request: Request, env: E
         // const decoded = await verifyJWT(token, env.JWT_SECRET);
         // const userId = decoded.userId;
 
-        const {points2, userId} = await request.json() as any;
-        console.log('update points value is:', points2)
+        const {points, userId} = await request.json() as any;
+        console.log('update points value is:', points)
         console.log('update userId is:', userId)
 
         // 更新数据库中的用户点数
         const result = await env.DB.prepare('UPDATE users SET points = points + ? WHERE id = ?')
-            .bind(points2, userId)
+            .bind(points, userId)
             .run();
 
         if (result.success) {
-            return new Promise((resolve) => resolve(new Response(JSON.stringify({success: true, points2}), {
+            return new Promise((resolve) => resolve(new Response(JSON.stringify({success: true, points}), {
                 status: 200,
                 headers: {...corsHeaders, 'Content-Type': 'application/json'},
             })));
@@ -47,9 +47,15 @@ export async function handleUpdateUserPointsForPurchase(request: Request, env: E
         }
     } catch (error) {
         console.error('Error updating user points:', error);
-        return new Promise((resolve) => resolve(new Response('Error updating user points', {
+        return new Promise((resolve) => resolve(new Response(JSON.stringify({
+            error: error instanceof Error ? error.message : 'Unknown error',
+            success: false
+        }), {
             status: 500,
-            headers: corsHeaders,
+            headers: {
+                ...corsHeaders,
+                'Content-Type': 'application/json'
+            },
         })));
     }
 }

@@ -3,7 +3,6 @@ import {NextRequest} from 'next/server';
 import {Env} from '@/worker/types';
 import {logWithTimestamp} from "@/utils/logUtils";
 import {verifyJWT} from "@/utils/auth";
-import {Data} from "@/components/AIImageGenerator";
 
 // import os from 'os';
 

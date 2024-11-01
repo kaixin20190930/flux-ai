@@ -23,11 +23,17 @@ const Footer: React.FC = () => {
                             <li><Link href="/contact"
                                       className="text-indigo-200 hover:text-pink-300 transition duration-300">Contact</Link>
                             </li>
-                            <li><a href="https://tap4.ai/ai/flux-ai-io" title="Flux Image AI">Flux Image AI</a>
+                            <li><Link href="https://tap4.ai/ai/flux-ai-io"
+                                      className="text-indigo-200 hover:text-pink-300 transition duration-300"
+                                      title="Flux Image AI">Flux Image AI</Link>
                             </li>
-                            <li><a href="https://www.soraainow.com/" title="SORA AI">SORA AI</a>
+                            <li><Link href="https://www.soraainow.com/"
+                                      className="text-indigo-200 hover:text-pink-300 transition duration-300"
+                                      title="SORA AI">SORA AI</Link>
                             </li>
-                            <li><a href="https://www.aibesttool.com/" title="AI Best Tool">AI Best Tool</a>
+                            <li><Link href="https://www.aibesttool.com/"
+                                      className="text-indigo-200 hover:text-pink-300 transition duration-300"
+                                      title="AI Best Tool">AI Best Tool</Link>
                             </li>
                         </ul>
                     </div>
@@ -43,16 +49,10 @@ const Footer: React.FC = () => {
                         </ul>
                     </div>
                     <div>
-                        <h4 className="text-xl font-semibold mb-4">Connect</h4>
+                        <h4 className="text-xl font-semibold mb-4">Support</h4>
                         <ul className="space-y-2">
-                            <li><a href="#"
-                                   className="text-indigo-200 hover:text-pink-300 transition duration-300">Twitter</a>
-                            </li>
-                            <li><a href="#"
-                                   className="text-indigo-200 hover:text-pink-300 transition duration-300">LinkedIn</a>
-                            </li>
-                            <li><a href="#"
-                                   className="text-indigo-200 hover:text-pink-300 transition duration-300">GitHub</a>
+                            <li><a
+                                className="text-indigo-200 hover:text-pink-300 transition duration-300">juq1991@gmail.com</a>
                             </li>
                         </ul>
                     </div>

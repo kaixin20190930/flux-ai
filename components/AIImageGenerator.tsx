@@ -1,211 +1,197 @@
 'use client'
-
-import React, {useState, useEffect, useCallback} from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import {logWithTimestamp} from "@/utils/logUtils";
-
-
-const MAX_DAILY_GENERATIONS = 3;
-
-export interface Data {
-    remainingFreeGenerations: number,
-    isLoggedIn: boolean,
-    userPoints: number,
-    userId: string
-}
+import React from 'react';
+import Link from 'next/link';
+import {Crown} from 'lucide-react';
+import {useImageGeneration} from '@/hooks/useImageGeneration';
+import {
+    MODEL_CONFIG,
+    ICON_COMPONENTS,
+    ASPECT_RATIOS,
+    OUTPUT_FORMATS,
+    MAX_DAILY_GENERATIONS
+} from '@/public/constants/constants';
+import type {ModelType} from '@/public/types/type';
+import ImagePreview from "@/components/ImagePreview";
 
 export const AIImageGenerator: React.FC = () => {
-    const [prompt, setPrompt] = useState('')
-    const [generatedImage, setGeneratedImage] = useState<string | null>(null)
-    const [isLoading, setIsLoading] = useState(false)
-    const [error, setError] = useState<string | null>(null)
-    const [remainingFreeGenerations, setRemainingFreeGenerations] = useState<number>(MAX_DAILY_GENERATIONS)
-    const [imageDimensions, setImageDimensions] = useState<{ width: number; height: number } | null>(null)
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
-    const [userPoints, setUserPoints] = useState<number | null>(null)
-    const [userId, setUserId] = useState<string | null>(null)
+    const {
+        state,
+        updateState,
+        handleGenerate,
+        handleDownload
+    } = useImageGeneration();
 
-    const fetchGenerationData = async () => {
-        try {
-            const response = await fetch('/api/getRemainingGenerations');
-            logWithTimestamp('get response of RemainingGenerations is', response)
-            const data: Data = await response.json();
-            logWithTimestamp('data is ', data)
-            setRemainingFreeGenerations(data.remainingFreeGenerations);
-            setIsLoggedIn(data.isLoggedIn);
-            setUserPoints(data.userPoints);
-            setUserId(data.userId);
-            logWithTimestamp('Fetched data: ', data)
-        } catch (error) {
-            console.error('Error fetching remaining generations:', error);
-        }
-    };
-    useEffect(() => {
-        // 从 localStorage 获取用户信息
-        fetchGenerationData();
-    }, []);
+    const isButtonDisabled = (): boolean => {
+        const model = state.selectedModel as ModelType;
+        const isPremiumUnavailable = MODEL_CONFIG[model].isPremium &&
+            (!state.isLoggedIn || (state.userPoints !== null && state.userPoints < MODEL_CONFIG[model].points));
 
-    const handleGenerate = async () => {
-        if (remainingFreeGenerations <= 0 && !isLoggedIn) {
-            setError('Daily free limit reached. Please login to continue.');
-            return;
-        }
-
-        if (isLoggedIn && userPoints !== null && userPoints <= 0) {
-            setError('You have no points left. Please purchase more to continue.');
-            return;
-        }
-        setIsLoading(true)
-        setError(null)
-        const body = isLoggedIn ? {prompt, userPoints, userId} : {prompt};
-
-        try {
-            const response = await fetch('/api/generate', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body),
-            })
-            const data = await response.json() as any;
-            if (data.image) {
-                setGeneratedImage(data.image)
-                setRemainingFreeGenerations(data.remainingFreeGenerations);
-                // fetchGenerationData(); // 重新获取生成数据
-                if (isLoggedIn && data.userPoints !== null) {
-                    setUserPoints(data.userPoints);
-                }
-            } else if (data.error) {
-                setError(data.error)
-            } else {
-                throw new Error('Failed to generate image')
-            }
-        } catch (error) {
-            console.error('Error generating image:', error)
-            setError('An unexpected error occurred. Please try again later.')
-        } finally {
-            setIsLoading(false)
-        }
-    }
-
-    const handleDownload = () => {
-        if (generatedImage) {
-            // 创建一个临时的 a 标签
-            const link = document.createElement('a');
-            link.href = generatedImage;
-            link.download = 'generated-image.png'; // 您可以根据需要更改文件名
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-    };
-
-    const handleImageLoad = useCallback((image: HTMLImageElement) => {
-        setImageDimensions({
-            width: image.naturalWidth,
-            height: image.naturalHeight
-        });
-    }, []);
-
-    const getObjectFit = () => {
-        if (!imageDimensions) return 'contain';
-        const containerAspectRatio = 400 / 400; // 假设容器是 400x400
-        const imageAspectRatio = imageDimensions.width / imageDimensions.height;
-        const aspectRatioDifference = Math.abs(containerAspectRatio - imageAspectRatio);
-        return aspectRatioDifference > 0.2 ? 'contain' : 'cover';
+        return Boolean(
+            state.isLoading ||
+            !state.prompt ||
+            (state.remainingFreeGenerations <= 0 && (state.userPoints === null || state.userPoints <= 0)) ||
+            isPremiumUnavailable
+        );
     };
 
     return (
         <section
-            className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white flex items-center justify-center px-4 py-12 overflow-hidden relative">
-            <div className="absolute inset-0 bg-black opacity-50"></div>
+            className="h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white flex items-center justify-center px-4 pb-8 overflow-hidden relative">
+            <div className="absolute inset-0 bg-black opacity-50"/>
             <div
-                className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+                className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"/>
 
-            <div className="container mx-auto z-10 max-w-4xl">
-                <h1 className="text-4xl md:text-6xl font-bold text-center mb-6 animate-fade-in-down">
-                    Create Stunning Images with Flux AI
-                </h1>
-                <p className="text-xl md:text-2xl text-center mb-10 animate-fade-in-up">
-                    Transform your ideas into visual masterpieces in seconds
-                </p>
-                <div className="bg-white/10 backdrop-blur-md rounded-xl shadow-2xl overflow-hidden animate-fade-in">
-                    <div className="p-6 md:p-8">
-                        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mb-6">
+            <div className="container mx-auto z-10 max-w-6xl h-full flex flex-col"
+                 style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
+                {/* Header */}
+                {/*<div className="mb-2">*/}
+                {/*    <h1 className="text-3xl md:text-4xl font-bold text-center mb-2 animate-fade-in-down">*/}
+                {/*        Create Stunning Images with Flux AI*/}
+                {/*    </h1>*/}
+                {/*    <p className="text-base md:text-lg text-center text-white/80">*/}
+                {/*        Transform your ideas into visual masterpieces in seconds*/}
+                {/*    </p>*/}
+                {/*</div>*/}
+                <div className="pt-8 pb-6 text-center">
+                    <h1 className="text-4xl md:text-5xl font-bold animate-fade-in-down mb-3">
+                        Create Stunning Images with Flux AI
+                    </h1>
+                    <p className="text-lg md:text-xl text-white/80">
+                        Transform your ideas into visual masterpieces in seconds
+                    </p>
+                </div>
+
+                {/* Main Content */}
+                <div className="flex-grow flex flex-col">
+                    {/*<div className="space-y-4">*/}
+                    <div className="space-y-6 pb-6">
+                        {/* Prompt Input and Generate Button */}
+                        {/*<div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">*/}
+                        <div className="flex flex-col md:flex-row gap-4">
+
                             <input
                                 type="text"
-                                value={prompt}
-                                onChange={(e) => setPrompt(e.target.value)}
-                                placeholder="Describe the image you want to create..."
+                                value={state.prompt}
+                                onChange={(e) => updateState({prompt: e.target.value})}
+                                placeholder="Try: A majestic lion sitting on a mountain peak at sunset..."
                                 className="flex-grow p-3 md:p-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 text-white placeholder-white/50"
                             />
                             <button
                                 onClick={handleGenerate}
-                                // 修改：添加 remainingFreeGenerations 到禁用条件
-                                disabled={isLoading || !prompt || (remainingFreeGenerations <= 0 && (userPoints === null || userPoints <= 0))}
-                                className="px-6 py-3 md:px-8 md:py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 disabled:bg-white/50 disabled:text-indigo-400 transition duration-300 ease-in-out transform hover:scale-105"
+                                disabled={isButtonDisabled()}
+                                className="px-6 py-3 md:px-8 md:py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 disabled:bg-white/50 disabled:text-indigo-400 transition duration-300 ease-in-out transform hover:scale-105 flex items-center gap-2"
                             >
-                                {isLoading ? 'Generating...' : 'Generate Image'}
+                                {state.isLoading ? 'Generating...' : 'Generate Image'}
+                                {MODEL_CONFIG[state.selectedModel].isPremium &&
+                                    (!state.isLoggedIn || (state.userPoints !== null && state.userPoints < MODEL_CONFIG[state.selectedModel].points)) && (
+                                        <Crown className="w-4 h-4 text-indigo-400"/>
+                                    )}
                             </button>
                         </div>
-                        {error && (
-                            <p className="text-red-300 mb-4">{error}</p>
-                        )}
-                        <p className="text-sm text-indigo-200 mb-4">
-                            Remaining free generations today: {remainingFreeGenerations} / {MAX_DAILY_GENERATIONS}
-                        </p>
-                        {isLoggedIn && userPoints !== null && (
-                            <p className="text-sm text-indigo-200 mb-4">
-                                Your points: {userPoints}
-                            </p>
-                        )}
-                        {remainingFreeGenerations <= 0 && !isLoggedIn && (
-                            <p className="text-sm text-indigo-200 mb-4">
-                                <Link href="/auth" className="underline hover:text-white">Login</Link> to use your
-                                points or wait until tomorrow for more free generations.
-                            </p>
-                        )}
-                        {isLoggedIn && userPoints !== null && userPoints <= 0 && (
-                            <p className="text-sm text-indigo-200 mb-4">
-                                <Link href="/pricing" className="underline hover:text-white">Purchase more
-                                    points</Link> to continue generating images.
-                            </p>
-                        )}
-                        <div className="bg-white/5 p-4 rounded-lg overflow-hidden" style={{height: '400px'}}>
-                            {isLoading ? (
-                                <div className="flex justify-center items-center h-full">
+
+                        {/* Controls Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-white/90">AI Model</label>
+                                <div className="relative"> {/* 添加相对定位容器 */}
+                                    <select
+                                        value={state.selectedModel}
+                                        onChange={(e) => updateState({selectedModel: e.target.value as ModelType})}
+                                        className="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors"
+                                    >
+                                        {Object.entries(MODEL_CONFIG).map(([key, config]) => (
+                                            <option
+                                                key={key}
+                                                value={key}
+                                                className={config.isPremium ? 'text-yellow-300' : ''}
+                                            >
+                                                {config.name} • {config.points} {config.points === 1 ? 'Point' : 'Points'}
+                                                {config.isPremium ? ' (Premium)' : ''}
+                                            </option>
+                                        ))}
+                                    </select>
                                     <div
-                                        className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-white"></div>
+                                        className="mt-2 text-xs text-white/60 flex items-center gap-2">
+                                        {/* 使用 ICON_COMPONENTS 来渲染图标 */}
+                                        {React.createElement(
+                                            ICON_COMPONENTS[MODEL_CONFIG[state.selectedModel].icon],
+                                            {
+                                                className: `w-4 h-4 ${MODEL_CONFIG[state.selectedModel].isPremium ? 'text-yellow-300' : 'text-white/60'}`
+                                            }
+                                        )}
+                                        <span>{MODEL_CONFIG[state.selectedModel].description}</span>
+                                    </div>
                                 </div>
-                            ) : generatedImage ? (
-                                <div className="relative h-full group">
-                                    <Image
-                                        onClick={handleDownload}
-                                        src={generatedImage}
-                                        alt="Generated image"
-                                        layout="fill"
-                                        objectFit={getObjectFit()}
-                                        className="rounded-lg"
-                                        onLoadingComplete={handleImageLoad}
-                                    />
-                                    <button
-                                        onClick={handleDownload}
-                                        className="absolute bottom-4 right-4 bg-white text-indigo-600 px-4 py-2 rounded-md opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600">
-                                        Download
-                                    </button>
-                                </div>
-                            ) : (
-                                <div className="flex flex-col justify-center items-center h-full text-white/70">
-                                    <Image src="/ai-placeholder.svg" alt="AI Placeholder" width={100} height={100}
-                                           className="mb-4 opacity-50"/>
-                                    <p>Your AI-generated image will appear here</p>
-                                </div>
-                            )}
+                            </div>
+
+                            {/* Aspect Ratio Selection */}
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-white/90">Aspect Ratio</label>
+                                <select
+                                    value={state.aspectRatio}
+                                    onChange={(e) => updateState({aspectRatio: e.target.value})}
+                                    className="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors"
+                                >
+                                    {ASPECT_RATIOS.map(ratio => (
+                                        <option key={ratio.value} value={ratio.value}>{ratio.label}</option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            {/* Output Format Selection */}
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-white/90">Output Format</label>
+                                <select
+                                    value={state.outputFormat}
+                                    onChange={(e) => updateState({outputFormat: e.target.value})}
+                                    className="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors"
+                                >
+                                    {OUTPUT_FORMATS.map(format => (
+                                        <option key={format.value} value={format.value}>{format.label}</option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+
+                        {/* Status Messages */}
+                        <div className="flex flex-col md:flex-row gap-4">
+                            <div className="flex-grow">
+                                {state.error && (
+                                    <div className="text-red-300 px-4 py-2 bg-red-500/10 rounded-lg">
+                                        <p>{state.error}</p>
+                                    </div>
+                                )}
+                            </div>
+                            <div className="text-indigo-200 px-4 py-2 bg-indigo-500/10 rounded-lg whitespace-nowrap">
+                                <p>
+                                    Free generations: {state.remainingFreeGenerations} / {MAX_DAILY_GENERATIONS}
+                                    {state.isLoggedIn && state.userPoints !== null && (
+                                        <span className="ml-4">Points: {state.userPoints}</span>
+                                    )}
+                                </p>
+                                {state.remainingFreeGenerations <= 0 && !state.isLoggedIn && (
+                                    <p className="mt-1">
+                                        <Link href="/auth" className="underline hover:text-white">Login</Link> for more
+                                        generations
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                        <div className="flex-grow">
+                            <ImagePreview
+                                isLoading={state.isLoading}
+                                generatedImage={state.generatedImage}
+                                aspectRatio={state.aspectRatio}
+                                selectedModel={state.selectedModel}
+                                modelConfig={MODEL_CONFIG[state.selectedModel]}
+                                outputFormat={state.outputFormat}
+                                onDownload={handleDownload}
+                                imageDimensions={state.imageDimensions}
+                            />
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};

@@ -19,6 +19,7 @@
     "iron-session": "^8.0.3",
     "jose": "^5.8.0",
     "js-cookie": "^3.0.5",
+    "lucide-react": "^0.454.0",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
@@ -27,7 +28,7 @@
     "stripe": "^17.2.0"
   },
   "devDependencies": {
-    "@types/bcryptjs": "^2.4.6",
+    " @types/bcryptjs": "^2.4.6",
     "@types/cookie": "^0.6.0",
     "@types/js-cookie": "^3.0.6",
     "@types/jsonwebtoken": "^9.0.6",

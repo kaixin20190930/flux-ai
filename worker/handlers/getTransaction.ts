@@ -2,7 +2,6 @@ import {Env} from '../types';
 import {verifyPassword, createJWT, verifyJWT} from '@/utils/auth';
 import {logWithTimestamp} from "@/utils/logUtils";
 import {headers} from "next/headers";
-import {NextResponse} from 'next/server';
 
 const allowedOrigins = [
     'http://localhost:3000',          // 本地开发环境
@@ -46,11 +45,11 @@ export async function handleGetTransaction(request: Request, env: Env): Promise<
             .all();
 
         if (!results || results.length === 0) {
-            return NextResponse.json({error: 'Transaction not found'}, {status: 404} as any);
+            return Response.json({error: 'Transaction not found'}, {status: 404} as any);
         }
 
         const transaction = results[0];
-        return NextResponse.json({pointsAdded: transaction.points_added});
+        return Response.json({pointsAdded: transaction.points_added});
     } catch (error) {
         console.error('Error insert transaction:', error);
         return new Promise((resolve) => resolve(new Response('Error insert transaction', {

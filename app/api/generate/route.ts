@@ -1,8 +1,10 @@
 import {NextRequest, NextResponse} from 'next/server';
 import Replicate from "replicate";
-import {getGenerationData} from '../../../utils/cookieUtils';
-import {logWithTimestamp} from '../../..//utils/logUtils';
+import {getGenerationData} from '@/utils/cookieUtils';
+import {logWithTimestamp} from '@/utils/logUtils';
 import {updateUserPoints} from "@/utils/userUtils";
+import {MODEL_CONFIG} from "@/public/constants/constants";
+import {ModelType} from "@/public/types/type";
 
 
 const replicate = new Replicate({
@@ -25,11 +27,23 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-        const {prompt, userPoints, userId} = await req.json() as {
+        const {
+            prompt, userPoints, userId, model,
+            aspectRatio,
+            format
+        } = await req.json() as {
             prompt: string,
             userPoints?: number,
-            userId?: string
+            userId?: string,
+            model: ModelType,
+            aspectRatio: string,
+            format: string
         };
+
+        const modelConfig = MODEL_CONFIG[model];
+        if (!modelConfig) {
+            return Response.json({error: 'Invalid model selected'}, {status: 400});
+        }
         const isLoggedIn = userPoints !== undefined && userId !== undefined;
 
         if (!prompt) {
@@ -38,36 +52,67 @@ export async function POST(req: NextRequest) {
         }
 
         let useUserPoints = false;
-        if (generationData.count >= MAX_DAILY_GENERATIONS) {
-            if (!isLoggedIn || userPoints <= 0) {
-                logWithTimestamp('Daily limit reached and no points available');
-                return Response.json({error: 'Daily limit reached. Please login or purchase more points.'}, {status: 403});
+        let pointsToConsume = modelConfig.points;
+
+
+        // if (generationData.count >= MAX_DAILY_GENERATIONS) {
+        //     if (!isLoggedIn || userPoints <= 0) {
+        //         logWithTimestamp('Daily limit reached and no points available');
+        //         return Response.json({error: 'Daily limit reached. Please login or purchase more points.'}, {status: 403});
+        //     }
+        //     useUserPoints = true;
+        // }
+        if (!isLoggedIn) {
+            // 检查是否还有免费次数，且选择的是最基础的模型
+            if (generationData.count >= MAX_DAILY_GENERATIONS || (model !== 'flux-schnell' && model !== 'flux-dev')) {
+                return Response.json({
+                    error: 'Daily limit reached or premium model selected. Please login to continue.',
+                }, {status: 403});
+            }
+        } else {
+            // 已登录用户，检查点数是否足够
+            if (userPoints < pointsToConsume) {
+                return Response.json({
+                    error: `Insufficient points. This model requires ${pointsToConsume} points.`,
+                }, {status: 403});
             }
             useUserPoints = true;
         }
 
         logWithTimestamp('Generating image', {prompt, useUserPoints});
-
+        const identifier: string = "black-forest-labs/" + model;
         const output = await replicate.run(
-            "black-forest-labs/flux-schnell",
+            identifier as any,
             {
                 input: {
                     prompt: prompt,
                     image_dimensions: "1024*1024",
                     num_outputs: 1,
+                    aspect_ratio: aspectRatio,
+                    output_format: format,
                     num_inference_steps: 4,
                     guidance_scale: 7.5,
                     scheduler: "DPMSolverMultistep",
                 }
             }
         );
-
+        logWithTimestamp('Complete output:', {
+            output,
+            type: typeof output,
+            isArray: Array.isArray(output)
+        });
+        let imageUrl = ''
         if (Array.isArray(output) && output.length > 0) {
-            const imageUrl = output[0];
+            imageUrl = output[0];
+        } else if (typeof output === 'string' && String(output).length > 0) {
+            imageUrl = output as string;
+
+        }
+        if (imageUrl) {
             let updatedUserPoints = userPoints;
             if (useUserPoints && isLoggedIn) {
                 // 更新用户点数
-                updatedUserPoints = userPoints - 1;
+                updatedUserPoints = userPoints - pointsToConsume;
                 const updateSuccess = await updateUserPoints(req, updatedUserPoints);
                 if (!updateSuccess) {
                     logWithTimestamp('Failed to update user points', {userId, newPoints: updatedUserPoints});
@@ -75,7 +120,7 @@ export async function POST(req: NextRequest) {
                 }
                 logWithTimestamp('User points updated', {userId, newPoints: updatedUserPoints});
             } else {
-                generationData.count += 1;
+                generationData.count += pointsToConsume;
             }
 
             const remainingFreeGenerations = Math.max(0, MAX_DAILY_GENERATIONS - generationData.count);
@@ -85,7 +130,8 @@ export async function POST(req: NextRequest) {
             const response = NextResponse.json({
                 image: imageUrl,
                 remainingFreeGenerations,
-                userPoints: isLoggedIn ? updatedUserPoints : null
+                userPoints: isLoggedIn ? updatedUserPoints : null,
+                pointsConsumed: pointsToConsume
             });
 
             // 设置 cookie
@@ -96,7 +142,8 @@ export async function POST(req: NextRequest) {
         } else {
             throw new Error('No image generated');
         }
-    } catch (error) {
+    } catch
+        (error) {
         logWithTimestamp('Error generating image', error);
         return Response.json({error: 'Failed to generate image'}, {status: 500});
     }

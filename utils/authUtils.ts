@@ -32,8 +32,6 @@ export async function getUserFromCookie(req: NextRequest, JWT_SECRET: string): P
     if (!token) {
         return null;
     }
-    logWithTimestamp('token is ', token)
-
     if (!JWT_SECRET) {
         throw new Error('JWT_SECRET is not configured');
     }

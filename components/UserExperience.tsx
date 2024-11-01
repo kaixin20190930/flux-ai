@@ -1,7 +1,7 @@
 import React from 'react'
 
 const steps = [
-    {title: "Describe Your Vision", description: "Simply type in a description of the image you want to create."},
+    {title: "Describe Your Vision", description: "Simply types in a description of the image you want to create."},
     {
         title: "AI Magic at Work",
         description: "Our advanced AI processes your description and generates multiple image options."
