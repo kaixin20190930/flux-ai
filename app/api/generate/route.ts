@@ -45,6 +45,8 @@ export async function POST(req: NextRequest) {
             return Response.json({error: 'Invalid model selected'}, {status: 400});
         }
         const isLoggedIn = userPoints !== undefined && userId !== undefined;
+        const pointsRequired = modelConfig.points;
+        const remainingFreePoints = Math.max(0, MAX_DAILY_GENERATIONS - generationData.count);
 
         if (!prompt) {
             logWithTimestamp('No prompt provided');
@@ -52,31 +54,39 @@ export async function POST(req: NextRequest) {
         }
 
         let useUserPoints = false;
-        let pointsToConsume = modelConfig.points;
+        // 计算需要从用户账户扣除的点数
+        let pointsToDeductFromUser = 0;
+        let pointsToDeductFromFree = 0;
 
-
-        // if (generationData.count >= MAX_DAILY_GENERATIONS) {
-        //     if (!isLoggedIn || userPoints <= 0) {
-        //         logWithTimestamp('Daily limit reached and no points available');
-        //         return Response.json({error: 'Daily limit reached. Please login or purchase more points.'}, {status: 403});
-        //     }
-        //     useUserPoints = true;
-        // }
         if (!isLoggedIn) {
-            // 检查是否还有免费次数，且选择的是最基础的模型
-            if (generationData.count >= MAX_DAILY_GENERATIONS || (model !== 'flux-schnell' && model !== 'flux-dev')) {
+            // 检查是否是高级模型
+            if (model !== 'flux-schnell' && model !== 'flux-dev') {
                 return Response.json({
-                    error: 'Daily limit reached or premium model selected. Please login to continue.',
+                    error: 'Premium model selected. Please login to continue.',
                 }, {status: 403});
             }
+
+            // 检查免费额度是否足够
+            if (remainingFreePoints < pointsRequired) {
+                return Response.json({
+                    error: 'Insufficient free generations. Please login to continue.',
+                }, {status: 403});
+            }
+
+            pointsToDeductFromFree = pointsRequired;
         } else {
-            // 已登录用户，检查点数是否足够
-            if (userPoints < pointsToConsume) {
+            // 先使用免费点数
+            pointsToDeductFromFree = Math.min(remainingFreePoints, pointsRequired);
+
+            // 计算还需要从用户账户扣除的点数
+            pointsToDeductFromUser = pointsRequired - pointsToDeductFromFree;
+
+            // 检查用户点数是否足够支付剩余所需点数
+            if (userPoints < pointsToDeductFromUser) {
                 return Response.json({
-                    error: `Insufficient points. This model requires ${pointsToConsume} points.`,
+                    error: `Insufficient points. You need ${pointsToDeductFromUser} more points.`,
                 }, {status: 403});
             }
-            useUserPoints = true;
         }
 
         logWithTimestamp('Generating image', {prompt, useUserPoints});
