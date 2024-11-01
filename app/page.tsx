@@ -9,6 +9,7 @@ import {UniqueUseCases} from '../components/UniqueUseCases'
 import {UserExperience} from '../components/UserExperience'
 import {CustomerSuccess} from '../components/CustomerSuccess'
 import Footer from '../components/Footer'
+import {Hero} from "@/components/Hero";
 
 
 export default function Home() {
@@ -27,9 +28,7 @@ export default function Home() {
     return (
         <div className="flex flex-col min-h-screen">
             <main className="flex-grow">
-                <section className="h-screen">
-                    <AIImageGenerator/>
-                </section>
+                <Hero/>
                 <CoreTechAdvantages/>
                 <UniqueUseCases/>
                 <UserExperience/>

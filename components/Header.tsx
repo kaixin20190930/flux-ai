@@ -123,11 +123,14 @@ const Header: React.FC = () => {
                     {/*</nav>*/}
                     <nav>
                         <ul className="flex items-center space-x-6">
-                            <li><Link href="/about"
-                                      className="text-indigo-200 hover:text-white transition duration-300">About</Link>
+                            <li><Link href="/home"
+                                      className="text-indigo-200 hover:text-white transition duration-300">Home</Link>
+                            </li>
+                            <li><Link href="/create"
+                                      className="text-indigo-200 hover:text-white transition duration-300">Create</Link>
                             </li>
                             <li><Link href="/hub"
-                                      className="text-indigo-200 hover:text-white transition duration-300">Dashboard</Link>
+                                      className="text-indigo-200 hover:text-white transition duration-300">Hub</Link>
                             </li>
                             <li><Link href="/pricing"
                                       className="text-indigo-200 hover:text-white transition duration-300">Pricing</Link>

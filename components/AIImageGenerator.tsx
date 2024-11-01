@@ -35,7 +35,7 @@ export const AIImageGenerator: React.FC = () => {
     };
 
     return (
-        <section
+        <div
             className="h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white flex items-center justify-center px-4 pb-8 overflow-hidden relative">
             <div className="absolute inset-0 bg-black opacity-50"/>
             <div
@@ -192,6 +192,6 @@ export const AIImageGenerator: React.FC = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
