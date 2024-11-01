@@ -120,17 +120,24 @@ export async function POST(req: NextRequest) {
         }
         if (imageUrl) {
             let updatedUserPoints = userPoints;
-            if (useUserPoints && isLoggedIn) {
-                // 更新用户点数
-                updatedUserPoints = userPoints - pointsToConsume;
+
+            if (pointsToDeductFromFree > 0) {
+                generationData.count += pointsToDeductFromFree;
+            }
+
+            // 如果需要扣除用户点数
+            if (pointsToDeductFromUser > 0 && isLoggedIn) {
+                updatedUserPoints = userPoints - pointsToDeductFromUser;
                 const updateSuccess = await updateUserPoints(req, updatedUserPoints);
                 if (!updateSuccess) {
                     logWithTimestamp('Failed to update user points', {userId, newPoints: updatedUserPoints});
                     return Response.json({error: 'Failed to update user points'}, {status: 500});
                 }
-                logWithTimestamp('User points updated', {userId, newPoints: updatedUserPoints});
-            } else {
-                generationData.count += pointsToConsume;
+                logWithTimestamp('User points updated', {
+                    userId,
+                    newPoints: updatedUserPoints,
+                    pointsDeducted: pointsToDeductFromUser
+                });
             }
 
             const remainingFreeGenerations = Math.max(0, MAX_DAILY_GENERATIONS - generationData.count);
@@ -141,7 +148,11 @@ export async function POST(req: NextRequest) {
                 image: imageUrl,
                 remainingFreeGenerations,
                 userPoints: isLoggedIn ? updatedUserPoints : null,
-                pointsConsumed: pointsToConsume
+                pointsConsumed: {
+                    free: pointsToDeductFromFree,
+                    paid: pointsToDeductFromUser,
+                    total: pointsRequired
+                }
             });
 
             // 设置 cookie
