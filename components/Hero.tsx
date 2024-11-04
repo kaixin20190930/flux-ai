@@ -55,26 +55,30 @@ export const Hero = () => {
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform"/>
                             </Link>
                             <a
-                                href="features"
+                                href="#features"
                                 className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-bold hover:bg-white/20 transition duration-300 flex items-center justify-center gap-2"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.getElementById('features')?.scrollIntoView({
+                                        behavior: 'smooth'
+                                    });
+                                }}
                             >
                                 Learn More
                             </a>
-                        </div>
-                        {/* Stats */}
-                        <div className="mt-12 grid grid-cols-3 gap-8 max-w-lg mx-auto lg:mx-0">
-                            <div>
-                                <div className="text-3xl font-bold">10M+</div>
-                                <div className="text-white/60 text-sm">Images Created</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl font-bold">50K+</div>
-                                <div className="text-white/60 text-sm">Active Users</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl font-bold">4.9/5</div>
-                                <div className="text-white/60 text-sm">User Rating</div>
-                            </div>
+
+                            <a
+                                href="#examples"
+                                className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-bold hover:bg-white/20 transition duration-300 flex items-center justify-center gap-2"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.getElementById('examples')?.scrollIntoView({
+                                        behavior: 'smooth'
+                                    });
+                                }}
+                            >
+                                Examples
+                            </a>
                         </div>
                     </motion.div>
 

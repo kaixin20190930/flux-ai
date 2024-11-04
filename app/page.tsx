@@ -4,12 +4,13 @@ import {useEffect, useState} from 'react'
 import {Metadata} from 'next'
 import Header from '../components/Header'
 import {AIImageGenerator} from '../components/AIImageGenerator'
-import {CoreTechAdvantages} from '../components/CoreTechAdvantages'
-import {UniqueUseCases} from '../components/UniqueUseCases'
+import {Features} from '../components/Features'
+import {Examples} from '../components/Examples'
 import {UserExperience} from '../components/UserExperience'
 import {CustomerSuccess} from '../components/CustomerSuccess'
 import Footer from '../components/Footer'
 import {Hero} from "@/components/Hero";
+import Pricing from "@/components/Pricing";
 
 
 export default function Home() {
@@ -29,8 +30,9 @@ export default function Home() {
         <div className="flex flex-col min-h-screen">
             <main className="flex-grow">
                 <Hero/>
-                <CoreTechAdvantages/>
-                <UniqueUseCases/>
+                <Features/>
+                <Examples/>
+                <Pricing/>
                 <UserExperience/>
                 <CustomerSuccess/>
             </main>

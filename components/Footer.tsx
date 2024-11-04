@@ -7,9 +7,9 @@ const Footer: React.FC = () => {
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div>
-                        <h3 className="text-2xl font-bold mb-4">Flux AI</h3>
+                        <h3 className="text-2xl font-bold mb-4">< Link href="/">Flux AI</Link></h3>
                         <p className="text-indigo-200">Transforming ideas into stunning visuals with the power of
-                            AI.</p>
+                            Flux AI.</p>
                     </div>
                     <div>
                         <h4 className="text-xl font-semibold mb-4">Quick Links</h4>

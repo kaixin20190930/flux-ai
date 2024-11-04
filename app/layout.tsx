@@ -1,7 +1,17 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import '../styles/globals.css'
+import type {Metadata} from 'next'
 
+
+export const metadata: Metadata = {
+    title: 'Flux AI Image Generator | Create Stunning Images with AI',
+    description: 'Transform your ideas into stunning images with Flux AI generator. Create unique, high-quality AI-generated images for art, and business use cases instantly.',
+    keywords: 'AI image generator, Flux AI, AI image creation, AI art generator, text to image, image generation',
+    alternates: {
+        canonical: 'https://flux-ai-img.com',
+    }
+}
 export default function RootLayout({
                                        children,
                                    }: {

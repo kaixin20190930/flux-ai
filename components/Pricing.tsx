@@ -117,8 +117,15 @@ const PricingTier: React.FC<PricingTierProps> = ({
 
 const Pricing: React.FC = () => {
     return (
-        <div className="flex flex-col min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-indigo-800">
-            <div className="flex-grow flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <section id="pricing"
+                 className="min-h-screen relative bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center">
+            {/* Background Effects */}
+            <div className="absolute inset-0 bg-black/50"/>
+            <div
+                className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"/>
+
+            {/* Content */}
+            <div className="relative z-10 flex-grow flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
                 <div className="mx-auto max-w-7xl w-full">
                     <div className="text-center mb-12">
                         <h2 className="text-base font-semibold leading-7 text-indigo-200">Pricing</h2>
@@ -170,7 +177,7 @@ const Pricing: React.FC = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

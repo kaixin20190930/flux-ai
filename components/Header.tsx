@@ -123,7 +123,7 @@ const Header: React.FC = () => {
                     {/*</nav>*/}
                     <nav>
                         <ul className="flex items-center space-x-6">
-                            <li><Link href="/home"
+                            <li><Link href="/"
                                       className="text-indigo-200 hover:text-white transition duration-300">Home</Link>
                             </li>
                             <li><Link href="/create"
@@ -132,8 +132,14 @@ const Header: React.FC = () => {
                             <li><Link href="/hub"
                                       className="text-indigo-200 hover:text-white transition duration-300">Hub</Link>
                             </li>
-                            <li><Link href="/pricing"
-                                      className="text-indigo-200 hover:text-white transition duration-300">Pricing</Link>
+                            <li><Link href="/#pricing"
+                                      className="text-indigo-200 hover:text-white transition duration-300"
+                                      onClick={(e) => {
+                                          e.preventDefault();
+                                          document.getElementById('pricing')?.scrollIntoView({
+                                              behavior: 'smooth'
+                                          });
+                                      }}>Pricing</Link>
                             </li>
                             {user ? (
                                 <li className="relative" ref={dropdownRef}>
