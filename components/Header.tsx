@@ -86,41 +86,6 @@ const Header: React.FC = () => {
                         <Image src="/fluxai.svg" alt="Flux AI Logo" width={40} height={40} className="rounded-full"/>
                         <span className="text-xl font-bold text-white">Flux AI</span>
                     </Link>
-                    {/*<nav>*/}
-                    {/*    <ul className="flex space-x-6">*/}
-                    {/*        <li><Link href="/about"*/}
-                    {/*                  className="text-indigo-200 hover:text-white transition duration-300">About</Link>*/}
-                    {/*        </li>*/}
-                    {/*        <li><Link href="/hub"*/}
-                    {/*                  className="text-indigo-200 hover:text-white transition duration-300">Dashboard</Link>*/}
-                    {/*        </li>*/}
-                    {/*        <li><Link href="/pricing"*/}
-                    {/*                  className="text-indigo-200 hover:text-white transition duration-300">Pricing</Link>*/}
-                    {/*        </li>*/}
-                    {/*        {user ? (*/}
-                    {/*            <>*/}
-                    {/*                <li>*/}
-                    {/*                    <span className="text-indigo-200">*/}
-                    {/*                        {user.name ? user.name.charAt(0).toUpperCase() : 'U'}*/}
-                    {/*                    </span>*/}
-                    {/*                </li>*/}
-                    {/*                <li>*/}
-                    {/*                    <button onClick={handleLogout}*/}
-                    {/*                            className="text-indigo-200 hover:text-white transition duration-300">*/}
-                    {/*                        Logout*/}
-                    {/*                    </button>*/}
-                    {/*                </li>*/}
-                    {/*            </>*/}
-                    {/*        ) : (*/}
-                    {/*            <li>*/}
-                    {/*                <Link href="/auth"*/}
-                    {/*                      className="text-indigo-200 hover:text-white transition duration-300">*/}
-                    {/*                    Login*/}
-                    {/*                </Link>*/}
-                    {/*            </li>*/}
-                    {/*        )}*/}
-                    {/*    </ul>*/}
-                    {/*</nav>*/}
                     <nav>
                         <ul className="flex items-center space-x-6">
                             <li><Link href="/"

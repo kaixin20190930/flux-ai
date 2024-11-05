@@ -25,7 +25,7 @@ export const MODEL_CONFIG: Record<ModelType, ModelConfig> = {
         name: 'Flux 1.1 Pro',
         points: 5,
         description: 'Ultra high quality with best details',
-        icon: 'Crown',
+        icon: 'Sparkles',
         isPremium: true,
         processingTime: '15-20 seconds'
     },
@@ -33,7 +33,7 @@ export const MODEL_CONFIG: Record<ModelType, ModelConfig> = {
         name: 'Flux Pro',
         points: 6,
         description: 'Professional quality with better details',
-        icon: 'Sparkles',
+        icon: 'Crown',
         isPremium: true,
         processingTime: '20-25 seconds'
     }
@@ -42,8 +42,8 @@ export const MODEL_CONFIG: Record<ModelType, ModelConfig> = {
 export const ICON_COMPONENTS = {
     'Zap': Zap,
     'Star': Star,
+    'Sparkles': Sparkles,
     'Crown': Crown,
-    'Sparkles': Sparkles
 } as const;
 
 export const ASPECT_RATIOS: AspectRatio[] = [

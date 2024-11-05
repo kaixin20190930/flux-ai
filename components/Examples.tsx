@@ -120,7 +120,7 @@ export const Examples: React.FC = () => {
 
     return (
         <section id="examples"
-                 className="relative py-20 overflow-hidden absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500">
+                 className="relative py-20 overflow-hidden inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500">
             {/*<div className="absolute inset-0 bg-[url('/subtle-pattern.png')] opacity-5 "/>*/}
             <div className="absolute inset-0 bg-black/50"/>
             <div

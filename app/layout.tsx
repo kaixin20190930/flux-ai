@@ -5,12 +5,13 @@ import type {Metadata} from 'next'
 
 
 export const metadata: Metadata = {
-    title: 'Flux AI Image Generator | Create Stunning Images with AI',
+    title: 'Flux AI Image Generator for Free',
     description: 'Transform your ideas into stunning images with Flux AI generator. Create unique, high-quality AI-generated images for art, and business use cases instantly.',
-    keywords: 'AI image generator, Flux AI, AI image creation, AI art generator, text to image, image generation',
+    keywords: 'AI image generator, Free, Flux AI, AI image creation, AI art generator, text to image, image generation',
     alternates: {
         canonical: 'https://flux-ai-img.com',
-    }
+    },
+    icons:'/icons/flux-ai.svg'
 }
 export default function RootLayout({
                                        children,

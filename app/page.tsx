@@ -1,16 +1,14 @@
 'use client'
 
 import {useEffect, useState} from 'react'
-import {Metadata} from 'next'
-import Header from '../components/Header'
-import {AIImageGenerator} from '../components/AIImageGenerator'
-import {Features} from '../components/Features'
-import {Examples} from '../components/Examples'
-import {UserExperience} from '../components/UserExperience'
-import {CustomerSuccess} from '../components/CustomerSuccess'
+import {Features} from '@/components/Features'
+import {Examples} from '@/components/Examples'
+import {UserExperience} from '@/components/UserExperience'
+import {CustomerSuccess} from '@/components/CustomerSuccess'
 import Footer from '../components/Footer'
 import {Hero} from "@/components/Hero";
 import Pricing from "@/components/Pricing";
+import FluxModelsComparison from "@/components/FluxModelsComparison";
 
 
 export default function Home() {
@@ -34,6 +32,7 @@ export default function Home() {
                 <Examples/>
                 <Pricing/>
                 <UserExperience/>
+                <FluxModelsComparison/>
                 <CustomerSuccess/>
             </main>
         </div>

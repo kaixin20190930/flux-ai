@@ -99,7 +99,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
 
     if (isLoading) {
         return (
-            <div className="w-full h-full min-h-[400px] flex flex-col items-center justify-center">
+            <div className="w-full h-full flex flex-col items-center justify-center">
                 <div className="animate-spin rounded-full h-16 w-16 border-4 border-white/10 border-t-white"/>
                 <p className="text-white/70 text-sm mt-4 animate-pulse">Creating your masterpiece...</p>
             </div>
@@ -108,7 +108,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
 
     if (!generatedImage) {
         return (
-            <div className="w-full h-full min-h-[400px] flex flex-col items-center justify-center">
+            <div className="w-full h-full flex flex-col items-center justify-center">
                 <Image
                     src="/ai-placeholder.svg"
                     alt="AI Placeholder"
@@ -122,10 +122,10 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
     }
 
     return (
-        <div className="w-full h-full min-h-[400px] flex items-center justify-center p-4">
+        <div className="w-full h-full flex items-center justify-center p-4">
             {/* 固定大小的预览容器 */}
             <div
-                className="h-[400px] w-full max-w-[800px] bg-black/20 rounded-xl flex items-center justify-center overflow-hidden">
+                className="w-full h-full bg-black/20 rounded-xl flex items-center justify-center overflow-hidden">
                 {/* 图片容器 */}
                 <div style={getImageContainerStyle()} className="p-4 relative group w-full h-full">
                     <div className="relative w-full h-full">
