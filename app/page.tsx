@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react'
 import {Features} from '@/components/Features'
 import {Examples} from '@/components/Examples'
 import {UserExperience} from '@/components/UserExperience'
-import {CustomerSuccess} from '@/components/CustomerSuccess'
+import {FAQ} from '@/components/FAQ'
 import Footer from '../components/Footer'
 import {Hero} from "@/components/Hero";
 import Pricing from "@/components/Pricing";
@@ -33,7 +33,7 @@ export default function Home() {
                 <Pricing/>
                 <UserExperience/>
                 <FluxModelsComparison/>
-                <CustomerSuccess/>
+                <FAQ/>
             </main>
         </div>
     )
