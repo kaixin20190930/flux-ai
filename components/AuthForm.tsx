@@ -41,10 +41,10 @@ const AuthForm: React.FC = () => {
 
                     if (isLogin) {
                         // 登录成功，跳转到 hub 页面
-                        router.push('/hub');
+                        router.push('/flux-1-1-ultra');
                     } else {
                         // 注册成功，自动登录后跳转到 about 页面
-                        router.push('/about');
+                        router.push('/flux-1-1-ultra');
                     }
                 } else {
                     setError('Unexpected response format');

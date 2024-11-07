@@ -4,6 +4,10 @@ import Image from 'next/image'
 
 const examples = [
     {
+        prompt: "Artistic interpretation of the human consciousness and subconsciousness\n",
+        image: "/pictures/examples/example.jpg",
+        style: "Artistic Interpretation"
+    },{
         prompt: "Write this poem with cursive text on a background that fits the words:\nRoses are red\n  Violets are blue,\nSugar is sweet\n  And so are you",
         image: "/pictures/examples/example1.jpg",
         style: "Love Poem"

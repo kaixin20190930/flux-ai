@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Zap, Code, Wand2, Crown, Sparkles, Star, Terminal, CheckCheck, Copy} from 'lucide-react';
+import {Zap, Code, Wand2, Crown, Sparkles, Star, Terminal, CheckCheck, Copy, ThumbsUp} from 'lucide-react';
 
 const FluxModelsComparison = () => {
     const prompt = "Prompt: Create a captivating portrait of a voluptuous boho woman with green eyes and long, wavy blonde hair, she is standing. She has a fair complexion adorned with delicate freckles, and her expression is contemplative, reflecting a moment of deep thought. She wears a white-colored, off-shoulder linen satin dress, with deep neck linen, complemented by a necklace and various boho jewelry that accentuates her bohemian style., photo, poster, vibrant, portrait photography, fashion\n" +
@@ -7,6 +7,20 @@ const FluxModelsComparison = () => {
 
     const models = [
         {
+            id: 'ultra',
+            name: "Flux 1.1 Pro Ultra",
+            description: "Images are up to 4 megapixels. Use raw mode for realism.",
+            icon: ThumbsUp,
+            features: ["Higher Resolution", "No Compromise in Speed", "Raw Mode"],
+            suitableFor: ["Human Subjects", "Nature Photography"],
+            highlight: "Realism",
+            details: "A new high-resolution capabilities to FLUX1.1 [pro], extending its functionality to support 4x higher image resolutions (up to 4MP) while maintaining an impressive generation time of only 10 seconds per sample.",
+            image: "/pictures/modelcompare/Ultra.jpg",
+            processingTime: "10 seconds",
+            costEffective: true,
+            imageSize: "2096*2096",
+
+        },{
             id: 'schnell',
             name: "Flux Schnell",
             description: "The fastest image generation model tailored for local development and personal use.",
