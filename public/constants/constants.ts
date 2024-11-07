@@ -1,10 +1,18 @@
 // constants.ts
-import {Zap, Star, Crown, Sparkles} from 'lucide-react';
+import {Zap, Star, Crown, Sparkles, ThumbsUp} from 'lucide-react';
 import {ModelType, ModelConfig, IconName, AspectRatio, OutputFormat} from '../types/type';
 
 export const MAX_DAILY_GENERATIONS = 3;
 
 export const MODEL_CONFIG: Record<ModelType, ModelConfig> = {
+    'flux-1.1-pro-ultra': {
+        name: 'Flux 1.1 Pro Ultra',
+        points: 3,
+        description: 'Higher Resolution, No Compromise in Speed',
+        icon: 'ThumbsUp',
+        isPremium: false,
+        processingTime: '10-15 seconds'
+    },
     'flux-schnell': {
         name: 'Flux Schnell',
         points: 1,
@@ -40,6 +48,7 @@ export const MODEL_CONFIG: Record<ModelType, ModelConfig> = {
 };
 
 export const ICON_COMPONENTS = {
+    'ThumbsUp':ThumbsUp,
     'Zap': Zap,
     'Star': Star,
     'Sparkles': Sparkles,
@@ -101,7 +110,7 @@ export const ERROR_MESSAGES = {
 } as const;
 
 export const DEFAULTS = {
-    MODEL: 'flux-schnell' as ModelType,
+    MODEL: 'flux-1.1-pro-ultra' as ModelType,
     ASPECT_RATIO: '1:1',
-    OUTPUT_FORMAT: 'webp'
+    OUTPUT_FORMAT: 'jpg'
 } as const;

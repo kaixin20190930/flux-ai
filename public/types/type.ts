@@ -2,7 +2,7 @@
 
 import {ICON_COMPONENTS, MODEL_CONFIG} from "@/public/constants/constants";
 
-export type ModelType = 'flux-schnell' | 'flux-dev' | 'flux-1.1-pro' | 'flux-pro';
+export type ModelType = 'flux-1.1-pro-ultra' | 'flux-schnell' | 'flux-dev' | 'flux-1.1-pro' | 'flux-pro';
 export type IconName = keyof typeof ICON_COMPONENTS;
 
 export interface ModelConfig {

@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
 
         if (!isLoggedIn) {
             // 检查是否是高级模型
-            if (model !== 'flux-schnell' && model !== 'flux-dev') {
+            if (model !== 'flux-schnell' && model !== 'flux-dev' && model !== 'flux-1.1-pro-ultra') {
                 return Response.json({
                     error: 'Premium model selected. Please login to continue.',
                 }, {status: 403});

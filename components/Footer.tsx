@@ -14,9 +14,6 @@ const Footer: React.FC = () => {
                     <div>
                         <h4 className="text-xl font-semibold mb-4">Quick Links</h4>
                         <ul className="space-y-2">
-                            <li><Link href="/about"
-                                      className="text-indigo-200 hover:text-pink-300 transition duration-300">About
-                                Us</Link></li>
                             <li><Link href="/pricing"
                                       className="text-indigo-200 hover:text-pink-300 transition duration-300">Pricing</Link>
                             </li>

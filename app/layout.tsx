@@ -2,7 +2,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import '../styles/globals.css'
 import type {Metadata} from 'next'
-
+import {AutoLogoutWarning} from "@/components/AutoLogoutWarning";
 
 export const metadata: Metadata = {
     title: 'Flux AI Image Generator for Free',
@@ -11,7 +11,6 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://flux-ai-img.com',
     },
-    icons:'/icons/flux-ai.svg'
 }
 export default function RootLayout({
                                        children,
@@ -24,6 +23,7 @@ export default function RootLayout({
         <Header/>
         <main className="flex-grow">
             {children}
+            <AutoLogoutWarning/>
         </main>
         <Footer/>
         </body>

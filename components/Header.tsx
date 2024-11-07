@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {FaUserCircle, FaSignOutAlt} from 'react-icons/fa'
 import Cookies from "js-cookie";
-import internal from "node:stream";
+import AuthEventEmitter from '../events/authEvents';
 
 
 const Header: React.FC = () => {
@@ -22,6 +22,18 @@ const Header: React.FC = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const dropdownRef = useRef<HTMLLIElement | null>(null);
 
+    const updateUserState = () => {
+        const userData = localStorage.getItem('user');
+        if (userData) {
+            try {
+                setUser(JSON.parse(userData));
+            } catch {
+                setUser(null);
+            }
+        } else {
+            setUser(null);
+        }
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -33,14 +45,17 @@ const Header: React.FC = () => {
             }
         }
 
-        window.addEventListener('scroll', handleScroll, {passive: true})
+        updateUserState();
 
-        const userData = localStorage.getItem('user')
-        if (userData) {
-            setUser(JSON.parse(userData))
-        }
+        // 订阅自动登出事件
+        const unsubscribe = AuthEventEmitter.subscribe(() => {
+            setUser(null);
+            setIsDropdownOpen(false);
+        });
 
-        // Close dropdown when clicking outside
+        window.addEventListener('scroll', handleScroll, {passive: true});
+
+        // 点击外部关闭下拉菜单 - 保留原始的类型安全处理
         const handleClickOutside = (event: MouseEvent) => {
             if (!(event.target instanceof Node)) {
                 return;
@@ -54,14 +69,15 @@ const Header: React.FC = () => {
             if (!node.contains(event.target)) {
                 setIsDropdownOpen(false);
             }
-        }
+        };
 
-        document.addEventListener('mousedown', handleClickOutside)
+        document.addEventListener('mousedown', handleClickOutside);
 
         return () => {
-            window.removeEventListener('scroll', handleScroll)
-            document.removeEventListener('mousedown', handleClickOutside)
-        }
+            window.removeEventListener('scroll', handleScroll);
+            document.removeEventListener('mousedown', handleClickOutside);
+            unsubscribe();
+        };
     }, [isVisible])
     const handleLogout = () => {
         localStorage.removeItem('user')
@@ -70,7 +86,7 @@ const Header: React.FC = () => {
         setUser(null)
         setIsDropdownOpen(false)
         // Optionally redirect to home page
-        window.location.href = '/'
+        window.location.href = '/auth'
     }
     return (
         <header
@@ -90,6 +106,9 @@ const Header: React.FC = () => {
                         <ul className="flex items-center space-x-6">
                             <li><Link href="/"
                                       className="text-indigo-200 hover:text-white transition duration-300">Home</Link>
+                            </li>
+                            <li><Link href="/flux-1-1-ultra"
+                                      className="text-indigo-200 hover:text-white transition duration-300">Flux 1.1 Ultra</Link>
                             </li>
                             <li><Link href="/create"
                                       className="text-indigo-200 hover:text-white transition duration-300">Create</Link>
