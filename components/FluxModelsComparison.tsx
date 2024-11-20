@@ -1,96 +1,77 @@
 import React, {useState} from 'react';
 import {Zap, Code, Wand2, Crown, Sparkles, Star, Terminal, CheckCheck, Copy, ThumbsUp} from 'lucide-react';
+import type {Dictionary} from '@/app/i18n/settings'
 
-const FluxModelsComparison = () => {
-    const prompt = "Prompt: Create a captivating portrait of a voluptuous boho woman with green eyes and long, wavy blonde hair, she is standing. She has a fair complexion adorned with delicate freckles, and her expression is contemplative, reflecting a moment of deep thought. She wears a white-colored, off-shoulder linen satin dress, with deep neck linen, complemented by a necklace and various boho jewelry that accentuates her bohemian style., photo, poster, vibrant, portrait photography, fashion\n" +
-        "\n";
+interface FluxModelsComparisonProps {
+    dictionary: Dictionary
+}
 
+const FluxModelsComparison: React.FC<FluxModelsComparisonProps> = ({dictionary}) => {
+    // 示例提示词保持不变，因为这是实际使用的提示词
+    const prompt = "Prompt: Create a captivating portrait of a voluptuous boho woman with green eyes and long, wavy blonde hair, she is standing. She has a fair complexion adorned with delicate freckles, and her expression is contemplative, reflecting a moment of deep thought. She wears a white-colored, off-shoulder linen satin dress, with deep neck linen, complemented by a necklace and various boho jewelry that accentuates her bohemian style., photo, poster, vibrant, portrait photography, fashion\n\n";
+
+    // 定义模型图标映射
+    const modelIcons = {
+        ultra: ThumbsUp,
+        schnell: Zap,
+        dev: Star,
+        pro11: Sparkles,
+        pro: Crown
+    };
+
+    // 构建模型数组
     const models = [
         {
             id: 'ultra',
-            name: "Flux 1.1 Pro Ultra",
-            description: "Images are up to 4 megapixels. Use raw mode for realism.",
-            icon: ThumbsUp,
-            features: ["Higher Resolution", "No Compromise in Speed", "Raw Mode"],
-            suitableFor: ["Human Subjects", "Nature Photography"],
-            highlight: "Realism",
-            details: "A new high-resolution capabilities to FLUX1.1 [pro], extending its functionality to support 4x higher image resolutions (up to 4MP) while maintaining an impressive generation time of only 10 seconds per sample.",
+            ...dictionary.modelComparison.models.ultra,
+            icon: modelIcons.ultra,
             image: "/pictures/modelcompare/Ultra.jpg",
-            processingTime: "10 seconds",
             costEffective: true,
-            imageSize: "2096*2096",
-
-        },{
+        },
+        {
             id: 'schnell',
-            name: "Flux Schnell",
-            description: "The fastest image generation model tailored for local development and personal use.",
-            icon: Zap,
-            features: ["High Performance", "Fast Generation", "Open License"],
-            suitableFor: ["Personal", "Scientific", "Commercial Purposes"],
-            highlight: "Speed Optimized",
-            details: "Optimized for speed and efficiency, Flux Schnell delivers quick results perfect for initial concepts and rapid prototyping. Ideal for developers and designers who need quick iterations.",
+            ...dictionary.modelComparison.models.schnell,
+            icon: modelIcons.schnell,
             image: "/pictures/modelcompare/Schnell.jpg",
-            processingTime: "0.8 seconds",
             costEffective: true,
-            imageSize: "1024*1024",
-
         },
         {
             id: 'dev',
-            name: "Flux Dev",
-            description: "A 12 billion parameter rectified flow transformer capable of generating images from text descriptions.",
-            icon: Star,
-            features: ["Competitive Performance", "Efficient Training", "Open Research"],
-            suitableFor: ["Personal", "Scientific", "Commercial Purposes"],
-            highlight: "More Efficient",
-            details: "A powerful 12B parameter image generation model delivering high-quality outputs with commercial usage support, optimized performance, and clear ethical guidelines for responsible AI development.",
+            ...dictionary.modelComparison.models.dev,
+            icon: modelIcons.dev,
             image: "/pictures/modelcompare/Dev.jpg",
-            processingTime: "3-5 seconds",
             costEffective: true,
-            imageSize: "1024*1024",
         },
         {
             id: 'pro11',
-            name: "Flux 1.1 Pro",
-            description: "Faster, better FLUX Pro. Text-to-image model with excellent image quality, prompt adherence, and output diversity..",
-            icon: Sparkles,
-            features: ["6x Faster Generation", "Enhanced Quality", "Advanced Architecture"],
-            suitableFor: ["Professional Workflows", "Quality-Critical Projects", "Production Environments"],
-            highlight: "Enhanced Quality",
-            details: "A state-of-the-art 12B parameter image generation model featuring 6x faster speed, enhanced quality, and benchmark-leading performance, built with advanced hybrid architecture combining multimodal and parallel diffusion transformer blocks for professional and production environments.",
+            ...dictionary.modelComparison.models.pro11,
+            icon: modelIcons.pro11,
             image: "/pictures/modelcompare/1.1Pro.jpg",
-            processingTime: "8-10 seconds",
             costEffective: false,
-            imageSize: "1440*1440",
         },
         {
             id: 'pro',
-            name: "Flux Pro",
-            description: "State-of-the-art image generation with top of the line prompt following, visual quality, image detail and output diversity.",
-            icon: Crown,
-            features: ["Top Performance", "Flexible Resolution", "Advanced Architecture"],
-            suitableFor: ["Professional Projects", "Versatile Applications"],
-            highlight: "Premium Quality",
-            details: "A premium 12B parameter image generation model offering state-of-the-art performance with superior visual quality and versatile resolution support, powered by hybrid architecture combining multimodal and parallel diffusion transformer blocks.",
+            ...dictionary.modelComparison.models.pro,
+            icon: modelIcons.pro,
             image: "/pictures/modelcompare/Pro.jpg",
-            processingTime: "15-25 seconds",
             costEffective: false,
-            imageSize: "1440*1440",
         }
     ];
 
     const [selectedModel, setSelectedModel] = useState(models[0]);
     const [showPrompt, setShowPrompt] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
+
     const handleCopyPrompt = async () => {
         try {
             await navigator.clipboard.writeText(prompt);
             setIsCopied(true);
-            setTimeout(() => setIsCopied(false), 2000); // 2秒后重置复制状态
+            setTimeout(() => setIsCopied(false), 2000);
         } catch (err) {
             console.error('Failed to copy text: ', err);
         }
     };
+
     return (
         <section
             className="relative flex flex-col bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 overflow-auto">
@@ -101,16 +82,15 @@ const FluxModelsComparison = () => {
             <div className="relative z-10 p-6">
                 <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-white mb-4">
-                        Flux AI Models Comparison
+                        {dictionary.modelComparison.title}
                     </h2>
                     <p className="text-lg text-indigo-100">
-                        Choose the perfect model for your creative needs
+                        {dictionary.modelComparison.subtitle}
                     </p>
                 </div>
 
                 <div className="flex-1 max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
                     {/* Left Column - Model Selection */}
-                    {/*<div className="lg:w-2/5 space-y-4 ">*/}
                     <div className="lg:w-2/5 flex flex-col">
                         <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm h-full">
                             <div className="space-y-6">
@@ -142,16 +122,18 @@ const FluxModelsComparison = () => {
                                             <div className="mt-4 pt-4 border-t border-white/10">
                                                 <div className="grid grid-cols-2 gap-4">
                                                     <div>
-                                                        <h4 className="text-white text-sm font-medium mb-2">Processing
-                                                            Time</h4>
+                                                        <h4 className="text-white text-sm font-medium mb-2">
+                                                            {dictionary.modelComparison.modelDetails.processingTime}
+                                                        </h4>
                                                         <p className="text-indigo-200 text-sm flex items-center gap-2">
                                                             <Sparkles className="w-4 h-4"/>
                                                             {model.processingTime}
                                                         </p>
                                                     </div>
                                                     <div>
-                                                        <h4 className="text-white text-sm font-medium mb-2">Output
-                                                            Size</h4>
+                                                        <h4 className="text-white text-sm font-medium mb-2">
+                                                            {dictionary.modelComparison.modelDetails.outputSize}
+                                                        </h4>
                                                         <p className="text-indigo-200 text-sm">
                                                             {model.imageSize}
                                                         </p>
@@ -159,14 +141,16 @@ const FluxModelsComparison = () => {
                                                 </div>
 
                                                 <div className="mt-4">
-                                                    <h4 className="text-white text-sm font-medium mb-2">Best For</h4>
+                                                    <h4 className="text-white text-sm font-medium mb-2">
+                                                        {dictionary.modelComparison.modelDetails.bestFor}
+                                                    </h4>
                                                     <div className="flex flex-wrap gap-2">
                                                         {model.suitableFor.map((use, idx) => (
                                                             <span
                                                                 key={idx}
                                                                 className="bg-white/10 rounded-full px-3 py-1 text-xs text-indigo-200"
                                                             >
-                                                              {use}
+                                                                {use}
                                                             </span>
                                                         ))}
                                                     </div>
@@ -189,13 +173,17 @@ const FluxModelsComparison = () => {
                                 >
                                     <Terminal className="w-4 h-4"/>
                                     <span className="text-sm font-medium">
-                                     {showPrompt ? 'Hide Prompt' : 'Show Prompt'}
+                                        {showPrompt
+                                            ? dictionary.modelComparison.promptSection.hidePrompt
+                                            : dictionary.modelComparison.promptSection.showPrompt}
                                     </span>
                                 </button>
                                 {showPrompt && (
                                     <div className="bg-black/20 rounded-lg p-4 mb-4">
                                         <div className="flex items-center justify-between mb-2">
-                                            <span className="text-sm text-indigo-200">Prompt used for all models</span>
+                                            <span className="text-sm text-indigo-200">
+                                                {dictionary.modelComparison.promptSection.promptTitle}
+                                            </span>
                                             <button
                                                 onClick={handleCopyPrompt}
                                                 className="flex items-center gap-1.5 text-white/70 hover:text-white transition-colors text-sm bg-white/5 rounded-md px-2.5 py-1"
@@ -203,12 +191,14 @@ const FluxModelsComparison = () => {
                                                 {isCopied ? (
                                                     <>
                                                         <CheckCheck className="w-4 h-4 text-green-400"/>
-                                                        <span className="text-green-400">Copied!</span>
+                                                        <span className="text-green-400">
+                                                            {dictionary.modelComparison.promptSection.copiedButton}
+                                                        </span>
                                                     </>
                                                 ) : (
                                                     <>
                                                         <Copy className="w-4 h-4"/>
-                                                        <span>Copy prompt</span>
+                                                        <span>{dictionary.modelComparison.promptSection.copyButton}</span>
                                                     </>
                                                 )}
                                             </button>
@@ -238,7 +228,9 @@ const FluxModelsComparison = () => {
                                 </div>
 
                                 <div>
-                                    <h4 className="text-white font-semibold mb-2">Key Features</h4>
+                                    <h4 className="text-white font-semibold mb-2">
+                                        {dictionary.modelComparison.modelDetails.keyFeatures}
+                                    </h4>
                                     <ul className="grid grid-cols-2 gap-2">
                                         {selectedModel.features.map((feature, idx) => (
                                             <li key={idx} className="text-indigo-200 text-sm flex items-center gap-2">
@@ -252,7 +244,7 @@ const FluxModelsComparison = () => {
                                 <div className="flex items-center justify-between">
                                     <div className="bg-white/5 rounded-lg px-3 py-1.5">
                                         <span className="text-purple-300 text-sm font-medium">
-                                          {selectedModel.highlight}
+                                            {selectedModel.highlight}
                                         </span>
                                     </div>
                                     <div className="bg-white/5 rounded-lg px-3 py-1.5">

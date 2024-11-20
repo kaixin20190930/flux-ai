@@ -2,7 +2,7 @@
 
 import {useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
-import Hub from "..//../components/Hub"; // Adjust the import path as needed
+import Hub from "../../../components/Hub"; // Adjust the import path as needed
 
 export default function DashboardPage() {
     const [user, setUser] = useState(null);

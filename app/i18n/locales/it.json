@@ -1,0 +1,452 @@
+{
+  "metadata": {
+    "title": "Generatore di Immagini Flux AI Gratuito",
+    "description": "Crea incredibili immagini generate dall'IA con Flux AI",
+    "keywords": "IA, generatore di immagini, intelligenza artificiale, Flux AI, arte IA"
+  },
+  "navigation": {
+    "home": "Home",
+    "create": "Crea",
+    "hub": "Galleria",
+    "pricing": "Prezzi",
+    "profile": "Profilo",
+    "logout": "Esci",
+    "login": "Accedi",
+    "flux11Ultra": "Flux 1.1 Ultra"
+  },
+  "hero": {
+    "mainTitle": "FLUX AI",
+    "subTitle1": "Trasforma le tue idee in",
+    "subTitle2": "Visual mozzafiato",
+    "description": "Crea capolavori unici e alimentati dall'AI in pochi secondi. Trasforma la tua immaginazione in realtà con il nostro avanzato Flux AI.",
+    "startButton": "Inizia a creare",
+    "learnMoreButton": "Per saperne di più",
+    "examplesButton": "Esempi",
+    "imageAlt": "Esempio di arte generata dall'AI"
+  },
+  "features": {
+    "title": "Perché Scegliere Flux AI",
+    "subtitle": "Generazione di Immagini AI di Livello Enterprise per Creatori Professionisti",
+    "cards": {
+      "advancedAI": {
+        "title": "Generazione Avanzata di Immagini AI",
+        "subtitle": "FLUX AI Creatore Professionale di Immagini",
+        "description": "Genera immagini eccezionali con risoluzione fino a 1440x1440 con il nostro modello AI basato su transformer. Supporta i modelli di generazione di immagini FLUX [pro], [dev] e [schnell] da BlackForestLabs.",
+        "highlight": "Risoluzione fino a 1440x1440"
+      },
+      "multipleStyles": {
+        "title": "Controlli di Stile Multipli",
+        "subtitle": "Motore di Stile FLUX AI",
+        "description": "Crea immagini in vari stili, dal fotorealistico all'artistico. Supporta controlli di stile completi tra cui anime, arte digitale, pittura a olio e altro con un controllo preciso dei prompt.",
+        "highlight": "Stili artistici multipli"
+      },
+      "advancedModel": {
+        "title": "Architettura del Modello Avanzata",
+        "subtitle": "Tecnologia FLUX AI",
+        "description": "Alimentato da un'architettura transformer all'avanguardia con oltre 12 miliardi di parametri, che offre una qualità dell'immagine eccezionale e una precisa aderenza ai prompt attraverso le nostre tecniche di addestramento proprietarie.",
+        "highlight": "12B+ parametri"
+      },
+      "flexiblePricing": {
+        "title": "Piani di Prezzo Flessibili",
+        "subtitle": "Prezzi FLUX AI",
+        "description": "Inizia con il nostro piano gratuito (3 generazioni gratuite al giorno senza login) o passa ai piani premium da 9,9$ per 200 generazioni. Accedi a funzionalità avanzate tra cui risoluzione più alta, generazione prioritaria e limiti di generazione aumentati.",
+        "highlight": "A partire da Gratuito"
+      }
+    },
+    "cta": {
+      "title": "Prova la Generazione Professionale di Immagini AI",
+      "tryButton": "Prova Gratuitamente",
+      "pricingButton": "Vedi i Prezzi"
+    }
+  },
+  "examples": {
+    "title": "Esempi di Generazione AI",
+    "subtitle": "Scopri cosa puoi creare con FLUX AI"
+  },
+  "userExperience": {
+    "title": "Come Funziona",
+    "subtitle": "Crea stupefacenti immagini generate dall'AI con il nostro generatore di immagini Flux AI",
+    "steps": {
+      "describe": {
+        "title": "Descrivi la Tua Visione",
+        "subtitle": "Comprensione del Testo Basata su AI",
+        "description": "Scrivi semplicemente una descrizione dell'immagine che vuoi creare. La nostra AI comprende l'input in linguaggio naturale.",
+        "highlight": "Elaborazione del Linguaggio Naturale"
+      },
+      "generate": {
+        "title": "Magia dell'AI al Lavoro",
+        "subtitle": "Generazione Avanzata di Immagini",
+        "description": "La nostra potente AI elabora la tua descrizione e genera opzioni di immagini uniche che corrispondono alla tua visione.",
+        "highlight": "Opzioni di Stile Multiple"
+      },
+      "refine": {
+        "title": "Perfeziona e Raffina",
+        "subtitle": "Perfeziona i Tuoi Risultati",
+        "description": "Usa i nostri strumenti intuitivi per regolare e raffinare le immagini generate fino a quando non corrispondono alle tue aspettative.",
+        "highlight": "Strumenti di Editing Professionali"
+      },
+      "download": {
+        "title": "Scarica e Utilizza",
+        "subtitle": "Pronto per i Tuoi Progetti",
+        "description": "Scarica il tuo capolavoro generato dall'AI in alta risoluzione, pronto per i tuoi progetti creativi.",
+        "highlight": "Output in Alta Risoluzione"
+      }
+    }
+  },
+  "faq": {
+    "title": "Domande Frequenti",
+    "subtitle": "Ottieni risposte alle domande comuni su Flux AI e come può migliorare il tuo flusso di lavoro creativo",
+    "questions": {
+      "what": {
+        "question": "Cos'è il Modello Flux AI?",
+        "answer": "Flux AI è un modello di intelligenza artificiale all'avanguardia progettato per assistere con compiti creativi, generazione di immagini e flussi di lavoro di design. Utilizza algoritmi avanzati di machine learning per comprendere e generare contenuti visivi basati sull'input dell'utente."
+      },
+      "versions": {
+        "question": "Quali sono le diverse versioni di FLUX AI?",
+        "answer": "FLUX AI è disponibile in tre varianti: FLUX.1 [pro] per le massime prestazioni, FLUX.1 [dev] per applicazioni non commerciali e FLUX.1 [schnell] per sviluppo locale veloce."
+      },
+      "comparison": {
+        "question": "Come si confronta Flux AI con altri modelli AI?",
+        "answer": "Flux AI si distingue per la qualità superiore delle immagini, tempi di generazione più veloci e controlli più intuitivi. Il nostro modello è stato specificamente addestrato su contenuti creativi di alta qualità, rendendolo particolarmente efficace per applicazioni di design e artistiche."
+      },
+      "imageTypes": {
+        "question": "Che tipi di immagini può generare Flux AI?",
+        "answer": "Flux AI può generare una vasta gamma di contenuti visivi inclusi illustrazioni, concept art, design di prodotti, design di personaggi e scene ambientali. Il modello supporta vari stili artistici e può adattarsi a requisiti visivi specifici."
+      },
+      "requirements": {
+        "question": "Quali sono i requisiti tecnici per utilizzare Flux AI?",
+        "answer": "Flux AI funziona nel cloud e può essere accessibile attraverso qualsiasi browser web moderno. Non è richiesto hardware speciale, anche se è raccomandata una connessione internet stabile per prestazioni ottimali."
+      },
+      "fineTuning": {
+        "question": "Posso fare il fine-tuning del Generatore di Immagini FLUX AI sul mio dataset?",
+        "answer": "Le opzioni di fine-tuning potrebbero essere disponibili per i clienti enterprise. Si prega di contattare direttamente Black Forest Labs per discutere le vostre esigenze specifiche."
+      },
+      "limits": {
+        "question": "C'è un limite al numero di immagini che posso generare?",
+        "answer": "I limiti di utilizzo dipendono dal tuo piano di abbonamento. Gli utenti gratuiti possono generare fino a 3 immagini al giorno, mentre gli utenti premium godono di generazioni illimitate e elaborazione prioritaria."
+      },
+      "updates": {
+        "question": "Quanto spesso viene aggiornato il Generatore di Immagini FLUX AI?",
+        "answer": "Black Forest Labs è impegnata nel miglioramento continuo. Mentre non vengono forniti programmi di aggiornamento specifici, puoi aspettarti miglioramenti e perfezionamenti regolari di FLUX AI."
+      },
+      "feedback": {
+        "question": "Come posso fornire feedback o segnalare problemi con FLUX AI?",
+        "answer": "Black Forest Labs accoglie con piacere i feedback. Puoi contattarci attraverso i canali ufficiali o inviare una email a flux@blackforestlabs.ai per supporto e per segnalare eventuali problemi."
+      },
+      "commercial": {
+        "question": "Posso usare il Generatore di Immagini FLUX AI per progetti commerciali?",
+        "answer": "Mentre FLUX.1 [schnell] è gratuito per uso personale, offriamo FLUX.1 [pro] e FLUX.1 [dev] per applicazioni commerciali del Generatore di Immagini Flux AI. Queste versioni forniscono capacità avanzate e sono disponibili attraverso la nostra API o i nostri partner. Per richieste di uso commerciale del Generatore di Immagini FLUX AI, si prega di contattarci a juq1991@gmail.com."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Prezzi",
+    "subtitle": "Scegli il piano giusto per te",
+    "tiers": {
+      "basic": {
+        "name": "Base",
+        "price": "$9,9",
+        "features": [
+          "200 punti",
+          "Immagini di alta qualità",
+          "Generazione di immagini più veloce",
+          "Nessun abbonamento"
+        ]
+      },
+      "premium": {
+        "name": "Piano Premium",
+        "price": "$29,9",
+        "features": [
+          "1000 punti",
+          "Immagini di alta qualità",
+          "Generazione di immagini più veloce",
+          "Abbonamento mensile"
+        ],
+        "recommended": "Consigliato"
+      },
+      "advanced": {
+        "name": "Piano Avanzato",
+        "price": "$99,9",
+        "features": [
+          "5000 punti",
+          "Immagini di alta qualità",
+          "Generazione di immagini più veloce",
+          "Abbonamento annuale"
+        ]
+      },
+      "common": {
+        "buyNowButton": "Acquista ora",
+        "subscribeButton": "Abbonati",
+        "processingButton": "Elaborazione...",
+        "comingSoonButton": "Prossimamente"
+      }
+    }
+  },
+  "modelComparison": {
+    "title": "Confronto dei modelli di IA Flux",
+    "subtitle": "Scegli il modello perfetto per le tue esigenze creative",
+    "promptSection": {
+      "showPrompt": "Mostra prompt",
+      "hidePrompt": "Nascondi prompt",
+      "promptTitle": "Prompt utilizzato per tutti i modelli",
+      "copyButton": "Copia prompt",
+      "copiedButton": "Copiato!"
+    },
+    "modelDetails": {
+      "processingTime": "Tempo di elaborazione",
+      "outputSize": "Dimensione dell'output",
+      "bestFor": "Ideale per",
+      "keyFeatures": "Caratteristiche principali"
+    },
+    "models": {
+      "ultra": {
+        "name": "Flux 1.1 Pro Ultra",
+        "description": "Le immagini hanno una risoluzione fino a 4 megapixel. Utilizza la modalità raw per il realismo.",
+        "features": [
+          "Risoluzione più alta",
+          "Nessun compromesso sulla velocità",
+          "Modalità raw"
+        ],
+        "suitableFor": [
+          "Soggetti umani",
+          "Fotografia naturalistica"
+        ],
+        "highlight": "Realismo",
+        "details": "Nuove capacità ad alta risoluzione per FLUX1.1 [pro], che estendono le sue funzionalità per supportare risoluzioni di immagine 4 volte superiori (fino a 4MP) mantenendo un tempo di generazione impressionante di soli 10 secondi per campione.",
+        "processingTime": "10 secondi",
+        "imageSize": "20962096"
+      },
+      "schnell": {
+        "name": "Flux Schnell",
+        "description": "Il modello di generazione di immagini più veloce, personalizzato per lo sviluppo locale e l'uso personale.",
+        "features": [
+          "Alte prestazioni",
+          "Generazione rapida",
+          "Licenza aperta"
+        ],
+        "suitableFor": [
+          "Uso personale",
+          "Scientifico",
+          "Scopi commerciali"
+        ],
+        "highlight": "Ottimizzato per la velocità",
+        "details": "Ottimizzato per velocità ed efficienza, Flux Schnell offre risultati rapidi perfetti per i concetti iniziali e il prototipazione rapida. Ideale per sviluppatori e designer che necessitano di iterazioni veloci.",
+        "processingTime": "0,8 secondi",
+        "imageSize": "10241024"
+      },
+      "dev": {
+        "name": "Flux Dev",
+        "description": "Un trasformatore di flusso rettificato da 12 miliardi di parametri in grado di generare immagini da descrizioni testuali.",
+        "features": [
+          "Prestazioni competitive",
+          "Formazione efficiente",
+          "Ricerca aperta"
+        ],
+        "suitableFor": [
+          "Uso personale",
+          "Scientifico",
+          "Scopi commerciali"
+        ],
+        "highlight": "Più efficiente",
+        "details": "Un potente modello di generazione di immagini da 12 miliardi di parametri che offre output di alta qualità con supporto per l'uso commerciale, prestazioni ottimizzate e linee guida etiche chiare per lo sviluppo responsabile dell'IA.",
+        "processingTime": "3-5 secondi",
+        "imageSize": "10241024"
+      },
+      "pro11": {
+        "name": "Flux 1.1 Pro",
+        "description": "FLUX Pro più veloce e migliore. Modello testo-immagine con eccellente qualità dell'immagine, aderenza al prompt e diversità di output.",
+        "features": [
+          "Generazione 6 volte più veloce",
+          "Qualità migliorata",
+          "Architettura avanzata"
+        ],
+        "suitableFor": [
+          "Flussi di lavoro professionali",
+          "Progetti critici per la qualità",
+          "Ambienti di produzione"
+        ],
+        "highlight": "Qualità migliorata",
+        "details": "Un modello di generazione di immagini allo stato dell'arte da 12 miliardi di parametri con velocità 6 volte superiore, qualità migliorata e prestazioni leader nel settore, costruito con un'architettura ibrida avanzata che combina blocchi di trasformatori di diffusione multimodali e paralleli per ambienti professionali e di produzione.",
+        "processingTime": "8-10 secondi",
+        "imageSize": "14401440"
+      },
+      "pro": {
+        "name": "Flux Pro",
+        "description": "Generazione di immagini allo stato dell'arte con aderenza al prompt, qualità visiva, dettagli delle immagini e diversità di output di prim'ordine.",
+        "features": [
+          "Prestazioni al top",
+          "Risoluzione flessibile",
+          "Architettura avanzata"
+        ],
+        "suitableFor": [
+          "Progetti professionali",
+          "Applicazioni versatili"
+        ],
+        "highlight": "Qualità premium",
+        "details": "Un modello di generazione di immagini premium da 12 miliardi di parametri che offre prestazioni allo stato dell'arte con qualità visiva superiore e supporto per risoluzioni versatili, alimentato da un'architettura ibrida che combina blocchi di trasformatori di diffusione multimodali e paralleli.",
+        "processingTime": "15-25 secondi",
+        "imageSize": "1440*1440"
+      }
+    }
+  },
+  "imagePreview": {
+    "loading": "Creazione del tuo capolavoro...",
+    "placeholder": "La tua immagine generata dall'IA apparirà qui",
+    "downloadButton": "Scarica",
+    "dimensions": {
+      "width": "Larghezza",
+      "height": "Altezza"
+    }
+  },
+  "autoLogout": {
+    "warningMessage": "La tua sessione scadrà tra {minutes} minuti.",
+    "stayLoggedIn": "Rimani connesso"
+  },
+  "footer": {
+    "description": "Trasforma le tue idee in immagini straordinarie con la potenza di Flux AI",
+    "quickLinks": "Link rapidi",
+    "pricing": "Prezzi",
+    "contact": "Contatti",
+    "legal": "Note legali",
+    "terms": "Termini di servizio",
+    "privacy": "Privacy",
+    "support": "Supporto",
+    "allRightsReserved": "Tutti i diritti riservati",
+    "fluxAI": {
+      "title": "Flux Image AI",
+      "desc": "Sperimenta gli strumenti di generazione immagini di Flux AI"
+    },
+    "soraAI": {
+      "title": "SORA AI",
+      "desc": "Esplora le capacità di SORA AI"
+    },
+    "aiBestTool": {
+      "title": "Migliori strumenti AI",
+      "desc": "Scopri i migliori strumenti di AI"
+    }
+  },
+  "auth": {
+    "signIn": "Accedi al tuo account",
+    "createAccount": "Crea nuovo account",
+    "fullName": "Nome completo",
+    "emailAddress": "Indirizzo email",
+    "password": "Password",
+    "signInButton": "Accedi",
+    "registerButton": "Registrati",
+    "noAccount": "Non hai un account? Registrati",
+    "hasAccount": "Hai già un account? Accedi",
+    "errors": {
+      "unexpected": "Si è verificato un errore imprevisto. Riprova.",
+      "invalidFormat": "Formato di risposta inatteso",
+      "authFailed": "Autenticazione fallita"
+    }
+  },
+  "imageGenerator": {
+    "title": "Crea immagini straordinarie con Flux AI",
+    "subtitle": "Trasforma le tue idee in capolavori visivi in pochi secondi",
+    "pageTitle": "Generatore di immagini Flux AI",
+    "description": "Trasforma le tue idee in visuali straordinarie",
+    "promptLabel": "Descrizione dell'immagine",
+    "promptPlaceholder": "Prova: Un leone maestoso seduto sulla cima di una montagna al tramonto...",
+    "modelLabel": "Modello AI",
+    "modelPoints": "Punto|Punti",
+    "modelPremium": "Premium",
+    "aspectRatioLabel": "Rapporto d'aspetto",
+    "outputFormatLabel": "Formato di output",
+    "generateButton": "Genera immagine",
+    "generatingButton": "Generazione in corso...",
+    "freeGenerations": "Generazioni gratuite",
+    "points": "Punti",
+    "loginForMore": "Accedi per più generazioni",
+    "error": "Si è verificato un errore"
+  },
+  "ultraHero": {
+    "heroTitle": "FLUX 1.1 Ultra",
+    "heroSubtitle": "Nuova Generazione",
+    "heroDescription": "Nuove capacità ad alta risoluzione sono state aggiunte a FLUX1.1 [pro], estendendo la sua funzionalità per supportare risoluzioni delle immagini 4 volte superiori (fino a 4MP), mantenendo al contempo un tempo di generazione impressionante di soli 10 secondi per campione.",
+    "heroCallToAction": "Prova Ultra ora",
+    "heroExploreFeatures": "Esplora le Funzionalità",
+    "sectionNewRelease": "Nuova Versione",
+    "imageAlt": "Esempio di FLUX 1.1 Ultra"
+  },
+  "faqData": [
+    {
+      "question": "Cos'è Flux 1.1 Pro Ultra?",
+      "answer": "Flux 1.1 Pro Ultra è un modello avanzato di generazione di immagini AI in grado di creare immagini altamente realistiche fino a 4 megapixel di risoluzione. Offre modalità ultra e raw per la massima flessibilità nella generazione di immagini."
+    },
+    {
+      "question": "Come posso provare Flux 1.1 Pro Ultra?",
+      "answer": "Puoi provare Flux 1.1 Pro Ultra gratuitamente accedendo al tuo account. I nuovi utenti ricevono 3 punti (1 volta) per sperimentare le capacità potenziate di questo modello avanzato."
+    },
+    {
+      "question": "Quali sono le caratteristiche principali di Flux 1.1 Pro Ultra?",
+      "answer": "Le caratteristiche principali includono la capacità di generare immagini fino a 4 megapixel, una modalità raw ottimizzata per output fotorealistici e capacità migliorate di generazione di immagini naturali rispetto ai modelli precedenti."
+    },
+    {
+      "question": "Qual è la differenza tra le modalità ultra e raw?",
+      "answer": "Mentre entrambe le modalità possono generare immagini di alta qualità, la modalità raw è specificamente ottimizzata per creare immagini altamente realistiche e naturali. La modalità ultra offre capacità di generazione di immagini più generiche."
+    },
+    {
+      "question": "Cosa rende Flux 1.1 Pro Ultra diverso dagli altri modelli?",
+      "answer": "Flux 1.1 Pro Ultra si distingue per la sua capacità di generare immagini più grandi di 4 megapixel, un realismo migliorato particolarmente in modalità raw e una generazione di immagini naturali migliorata rispetto alle versioni precedenti."
+    }
+  ],
+  "ultraFeatures": {
+    "title": "Caratteristiche di FLUX 1.1 Ultra",
+    "subtitle": "Usa la modalità raw per maggiore realismo",
+    "features": {
+      "resolution": {
+        "title": "Risoluzione Ultra Alta",
+        "subtitle": "Motore di risoluzione FLUX 1.1 Ultra",
+        "description": "Crea immagini straordinarie fino a 2096x2096 di risoluzione con dettagli e chiarezza eccezionali. Perfetto per uso professionale e stampa di grande formato.",
+        "highlight": "Fino a 2096x2096"
+      },
+      "speed": {
+        "title": "Nessun compromesso sulla velocità",
+        "subtitle": "Più veloce",
+        "description": "A differenza di molti modelli ad alta risoluzione che subiscono rallentamenti significativi, i nostri test di prestazioni mostrano tempi di generazione rapidi e costanti, oltre 2,5 volte più veloci delle offerte ad alta risoluzione comparabili.",
+        "highlight": "10s 2.5X più veloce"
+      },
+      "price": {
+        "title": "Prezzo competitivo",
+        "subtitle": "Aumento in quantità ma non in prezzo",
+        "description": "Questo modello ha un prezzo competitivo, con lo stesso prezzo per immagine delle altre versioni Pro.",
+        "highlight": "Vantaggi materiali"
+      },
+      "rawMode": {
+        "title": "Realismo della modalità Raw",
+        "subtitle": "Generazione FLUX Ultra",
+        "description": "FLUX1.1 [pro] – modalità raw: Per i creatori che cercano autenticità, la nostra nuova modalità raw cattura la sensazione genuina della fotografia spontanea. Attiva questa funzione per generare immagini con un'estetica meno sintetica e più naturale.",
+        "highlight": "Soggetti umani e natura"
+      }
+    },
+    "tryNow": "Prova Ultra ora",
+    "viewPricing": "Vedi prezzi"
+  },
+  "ultraFAQ": {
+    "title": "Domande frequenti",
+    "subtitle": "Ottieni risposte alle domande comuni su Flux 1.1 Ultra e come può migliorare il tuo flusso di lavoro creativo",
+    "questions": {
+      "what": {
+        "question": "Cos'è Flux 1.1 Pro Ultra?",
+        "answer": "Flux 1.1 Pro Ultra è un modello avanzato di generazione di immagini AI che può creare immagini altamente realistiche fino a 4 megapixel di risoluzione. Offre sia modalità ultra che raw per la massima flessibilità nella generazione di immagini."
+      },
+      "howToTry": {
+        "question": "Come posso provare Flux 1.1 Pro Ultra?",
+        "answer": "Puoi provare Flux 1.1 Pro Ultra gratuitamente accedendo al tuo account. I nuovi utenti ricevono 3 punti (1 utilizzo) per sperimentare le capacità migliorate di questo modello avanzato."
+      },
+      "keyFeatures": {
+        "question": "Quali sono le caratteristiche principali di Flux 1.1 Pro Ultra?",
+        "answer": "Le caratteristiche principali includono la capacità di generare immagini fino a 4 megapixel, una modalità raw ottimizzata per output fotorealistici e capacità migliorate di generazione di immagini naturali rispetto ai modelli precedenti."
+      },
+      "modeDifference": {
+        "question": "Qual è la differenza tra le modalità ultra e raw?",
+        "answer": "Mentre entrambe le modalità possono generare immagini di alta qualità, la modalità raw è specificamente ottimizzata per creare immagini altamente realistiche e naturali. La modalità ultra offre capacità di generazione di immagini più generali."
+      },
+      "comparison": {
+        "question": "Cosa distingue Flux 1.1 Pro Ultra dagli altri modelli?",
+        "answer": "Flux 1.1 Pro Ultra si distingue per la sua capacità di generare immagini più grandi da 4 megapixel, realismo migliorato particolarmente in modalità raw e generazione di immagini naturali migliorata rispetto alle versioni precedenti."
+      }
+    }
+  }
+}

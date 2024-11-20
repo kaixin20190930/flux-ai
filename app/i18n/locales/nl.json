@@ -1,0 +1,452 @@
+{
+  "metadata": {
+    "title": "Flux AI Gratis Beeldgenerator",
+    "description": "Creëer verbluffende AI-gegenereerde afbeeldingen met Flux AI",
+    "keywords": "AI, beeldgenerator, kunstmatige intelligentie, Flux AI, AI kunst"
+  },
+  "navigation": {
+    "home": "Home",
+    "create": "Creëren",
+    "hub": "Galerij",
+    "pricing": "Prijzen",
+    "profile": "Profiel",
+    "logout": "Uitloggen",
+    "login": "Inloggen",
+    "flux11Ultra": "Flux 1.1 Ultra"
+  },
+  "hero": {
+    "mainTitle": "FLUX AI",
+    "subTitle1": "Verander je ideeën in",
+    "subTitle2": "Verbluffende visuals",
+    "description": "Creëer in seconden unieke, AI-aangedreven meesterwerken. Maak van je verbeelding werkelijkheid met onze geavanceerde Flux AI.",
+    "startButton": "Begin met creëren",
+    "learnMoreButton": "Meer informatie",
+    "examplesButton": "Voorbeelden",
+    "imageAlt": "Voorbeeld van AI-gegenereerde kunst"
+  },
+  "features": {
+    "title": "Waarom kiezen voor Flux AI",
+    "subtitle": "Enterprise-niveau AI-beeldgeneratie voor professionele makers",
+    "cards": {
+      "advancedAI": {
+        "title": "Geavanceerde AI Beeldgeneratie",
+        "subtitle": "FLUX AI Professionele Beeldmaker",
+        "description": "Genereer uitzonderlijke beelden tot 1440x1440 resolutie met ons transformer-gebaseerde AI-model. Ondersteunt FLUX [pro], [dev] en [schnell] beeldgeneratiemodellen van BlackForestLabs.",
+        "highlight": "Tot 1440x1440 resolutie"
+      },
+      "multipleStyles": {
+        "title": "Meerdere Stijlopties",
+        "subtitle": "FLUX AI Stijl Engine",
+        "description": "Creëer beelden in verschillende stijlen, van fotorealistisch tot artistiek. Ondersteunt uitgebreide stijlcontroles zoals anime, digitale kunst, olieverfschilderijen en meer, met nauwkeurige promptcontrole.",
+        "highlight": "Meerdere artistieke stijlen"
+      },
+      "advancedModel": {
+        "title": "Geavanceerde Modelarchitectuur",
+        "subtitle": "FLUX AI Technologie",
+        "description": "Aangedreven door een state-of-the-art transformer-architectuur met meer dan 12 miljard parameters, levert uitzonderlijke beeldkwaliteit en nauwkeurige promptnauwkeurigheid door onze eigen trainingstechnieken.",
+        "highlight": "12B+ parameters"
+      },
+      "flexiblePricing": {
+        "title": "Flexibele Prijsplannen",
+        "subtitle": "FLUX AI Prijzen",
+        "description": "Begin met onze gratis optie (3 gratis generaties per dag zonder inloggen) of upgrade naar premiumplannen vanaf $9,9 voor 200 generaties. Toegang tot geavanceerde functies zoals hogere resoluties, prioriteitsgeneratie en verhoogde generatielimieten.",
+        "highlight": "Startend vanaf gratis"
+      }
+    },
+    "cta": {
+      "title": "Ervaar Professionele AI Beeldgeneratie",
+      "tryButton": "Probeer het gratis",
+      "pricingButton": "Bekijk prijzen"
+    }
+  },
+  "examples": {
+    "title": "AI Generatievoorbeelden",
+    "subtitle": "Ontdek wat je kunt creëren met FLUX AI"
+  },
+  "userExperience": {
+    "title": "Hoe Werkt Het?",
+    "subtitle": "Maak verbluffende AI-gegenereerde beelden met onze Flux AI beeldgenerator",
+    "steps": {
+      "describe": {
+        "title": "Beschrijf je visie",
+        "subtitle": "AI-Gestuurde Taalbegrip",
+        "description": "Typ eenvoudig een beschrijving van het beeld dat je wilt maken. Onze AI begrijpt invoer in natuurlijke taal.",
+        "highlight": "Natuurlijke Taalverwerking"
+      },
+      "generate": {
+        "title": "AI-Magie aan het werk",
+        "subtitle": "Geavanceerde Beeldgeneratie",
+        "description": "Onze krachtige AI verwerkt je beschrijving en genereert unieke beeldopties die aansluiten bij jouw visie.",
+        "highlight": "Meerdere stijlopties"
+      },
+      "refine": {
+        "title": "Verfijn en Perfectioneer",
+        "subtitle": "Resultaten afstemmen",
+        "description": "Gebruik onze intuïtieve tools om de gegenereerde beelden aan te passen en te verfijnen totdat ze aan je verwachtingen voldoen.",
+        "highlight": "Professionele Bewerkingshulpmiddelen"
+      },
+      "download": {
+        "title": "Downloaden en Gebruiken",
+        "subtitle": "Klaar voor je projecten",
+        "description": "Download je AI-gegenereerde meesterwerk in hoge resolutie, klaar voor je creatieve projecten.",
+        "highlight": "Hoge Resolutie Output"
+      }
+    }
+  },
+  "faq": {
+    "title": "Veelgestelde Vragen",
+    "subtitle": "Krijg antwoorden op veelgestelde vragen over Flux AI en hoe het jouw creatieve workflow kan verbeteren",
+    "questions": {
+      "what": {
+        "question": "Wat is Flux AI Model?",
+        "answer": "Flux AI is een state-of-the-art kunstmatig intelligentiemodel ontworpen om creatieve taken, beeldgeneratie en ontwerpworkflows te ondersteunen. Het gebruikt geavanceerde machine learning-algoritmen om visuele inhoud te begrijpen en te genereren op basis van gebruikersinvoer."
+      },
+      "versions": {
+        "question": "Wat zijn de verschillende versies van FLUX AI?",
+        "answer": "FLUX AI is beschikbaar in drie varianten: FLUX.1 [pro] voor topprestaties, FLUX.1 [dev] voor niet-commerciële toepassingen en FLUX.1 [schnell] voor snelle, lokale ontwikkeling."
+      },
+      "comparison": {
+        "question": "Hoe vergelijkt Flux AI zich met andere AI-modellen?",
+        "answer": "Flux AI onderscheidt zich door superieure beeldkwaliteit, snellere generatietijden en meer intuïtieve bediening. Ons model is specifiek getraind op hoogwaardige creatieve inhoud, waardoor het bijzonder effectief is voor ontwerp- en artistieke toepassingen."
+      },
+      "imageTypes": {
+        "question": "Welke soorten beelden kan Flux AI genereren?",
+        "answer": "Flux AI kan een breed scala aan visuele inhoud genereren, waaronder illustraties, conceptkunst, productontwerpen, karakterontwerpen en omgevingsscènes. Het model ondersteunt verschillende artistieke stijlen en kan zich aanpassen aan specifieke visuele eisen."
+      },
+      "requirements": {
+        "question": "Wat zijn de technische vereisten om Flux AI te gebruiken?",
+        "answer": "Flux AI werkt in de cloud en is toegankelijk via elke moderne webbrowser. Er is geen speciale hardware nodig, hoewel een stabiele internetverbinding wordt aanbevolen voor optimale prestaties."
+      },
+      "fineTuning": {
+        "question": "Kan ik de FLUX AI Beeldgenerator aanpassen op mijn eigen dataset?",
+        "answer": "Fijnafstellingsopties zijn mogelijk beschikbaar voor zakelijke klanten. Neem contact op met Black Forest Labs om je specifieke behoeften te bespreken."
+      },
+      "limits": {
+        "question": "Is er een limiet aan het aantal beelden dat ik kan genereren?",
+        "answer": "Gebruiksbeperkingen zijn afhankelijk van je abonnement. Gratis gebruikers kunnen tot 3 beelden per dag genereren, terwijl premiumgebruikers profiteren van onbeperkte generaties en prioriteitsverwerking."
+      },
+      "updates": {
+        "question": "Hoe vaak wordt de FLUX AI Beeldgenerator bijgewerkt?",
+        "answer": "Black Forest Labs streeft naar voortdurende verbetering. Hoewel er geen specifieke updateschema's worden verstrekt, kun je regelmatige verbeteringen en verfijningen aan FLUX AI verwachten."
+      },
+      "feedback": {
+        "question": "Hoe kan ik feedback geven of problemen melden met FLUX AI?",
+        "answer": "Black Forest Labs waardeert feedback. Je kunt contact opnemen via hun officiële kanalen of een e-mail sturen naar flux@blackforestlabs.ai voor ondersteuning en om problemen te melden."
+      },
+      "commercial": {
+        "question": "Kan ik de FLUX AI Beeldgenerator gebruiken voor commerciële projecten?",
+        "answer": "Hoewel FLUX.1 [schnell] gratis is voor persoonlijk gebruik, bieden we FLUX.1 [pro] en FLUX.1 [dev] voor commerciële toepassingen van de Flux AI Beeldgenerator. Deze versies bieden verbeterde mogelijkheden en zijn beschikbaar via onze API of partners. Voor commerciële gebruiksvragen over de FLUX AI Beeldgenerator kun je contact opnemen via juq1991@gmail.com."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Prijzen",
+    "subtitle": "Kies het juiste plan voor jou",
+    "tiers": {
+      "basic": {
+        "name": "Basis",
+        "price": "$9.9",
+        "features": [
+          "200 punten",
+          "Hoge kwaliteit afbeeldingen",
+          "Snellere afbeelding generatie",
+          "Geen abonnement"
+        ]
+      },
+      "premium": {
+        "name": "Premium Plan",
+        "price": "$29.9",
+        "features": [
+          "1000 punten",
+          "Hoge kwaliteit afbeeldingen",
+          "Snellere afbeelding generatie",
+          "Maandelijks abonnement"
+        ],
+        "recommended": "Aanbevolen"
+      },
+      "advanced": {
+        "name": "Geavanceerd Plan",
+        "price": "$99.9",
+        "features": [
+          "5000 punten",
+          "Hoge kwaliteit afbeeldingen",
+          "Snellere afbeelding generatie",
+          "Jaarlijks abonnement"
+        ]
+      },
+      "common": {
+        "buyNowButton": "Nu kopen",
+        "subscribeButton": "Abonneren",
+        "processingButton": "Verwerken...",
+        "comingSoonButton": "Binnenkort"
+      }
+    }
+  },
+  "modelComparison": {
+    "title": "Flux AI-modelvergelijking",
+    "subtitle": "Kies het perfecte model voor uw creatieve behoeften",
+    "promptSection": {
+      "showPrompt": "Toon prompt",
+      "hidePrompt": "Verberg prompt",
+      "promptTitle": "Prompt gebruikt voor alle modellen",
+      "copyButton": "Kopieer prompt",
+      "copiedButton": "Gekopieerd!"
+    },
+    "modelDetails": {
+      "processingTime": "Verwerkingstijd",
+      "outputSize": "Uitvoerformaat",
+      "bestFor": "Het beste voor",
+      "keyFeatures": "Belangrijkste kenmerken"
+    },
+    "models": {
+      "ultra": {
+        "name": "Flux 1.1 Pro Ultra",
+        "description": "Afbeeldingen zijn tot 4 megapixels. Gebruik raw-modus voor realisme.",
+        "features": [
+          "Hogere resolutie",
+          "Geen compromis in snelheid",
+          "Raw-modus"
+        ],
+        "suitableFor": [
+          "Menselijke onderwerpen",
+          "Natuurfotografie"
+        ],
+        "highlight": "Realisme",
+        "details": "Nieuwe mogelijkheden met hoge resolutie voor FLUX1.1 [pro], waardoor de functionaliteit wordt uitgebreid om 4x hogere afbeeldingsresoluties (tot 4MP) te ondersteunen, terwijl een indrukwekkende generatietijd van slechts 10 seconden per sample wordt gehandhaafd.",
+        "processingTime": "10 seconden",
+        "imageSize": "20962096"
+      },
+      "schnell": {
+        "name": "Flux Schnell",
+        "description": "Het snelste model voor het genereren van afbeeldingen, op maat gemaakt voor lokale ontwikkeling en persoonlijk gebruik.",
+        "features": [
+          "Hoge prestaties",
+          "Snelle generatie",
+          "Open licentie"
+        ],
+        "suitableFor": [
+          "Persoonlijk",
+          "Wetenschappelijk",
+          "Commerciële doeleinden"
+        ],
+        "highlight": "Geoptimaliseerd voor snelheid",
+        "details": "Geoptimaliseerd voor snelheid en efficiëntie, biedt Flux Schnell snelle resultaten die perfect zijn voor initiële concepten en snelle prototyping. Ideaal voor ontwikkelaars en ontwerpers die snel iteraties nodig hebben.",
+        "processingTime": "0,8 seconden",
+        "imageSize": "10241024"
+      },
+      "dev": {
+        "name": "Flux Dev",
+        "description": "Een gecorrigeerde stroomtransformator met 12 miljard parameters die afbeeldingen kan genereren op basis van tekstbeschrijvingen.",
+        "features": [
+          "Competitieve prestaties",
+          "Efficiënte training",
+          "Open onderzoek"
+        ],
+        "suitableFor": [
+          "Persoonlijk",
+          "Wetenschappelijk",
+          "Commerciële doeleinden"
+        ],
+        "highlight": "Efficiënter",
+        "details": "Een krachtig 12B-parametermodel voor het genereren van afbeeldingen dat output van hoge kwaliteit levert met ondersteuning voor commercieel gebruik, geoptimaliseerde prestaties en duidelijke ethische richtlijnen voor verantwoorde AI-ontwikkeling.",
+        "processingTime": "3-5 seconden",
+        "imageSize": "10241024"
+      },
+      "pro11": {
+        "name": "Flux 1.1 Pro",
+        "description": "Snellere, betere FLUX Pro. Tekst-naar-afbeelding model met uitstekende beeldkwaliteit, prompt-naleving en outputdiversiteit.",
+        "features": [
+          "6x snellere generatie",
+          "Verbeterde kwaliteit",
+          "Geavanceerde architectuur"
+        ],
+        "suitableFor": [
+          "Professionele werkstromen",
+          "Kwaliteitskritische projecten",
+          "Productieomgevingen"
+        ],
+        "highlight": "Verbeterde kwaliteit",
+        "details": "Een state-of-the-art 12B-parameter afbeeldingsgenererend model met 6x snellere snelheid, verbeterde kwaliteit en toonaangevende prestaties, gebouwd met geavanceerde hybride architectuur die multimodale en parallelle diffusietransformerblokken combineert voor professionele en productieomgevingen.",
+        "processingTime": "8-10 seconden",
+        "imageSize": "14401440"
+      },
+      "pro": {
+        "name": "Flux Pro",
+        "description": "Ultramoderne afbeeldingsgeneratie met topklasse prompt-naleving, visuele kwaliteit, afbeeldingsdetails en outputdiversiteit.",
+        "features": [
+          "Topprestaties",
+          "Flexibele resolutie",
+          "Geavanceerde architectuur"
+        ],
+        "suitableFor": [
+          "Professionele projecten",
+          "Veelzijdige toepassingen"
+        ],
+        "highlight": "Premiumkwaliteit",
+        "details": "Een premium 12B-parameter afbeeldingsgenererend model dat ultramoderne prestaties biedt met superieure visuele kwaliteit en ondersteuning voor veelzijdige resolutie, aangedreven door hybride architectuur die multimodale en parallelle diffusietransformerblokken combineert.",
+        "processingTime": "15-25 seconden",
+        "imageSize": "1440*1440"
+      }
+    }
+  },
+  "imagePreview": {
+    "loading": "Je meesterwerk maken...",
+    "placeholder": "Je AI-gegenereerde afbeelding verschijnt hier",
+    "downloadButton": "Download",
+    "dimensions": {
+      "width": "Breedte",
+      "height": "Hoogte"
+    }
+  },
+  "autoLogout": {
+    "warningMessage": "Je sessie verloopt over {minutes} minuten.",
+    "stayLoggedIn": "Ingelogd blijven"
+  },
+  "footer": {
+    "description": "Transformeer uw ideeën in verbluffende visuals met de kracht van Flux AI",
+    "quickLinks": "Snelle Links",
+    "pricing": "Prijzen",
+    "contact": "Contact",
+    "legal": "Juridisch",
+    "terms": "Gebruiksvoorwaarden",
+    "privacy": "Privacybeleid",
+    "support": "Ondersteuning",
+    "allRightsReserved": "Alle rechten voorbehouden",
+    "fluxAI": {
+      "title": "Flux Afbeelding AI",
+      "desc": "Ervaar de beeldgeneratie-tools van Flux AI"
+    },
+    "soraAI": {
+      "title": "SORA AI",
+      "desc": "Ontdek de mogelijkheden van SORA AI"
+    },
+    "aiBestTool": {
+      "title": "Beste AI Tools",
+      "desc": "Ontdek de beste AI-tools"
+    }
+  },
+  "auth": {
+    "signIn": "Inloggen op uw account",
+    "createAccount": "Nieuw account aanmaken",
+    "fullName": "Volledige naam",
+    "emailAddress": "E-mailadres",
+    "password": "Wachtwoord",
+    "signInButton": "Inloggen",
+    "registerButton": "Registreren",
+    "noAccount": "Geen account? Registreer nu",
+    "hasAccount": "Al een account? Log in",
+    "errors": {
+      "unexpected": "Er is een onverwachte fout opgetreden. Probeer het opnieuw.",
+      "invalidFormat": "Onverwacht antwoordformaat",
+      "authFailed": "Authenticatie mislukt"
+    }
+  },
+  "imageGenerator": {
+    "title": "Creëer verbluffende afbeeldingen met Flux AI",
+    "subtitle": "Transformeer uw ideeën in visuele meesterwerken in seconden",
+    "pageTitle": "Flux AI Afbeeldingsgenerator",
+    "description": "Transformeer uw ideeën in verbluffende visuals",
+    "promptLabel": "Afbeeldingsbeschrijving",
+    "promptPlaceholder": "Probeer: Een majestueuze leeuw zittend op een bergtop bij zonsondergang...",
+    "modelLabel": "AI Model",
+    "modelPoints": "Punt|Punten",
+    "modelPremium": "Premium",
+    "aspectRatioLabel": "Beeldverhouding",
+    "outputFormatLabel": "Uitvoerformaat",
+    "generateButton": "Genereer afbeelding",
+    "generatingButton": "Genereren...",
+    "freeGenerations": "Gratis generaties",
+    "points": "Punten",
+    "loginForMore": "Log in voor meer generaties",
+    "error": "Er is een fout opgetreden"
+  },
+  "ultraHero": {
+    "heroTitle": "FLUX 1.1 Ultra",
+    "heroSubtitle": "Volgende Generatie",
+    "heroDescription": "Nieuwe hoogresolutiemogelijkheden zijn toegevoegd aan FLUX1.1 [pro], waardoor de functionaliteit is uitgebreid om 4 keer hogere beeldresoluties (tot 4MP) te ondersteunen, terwijl de indrukwekkende generatietijd van slechts 10 seconden per monster behouden blijft.",
+    "heroCallToAction": "Probeer Ultra nu",
+    "heroExploreFeatures": "Ontdek functies",
+    "sectionNewRelease": "Nieuwe release",
+    "imageAlt": "Voorbeeld FLUX 1.1 Ultra"
+  },
+  "faqData": [
+    {
+      "question": "Wat is Flux 1.1 Pro Ultra?",
+      "answer": "Flux 1.1 Pro Ultra is een geavanceerd AI-beeldgeneratormodel dat zeer realistische afbeeldingen kan maken met een resolutie tot 4 megapixels. Het biedt zowel ultra- als raw-modi voor maximale flexibiliteit bij het genereren van afbeeldingen."
+    },
+    {
+      "question": "Hoe kan ik Flux 1.1 Pro Ultra proberen?",
+      "answer": "U kunt Flux 1.1 Pro Ultra gratis proberen door in te loggen op uw account. Nieuwe gebruikers krijgen 3 punten (1 keer) om de verbeterde mogelijkheden van dit geavanceerde model te ervaren."
+    },
+    {
+      "question": "Wat zijn de belangrijkste kenmerken van Flux 1.1 Pro Ultra?",
+      "answer": "De belangrijkste kenmerken zijn het vermogen om afbeeldingen tot 4 megapixels te genereren, een raw-modus geoptimaliseerd voor fotorealistische output, en verbeterde natuurlijke beeldgeneratiemogelijkheden in vergelijking met eerdere modellen."
+    },
+    {
+      "question": "Wat is het verschil tussen ultra- en raw-modi?",
+      "answer": "Hoewel beide modi hoogwaardige afbeeldingen kunnen genereren, is de raw-modus specifiek geoptimaliseerd voor het creëren van zeer realistische en natuurlijk ogende afbeeldingen. De ultra-modus biedt meer algemene beeldgeneratiemogelijkheden."
+    },
+    {
+      "question": "Wat maakt Flux 1.1 Pro Ultra anders dan andere modellen?",
+      "answer": "Flux 1.1 Pro Ultra onderscheidt zich door zijn vermogen om grotere 4 megapixel afbeeldingen te genereren, verbeterd realisme vooral in raw-modus, en verbeterde natuurlijke beeldgeneratie in vergelijking met eerdere versies."
+    }
+  ],
+  "ultraFeatures": {
+    "title": "FLUX 1.1 Ultra Functies",
+    "subtitle": "Gebruik raw-modus voor meer realisme",
+    "features": {
+      "resolution": {
+        "title": "Ultra Hoge Resolutie",
+        "subtitle": "FLUX 1.1 Ultra Resolutie Engine",
+        "description": "Creëer verbluffende afbeeldingen tot 2096x2096 resolutie met uitzonderlijke details en helderheid. Perfect voor professioneel gebruik en grootformaat afdrukken.",
+        "highlight": "Tot 2096x2096"
+      },
+      "speed": {
+        "title": "Geen compromis in snelheid",
+        "subtitle": "Sneller",
+        "description": "In tegenstelling tot veel hoogresolutiemodellen die significante vertragingen ervaren, tonen onze prestatietests constante snelle generatietijden - meer dan 2,5 keer sneller dan vergelijkbare hoogresolutie-aanbiedingen.",
+        "highlight": "10s 2.5X sneller"
+      },
+      "price": {
+        "title": "Concurrerende prijs",
+        "subtitle": "Toename in hoeveelheid maar niet in prijs",
+        "description": "Dit model is concurrerend geprijsd, met dezelfde prijs per afbeelding als de andere Pro-versies.",
+        "highlight": "Materiële voordelen"
+      },
+      "rawMode": {
+        "title": "Raw-modus Realisme",
+        "subtitle": "FLUX Ultra Generatie",
+        "description": "FLUX1.1 [pro] – raw-modus: Voor makers die authenticiteit zoeken, vangt onze nieuwe raw-modus het echte gevoel van spontane fotografie. Activeer deze functie voor afbeeldingen met een minder synthetische, natuurlijkere esthetiek.",
+        "highlight": "Menselijke onderwerpen en natuur"
+      }
+    },
+    "tryNow": "Probeer Ultra nu",
+    "viewPricing": "Bekijk prijzen"
+  },
+  "ultraFAQ": {
+    "title": "Veelgestelde vragen",
+    "subtitle": "Krijg antwoorden op veelvoorkomende vragen over Flux 1.1 Ultra en hoe het uw creatieve workflow kan verbeteren",
+    "questions": {
+      "what": {
+        "question": "Wat is Flux 1.1 Pro Ultra?",
+        "answer": "Flux 1.1 Pro Ultra is een geavanceerd AI-beeldgeneratiemodel dat zeer realistische afbeeldingen kan maken met een resolutie tot 4 megapixels. Het biedt zowel ultra- als raw-modi voor maximale flexibiliteit bij het genereren van afbeeldingen."
+      },
+      "howToTry": {
+        "question": "Hoe kan ik Flux 1.1 Pro Ultra proberen?",
+        "answer": "U kunt Flux 1.1 Pro Ultra gratis proberen door in te loggen op uw account. Nieuwe gebruikers krijgen 3 punten (1 gebruik) om de verbeterde mogelijkheden van dit geavanceerde model te ervaren."
+      },
+      "keyFeatures": {
+        "question": "Wat zijn de belangrijkste kenmerken van Flux 1.1 Pro Ultra?",
+        "answer": "De belangrijkste kenmerken zijn onder meer de mogelijkheid om afbeeldingen tot 4 megapixels te genereren, een raw-modus geoptimaliseerd voor fotorealistische output, en verbeterde natuurlijke beeldgeneratiemogelijkheden in vergelijking met eerdere modellen."
+      },
+      "modeDifference": {
+        "question": "Wat is het verschil tussen ultra- en raw-modus?",
+        "answer": "Hoewel beide modi hoogwaardige afbeeldingen kunnen genereren, is de raw-modus specifiek geoptimaliseerd voor het creëren van zeer realistische en natuurlijk ogende afbeeldingen. De ultra-modus biedt meer algemene beeldgeneratiemogelijkheden."
+      },
+      "comparison": {
+        "question": "Wat onderscheidt Flux 1.1 Pro Ultra van andere modellen?",
+        "answer": "Flux 1.1 Pro Ultra onderscheidt zich door zijn vermogen om grotere 4 megapixel afbeeldingen te genereren, verbeterd realisme vooral in raw-modus, en verbeterde natuurlijke beeldgeneratie in vergelijking met eerdere versies."
+      }
+    }
+  }
+}

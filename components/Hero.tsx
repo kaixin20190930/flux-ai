@@ -5,8 +5,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {motion} from 'framer-motion'
 import {ArrowRight} from 'lucide-react'
+import type {Dictionary} from '@/app/i18n/settings'
 
-export const Hero = () => {
+interface HeroProps {
+    dictionary: Dictionary;
+    locale: string;
+}
+
+export const Hero: React.FC<HeroProps> = ({dictionary, locale}) => {
     const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {
@@ -32,26 +38,25 @@ export const Hero = () => {
                         className="flex-1 text-center lg:text-left"
                     >
                         <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-                             <span
-                                 className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-500 block mt-2">
-                                FLUX AI
+                            <span
+                                className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-500 block mt-2">
+                                {dictionary.hero.mainTitle}
                             </span>
-                            Transform Your Ideas Into
+                            {dictionary.hero.subTitle1}
                             <span
                                 className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-300 block mt-2">
-                                Stunning Visuals
+                                {dictionary.hero.subTitle2}
                             </span>
                         </h1>
                         <p className="text-lg lg:text-xl text-white/80 mb-8 max-w-2xl mx-auto lg:mx-0">
-                            Create unique, AI-powered masterpieces in seconds. Turn your imagination into reality with
-                            our advanced Flux AI.
+                            {dictionary.hero.description}
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                             <Link
-                                href="/create"
+                                href={`/${locale}/create`}
                                 className="px-8 py-4 bg-white text-indigo-600 rounded-xl font-bold hover:bg-indigo-100 transition duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 group"
                             >
-                                Start Creating
+                                {dictionary.hero.startButton}
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform"/>
                             </Link>
                             <a
@@ -64,9 +69,8 @@ export const Hero = () => {
                                     });
                                 }}
                             >
-                                Learn More
+                                {dictionary.hero.learnMoreButton}
                             </a>
-
                             <a
                                 href="#examples"
                                 className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-bold hover:bg-white/20 transition duration-300 flex items-center justify-center gap-2"
@@ -77,7 +81,7 @@ export const Hero = () => {
                                     });
                                 }}
                             >
-                                Examples
+                                {dictionary.hero.examplesButton}
                             </a>
                         </div>
                     </motion.div>
@@ -90,18 +94,15 @@ export const Hero = () => {
                         className="flex-1 relative"
                     >
                         <div className="relative w-full max-w-xl mx-auto">
-                            {/* Main Image */}
                             <div className="relative z-20 rounded-2xl overflow-hidden shadow-2xl">
                                 <Image
                                     src="/pictures/Hero.jpg"
-                                    alt="AI Generated Art Example"
+                                    alt={dictionary.hero.imageAlt}
                                     width={600}
                                     height={600}
                                     className="w-full h-auto"
                                 />
                             </div>
-
-                            {/* 装饰性元素 */}
                             <div
                                 className="absolute inset-0 bg-gradient-to-r from-indigo-500/30 to-purple-500/30 rounded-2xl blur-3xl -z-10 transform scale-95"/>
                         </div>

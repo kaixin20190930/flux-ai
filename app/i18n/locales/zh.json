@@ -1,0 +1,452 @@
+{
+  "metadata": {
+    "title": "Flux AI 免费图像生成器",
+    "description": "使用 Flux AI 创建令人惊叹的 AI 生成图像",
+    "keywords": "AI, 图像生成器, 人工智能, Flux AI"
+  },
+  "navigation": {
+    "home": "首页",
+    "create": "创建",
+    "hub": "作品",
+    "pricing": "价格",
+    "profile": "个人中心",
+    "logout": "退出登录",
+    "login": "登录",
+    "flux11Ultra": "Flux 1.1 Ultra"
+  },
+  "hero": {
+    "mainTitle": "FLUX AI",
+    "subTitle1": "将您的创意转化为",
+    "subTitle2": "令人惊叹的视觉效果",
+    "description": "在几秒钟内创建独特的、AI驱动的杰作。通过我们先进的Flux AI,将您的想象力变为现实。",
+    "startButton": "开始创作",
+    "learnMoreButton": "了解更多",
+    "examplesButton": "示例",
+    "imageAlt": "AI生成的艺术示例"
+  },
+  "features": {
+    "title": "为什么选择 Flux AI",
+    "subtitle": "为专业创作者打造的企业级 AI 图像生成",
+    "cards": {
+      "advancedAI": {
+        "title": "先进的 AI 图像生成",
+        "subtitle": "FLUX AI 专业图像创建器",
+        "description": "使用我们基于 transformer 的 AI 模型生成高达 1440x1440 分辨率的卓越图像。支持来自 BlackForestLabs 的 FLUX [pro]、[dev] 和 [schnell] 图像生成模型。",
+        "highlight": "高达 1440x1440 分辨率"
+      },
+      "multipleStyles": {
+        "title": "多种风格控制",
+        "subtitle": "FLUX AI 风格引擎",
+        "description": "从逼真到艺术风格创建各种风格的图像。通过精确的提示控制，支持全面的风格控制，包括动漫、数字艺术、油画等。",
+        "highlight": "多种艺术风格"
+      },
+      "advancedModel": {
+        "title": "先进的模型架构",
+        "subtitle": "FLUX AI 技术",
+        "description": "由最先进的具有 120 亿以上参数的 transformer 架构提供支持，通过我们专有的训练技术实现卓越的图像质量和精确的提示遵从度。",
+        "highlight": "120 亿以上参数"
+      },
+      "flexiblePricing": {
+        "title": "灵活的定价方案",
+        "subtitle": "FLUX AI 定价",
+        "description": "从我们的免费层开始（每天 3 次免费生成，无需登录）或升级到每 200 次生成 $9.9 起的高级计划。访问高级功能，包括更高的分辨率、优先生成和增加生成限制。",
+        "highlight": "免费开始"
+      }
+    },
+    "cta": {
+      "title": "体验专业 AI 图像生成",
+      "tryButton": "免费试用",
+      "pricingButton": "查看定价"
+    }
+  },
+  "examples": {
+    "title": "AI 生成示例",
+    "subtitle": "探索您可以使用 FLUX AI 创建的内容"
+  },
+  "userExperience": {
+    "title": "工作原理",
+    "subtitle": "使用我们的 Flux AI 图像生成器创建令人惊叹的 AI 生成图像",
+    "steps": {
+      "describe": {
+        "title": "描述您的愿景",
+        "subtitle": "AI 驱动的文本理解",
+        "description": "只需键入您想要创建的图像的描述。我们的 AI 理解自然语言输入。",
+        "highlight": "自然语言处理"
+      },
+      "generate": {
+        "title": "AI 魔法在工作",
+        "subtitle": "高级图像生成",
+        "description": "我们强大的 AI 处理您的描述并生成与您的愿景相匹配的独特图像选项。",
+        "highlight": "多种风格选项"
+      },
+      "refine": {
+        "title": "优化和完善",
+        "subtitle": "微调您的结果",
+        "description": "使用我们直观的工具调整和优化生成的图像，直到它们符合您的期望。",
+        "highlight": "专业编辑工具"
+      },
+      "download": {
+        "title": "下载和使用",
+        "subtitle": "为您的项目做好准备",
+        "description": "以高分辨率下载您的 AI 生成的杰作，为您的创意项目做好准备。",
+        "highlight": "高分辨率输出"
+      }
+    }
+  },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "获取有关 Flux AI 的常见问题的答案，以及它如何增强您的创意工作流程",
+    "questions": {
+      "what": {
+        "question": "什么是 Flux AI 模型？",
+        "answer": "Flux AI 是一种最先进的人工智能模型，旨在协助创意任务、图像生成和设计工作流程。它使用高级机器学习算法来理解和生成基于用户输入的视觉内容。"
+      },
+      "versions": {
+        "question": "FLUX AI 有哪些不同的版本？",
+        "answer": "FLUX AI 有三种变体：用于顶级性能的 FLUX.1 [pro]、用于非商业应用的 FLUX.1 [dev] 和用于快速本地开发的 FLUX.1 [schnell]。"
+      },
+      "comparison": {
+        "question": "Flux AI 与其他 AI 模型相比如何？",
+        "answer": "Flux AI 通过卓越的图像质量、更快的生成时间和更直观的控制来区分自己。我们的模型经过专门的高质量创意内容训练，使其特别适用于设计和艺术应用。"
+      },
+      "imageTypes": {
+        "question": "Flux AI 可以生成哪些类型的图像？",
+        "answer": "Flux AI 可以生成各种视觉内容，包括插图、概念艺术、产品设计、角色设计和环境场景。该模型支持各种艺术风格，并可以适应特定的视觉要求。"
+      },
+      "requirements": {
+        "question": "使用 Flux AI 的技术要求是什么？",
+        "answer": "Flux AI 在云中运行，可以通过任何现代 Web 浏览器访问。不需要特殊硬件，但建议使用稳定的互联网连接以获得最佳性能。"
+      },
+      "fineTuning": {
+        "question": "我可以在自己的数据集上微调 FLUX AI 图像生成器吗？",
+        "answer": "企业客户可能提供微调选项。请直接联系 Black Forest Labs 讨论您的具体需求。"
+      },
+      "limits": {
+        "question": "我可以生成多少图像有限制吗？",
+        "answer": "使用限制取决于您的订阅等级。免费用户每天可以生成最多 3 张图像，而高级用户可以享受无限生成和优先处理。"
+      },
+      "updates": {
+        "question": "FLUX AI 图像生成器更新的频率如何？",
+        "answer": "Black Forest Labs 致力于持续改进。虽然没有提供具体的更新时间表，但您可以期待 FLUX AI 的定期增强和改进。"
+      },
+      "feedback": {
+        "question": "我如何提供反馈或报告 FLUX AI 的问题？",
+        "answer": "Black Forest Labs 欢迎反馈。您可以通过他们的官方渠道或发送电子邮件至 flux@blackforestlabs.ai 寻求支持并报告任何问题。"
+      },
+      "commercial": {
+        "question": "我可以将 FLUX AI 图像生成器用于商业项目吗？",
+        "answer": "虽然 FLUX.1 [schnell] 可免费用于个人使用，但我们提供 FLUX.1 [pro] 和 FLUX.1 [dev] 用于 Flux AI 图像生成器的商业应用。这些版本提供增强的功能，可通过我们的 API 或合作伙伴获得。有关 FLUX AI 图像生成器商业使用的查询，请通过 juq1991@gmail.com 与我们联系。"
+      }
+    }
+  },
+  "pricing": {
+    "title": "定价",
+    "subtitle": "选择适合您的计划",
+    "tiers": {
+      "basic": {
+        "name": "基础版",
+        "price": "¥68",
+        "features": [
+          "200点",
+          "高质量图像",
+          "更快的图像生成",
+          "无需订阅"
+        ]
+      },
+      "premium": {
+        "name": "高级版",
+        "price": "¥206",
+        "features": [
+          "1000点",
+          "高质量图像",
+          "更快的图像生成",
+          "包月订阅"
+        ],
+        "recommended": "推荐"
+      },
+      "advanced": {
+        "name": "专业版",
+        "price": "¥688",
+        "features": [
+          "5000点",
+          "高质量图像",
+          "更快的图像生成",
+          "包年订阅"
+        ]
+      },
+      "common": {
+        "buyNowButton": "立即购买",
+        "subscribeButton": "订阅",
+        "processingButton": "处理中...",
+        "comingSoonButton": "即将推出"
+      }
+    }
+  },
+  "modelComparison": {
+    "title": "Flux AI 模型对比",
+    "subtitle": "选择最适合您创作需求的模型",
+    "promptSection": {
+      "showPrompt": "显示提示词",
+      "hidePrompt": "隐藏提示词",
+      "promptTitle": "适用于所有模型的提示词",
+      "copyButton": "复制提示词",
+      "copiedButton": "已复制！"
+    },
+    "modelDetails": {
+      "processingTime": "处理时间",
+      "outputSize": "输出尺寸",
+      "bestFor": "最适用于",
+      "keyFeatures": "主要特性"
+    },
+    "models": {
+      "ultra": {
+        "name": "Flux 1.1 Pro Ultra",
+        "description": "图像分辨率高达400万像素。使用原始模式获得更真实的效果。",
+        "features": [
+          "更高分辨率",
+          "不牺牲速度",
+          "原始模式"
+        ],
+        "suitableFor": [
+          "人物主题",
+          "自然摄影"
+        ],
+        "highlight": "真实感",
+        "details": "为FLUX1.1 [pro]带来全新的高分辨率功能，将其功能扩展到支持4倍更高的图像分辨率（高达400万像素），同时保持仅10秒的惊人生成时间。",
+        "processingTime": "10秒",
+        "imageSize": "2096*2096"
+      },
+      "schnell": {
+        "name": "Flux Schnell",
+        "description": "专为本地开发和个人使用定制的最快图像生成模型。",
+        "features": [
+          "高性能",
+          "快速生成",
+          "开放许可"
+        ],
+        "suitableFor": [
+          "个人使用",
+          "科研用途",
+          "商业用途"
+        ],
+        "highlight": "速度优化",
+        "details": "针对速度和效率优化，Flux Schnell为初始概念和快速原型提供快速结果。非常适合需要快速迭代的开发人员和设计师。",
+        "processingTime": "0.8秒",
+        "imageSize": "1024*1024"
+      },
+      "dev": {
+        "name": "Flux Dev",
+        "description": "一个具有120亿参数的矫正流变换器，能够根据文本描述生成图像。",
+        "features": [
+          "竞争性能",
+          "高效训练",
+          "开放研究"
+        ],
+        "suitableFor": [
+          "个人使用",
+          "科研用途",
+          "商业用途"
+        ],
+        "highlight": "更高效率",
+        "details": "这是一个强大的120亿参数图像生成模型，提供高质量输出，支持商业使用，性能优化，并为负责任的AI开发提供明确的道德准则。",
+        "processingTime": "3-5秒",
+        "imageSize": "1024*1024"
+      },
+      "pro11": {
+        "name": "Flux 1.1 Pro",
+        "description": "更快、更好的FLUX Pro。具有出色图像质量、提示词遵循度和输出多样性的文本生图模型。",
+        "features": [
+          "6倍更快生成",
+          "增强质量",
+          "先进架构"
+        ],
+        "suitableFor": [
+          "专业工作流程",
+          "质量关键项目",
+          "生产环境"
+        ],
+        "highlight": "质量提升",
+        "details": "这是一个最先进的120亿参数图像生成模型，具有6倍更快的速度、增强的质量和领先的基准性能，采用先进的混合架构，结合多模态和并行扩散变换器模块，适用于专业和生产环境。",
+        "processingTime": "8-10秒",
+        "imageSize": "1440*1440"
+      },
+      "pro": {
+        "name": "Flux Pro",
+        "description": "最先进的图像生成技术，具有顶级的提示词遵循度、视觉质量、图像细节和输出多样性。",
+        "features": [
+          "顶级性能",
+          "灵活分辨率",
+          "先进架构"
+        ],
+        "suitableFor": [
+          "专业项目",
+          "多用途应用"
+        ],
+        "highlight": "优质品质",
+        "details": "这是一款优质的120亿参数图像生成模型，提供最先进的性能，具有卓越的视觉质量和灵活的分辨率支持，采用混合架构，结合多模态和并行扩散变换器模块。",
+        "processingTime": "15-25秒",
+        "imageSize": "1440*1440"
+      }
+    }
+  },
+  "imagePreview": {
+    "loading": "正在创作您的杰作...",
+    "placeholder": "您的AI生成的图像将显示在此处",
+    "downloadButton": "下载",
+    "dimensions": {
+      "width": "宽度",
+      "height": "高度"
+    }
+  },
+  "autoLogout": {
+    "warningMessage": "您的会话将在{minutes}分钟后过期。",
+    "stayLoggedIn": "保持登录状态"
+  },
+  "footer": {
+    "description": "使用 Flux AI 的强大功能将创意转化为令人惊叹的视觉效果",
+    "quickLinks": "快速链接",
+    "pricing": "价格",
+    "contact": "联系我们",
+    "legal": "法律信息",
+    "terms": "服务条款",
+    "privacy": "隐私政策",
+    "support": "技术支持",
+    "allRightsReserved": "版权所有",
+    "fluxAI": {
+      "title": "Flux 图像生成",
+      "desc": "体验 Flux AI 的图像生成工具"
+    },
+    "soraAI": {
+      "title": "SORA AI",
+      "desc": "探索 SORA AI 的功能"
+    },
+    "aiBestTool": {
+      "title": "AI 最佳工具",
+      "desc": "发现最佳 AI 工具"
+    }
+  },
+  "auth": {
+    "signIn": "登录您的账户",
+    "createAccount": "创建新账户",
+    "fullName": "姓名",
+    "emailAddress": "邮箱地址",
+    "password": "密码",
+    "signInButton": "登录",
+    "registerButton": "注册",
+    "noAccount": "还没有账户？立即注册",
+    "hasAccount": "已有账户？立即登录",
+    "errors": {
+      "unexpected": "发生意外错误，请重试",
+      "invalidFormat": "响应格式无效",
+      "authFailed": "认证失败"
+    }
+  },
+  "imageGenerator": {
+    "title": "使用 Flux AI 创建精美图像",
+    "subtitle": "在几秒钟内将您的想法转化为视觉杰作",
+    "pageTitle": "Flux AI 图像生成器",
+    "description": "将您的创意转化为精美图像",
+    "promptLabel": "图像描述",
+    "promptPlaceholder": "试试：一只雄伟的狮子坐在日落时分的山顶上...",
+    "modelLabel": "AI 模型",
+    "modelPoints": "点数|点数",
+    "modelPremium": "高级版",
+    "aspectRatioLabel": "宽高比",
+    "outputFormatLabel": "输出格式",
+    "generateButton": "生成图像",
+    "generatingButton": "生成中...",
+    "freeGenerations": "免费生成次数",
+    "points": "点数",
+    "loginForMore": "登录获取更多生成次数",
+    "error": "发生错误"
+  },
+  "ultraHero": {
+    "heroTitle": "FLUX 1.1 Ultra",
+    "heroSubtitle": "下一代",
+    "heroDescription": "FLUX1.1 [pro]新增高分辨率功能,支持4倍更高的图像分辨率(高达4MP),同时保持每个样本仅10秒的惊人生成速度。",
+    "heroCallToAction": "立即体验 Ultra",
+    "heroExploreFeatures": "探索功能",
+    "sectionNewRelease": "新版本发布",
+    "imageAlt": "FLUX 1.1 Ultra 示例"
+  },
+  "faqData": [
+    {
+      "question": "什么是 Flux 1.1 Pro Ultra?",
+      "answer": "Flux 1.1 Pro Ultra 是一款先进的 AI 图像生成模型,可以创造出高达 4 兆像素的高度逼真图像。它提供了 ultra 和 raw 两种模式,以最大限度地提高灵活性。"
+    },
+    {
+      "question": "如何体验 Flux 1.1 Pro Ultra?",
+      "answer": "您可以通过登录您的账户免费体验 Flux 1.1 Pro Ultra。新用户可获得 3 个积分(1 次),以体验这款先进模型的增强功能。"
+    },
+    {
+      "question": "Flux 1.1 Pro Ultra 的主要特点有哪些?",
+      "answer": "其主要特点包括能够生成高达 4 兆像素的图像、针对逼真输出的 raw 模式,以及与之前型号相比更优异的自然图像生成功能。"
+    },
+    {
+      "question": "ultra 模式和 raw 模式有什么区别?",
+      "answer": "虽然这两种模式都可以生成高质量图像,但 raw 模式专门针对创造出高度逼真和自然的图像进行了优化。ultra 模式则提供更通用的图像生成功能。"
+    },
+    {
+      "question": "Flux 1.1 Pro Ultra 与其他型号有何不同?",
+      "answer": "Flux 1.1 Pro Ultra 的亮点在于其能够生成更大的 4 兆像素图像、在 raw 模式下具有增强的逼真度,以及与之前版本相比改善的自然图像生成能力。"
+    }
+  ],
+  "ultraFeatures": {
+    "title": "FLUX 1.1 Ultra 功能特点",
+    "subtitle": "使用原始模式获得更真实的效果",
+    "features": {
+      "resolution": {
+        "title": "超高分辨率",
+        "subtitle": "FLUX 1.1 Ultra 分辨率引擎",
+        "description": "创建高达 2096x2096 分辨率的精美图像，具有出色的细节和清晰度。完美适用于专业用途和大幅面打印。",
+        "highlight": "最高 2096x2096"
+      },
+      "speed": {
+        "title": "速度无损",
+        "subtitle": "更快速",
+        "description": "与许多在高分辨率下明显变慢的模型不同，我们的性能基准测试显示持续快速的生成时间——比同类高分辨率产品快 2.5 倍以上。",
+        "highlight": "10秒 2.5倍速"
+      },
+      "price": {
+        "title": "具有竞争力的价格",
+        "subtitle": "数量增加但价格不变",
+        "description": "此模型的价格具有竞争力，每张图像的价格与其他专业版本相同。",
+        "highlight": "性价比优势"
+      },
+      "rawMode": {
+        "title": "原始模式真实感",
+        "subtitle": "FLUX Ultra 生成",
+        "description": "FLUX1.1 [专业版] – 原始模式：为追求真实感的创作者提供，我们的新原始模式捕捉真实摄影的自然感觉。开启此功能可生成更少合成感、更自然的美学效果。",
+        "highlight": "人物主体与自然场景"
+      }
+    },
+    "tryNow": "立即体验 Ultra",
+    "viewPricing": "查看价格"
+  },
+  "ultraFAQ": {
+    "title": "常见问题",
+    "subtitle": "了解关于 Flux 1.1 Ultra 的常见问题，以及它如何提升您的创作工作流程",
+    "questions": {
+      "what": {
+        "question": "什么是 Flux 1.1 Pro Ultra？",
+        "answer": "Flux 1.1 Pro Ultra 是一个高级 AI 图像生成模型，可以创建分辨率高达 4 百万像素的高度真实的图像。它提供超级和原始两种模式，实现最大的生成灵活性。"
+      },
+      "howToTry": {
+        "question": "如何体验 Flux 1.1 Pro Ultra？",
+        "answer": "您可以通过登录账户免费体验 Flux 1.1 Pro Ultra。新用户可获得 3 点数（1次）来体验这个高级模型的增强功能。"
+      },
+      "keyFeatures": {
+        "question": "Flux 1.1 Pro Ultra 的主要特点是什么？",
+        "answer": "主要特点包括可以生成高达 4 百万像素的图像、为照片级真实效果优化的原始模式，以及与之前模型相比增强的自然图像生成能力。"
+      },
+      "modeDifference": {
+        "question": "超级模式和原始模式有什么区别？",
+        "answer": "虽然两种模式都能生成高质量图像，但原始模式专门针对创建高度真实和自然的图像进行了优化。超级模式提供更通用的图像生成功能。"
+      },
+      "comparison": {
+        "question": "Flux 1.1 Pro Ultra 与其他模型相比有什么不同？",
+        "answer": "Flux 1.1 Pro Ultra 的突出优势在于能够生成更大的 4 百万像素图像，特别是在原始模式下具有增强的真实感，与之前版本相比自然图像生成能力得到了改进。"
+      }
+    }
+  }
+}

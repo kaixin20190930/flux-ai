@@ -8,17 +8,22 @@ import {
     ICON_COMPONENTS,
     ASPECT_RATIOS,
     OUTPUT_FORMATS,
-    MAX_DAILY_GENERATIONS
+    MAX_DAILY_GENERATIONS,
 } from '@/public/constants/constants';
 import type {ModelType} from '@/public/types/type';
 import ImagePreview from "@/components/ImagePreview";
+import type {Dictionary} from '@/app/i18n/settings';
 
-export const AIImageGenerator: React.FC = () => {
+interface AIImageGeneratorProps {
+    dictionary: Dictionary;
+}
+
+export const AIImageGenerator: React.FC<AIImageGeneratorProps> = ({dictionary}) => {
     const {
         state,
         updateState,
         handleGenerate,
-        handleDownload
+        handleDownload,
     } = useImageGeneration();
 
     const isButtonDisabled = (): boolean => {
@@ -46,10 +51,10 @@ export const AIImageGenerator: React.FC = () => {
                 {/* Header */}
                 <div className="pb-6 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold animate-fade-in-down mb-3">
-                        Create Stunning Images with Flux AI
+                        {dictionary.imageGenerator.pageTitle}
                     </h1>
                     <p className="text-lg md:text-xl text-white/80">
-                        Transform your ideas into visual masterpieces in seconds
+                        {dictionary.imageGenerator.description}
                     </p>
                 </div>
 
@@ -59,19 +64,25 @@ export const AIImageGenerator: React.FC = () => {
                     <div className="w-full lg:w-1/2 space-y-6 border rounded-lg border-gray-100 p-6">
                         {/* Prompt Input */}
                         <div className="space-y-2 ">
-                            <h1 className="text-3xl font-medium text-white/90">Flux AI Image Generator</h1>
-                            <label className="text-sm font-medium text-white/90">Image Description</label>
+                            <h1 className="text-3xl font-medium text-white/90">
+                                {dictionary.imageGenerator.title}
+                            </h1>
+                            <label className="text-sm font-medium text-white/90">
+                                {dictionary.imageGenerator.promptLabel}
+                            </label>
                             <textarea
                                 value={state.prompt}
                                 onChange={(e) => updateState({prompt: e.target.value})}
-                                placeholder="Try: A majestic lion sitting on a mountain peak at sunset..."
+                                placeholder={dictionary.imageGenerator.promptPlaceholder}
                                 className="w-full h-64 p-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 text-white placeholder-white/50 resize-none"
                             />
                         </div>
 
                         {/* Model Selection */}
                         <div className="space-y-2 ">
-                            <label className="text-sm font-medium text-white/90">AI Model</label>
+                            <label className="text-sm font-medium text-white/90">
+                                {dictionary.imageGenerator.modelLabel}
+                            </label>
                             <div className="relative">
                                 <select
                                     value={state.selectedModel}
@@ -81,8 +92,8 @@ export const AIImageGenerator: React.FC = () => {
                                     {Object.entries(MODEL_CONFIG).map(([key, config]) => (
                                         <option key={key} value={key}
                                                 className={config.isPremium ? 'text-yellow-300' : ''}>
-                                            {config.name} • {config.points} {config.points === 1 ? 'Point' : 'Points'}
-                                            {config.isPremium ? ' (Premium)' : ''}
+                                            {config.name} • {config.points} {config.points === 1 ? dictionary.imageGenerator.modelPoints : dictionary.imageGenerator.modelPoints + 's'}
+                                            {config.isPremium ? ` (${dictionary.imageGenerator.modelPremium})` : ''}
                                         </option>
                                     ))}
                                 </select>
@@ -101,7 +112,9 @@ export const AIImageGenerator: React.FC = () => {
                         {/* Aspect Ratio and Output Format */}
                         <div className="grid grid-cols-2 gap-4 ">
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-white/90">Aspect Ratio</label>
+                                <label className="text-sm font-medium text-white/90">
+                                    {dictionary.imageGenerator.aspectRatioLabel}
+                                </label>
                                 <select
                                     value={state.aspectRatio}
                                     onChange={(e) => updateState({aspectRatio: e.target.value})}
@@ -113,20 +126,10 @@ export const AIImageGenerator: React.FC = () => {
                                 </select>
                             </div>
 
-                            {/*<div className="space-y-2">*/}
-                            {/*    <label className="text-sm font-medium text-white/90">Output Format</label>*/}
-                            {/*    <select*/}
-                            {/*        value={state.outputFormat}*/}
-                            {/*        onChange={(e) => updateState({outputFormat: e.target.value})}*/}
-                            {/*        className="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors"*/}
-                            {/*    >*/}
-                            {/*        {OUTPUT_FORMATS.map(format => (*/}
-                            {/*            <option key={format.value} value={format.value}>{format.label}</option>*/}
-                            {/*        ))}*/}
-                            {/*    </select>*/}
-                            {/*</div>*/}
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-white/90">Output Format</label>
+                                <label className="text-sm font-medium text-white/90">
+                                    {dictionary.imageGenerator.outputFormatLabel}
+                                </label>
                                 <select
                                     value={state.outputFormat}
                                     onChange={(e) => updateState({outputFormat: e.target.value})}
@@ -150,7 +153,7 @@ export const AIImageGenerator: React.FC = () => {
                             disabled={isButtonDisabled()}
                             className="w-full py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 disabled:bg-white/50 disabled:text-indigo-400 transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center gap-2 "
                         >
-                            {state.isLoading ? 'Generating...' : 'Generate Image'}
+                            {state.isLoading ? dictionary.imageGenerator.generatingButton : dictionary.imageGenerator.generateButton}
                             {MODEL_CONFIG[state.selectedModel].isPremium &&
                                 (!state.isLoggedIn || (state.userPoints !== null && state.userPoints < MODEL_CONFIG[state.selectedModel].points)) && (
                                     <Crown className="w-4 h-4 text-indigo-400"/>
@@ -160,27 +163,29 @@ export const AIImageGenerator: React.FC = () => {
                         {/* Status Messages */}
                         {state.error && (
                             <div className="text-red-300 px-4 py-2 bg-red-500/10 rounded-lg">
-                                <p>{state.error}</p>
+                                <p>{state.error || dictionary.imageGenerator.error}</p>
                             </div>
                         )}
                         <div className="text-indigo-200 px-4 py-2 bg-indigo-500/10 rounded-lg">
                             <p>
-                                Free generations: {state.remainingFreeGenerations} / {MAX_DAILY_GENERATIONS}
+                                {dictionary.imageGenerator.freeGenerations} {state.remainingFreeGenerations} / {MAX_DAILY_GENERATIONS}
                                 {state.isLoggedIn && state.userPoints !== null && (
-                                    <span className="ml-4">Points: {state.userPoints}</span>
+                                    <span className="ml-4">
+                    {dictionary.imageGenerator.points}: {state.userPoints}
+                  </span>
                                 )}
                             </p>
                             {state.remainingFreeGenerations <= 0 && !state.isLoggedIn && (
                                 <p className="mt-1">
-                                    <Link href="/auth" className="underline hover:text-white">Login</Link> for more
-                                    generations
+                                    <Link href="/auth" className="underline hover:text-white">
+                                        {dictionary.imageGenerator.loginForMore}
+                                    </Link>
                                 </p>
                             )}
                         </div>
                     </div>
 
                     {/* Right Column - Image Preview */}
-                    {/*<div className="w-full lg:w-1/2 min-h-[600px] lg:h-full lg:overflow-auto border rounded-lg border-gray-200 p-6">*/}
                     <div
                         className="w-full lg:w-1/2 h-full lg:overflow-auto border rounded-lg border-gray-200 p-6 flex flex-col">
                         <ImagePreview
@@ -192,6 +197,7 @@ export const AIImageGenerator: React.FC = () => {
                             outputFormat={state.outputFormat}
                             onDownload={handleDownload}
                             imageDimensions={state.imageDimensions}
+                            dictionary={dictionary}
                         />
                     </div>
                 </div>
@@ -199,5 +205,3 @@ export const AIImageGenerator: React.FC = () => {
         </div>
     );
 };
-
-export default AIImageGenerator;

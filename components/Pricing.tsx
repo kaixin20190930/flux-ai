@@ -3,27 +3,34 @@
 import React, {useState} from 'react';
 import {stripePromise} from '@/utils/stripe';
 import {logWithTimestamp} from "@/utils/logUtils";
+import type {Dictionary} from '@/app/i18n/settings';
+
+interface PricingProps {
+    dictionary: Dictionary;
+    locale: string;
+}
 
 interface PricingTierProps {
-    name: string;
-    price: string;
+    tier: {
+        name: string;
+        price: string;
+        features: string[];
+        recommended?: string;
+    };
     priceId: string;
-    features: string[];
-    recommended?: boolean;
     purchaseType: 'onetime' | 'monthly' | 'yearly';
     points?: number;
     disabled?: boolean;
+    buttonTexts: Dictionary['pricing']['tiers']['common'];
 }
 
 const PricingTier: React.FC<PricingTierProps> = ({
-                                                     name,
-                                                     price,
+                                                     tier,
                                                      priceId,
-                                                     features,
-                                                     recommended,
                                                      purchaseType,
                                                      points,
-                                                     disabled
+                                                     disabled,
+                                                     buttonTexts
                                                  }) => {
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState<string | null>(null);
@@ -47,8 +54,6 @@ const PricingTier: React.FC<PricingTierProps> = ({
             }
 
             const session = await response.json() as any;
-
-            // Redirect to Stripe Checkout
             const result = await stripe!.redirectToCheckout({
                 sessionId: session.id,
             });
@@ -63,17 +68,18 @@ const PricingTier: React.FC<PricingTierProps> = ({
             setIsLoading(false);
         }
     };
+
     return (
         <div
-            className={`bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col ${recommended ? 'border-4 border-indigo-500' : ''}`}>
-            {recommended && (
+            className={`bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col ${tier.recommended ? 'border-4 border-indigo-500' : ''}`}>
+            {tier.recommended && (
                 <div className="bg-indigo-500 text-white text-center py-2 font-semibold">
-                    Recommended
+                    {tier.recommended}
                 </div>
             )}
             <div className="px-6 py-8 flex-grow">
-                <h3 className="text-2xl font-semibold text-gray-900">{name}</h3>
-                <p className="mt-4 text-4xl font-extrabold text-gray-900">{price}</p>
+                <h3 className="text-2xl font-semibold text-gray-900">{tier.name}</h3>
+                <p className="mt-4 text-4xl font-extrabold text-gray-900">{tier.price}</p>
                 <p className="mt-1 text-gray-500">
                     {purchaseType === 'onetime'
                         ? `${points} points`
@@ -82,7 +88,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
                             : 'per year'}
                 </p>
                 <ul className="mt-6 space-y-4">
-                    {features.map((feature, index) => (
+                    {tier.features.map((feature, index) => (
                         <li key={index} className="flex items-start">
                             <svg className="flex-shrink-0 h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
@@ -102,12 +108,12 @@ const PricingTier: React.FC<PricingTierProps> = ({
                     }`}
                 >
                     {isLoading
-                        ? 'Processing...'
+                        ? buttonTexts.processingButton
                         : disabled
-                            ? 'Coming Soon'
+                            ? buttonTexts.comingSoonButton
                             : purchaseType === 'onetime'
-                                ? 'Buy Now'
-                                : 'Subscribe'}
+                                ? buttonTexts.buyNowButton
+                                : buttonTexts.subscribeButton}
                 </button>
                 {error && <p className="mt-2 text-red-600 text-sm">{error}</p>}
             </div>
@@ -115,64 +121,47 @@ const PricingTier: React.FC<PricingTierProps> = ({
     );
 };
 
-const Pricing: React.FC = () => {
+const Pricing: React.FC<PricingProps> = ({dictionary}) => {
+    const pricing = dictionary.pricing;
+
     return (
         <section id="pricing"
                  className="min-h-screen relative bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center">
-            {/* Background Effects */}
             <div className="absolute inset-0 bg-black/50"/>
             <div
                 className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"/>
 
-            {/* Content */}
             <div className="relative z-10 flex-grow flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
                 <div className="mx-auto max-w-7xl w-full">
                     <div className="text-center mb-12">
-                        <h2 className="text-base font-semibold leading-7 text-indigo-200">Pricing</h2>
+                        <h2 className="text-base font-semibold leading-7 text-indigo-200">
+                            {pricing.title}
+                        </h2>
                         <p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                            Choose the right plan for you
+                            {pricing.subtitle}
                         </p>
                     </div>
                     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                         <PricingTier
-                            name="Basic"
-                            price="$9.9"
+                            tier={pricing.tiers.basic}
                             priceId={process.env.NEXT_PUBLIC_STRIPE_BASIC_PRICE_ID!}
-                            features={[
-                                '200 points',
-                                'High quality images',
-                                'Faster Image generation',
-                                'No subscription',
-                            ]}
                             purchaseType="onetime"
                             points={200}
+                            buttonTexts={pricing.tiers.common}
                         />
                         <PricingTier
-                            name="Premium Plan"
-                            price="$29.9"
+                            tier={pricing.tiers.premium}
                             priceId={process.env.NEXT_PUBLIC_STRIPE_PRO_MONTH_PRICE_ID!}
-                            features={[
-                                '1000 points',
-                                'High quality images',
-                                'Faster Image generation',
-                                'Monthly subscription',
-                            ]}
-                            recommended
                             purchaseType="monthly"
                             disabled={true}
+                            buttonTexts={pricing.tiers.common}
                         />
                         <PricingTier
-                            name="Advanced Plan"
-                            price="$99.9"
+                            tier={pricing.tiers.advanced}
                             priceId={process.env.NEXT_PUBLIC_STRIPE_PRO_YEAR_PRICE_ID!}
-                            features={[
-                                '5000 points',
-                                'High quality images',
-                                'Faster Image generation',
-                                'Annual subscription',
-                            ]}
                             purchaseType="yearly"
                             disabled={true}
+                            buttonTexts={pricing.tiers.common}
                         />
                     </div>
                 </div>

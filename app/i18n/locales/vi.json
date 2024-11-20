@@ -1,0 +1,452 @@
+{
+  "metadata": {
+    "title": "Trình tạo hình ảnh Flux AI Miễn phí",
+    "description": "Tạo hình ảnh tuyệt đẹp được sinh ra bởi AI với Flux AI",
+    "keywords": "AI, trình tạo hình ảnh, trí tuệ nhân tạo, Flux AI, nghệ thuật AI"
+  },
+  "navigation": {
+    "home": "Trang chủ",
+    "create": "Tạo",
+    "hub": "Thư viện",
+    "pricing": "Giá",
+    "profile": "Hồ sơ",
+    "logout": "Đăng xuất",
+    "login": "Đăng nhập",
+    "flux11Ultra": "Flux 1.1 Ultra"
+  },
+  "hero": {
+    "mainTitle": "FLUX AI",
+    "subTitle1": "Biến ý tưởng của bạn thành",
+    "subTitle2": "Hình ảnh tuyệt đẹp",
+    "description": "Tạo ra những kiệt tác độc đáo, được AI hỗ trợ trong vài giây. Biến trí tưởng tượng của bạn thành hiện thực với Flux AI tiên tiến của chúng tôi.",
+    "startButton": "Bắt đầu sáng tạo",
+    "learnMoreButton": "Tìm hiểu thêm",
+    "examplesButton": "Ví dụ",
+    "imageAlt": "Ví dụ về tác phẩm nghệ thuật được tạo bởi AI"
+  },
+  "features": {
+    "title": "Tại Sao Chọn Flux AI",
+    "subtitle": "Tạo Hình Ảnh AI Cao Cấp Cho Người Sáng Tạo Chuyên Nghiệp",
+    "cards": {
+      "advancedAI": {
+        "title": "Tạo Hình Ảnh AI Nâng Cao",
+        "subtitle": "FLUX AI Công Cụ Tạo Hình Ảnh Chuyên Nghiệp",
+        "description": "Tạo ra hình ảnh xuất sắc lên đến độ phân giải 1440x1440 với mô hình AI dựa trên transformer của chúng tôi. Hỗ trợ các mô hình FLUX [pro], [dev], và [schnell] từ BlackForestLabs.",
+        "highlight": "Độ phân giải lên đến 1440x1440"
+      },
+      "multipleStyles": {
+        "title": "Nhiều Kiểu Phong Cách",
+        "subtitle": "FLUX AI Công Cụ Phong Cách",
+        "description": "Tạo hình ảnh theo nhiều phong cách từ chân thực đến nghệ thuật. Hỗ trợ điều khiển phong cách toàn diện bao gồm anime, nghệ thuật số, tranh sơn dầu và hơn thế nữa với điều chỉnh chi tiết theo yêu cầu.",
+        "highlight": "Nhiều phong cách nghệ thuật"
+      },
+      "advancedModel": {
+        "title": "Kiến Trúc Mô Hình Nâng Cao",
+        "subtitle": "Công Nghệ FLUX AI",
+        "description": "Được vận hành bởi kiến trúc transformer tiên tiến với hơn 12 tỷ tham số, cung cấp chất lượng hình ảnh vượt trội và độ chính xác cao trong mô tả nhờ kỹ thuật đào tạo độc quyền của chúng tôi.",
+        "highlight": "Hơn 12 tỷ tham số"
+      },
+      "flexiblePricing": {
+        "title": "Các Gói Giá Linh Hoạt",
+        "subtitle": "FLUX AI Giá Thành",
+        "description": "Bắt đầu với gói miễn phí (3 lần tạo hình ảnh miễn phí mỗi ngày không cần đăng nhập) hoặc nâng cấp lên gói cao cấp từ $9.9 cho 200 lần tạo. Truy cập các tính năng nâng cao bao gồm độ phân giải cao hơn, tạo ưu tiên, và tăng giới hạn tạo hình ảnh.",
+        "highlight": "Bắt đầu miễn phí"
+      }
+    },
+    "cta": {
+      "title": "Trải Nghiệm Tạo Hình Ảnh AI Chuyên Nghiệp",
+      "tryButton": "Dùng Thử Miễn Phí",
+      "pricingButton": "Xem Giá"
+    }
+  },
+  "examples": {
+    "title": "Ví Dụ Tạo Hình Ảnh AI",
+    "subtitle": "Khám phá những gì bạn có thể tạo ra với FLUX AI"
+  },
+  "userExperience": {
+    "title": "Cách Hoạt Động",
+    "subtitle": "Tạo những hình ảnh tuyệt đẹp bằng trình tạo hình ảnh FLUX AI của chúng tôi",
+    "steps": {
+      "describe": {
+        "title": "Mô Tả Ý Tưởng Của Bạn",
+        "subtitle": "Hiểu Ngôn Ngữ Tự Nhiên Bằng AI",
+        "description": "Chỉ cần nhập mô tả về hình ảnh bạn muốn tạo. AI của chúng tôi hiểu đầu vào bằng ngôn ngữ tự nhiên.",
+        "highlight": "Xử Lý Ngôn Ngữ Tự Nhiên"
+      },
+      "generate": {
+        "title": "Phép Màu AI",
+        "subtitle": "Tạo Hình Ảnh Cao Cấp",
+        "description": "AI mạnh mẽ của chúng tôi xử lý mô tả của bạn và tạo ra các tùy chọn hình ảnh độc đáo phù hợp với ý tưởng của bạn.",
+        "highlight": "Nhiều Lựa Chọn Phong Cách"
+      },
+      "refine": {
+        "title": "Chỉnh Sửa Và Hoàn Thiện",
+        "subtitle": "Tối Ưu Kết Quả Của Bạn",
+        "description": "Sử dụng các công cụ trực quan của chúng tôi để điều chỉnh và hoàn thiện hình ảnh được tạo cho đến khi phù hợp với mong đợi của bạn.",
+        "highlight": "Công Cụ Chỉnh Sửa Chuyên Nghiệp"
+      },
+      "download": {
+        "title": "Tải Xuống Và Sử Dụng",
+        "subtitle": "Sẵn Sàng Cho Dự Án Của Bạn",
+        "description": "Tải xuống tác phẩm nghệ thuật AI của bạn ở độ phân giải cao, sẵn sàng cho các dự án sáng tạo của bạn.",
+        "highlight": "Đầu Ra Độ Phân Giải Cao"
+      }
+    }
+  },
+  "faq": {
+    "title": "Câu Hỏi Thường Gặp",
+    "subtitle": "Tìm câu trả lời cho những câu hỏi thường gặp về Flux AI và cách nó cải thiện quy trình làm việc sáng tạo của bạn",
+    "questions": {
+      "what": {
+        "question": "Flux AI Model là gì?",
+        "answer": "Flux AI là một mô hình trí tuệ nhân tạo tiên tiến được thiết kế để hỗ trợ các tác vụ sáng tạo, tạo hình ảnh, và quy trình thiết kế. Nó sử dụng các thuật toán học máy tiên tiến để hiểu và tạo nội dung hình ảnh dựa trên đầu vào của người dùng."
+      },
+      "versions": {
+        "question": "Các phiên bản khác nhau của FLUX AI là gì?",
+        "answer": "FLUX AI có ba phiên bản: FLUX.1 [pro] cho hiệu suất cao nhất, FLUX.1 [dev] cho các ứng dụng phi thương mại, và FLUX.1 [schnell] cho phát triển nhanh, cục bộ."
+      },
+      "comparison": {
+        "question": "Flux AI khác gì so với các mô hình AI khác?",
+        "answer": "Flux AI nổi bật với chất lượng hình ảnh vượt trội, thời gian tạo nhanh hơn, và các điều khiển trực quan hơn. Mô hình của chúng tôi được đào tạo đặc biệt trên nội dung sáng tạo chất lượng cao, làm cho nó đặc biệt hiệu quả cho các ứng dụng thiết kế và nghệ thuật."
+      },
+      "imageTypes": {
+        "question": "Flux AI có thể tạo những loại hình ảnh nào?",
+        "answer": "Flux AI có thể tạo ra nhiều loại nội dung hình ảnh bao gồm minh họa, nghệ thuật ý tưởng, thiết kế sản phẩm, thiết kế nhân vật, và cảnh môi trường. Mô hình hỗ trợ nhiều phong cách nghệ thuật và có thể thích ứng với các yêu cầu hình ảnh cụ thể."
+      },
+      "requirements": {
+        "question": "Yêu cầu kỹ thuật để sử dụng Flux AI là gì?",
+        "answer": "Flux AI chạy trên nền tảng đám mây và có thể truy cập qua bất kỳ trình duyệt web hiện đại nào. Không cần phần cứng đặc biệt, tuy nhiên một kết nối internet ổn định được khuyến nghị để có hiệu suất tối ưu."
+      },
+      "fineTuning": {
+        "question": "Tôi có thể tinh chỉnh FLUX AI Image Generator với bộ dữ liệu riêng không?",
+        "answer": "Các tùy chọn tinh chỉnh có thể khả dụng cho khách hàng doanh nghiệp. Vui lòng liên hệ trực tiếp với Black Forest Labs để thảo luận về nhu cầu cụ thể của bạn."
+      },
+      "limits": {
+        "question": "Có giới hạn nào về số lượng hình ảnh tôi có thể tạo không?",
+        "answer": "Giới hạn sử dụng phụ thuộc vào cấp độ đăng ký của bạn. Người dùng miễn phí có thể tạo tối đa 3 hình ảnh mỗi ngày, trong khi người dùng cao cấp được tạo không giới hạn và xử lý ưu tiên."
+      },
+      "updates": {
+        "question": "FLUX AI Image Generator được cập nhật bao lâu một lần?",
+        "answer": "Black Forest Labs cam kết cải tiến liên tục. Mặc dù không cung cấp lịch trình cập nhật cụ thể, bạn có thể mong đợi các cải tiến và tinh chỉnh thường xuyên cho FLUX AI."
+      },
+      "feedback": {
+        "question": "Làm thế nào để tôi cung cấp phản hồi hoặc báo cáo vấn đề với FLUX AI?",
+        "answer": "Black Forest Labs hoan nghênh phản hồi. Bạn có thể liên hệ thông qua các kênh chính thức hoặc email flux@blackforestlabs.ai để được hỗ trợ và báo cáo bất kỳ vấn đề nào."
+      },
+      "commercial": {
+        "question": "Tôi có thể sử dụng FLUX AI Image Generator cho các dự án thương mại không?",
+        "answer": "Trong khi FLUX.1 [schnell] miễn phí cho sử dụng cá nhân, chúng tôi cung cấp FLUX.1 [pro] và FLUX.1 [dev] cho các ứng dụng thương mại của FLUX AI Image Generator. Các phiên bản này cung cấp các khả năng nâng cao và có sẵn thông qua API của chúng tôi hoặc các đối tác. Để hỏi về sử dụng thương mại FLUX AI Image Generator, vui lòng liên hệ qua email juq1991@gmail.com."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Định giá",
+    "subtitle": "Chọn gói phù hợp với bạn",
+    "tiers": {
+      "basic": {
+        "name": "Cơ bản",
+        "price": "$9.9",
+        "features": [
+          "200 điểm",
+          "Hình ảnh chất lượng cao",
+          "Tạo hình ảnh nhanh hơn",
+          "Không đăng ký"
+        ]
+      },
+      "premium": {
+        "name": "Gói Premium",
+        "price": "$29.9",
+        "features": [
+          "1000 điểm",
+          "Hình ảnh chất lượng cao",
+          "Tạo hình ảnh nhanh hơn",
+          "Đăng ký hàng tháng"
+        ],
+        "recommended": "Được đề xuất"
+      },
+      "advanced": {
+        "name": "Gói Nâng cao",
+        "price": "$99.9",
+        "features": [
+          "5000 điểm",
+          "Hình ảnh chất lượng cao",
+          "Tạo hình ảnh nhanh hơn",
+          "Đăng ký hàng năm"
+        ]
+      },
+      "common": {
+        "buyNowButton": "Mua ngay",
+        "subscribeButton": "Đăng ký",
+        "processingButton": "Đang xử lý...",
+        "comingSoonButton": "Sắp ra mắt"
+      }
+    }
+  },
+  "modelComparison": {
+    "title": "So sánh các mô hình Flux AI",
+    "subtitle": "Chọn mô hình hoàn hảo cho nhu cầu sáng tạo của bạn",
+    "promptSection": {
+      "showPrompt": "Hiển thị Prompt",
+      "hidePrompt": "Ẩn Prompt",
+      "promptTitle": "Prompt được sử dụng cho tất cả các mô hình",
+      "copyButton": "Sao chép prompt",
+      "copiedButton": "Đã sao chép!"
+    },
+    "modelDetails": {
+      "processingTime": "Thời gian xử lý",
+      "outputSize": "Kích thước đầu ra",
+      "bestFor": "Tốt nhất cho",
+      "keyFeatures": "Các tính năng chính"
+    },
+    "models": {
+      "ultra": {
+        "name": "Flux 1.1 CopyClaude’s response was limited as it hit the maximum length allowed at this time. Claude does not have the ability to run the code it generates yet.GC继续Pro Ultra",
+        "description": "Hình ảnh lên đến 4 megapixel. Sử dụng chế độ thô để tăng tính chân thực.",
+        "features": [
+          "Độ phân giải cao hơn",
+          "Không ảnh hưởng đến tốc độ",
+          "Chế độ thô"
+        ],
+        "suitableFor": [
+          "Chủ thể con người",
+          "Nhiếp ảnh thiên nhiên"
+        ],
+        "highlight": "Chân thực",
+        "details": "Khả năng độ phân giải cao mới cho FLUX1.1 [pro], mở rộng chức năng hỗ trợ độ phân giải hình ảnh cao gấp 4 lần (lên đến 4MP) trong khi vẫn duy trì thời gian tạo ấn tượng chỉ 10 giây mỗi mẫu.",
+        "processingTime": "10 giây",
+        "imageSize": "20962096"
+      },
+      "schnell": {
+        "name": "Flux Schnell",
+        "description": "Mô hình tạo ảnh nhanh nhất được điều chỉnh cho phát triển cục bộ và sử dụng cá nhân.",
+        "features": [
+          "Hiệu suất cao",
+          "Tạo nhanh",
+          "Giấy phép mở"
+        ],
+        "suitableFor": [
+          "Cá nhân",
+          "Khoa học",
+          "Mục đích thương mại"
+        ],
+        "highlight": "Tối ưu hóa tốc độ",
+        "details": "Được tối ưu hóa cho tốc độ và hiệu quả, Flux Schnell mang lại kết quả nhanh chóng, hoàn hảo cho các khái niệm ban đầu và tạo mẫu thử nhanh. Lý tưởng cho các nhà phát triển và nhà thiết kế cần lặp đi lặp lại nhanh chóng.",
+        "processingTime": "0,8 giây",
+        "imageSize": "10241024"
+      },
+      "dev": {
+        "name": "Flux Dev",
+        "description": "Một bộ chuyển đổi luồng đã sửa với 12 tỷ tham số có khả năng tạo hình ảnh từ mô tả văn bản.",
+        "features": [
+          "Hiệu suất cạnh tranh",
+          "Đào tạo hiệu quả",
+          "Nghiên cứu mở"
+        ],
+        "suitableFor": [
+          "Cá nhân",
+          "Khoa học",
+          "Mục đích thương mại"
+        ],
+        "highlight": "Hiệu quả hơn",
+        "details": "Một mô hình tạo ảnh 12B tham số mạnh mẽ cung cấp đầu ra chất lượng cao với hỗ trợ sử dụng thương mại, hiệu suất tối ưu và các hướng dẫn đạo đức rõ ràng để phát triển AI có trách nhiệm.",
+        "processingTime": "3-5 giây",
+        "imageSize": "10241024"
+      },
+      "pro11": {
+        "name": "Flux 1.1 Pro",
+        "description": "FLUX Pro nhanh hơn, tốt hơn. Mô hình văn bản thành hình ảnh với chất lượng hình ảnh xuất sắc, tuân thủ lời nhắc và đa dạng đầu ra.",
+        "features": [
+          "Tạo nhanh hơn 6 lần",
+          "Chất lượng nâng cao",
+          "Kiến trúc tiên tiến"
+        ],
+        "suitableFor": [
+          "Quy trình làm việc chuyên nghiệp",
+          "Các dự án quan trọng về chất lượng",
+          "Môi trường sản xuất"
+        ],
+        "highlight": "Chất lượng nâng cao",
+        "details": "Một mô hình tạo ảnh tiên tiến 12B tham số với tốc độ nhanh hơn 6 lần, chất lượng nâng cao và hiệu suất dẫn đầu, được xây dựng với kiến trúc lai tiên tiến kết hợp các khối trộn đa phương thức và song song cho môi trường chuyên nghiệp và sản xuất.",
+        "processingTime": "8-10 giây",
+        "imageSize": "14401440"
+      },
+      "pro": {
+        "name": "Flux Pro",
+        "description": "Tạo ảnh tiên tiến nhất với khả năng tuân thủ lời nhắc, chất lượng hình ảnh, chi tiết ảnh và đa dạng đầu ra hàng đầu.",
+        "features": [
+          "Hiệu suất đỉnh cao",
+          "Độ phân giải linh hoạt",
+          "Kiến trúc tiên tiến"
+        ],
+        "suitableFor": [
+          "Dự án chuyên nghiệp",
+          "Ứng dụng đa năng"
+        ],
+        "highlight": "Chất lượng cao cấp",
+        "details": "Một mô hình tạo hình ảnh cao cấp 12B tham số cung cấp hiệu suất tiên tiến với chất lượng hình ảnh vượt trội và hỗ trợ độ phân giải linh hoạt, được cung cấp bởi kiến trúc lai kết hợp các khối trộn đa phương thức và song song.",
+        "processingTime": "15-25 giây",
+        "imageSize": "1440*1440"
+      }
+    }
+  },
+  "imagePreview": {
+    "loading": "Đang tạo kiệt tác của bạn...",
+    "placeholder": "Hình ảnh do AI tạo ra của bạn sẽ xuất hiện ở đây",
+    "downloadButton": "Tải xuống",
+    "dimensions": {
+      "width": "Chiều rộng",
+      "height": "Chiều cao"
+    }
+  },
+  "autoLogout": {
+    "warningMessage": "Phiên của bạn sẽ hết hạn trong {minutes} phút.",
+    "stayLoggedIn": "Giữ đăng nhập"
+  },
+  "footer": {
+    "description": "Chuyển đổi ý tưởng của bạn thành hình ảnh tuyệt đẹp với sức mạnh của Flux AI",
+    "quickLinks": "Liên kết nhanh",
+    "pricing": "Giá",
+    "contact": "Liên hệ",
+    "legal": "Pháp lý",
+    "terms": "Điều khoản dịch vụ",
+    "privacy": "Chính sách bảo mật",
+    "support": "Hỗ trợ",
+    "allRightsReserved": "Đã đăng ký bản quyền",
+    "fluxAI": {
+      "title": "Flux Image AI",
+      "desc": "Trải nghiệm công cụ tạo hình ảnh của Flux AI"
+    },
+    "soraAI": {
+      "title": "SORA AI",
+      "desc": "Khám phá khả năng của SORA AI"
+    },
+    "aiBestTool": {
+      "title": "Công cụ AI Tốt nhất",
+      "desc": "Khám phá các công cụ AI tốt nhất"
+    }
+  },
+  "auth": {
+    "signIn": "Đăng nhập vào tài khoản của bạn",
+    "createAccount": "Tạo tài khoản mới",
+    "fullName": "Họ và tên",
+    "emailAddress": "Địa chỉ email",
+    "password": "Mật khẩu",
+    "signInButton": "Đăng nhập",
+    "registerButton": "Đăng ký",
+    "noAccount": "Chưa có tài khoản? Đăng ký ngay",
+    "hasAccount": "Đã có tài khoản? Đăng nhập",
+    "errors": {
+      "unexpected": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.",
+      "invalidFormat": "Định dạng phản hồi không mong đợi",
+      "authFailed": "Xác thực thất bại"
+    }
+  },
+  "imageGenerator": {
+    "title": "Tạo hình ảnh tuyệt đẹp với Flux AI",
+    "subtitle": "Biến ý tưởng của bạn thành kiệt tác hình ảnh trong vài giây",
+    "pageTitle": "Trình tạo hình ảnh Flux AI",
+    "description": "Biến ý tưởng của bạn thành hình ảnh tuyệt đẹp",
+    "promptLabel": "Mô tả hình ảnh",
+    "promptPlaceholder": "Thử: Một con sư tử oai nghiêm ngồi trên đỉnh núi lúc hoàng hôn...",
+    "modelLabel": "Mô hình AI",
+    "modelPoints": "Điểm|Điểm",
+    "modelPremium": "Cao cấp",
+    "aspectRatioLabel": "Tỷ lệ khung hình",
+    "outputFormatLabel": "Định dạng đầu ra",
+    "generateButton": "Tạo hình ảnh",
+    "generatingButton": "Đang tạo...",
+    "freeGenerations": "Số lần tạo miễn phí",
+    "points": "Điểm",
+    "loginForMore": "Đăng nhập để có thêm lượt tạo",
+    "error": "Đã xảy ra lỗi"
+  },
+  "ultraHero": {
+    "heroTitle": "FLUX 1.1 Ultra",
+    "heroSubtitle": "Thế hệ tiếp theo",
+    "heroDescription": "Các khả năng độ phân giải cao mới đã được thêm vào FLUX1.1 [pro], mở rộng chức năng của nó để hỗ trợ độ phân giải hình ảnh cao gấp 4 lần (lên đến 4MP), đồng thời vẫn duy trì thời gian tạo mẫu ấn tượng chỉ 10 giây mỗi mẫu.",
+    "heroCallToAction": "Thử Ultra ngay bây giờ",
+    "heroExploreFeatures": "Khám phá các tính năng",
+    "sectionNewRelease": "Bản phát hành mới",
+    "imageAlt": "Ví dụ về FLUX 1.1 Ultra"
+  },
+  "faqData": [
+    {
+      "question": "Flux 1.1 Pro Ultra là gì?",
+      "answer": "Flux 1.1 Pro Ultra là một mô hình tạo hình ảnh AI tiên tiến có thể tạo ra những hình ảnh cực kỳ chân thực với độ phân giải lên đến 4 megapixel. Nó cung cấp cả chế độ ultra và raw để có độ linh hoạt tối đa trong việc tạo hình ảnh."
+    },
+    {
+      "question": "Làm thế nào để tôi có thể dùng thử Flux 1.1 Pro Ultra?",
+      "answer": "Bạn có thể dùng thử Flux 1.1 Pro Ultra miễn phí bằng cách đăng nhập vào tài khoản của mình. Người dùng mới nhận được 3 điểm (1 lần) để trải nghiệm các khả năng nâng cao của mô hình tiên tiến này."
+    },
+    {
+      "question": "Các tính năng chính của Flux 1.1 Pro Ultra là gì?",
+      "answer": "Các tính năng chính bao gồm khả năng tạo ra hình ảnh lên đến 4 megapixel, chế độ raw được tối ưu hóa cho đầu ra chân thực như ảnh, và khả năng tạo hình ảnh tự nhiên được nâng cao so với các mô hình trước đây."
+    },
+    {
+      "question": "Sự khác biệt giữa chế độ ultra và raw là gì?",
+      "answer": "Mặc dù cả hai chế độ đều có thể tạo ra hình ảnh chất lượng cao, chế độ raw được tối ưu hóa đặc biệt để tạo ra những hình ảnh cực kỳ chân thực và tự nhiên. Chế độ ultra cung cấp khả năng tạo hình ảnh đa dụng hơn."
+    },
+    {
+      "question": "Điều gì làm cho Flux 1.1 Pro Ultra khác biệt so với các mô hình khác?",
+      "answer": "Flux 1.1 Pro Ultra nổi bật với khả năng tạo ra hình ảnh 4 megapixel lớn hơn, độ chân thực được nâng cao đặc biệt trong chế độ raw, và khả năng tạo hình ảnh tự nhiên được cải thiện so với các phiên bản trước."
+    }
+  ],
+  "ultraFeatures": {
+    "title": "Tính năng FLUX 1.1 Ultra",
+    "subtitle": "Sử dụng chế độ raw để có độ chân thực cao hơn",
+    "features": {
+      "resolution": {
+        "title": "Độ phân giải Siêu cao",
+        "subtitle": "Động cơ độ phân giải FLUX 1.1 Ultra",
+        "description": "Tạo hình ảnh tuyệt đẹp với độ phân giải lên đến 2096x2096 với độ chi tiết và độ rõ nét đặc biệt. Hoàn hảo cho sử dụng chuyên nghiệp và in ấn khổ lớn.",
+        "highlight": "Lên đến 2096x2096"
+      },
+      "speed": {
+        "title": "Không ảnh hưởng đến tốc độ",
+        "subtitle": "Nhanh hơn",
+        "description": "Khác với nhiều mô hình độ phân giải cao bị chậm đáng kể, các bài kiểm tra hiệu suất của chúng tôi cho thấy thời gian tạo nhanh ổn định - nhanh hơn 2,5 lần so với các sản phẩm độ phân giải cao tương đương.",
+        "highlight": "10s nhanh hơn 2.5 lần"
+      },
+      "price": {
+        "title": "Giá cả cạnh tranh",
+        "subtitle": "Tăng số lượng nhưng không tăng giá",
+        "description": "Mô hình này có giá cạnh tranh, với cùng mức giá mỗi hình ảnh như các phiên bản Pro khác.",
+        "highlight": "Lợi thế vật chất"
+      },
+      "rawMode": {
+        "title": "Độ chân thực chế độ Raw",
+        "subtitle": "Tạo FLUX Ultra",
+        "description": "FLUX1.1 [pro] – chế độ raw: Dành cho những người sáng tạo tìm kiếm sự chân thực, chế độ raw mới của chúng tôi nắm bắt cảm giác thực của nhiếp ảnh tự nhiên. Bật tính năng này để tạo hình ảnh có tính thẩm mỹ tự nhiên hơn, ít nhân tạo hơn.",
+        "highlight": "Con người và Thiên nhiên"
+      }
+    },
+    "tryNow": "Dùng thử Ultra ngay",
+    "viewPricing": "Xem giá"
+  },
+  "ultraFAQ": {
+    "title": "Câu hỏi thường gặp",
+    "subtitle": "Nhận câu trả lời cho các câu hỏi phổ biến về Flux 1.1 Ultra và cách nó có thể cải thiện quy trình sáng tạo của bạn",
+    "questions": {
+      "what": {
+        "question": "Flux 1.1 Pro Ultra là gì?",
+        "answer": "Flux 1.1 Pro Ultra là một mô hình tạo hình ảnh AI tiên tiến có thể tạo ra hình ảnh cực kỳ chân thực với độ phân giải lên đến 4 megapixel. Nó cung cấp cả chế độ ultra và raw để có sự linh hoạt tối đa trong việc tạo hình ảnh."
+      },
+      "howToTry": {
+        "question": "Làm thế nào để tôi có thể dùng thử Flux 1.1 Pro Ultra?",
+        "answer": "Bạn có thể dùng thử Flux 1.1 Pro Ultra miễn phí bằng cách đăng nhập vào tài khoản của mình. Người dùng mới nhận được 3 điểm (1 lần sử dụng) để trải nghiệm khả năng nâng cao của mô hình tiên tiến này."
+      },
+      "keyFeatures": {
+        "question": "Các tính năng chính của Flux 1.1 Pro Ultra là gì?",
+        "answer": "Các tính năng chính bao gồm khả năng tạo hình ảnh lên đến 4 megapixel, chế độ raw được tối ưu hóa cho đầu ra giống như ảnh thật, và khả năng tạo hình ảnh tự nhiên được cải thiện so với các mô hình trước đây."
+      },
+      "modeDifference": {
+        "question": "Sự khác biệt giữa chế độ ultra và raw là gì?",
+        "answer": "Mặc dù cả hai chế độ đều có thể tạo ra hình ảnh chất lượng cao, chế độ raw được tối ưu hóa đặc biệt để tạo ra hình ảnh cực kỳ chân thực và tự nhiên. Chế độ ultra cung cấp khả năng tạo hình ảnh tổng quát hơn."
+      },
+      "comparison": {
+        "question": "Điều gì làm cho Flux 1.1 Pro Ultra khác biệt so với các mô hình khác?",
+        "answer": "Flux 1.1 Pro Ultra nổi bật với khả năng tạo hình ảnh lớn hơn 4 megapixel, độ chân thực được cải thiện đặc biệt trong chế độ raw, và khả năng tạo hình ảnh tự nhiên được cải thiện so với các phiên bản trước."
+      }
+    }
+  }
+}

@@ -1,0 +1,452 @@
+{
+  "metadata": {
+    "title": "Flux AI Kostenloser Bildgenerator",
+    "description": "Erstellen Sie erstaunliche KI-generierte Bilder mit Flux AI",
+    "keywords": "KI, Bildgenerator, Künstliche Intelligenz, Flux AI, KI-Kunst"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "create": "Erstellen",
+    "hub": "Galerie",
+    "pricing": "Preise",
+    "profile": "Profil",
+    "logout": "Abmelden",
+    "login": "Anmelden",
+    "flux11Ultra": "Flux 1.1 Ultra"
+  },
+  "hero": {
+    "mainTitle": "FLUX AI",
+    "subTitle1": "Verwandle deine Ideen in",
+    "subTitle2": "Atemberaubende Visuals",
+    "description": "Erstelle in Sekundenschnelle einzigartige, KI-gesteuerte Meisterwerke. Lass deine Fantasie mit unserer fortschrittlichen Flux AI Wirklichkeit werden.",
+    "startButton": "Jetzt loslegen",
+    "learnMoreButton": "Mehr erfahren",
+    "examplesButton": "Beispiele",
+    "imageAlt": "KI-generiertes Kunstbeispiel"
+  },
+  "features": {
+    "title": "Warum Flux AI wählen",
+    "subtitle": "Enterprise-Grade KI-Bilderzeugung für professionelle Ersteller",
+    "cards": {
+      "advancedAI": {
+        "title": "Fortschrittliche KI-Bilderzeugung",
+        "subtitle": "FLUX AI Professioneller Bildersteller",
+        "description": "Erzeugen Sie außergewöhnliche Bilder mit einer Auflösung von bis zu 1440x1440 mit unserem Transformer-basierten KI-Modell. Unterstützt FLUX [pro], [dev] und [schnell] Bilderzeugungsmodelle von BlackForestLabs.",
+        "highlight": "Auflösung bis zu 1440x1440"
+      },
+      "multipleStyles": {
+        "title": "Mehrere Stilsteuerungen",
+        "subtitle": "FLUX AI Stil-Engine",
+        "description": "Erstellen Sie Bilder in verschiedenen Stilen von fotorealistisch bis künstlerisch. Unterstützt umfassende Stilsteuerungen einschließlich Anime, digitale Kunst, Ölgemälde und mehr mit präziser Prompt-Steuerung.",
+        "highlight": "Mehrere künstlerische Stile"
+      },
+      "advancedModel": {
+        "title": "Fortschrittliche Modellarchitektur",
+        "subtitle": "FLUX AI Technologie",
+        "description": "Angetrieben von einer hochmodernen Transformer-Architektur mit über 12 Milliarden Parametern, die durch unsere proprietären Trainingstechniken eine außergewöhnliche Bildqualität und präzise Prompt-Einhaltung liefert.",
+        "highlight": "Über 12 Milliarden Parameter"
+      },
+      "flexiblePricing": {
+        "title": "Flexible Preispläne",
+        "subtitle": "FLUX AI Preise",
+        "description": "Beginnen Sie mit unserer kostenlosen Stufe (3 kostenlose Generierungen pro Tag ohne Anmeldung) oder aktualisieren Sie auf Premium-Pläne ab $9,9 für 200 Generierungen. Greifen Sie auf erweiterte Funktionen zu, einschließlich höherer Auflösung, priorisierter Generierung und erhöhter Generierungslimits.",
+        "highlight": "Ab kostenlos"
+      }
+    },
+    "cta": {
+      "title": "Erleben Sie professionelle KI-Bilderzeugung",
+      "tryButton": "Kostenlos ausprobieren",
+      "pricingButton": "Preise ansehen"
+    }
+  },
+  "examples": {
+    "title": "KI-Generierungsbeispiele",
+    "subtitle": "Entdecken Sie, was Sie mit FLUX AI erstellen können"
+  },
+  "userExperience": {
+    "title": "Wie es funktioniert",
+    "subtitle": "Erstellen Sie atemberaubende KI-generierte Bilder mit unserem Flux AI Bildgenerator",
+    "steps": {
+      "describe": {
+        "title": "Beschreiben Sie Ihre Vision",
+        "subtitle": "KI-gestütztes Textverständnis",
+        "description": "Geben Sie einfach eine Beschreibung des Bildes ein, das Sie erstellen möchten. Unsere KI versteht die Eingabe in natürlicher Sprache.",
+        "highlight": "Verarbeitung natürlicher Sprache"
+      },
+      "generate": {
+        "title": "KI-Magie in Aktion",
+        "subtitle": "Fortschrittliche Bilderzeugung",
+        "description": "Unsere leistungsstarke KI verarbeitet Ihre Beschreibung und generiert einzigartige Bildoptionen, die Ihrer Vision entsprechen.",
+        "highlight": "Mehrere Stiloptionen"
+      },
+      "refine": {
+        "title": "Verfeinern und perfektionieren",
+        "subtitle": "Optimieren Sie Ihre Ergebnisse",
+        "description": "Verwenden Sie unsere intuitiven Tools, um die generierten Bilder anzupassen und zu verfeinern, bis sie Ihren Erwartungen entsprechen.",
+        "highlight": "Professionelle Bearbeitungstools"
+      },
+      "download": {
+        "title": "Herunterladen und verwenden",
+        "subtitle": "Bereit für Ihre Projekte",
+        "description": "Laden Sie Ihr KI-generiertes Meisterwerk in hoher Auflösung herunter, bereit für Ihre kreativen Projekte.",
+        "highlight": "Hochauflösende Ausgabe"
+      }
+    }
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Erhalten Sie Antworten auf häufige Fragen zu Flux AI und wie es Ihren kreativen Workflow verbessern kann",
+    "questions": {
+      "what": {
+        "question": "Was ist das Flux AI-Modell?",
+        "answer": "Flux AI ist ein hochmodernes künstliches Intelligenzmodell, das entwickelt wurde, um bei kreativen Aufgaben, Bilderzeugung und Designabläufen zu unterstützen. Es verwendet fortschrittliche Machine-Learning-Algorithmen, um visuelle Inhalte basierend auf Benutzereingaben zu verstehen und zu generieren."
+      },
+      "versions": {
+        "question": "Was sind die verschiedenen Versionen von FLUX AI?",
+        "answer": "FLUX AI gibt es in drei Varianten: FLUX.1 [pro] für Höchstleistung, FLUX.1 [dev] für nicht-kommerzielle Anwendungen und FLUX.1 [schnell] für schnelle lokale Entwicklung."
+      },
+      "comparison": {
+        "question": "Wie schneidet Flux AI im Vergleich zu anderen KI-Modellen ab?",
+        "answer": "Flux AI zeichnet sich durch überlegene Bildqualität, schnellere Erzeugungszeiten und intuitivere Steuerungen aus. Unser Modell wurde speziell mit hochwertigen kreativen Inhalten trainiert, was es besonders effektiv für Design- und Kunstanwendungen macht."
+      },
+      "imageTypes": {
+        "question": "Welche Arten von Bildern kann Flux AI erzeugen?",
+        "answer": "Flux AI kann eine breite Palette an visuellen Inhalten erzeugen, darunter Illustrationen, Konzeptkunst, Produktdesigns, Charakterdesigns und Umgebungsszenen. Das Modell unterstützt verschiedene künstlerische Stile und kann sich an spezifische visuelle Anforderungen anpassen."
+      },
+      "requirements": {
+        "question": "Was sind die technischen Anforderungen für die Verwendung von Flux AI?",
+        "answer": "Flux AI läuft in der Cloud und kann über jeden modernen Webbrowser zugegriffen werden. Es ist keine spezielle Hardware erforderlich, obwohl eine stabile Internetverbindung für eine optimale Leistung empfohlen wird."
+      },
+      "fineTuning": {
+        "question": "Kann ich den FLUX AI Bildgenerator auf meinem eigenen Datensatz feinabstimmen?",
+        "answer": "Feinabstimmungsoptionen können für Unternehmenskunden verfügbar sein. Bitte kontaktieren Sie Black Forest Labs direkt, um Ihre spezifischen Anforderungen zu besprechen."
+      },
+      "limits": {
+        "question": "Gibt es ein Limit, wie viele Bilder ich generieren kann?",
+        "answer": "Nutzungslimits hängen von Ihrer Abonnementstufe ab. Kostenlose Nutzer können bis zu 3 Bilder pro Tag generieren, während Premium-Nutzer unbegrenzte Generierungen und priorisierte Verarbeitung genießen."
+      },
+      "updates": {
+        "question": "Wie oft wird der FLUX AI Bildgenerator aktualisiert?",
+        "answer": "Black Forest Labs engagiert sich für kontinuierliche Verbesserung. Auch wenn keine spezifischen Aktualisierungszeitpläne angegeben werden, können Sie regelmäßige Verbesserungen und Verfeinerungen von FLUX AI erwarten."
+      },
+      "feedback": {
+        "question": "Wie kann ich Feedback geben oder Probleme mit FLUX AI melden?",
+        "answer": "Black Forest Labs freut sich über Ihr Feedback. Sie können über die offiziellen Kanäle Kontakt aufnehmen oder eine E-Mail an flux@blackforestlabs.ai senden, um Unterstützung zu erhalten und Probleme zu melden."
+      },
+      "commercial": {
+        "question": "Kann ich den FLUX AI Bildgenerator für kommerzielle Projekte verwenden?",
+        "answer": "Während FLUX.1 [schnell] für den persönlichen Gebrauch kostenlos ist, bieten wir FLUX.1 [pro] und FLUX.1 [dev] für kommerzielle Anwendungen des Flux AI Bildgenerators an. Diese Versionen bieten erweiterte Funktionen und sind über unsere API oder Partner erhältlich. Für Anfragen zur kommerziellen Nutzung des FLUX AI Bildgenerators kontaktieren Sie uns bitte unter juq1991@gmail.com."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Preise",
+    "subtitle": "Wähle den richtigen Plan für dich",
+    "tiers": {
+      "basic": {
+        "name": "Basic",
+        "price": "9,90 $",
+        "features": [
+          "200 Punkte",
+          "Hochwertige Bilder",
+          "Schnellere Bildgenerierung",
+          "Kein Abonnement"
+        ]
+      },
+      "premium": {
+        "name": "Premium-Plan",
+        "price": "29,90 $",
+        "features": [
+          "1000 Punkte",
+          "Hochwertige Bilder",
+          "Schnellere Bildgenerierung",
+          "Monatsabonnement"
+        ],
+        "recommended": "Empfohlen"
+      },
+      "advanced": {
+        "name": "Advanced-Plan",
+        "price": "99,90 $",
+        "features": [
+          "5000 Punkte",
+          "Hochwertige Bilder",
+          "Schnellere Bildgenerierung",
+          "Jahresabonnement"
+        ]
+      },
+      "common": {
+        "buyNowButton": "Jetzt kaufen",
+        "subscribeButton": "Abonnieren",
+        "processingButton": "Wird verarbeitet...",
+        "comingSoonButton": "Demnächst verfügbar"
+      }
+    }
+  },
+  "modelComparison": {
+    "title": "Vergleich der Flux AI-Modelle",
+    "subtitle": "Wählen Sie das perfekte Modell für Ihre kreativen Anforderungen",
+    "promptSection": {
+      "showPrompt": "Prompt anzeigen",
+      "hidePrompt": "Prompt ausblenden",
+      "promptTitle": "Prompt für alle Modelle verwendet",
+      "copyButton": "Prompt kopieren",
+      "copiedButton": "Kopiert!"
+    },
+    "modelDetails": {
+      "processingTime": "Verarbeitungszeit",
+      "outputSize": "Ausgabegröße",
+      "bestFor": "Am besten für",
+      "keyFeatures": "Hauptmerkmale"
+    },
+    "models": {
+      "ultra": {
+        "name": "Flux 1.1 Pro Ultra",
+        "description": "Bilder mit bis zu 4 Megapixeln. Verwenden Sie den Raw-Modus für Realismus.",
+        "features": [
+          "Höhere Auflösung",
+          "Keine Kompromisse bei der Geschwindigkeit",
+          "Raw-Modus"
+        ],
+        "suitableFor": [
+          "Menschliche Motive",
+          "Naturfotografie"
+        ],
+        "highlight": "Realismus",
+        "details": "Neue hochauflösende Funktionen für FLUX1.1 [pro], die die Funktionalität erweitern, um 4-fach höhere Bildauflösungen (bis zu 4 MP) zu unterstützen und dabei eine beeindruckende Generierungszeit von nur 10 Sekunden pro Probe beizubehalten.",
+        "processingTime": "10 Sekunden",
+        "imageSize": "20962096"
+      },
+      "schnell": {
+        "name": "Flux Schnell",
+        "description": "Das schnellste Bildgenerierungsmodell, zugeschnitten auf die lokale Entwicklung und den persönlichen Gebrauch.",
+        "features": [
+          "Hohe Leistung",
+          "Schnelle Generierung",
+          "Offene Lizenz"
+        ],
+        "suitableFor": [
+          "Persönlich",
+          "Wissenschaftlich",
+          "Kommerzielle Zwecke"
+        ],
+        "highlight": "Geschwindigkeitsoptimiert",
+        "details": "Optimiert für Geschwindigkeit und Effizienz liefert Flux Schnell schnelle Ergebnisse, die perfekt für erste Konzepte und schnelles Prototyping sind. Ideal für Entwickler und Designer, die schnelle Iterationen benötigen.",
+        "processingTime": "0,8 Sekunden",
+        "imageSize": "10241024"
+      },
+      "dev": {
+        "name": "Flux Dev",
+        "description": "Ein korrigierter Fließtransformator mit 12 Milliarden Parametern, der in der Lage ist, Bilder aus Textbeschreibungen zu generieren.",
+        "features": [
+          "Wettbewerbsfähige Leistung",
+          "Effizientes Training",
+          "Offene Forschung"
+        ],
+        "suitableFor": [
+          "Persönlich",
+          "Wissenschaftlich",
+          "Kommerzielle Zwecke"
+        ],
+        "highlight": "Effizienter",
+        "details": "Ein leistungsstarkes 12B-Parameter-Bildgenerierungsmodell, das hochwertige Ergebnisse mit Unterstützung für die kommerzielle Nutzung, optimierte Leistung und klare ethische Richtlinien für eine verantwortungsvolle KI-Entwicklung liefert.",
+        "processingTime": "3-5 Sekunden",
+        "imageSize": "10241024"
+      },
+      "pro11": {
+        "name": "Flux 1.1 Pro",
+        "description": "Schnelleres, besseres FLUX Pro. Text-zu-Bild-Modell mit hervorragender Bildqualität, Prompt-Einhaltung und Ausgabevielfalt.",
+        "features": [
+          "6x schnellere Generierung",
+          "Verbesserte Qualität",
+          "Fortschrittliche Architektur"
+        ],
+        "suitableFor": [
+          "Professionelle Workflows",
+          "Qualitätskritische Projekte",
+          "Produktionsumgebungen"
+        ],
+        "highlight": "Verbesserte Qualität",
+        "details": "Ein hochmodernes 12B-Parameter-Bildgenerierungsmodell mit 6-fach schnellerer Geschwindigkeit, verbesserter Qualität und branchenführender Leistung, entwickelt mit fortschrittlicher Hybrid-Architektur, die multimodale und parallele Diffusions-Transformatorblöcke für professionelle und Produktionsumgebungen kombiniert.",
+        "processingTime": "8-10 Sekunden",
+        "imageSize": "14401440"
+      },
+      "pro": {
+        "name": "Flux Pro",
+        "description": "Hochmoderne Bilderzeugung mit erstklassiger Prompt-Befolgung, visueller Qualität, Bilddetails und Ausgabevielfalt.",
+        "features": [
+          "Top-Leistung",
+          "Flexible Auflösung",
+          "Fortschrittliche Architektur"
+        ],
+        "suitableFor": [
+          "Professionelle Projekte",
+          "Vielseitige Anwendungen"
+        ],
+        "highlight": "Premium-Qualität",
+        "details": "Ein Premium-Bildgenerierungsmodell mit 12B Parametern, das hochmoderne Leistung mit überragender visueller Qualität und vielseitiger Auflösungsunterstützung bietet, angetrieben durch eine Hybrid-Architektur, die multimodale und parallele Diffusions-Transformatorblöcke kombiniert.",
+        "processingTime": "15-25 Sekunden",
+        "imageSize": "1440*1440"
+      }
+    }
+  },
+  "imagePreview": {
+    "loading": "Dein Meisterwerk wird erstellt...",
+    "placeholder": "Dein KI-generiertes Bild erscheint hier",
+    "downloadButton": "Herunterladen",
+    "dimensions": {
+      "width": "Breite",
+      "height": "Höhe"
+    }
+  },
+  "autoLogout": {
+    "warningMessage": "Deine Sitzung läuft in {minutes} Minuten ab.",
+    "stayLoggedIn": "Angemeldet bleiben"
+  },
+  "footer": {
+    "description": "Verwandeln Sie Ihre Ideen mit der Kraft von Flux AI in atemberaubende Visuals",
+    "quickLinks": "Schnelllinks",
+    "pricing": "Preise",
+    "contact": "Kontakt",
+    "legal": "Rechtliches",
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutz",
+    "support": "Support",
+    "allRightsReserved": "Alle Rechte vorbehalten",
+    "fluxAI": {
+      "title": "Flux Bildgenerator",
+      "desc": "Erleben Sie die Bildgenerierungstools von Flux AI"
+    },
+    "soraAI": {
+      "title": "SORA AI",
+      "desc": "Entdecken Sie die Möglichkeiten von SORA AI"
+    },
+    "aiBestTool": {
+      "title": "Beste KI-Tools",
+      "desc": "Entdecken Sie die besten KI-Werkzeuge"
+    }
+  },
+  "auth": {
+    "signIn": "In Konto einloggen",
+    "createAccount": "Neues Konto erstellen",
+    "fullName": "Vollständiger Name",
+    "emailAddress": "E-Mail-Adresse",
+    "password": "Passwort",
+    "signInButton": "Einloggen",
+    "registerButton": "Registrieren",
+    "noAccount": "Kein Konto? Jetzt registrieren",
+    "hasAccount": "Bereits ein Konto? Einloggen",
+    "errors": {
+      "unexpected": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+      "invalidFormat": "Unerwartetes Antwortformat",
+      "authFailed": "Authentifizierung fehlgeschlagen"
+    }
+  },
+  "imageGenerator": {
+    "title": "Erstellen Sie atemberaubende Bilder mit Flux AI",
+    "subtitle": "Verwandeln Sie Ihre Ideen in Sekundenschnelle in visuelle Meisterwerke",
+    "pageTitle": "Flux AI Bildgenerator",
+    "description": "Verwandeln Sie Ihre Ideen in atemberaubende Visuals",
+    "promptLabel": "Bildbeschreibung",
+    "promptPlaceholder": "Versuchen Sie: Ein majestätischer Löwe sitzt auf einem Berggipfel bei Sonnenuntergang...",
+    "modelLabel": "KI-Modell",
+    "modelPoints": "Punkt|Punkte",
+    "modelPremium": "Premium",
+    "aspectRatioLabel": "Seitenverhältnis",
+    "outputFormatLabel": "Ausgabeformat",
+    "generateButton": "Bild generieren",
+    "generatingButton": "Generiere...",
+    "freeGenerations": "Kostenlose Generierungen",
+    "points": "Punkte",
+    "loginForMore": "Einloggen für mehr Generierungen",
+    "error": "Ein Fehler ist aufgetreten"
+  },
+  "ultraHero": {
+    "heroTitle": "FLUX 1.1 Ultra",
+    "heroSubtitle": "Nächste Generation",
+    "heroDescription": "FLUX1.1 [pro] verfügt nun über neue Hochauflösungsfähigkeiten, die die Funktionalität erweitern und Bildauflösungen von bis zu 4MP bei einer beeindruckenden Generierungszeit von nur 10 Sekunden pro Beispiel ermöglichen.",
+    "heroCallToAction": "Jetzt Ultra testen",
+    "heroExploreFeatures": "Funktionen erkunden",
+    "sectionNewRelease": "Neue Veröffentlichung",
+    "imageAlt": "Beispiel für FLUX 1.1 Ultra"
+  },
+  "faqData": [
+    {
+      "question": "Was ist Flux 1.1 Pro Ultra?",
+      "answer": "Flux 1.1 Pro Ultra ist ein fortschrittliches KI-Bildgenerierungsmodell, das hochrealistische Bilder mit einer Auflösung von bis zu 4 Megapixeln erstellen kann. Es bietet sowohl Ultra- als auch Raw-Modi für maximale Flexibilität bei der Bilderzeugung."
+    },
+    {
+      "question": "Wie kann ich Flux 1.1 Pro Ultra ausprobieren?",
+      "answer": "Sie können Flux 1.1 Pro Ultra kostenlos testen, indem Sie sich bei Ihrem Konto anmelden. Neue Benutzer erhalten 3 Punkte (1 Mal), um die erweiterten Funktionen dieses fortschrittlichen Modells zu erleben."
+    },
+    {
+      "question": "Was sind die wichtigsten Merkmale von Flux 1.1 Pro Ultra?",
+      "answer": "Zu den wichtigsten Merkmalen gehören die Fähigkeit, Bilder mit einer Größe von bis zu 4 Megapixeln zu generieren, ein Raw-Modus, der für fotorealistische Ausgaben optimiert ist, und verbesserte Fähigkeiten zur Erzeugung natürlicher Bilder im Vergleich zu früheren Modellen."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Ultra- und Raw-Modus?",
+      "answer": "Während beide Modi qualitativ hochwertige Bilder erzeugen können, ist der Raw-Modus speziell für die Erstellung hochrealistischer und natürlich aussehender Bilder optimiert. Der Ultra-Modus bietet allgemeinere Funktionen zur Bilderzeugung."
+    },
+    {
+      "question": "Was unterscheidet Flux 1.1 Pro Ultra von anderen Modellen?",
+      "answer": "Flux 1.1 Pro Ultra zeichnet sich durch die Fähigkeit aus, größere 4-Megapixel-Bilder zu generieren, den verbesserten Realismus insbesondere im Raw-Modus und die verbesserte Erzeugung natürlicher Bilder im Vergleich zu früheren Versionen."
+    }
+  ],
+  "ultraFeatures": {
+    "title": "FLUX 1.1 Ultra Funktionen",
+    "subtitle": "Verwenden Sie den Raw-Modus für mehr Realismus",
+    "features": {
+      "resolution": {
+        "title": "Ultra-Hohe Auflösung",
+        "subtitle": "FLUX 1.1 Ultra Auflösungs-Engine",
+        "description": "Erstellen Sie atemberaubende Bilder mit einer Auflösung von bis zu 2096x2096 mit außergewöhnlichen Details und Klarheit. Perfekt für professionelle Anwendungen und Großformatdruck.",
+        "highlight": "Bis zu 2096x2096"
+      },
+      "speed": {
+        "title": "Keine Kompromisse bei der Geschwindigkeit",
+        "subtitle": "Schneller",
+        "description": "Im Gegensatz zu vielen hochauflösenden Modellen, die bei höheren Auflösungen deutliche Verlangsamungen erfahren, zeigen unsere Leistungstests konstant schnelle Generierungszeiten - über 2,5-mal schneller als vergleichbare hochauflösende Angebote.",
+        "highlight": "10s 2,5X schneller"
+      },
+      "price": {
+        "title": "Wettbewerbsfähiger Preis",
+        "subtitle": "Mengensteigerung ohne Preisänderung",
+        "description": "Dieses Modell ist wettbewerbsfähig bepreist, mit dem gleichen Preis pro Bild wie die anderen Pro-Versionen.",
+        "highlight": "Materielle Vorteile"
+      },
+      "rawMode": {
+        "title": "Raw-Modus Realismus",
+        "subtitle": "FLUX Ultra Generierung",
+        "description": "FLUX1.1 [pro] – Raw-Modus: Für Kreative, die Authentizität suchen, fängt unser neuer Raw-Modus das echte Gefühl spontaner Fotografie ein. Aktivieren Sie diese Funktion, um Bilder mit einer weniger synthetischen, natürlicheren Ästhetik zu generieren.",
+        "highlight": "Menschen und Natur"
+      }
+    },
+    "tryNow": "Ultra jetzt testen",
+    "viewPricing": "Preise ansehen"
+  },
+  "ultraFAQ": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Erhalten Sie Antworten auf häufige Fragen zu Flux 1.1 Ultra und wie es Ihren kreativen Workflow verbessern kann",
+    "questions": {
+      "what": {
+        "question": "Was ist Flux 1.1 Pro Ultra?",
+        "answer": "Flux 1.1 Pro Ultra ist ein fortschrittliches KI-Bildgenerierungsmodell, das hochrealistische Bilder mit einer Auflösung von bis zu 4 Megapixeln erstellen kann. Es bietet sowohl Ultra- als auch Raw-Modi für maximale Flexibilität bei der Bildgenerierung."
+      },
+      "howToTry": {
+        "question": "Wie kann ich Flux 1.1 Pro Ultra ausprobieren?",
+        "answer": "Sie können Flux 1.1 Pro Ultra kostenlos testen, indem Sie sich in Ihrem Konto einloggen. Neue Benutzer erhalten 3 Punkte (1 Nutzung), um die erweiterten Funktionen dieses fortschrittlichen Modells zu erleben."
+      },
+      "keyFeatures": {
+        "question": "Was sind die wichtigsten Funktionen von Flux 1.1 Pro Ultra?",
+        "answer": "Zu den wichtigsten Funktionen gehören die Fähigkeit, Bilder bis zu 4 Megapixel zu generieren, ein für fotorealistische Ausgaben optimierter Raw-Modus und verbesserte Fähigkeiten zur natürlichen Bildgenerierung im Vergleich zu früheren Modellen."
+      },
+      "modeDifference": {
+        "question": "Was ist der Unterschied zwischen Ultra- und Raw-Modus?",
+        "answer": "Während beide Modi qualitativ hochwertige Bilder generieren können, ist der Raw-Modus speziell für die Erstellung hochrealistischer und natürlich aussehender Bilder optimiert. Der Ultra-Modus bietet allgemeinere Bildgenerierungsfunktionen."
+      },
+      "comparison": {
+        "question": "Was unterscheidet Flux 1.1 Pro Ultra von anderen Modellen?",
+        "answer": "Flux 1.1 Pro Ultra zeichnet sich durch seine Fähigkeit aus, größere 4-Megapixel-Bilder zu generieren, verbesserten Realismus besonders im Raw-Modus und verbesserte natürliche Bildgenerierung im Vergleich zu früheren Versionen."
+      }
+    }
+  }
+}

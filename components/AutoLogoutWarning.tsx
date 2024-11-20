@@ -1,12 +1,15 @@
-// app/components/AutoLogoutWarning.tsx
-
 'use client';
 
 import React from 'react';
 import {useAutoLogout} from '@/hooks/useAutoLogout';
 import {AUTH_CONFIG} from '@/config/authLogout';
+import type {Dictionary} from '@/app/i18n/settings';
 
-export const AutoLogoutWarning = () => {
+interface AutoLogoutWarningProps {
+    dictionary: Dictionary;
+}
+
+export const AutoLogoutWarning: React.FC<AutoLogoutWarningProps> = ({dictionary}) => {
     const {
         showWarning,
         timeRemaining,
@@ -15,7 +18,6 @@ export const AutoLogoutWarning = () => {
         timeoutDuration: AUTH_CONFIG.timeout.duration,
         warningDuration: AUTH_CONFIG.timeout.warning,
         onLogout: () => {
-            // 可以添加更多登出逻辑
             console.log('Session expired');
         },
         onWarning: () => {
@@ -23,8 +25,10 @@ export const AutoLogoutWarning = () => {
         }
     });
 
-    // 确保只在客户端渲染
     if (typeof window === 'undefined' || !showWarning) return null;
+
+    const minutes = Math.ceil(timeRemaining / 1000 / 60);
+    const warningMessage = dictionary.autoLogout.warningMessage.replace('{minutes}', minutes.toString());
 
     return (
         <div
@@ -39,12 +43,12 @@ export const AutoLogoutWarning = () => {
                 </div>
                 <div className="ml-3">
                     <p className="text-sm text-yellow-700">
-                        Your session will expire in {Math.ceil(timeRemaining / 1000 / 60)} minutes.
+                        {warningMessage}
                         <button
                             onClick={resetTimer}
                             className="ml-2 font-medium underline text-yellow-700 hover:text-yellow-600"
                         >
-                            Stay logged in
+                            {dictionary.autoLogout.stayLoggedIn}
                         </button>
                     </p>
                 </div>

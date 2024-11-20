@@ -1,13 +1,18 @@
 'use client'
 import React, {useEffect, useState} from 'react'
 import Image from 'next/image'
+import type {Dictionary} from '@/app/i18n/settings'
+
+interface ExamplesProps {
+    dictionary: Dictionary
+}
 
 const examples = [
     {
         prompt: "Artistic interpretation of the human consciousness and subconsciousness\n",
         image: "/pictures/examples/example.jpg",
         style: "Artistic Interpretation"
-    },{
+    }, {
         prompt: "Write this poem with cursive text on a background that fits the words:\nRoses are red\n  Violets are blue,\nSugar is sweet\n  And so are you",
         image: "/pictures/examples/example1.jpg",
         style: "Love Poem"
@@ -110,34 +115,45 @@ const examples = [
 
 ]
 
-export const Examples: React.FC = () => {
+export const Examples: React.FC<ExamplesProps> = ({dictionary}) => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [showPrompt, setShowPrompt] = useState(false);
+    const [isCopied, setIsCopied] = useState(false);
 
-    // 自动滚动
     useEffect(() => {
         const interval = setInterval(() => {
             setActiveIndex((current) => (current + 1) % examples.length);
-        }, 5000); // 每5秒切换一次
+        }, 5000);
 
         return () => clearInterval(interval);
     }, []);
 
+    const handleCopyPrompt = async () => {
+        try {
+            await navigator.clipboard.writeText(examples[activeIndex].prompt);
+            setIsCopied(true);
+            setTimeout(() => setIsCopied(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy text: ', err);
+        }
+    };
+
     return (
         <section id="examples"
                  className="relative py-20 overflow-hidden inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500">
-            {/*<div className="absolute inset-0 bg-[url('/subtle-pattern.png')] opacity-5 "/>*/}
             <div className="absolute inset-0 bg-black/50"/>
             <div
                 className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"/>
 
             <div className="container relative mx-auto px-4 z-10">
-                <h2 className="text-4xl font-bold text-center mb-4 text-white">AI Generation Examples</h2>
+                <h2 className="text-4xl font-bold text-center mb-4 text-white">
+                    {dictionary.examples.title}
+                </h2>
                 <p className="text-xl text-center mb-12 text-indigo-200">
-                    Discover what you can create with FLUX AI
+                    {dictionary.examples.subtitle}
                 </p>
 
                 <div className="relative max-w-6xl mx-auto">
-                    {/* 主图片展示区 */}
                     <div className="relative aspect-[16/9] rounded-xl overflow-hidden">
                         <div className="absolute inset-0 bg-black/20 z-10"></div>
                         <Image
@@ -146,7 +162,6 @@ export const Examples: React.FC = () => {
                             fill
                             className="object-cover transition-transform duration-700 hover:scale-105"
                         />
-                        {/* Prompt 展示 */}
                         <div
                             className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent z-20">
                             <div
@@ -159,7 +174,6 @@ export const Examples: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* 缩略图导航 */}
                     <div className="flex gap-4 mt-6 overflow-x-auto pb-4 snap-x">
                         {examples.map((example, index) => (
                             <button

@@ -1,8 +1,15 @@
+'use client'
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {BiMoney} from "react-icons/bi";
 import {DollarSign, Eye, Rabbit, TentTree} from "lucide-react";
+import type {Dictionary} from '@/app/i18n/settings'
+
+interface UltraFeaturerops {
+    dictionary: Dictionary
+}
 
 interface Feature {
     title: string;
@@ -12,38 +19,37 @@ interface Feature {
     highlight: string;
 }
 
-const features: Feature[] = [
-    {
-        title: "Ultra Higher Resolution",
-        subtitle: "FLUX 1.1 Ultra Resolution Engine",
-        description: "Create stunning images up to 2096x2096 resolution with exceptional detail and clarity. Perfect for professional use and large-format printing.",
-        icon: Eye,
-        highlight: "Up to 2096x2096"
-    },
-    {
-        title: " No Compromise in Speed",
-        subtitle: "Faster",
-        description: "Unlike many high-resolution models that experience significant slowdowns at higher resolutions, our performance benchmarks show sustained fast generation times—over 2.5x faster than comparable high-resolution offerings.",
-        icon: Rabbit,
-        highlight: "10s 2.5X"
-    },
-    {
-        title: "Competitive Price",
-        subtitle: "increase in quantity but not price",
-        description: "This model is competitively priced, with the same price per image as the other versions of the Pro.",
-        icon: DollarSign,
-        highlight: "Material Advantages"
-    },
-    {
-        title: "Raw Mode Realism",
-        subtitle: "FLUX Ultra Generation",
-        description: "FLUX1.1 [pro] – raw mode: For creators seeking authenticity, our new raw mode captures the genuine feel of candid photography. Toggle this feature to generate images with a less synthetic, more natural aesthetic. Compared to other text-to-image models, raw mode significantly increases diversity in human subjects and enhances the realism of nature photography.",
-        icon: TentTree,
-        highlight: "Human Subjects and Nature"
-    }
-];
-
-export const UltraFeatures = () => {
+export const UltraFeatures: React.FC<UltraFeaturerops> = ({dictionary}) => {
+    const features = [
+        {
+            title: dictionary.ultraFeatures.features.resolution.title,
+            subtitle: dictionary.ultraFeatures.features.resolution.subtitle,
+            description: dictionary.ultraFeatures.features.resolution.description,
+            icon: Eye,
+            highlight: dictionary.ultraFeatures.features.resolution.highlight
+        },
+        {
+            title: dictionary.ultraFeatures.features.speed.title,
+            subtitle: dictionary.ultraFeatures.features.speed.subtitle,
+            description: dictionary.ultraFeatures.features.speed.description,
+            icon: Rabbit,
+            highlight: dictionary.ultraFeatures.features.speed.highlight
+        },
+        {
+            title: dictionary.ultraFeatures.features.price.title,
+            subtitle: dictionary.ultraFeatures.features.price.subtitle,
+            description: dictionary.ultraFeatures.features.price.description,
+            icon: DollarSign,
+            highlight: dictionary.ultraFeatures.features.price.highlight
+        },
+        {
+            title: dictionary.ultraFeatures.features.rawMode.title,
+            subtitle: dictionary.ultraFeatures.features.rawMode.subtitle,
+            description: dictionary.ultraFeatures.features.rawMode.description,
+            icon: TentTree,
+            highlight: dictionary.ultraFeatures.features.rawMode.highlight
+        }
+    ];
     return (
         <section id="features" className="relative py-20 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500"/>
@@ -52,9 +58,9 @@ export const UltraFeatures = () => {
                 className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"/>
 
             <div className="container relative mx-auto px-4 z-10">
-                <h2 className="text-4xl font-bold text-center mb-4 text-white">FLUX 1.1 Ultra Features</h2>
+                <h2 className="text-4xl font-bold text-center mb-4 text-white">{dictionary.ultraFeatures.title}</h2>
                 <p className="text-xl text-center mb-12 text-indigo-200">
-                    Use raw mode for realism.
+                    {dictionary.ultraFeatures.subtitle}
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
