@@ -14,7 +14,7 @@ interface FAQItemProps {
 }
 
 // FAQ项目组件
-const FAQItem: React.FC<FAQItemProps> = (dictionary, {question, answer, isOpen, onClick}) => (
+const FAQItem: React.FC<FAQItemProps> = ({question, answer, isOpen, onClick}) => (
     <div className="border-b border-white/10 last:border-none">
         <button
             className="w-full py-4 px-6 flex justify-between items-center text-left focus:outline-none"
