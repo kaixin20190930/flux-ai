@@ -3,6 +3,7 @@ import {UltraFeatures} from '@/components/UltraFeatures';
 import {UltraFAQ} from "@/components/UltraFAQ";
 import {getDictionary} from '@/app/i18n/utils'
 import type {Locale} from '@/app/i18n/settings'
+export const runtime = 'edge';
 
 export default async function UltraPage({
                                             params: {locale}
