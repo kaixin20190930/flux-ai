@@ -11,6 +11,13 @@ interface AuthFormProps {
     dictionary: Dictionary
 }
 
+interface GoogleOAuthConfig {
+    client_id: string;
+    redirect_uri: string;
+    scope: string;
+    response_type: string;
+}
+
 const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
     const [isLogin, setIsLogin] = useState(true)
     const [name, setName] = useState('')
@@ -20,6 +27,13 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
     const router = useRouter()
     const params = useParams()
     const currentLocale = params.locale || 'en'
+
+    const googleOAuthConfig: GoogleOAuthConfig = {
+        client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || '',
+        redirect_uri: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/google/callback`,
+        scope: 'email profile',
+        response_type: 'code'
+    }
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -60,6 +74,29 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
         } catch (err) {
             setError(dictionary.auth.errors.unexpected)
             logWithTimestamp('Error during authentication:' + err)
+        }
+    }
+
+    const handleGoogleLogin = async () => {
+        try {
+            // 在状态中加入当前语言
+            const state = JSON.stringify({
+                locale: currentLocale
+            })
+
+            // 构建 Google OAuth URL
+            window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${new URLSearchParams({
+                client_id: googleOAuthConfig.client_id,
+                redirect_uri: googleOAuthConfig.redirect_uri,
+                response_type: googleOAuthConfig.response_type,
+                scope: googleOAuthConfig.scope,
+                prompt: 'select_account',
+                state: state // 传递状态参数
+            }).toString()}`
+
+        } catch (err) {
+            setError(dictionary.auth.errors.unexpected)
+            logWithTimestamp('Error during Google authentication:' + err)
         }
     }
 
@@ -138,6 +175,30 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
                         </button>
                     </div>
                 </form>
+                <div className="mt-6">
+                    <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                            <div className="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div className="relative flex justify-center text-sm">
+                            <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                        </div>
+                    </div>
+
+                    <div className="mt-6 grid grid-cols-1 gap-3">
+                        <button
+                            type="button"
+                            onClick={handleGoogleLogin}
+                            className="w-full inline-flex justify-center items-center px-4 py-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        >
+                            <img
+                                src="/icons/google.svg"
+                                alt="Google"
+                                className="h-5 w-5"
+                            />
+                        </button>
+                    </div>
+                </div>
                 <div className="text-center">
                     <button
                         onClick={() => setIsLogin(!isLogin)}

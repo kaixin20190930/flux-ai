@@ -124,14 +124,14 @@ const Header: React.FC<HeaderProps> = ({dictionary}) => {
             unsubscribe();
         };
     }, [isVisible])
-    const handleLogout = () => {
+    const handleLogout = (locale: Locale) => {
         localStorage.removeItem('user')
         localStorage.removeItem('token')
         Cookies.remove('token')
         setUser(null)
         setIsDropdownOpen(false)
         // Optionally redirect to home page
-        window.location.href = '/auth'
+        window.location.href = `/${locale}/auth`
     }
     return (
         <header
@@ -269,7 +269,7 @@ const Header: React.FC<HeaderProps> = ({dictionary}) => {
                                             {dictionary.navigation.profile}
                                         </Link>
                                         <button
-                                            onClick={handleLogout}
+                                            onClick={() => handleLogout(currentLocale)}
                                             className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white"
                                         >
                                             <FaSignOutAlt className="inline mr-2"/>
