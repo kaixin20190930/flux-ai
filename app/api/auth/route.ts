@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
             )
         }
 
-        const tokenData = await tokenResponse.json()
+        const tokenData = await tokenResponse.json() as any
 
         // 2. 获取用户信息
         const userResponse = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
                 `/${locale}/auth?error=user_info_error`
             )
         }
-        const userData = await userResponse.json()
+        const userData = await userResponse.json() as any
 
         // 3. 调用你的 worker API
         const workerResponse = await fetch('https://flux-ai.liukai19911010.workers.dev/google-auth', {
@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
             }),
         })
 
-        const workerData = await workerResponse.json()
+        const workerData = await workerResponse.json() as any
 
         // 4. 设置 cookie
         setCookie('token', workerData.token, {
