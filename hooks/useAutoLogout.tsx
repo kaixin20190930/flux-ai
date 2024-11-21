@@ -17,7 +17,7 @@ interface AutoLogoutConfig {
     whitelistRoutes?: string[];
 }
 
-export const useAutoLogout = (locale:string, {
+export const useAutoLogout = (locale: string, {
     timeoutDuration = AUTH_CONFIG.timeout.duration,
     warningDuration = AUTH_CONFIG.timeout.warning,
     isEnabled = true,
