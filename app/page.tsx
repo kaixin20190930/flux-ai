@@ -14,7 +14,7 @@ export default async function RootPage() {
             <Header dictionary={dictionary}/>
             <main className="flex-grow">
                 <HomePage dictionary={dictionary} locale={defaultLocale}/>
-                <AutoLogoutWarning dictionary={dictionary}/>
+                <AutoLogoutWarning dictionary={dictionary} locale={defaultLocale}/>
             </main>
             <Footer dictionary={dictionary}/>
         </>

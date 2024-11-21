@@ -7,14 +7,15 @@ import type {Dictionary} from '@/app/i18n/settings';
 
 interface AutoLogoutWarningProps {
     dictionary: Dictionary;
+    locale: string
 }
 
-export const AutoLogoutWarning: React.FC<AutoLogoutWarningProps> = ({dictionary}) => {
+export const AutoLogoutWarning: React.FC<AutoLogoutWarningProps> = ({dictionary, locale}) => {
     const {
         showWarning,
         timeRemaining,
         resetTimer
-    } = useAutoLogout({
+    } = useAutoLogout(locale, {
         timeoutDuration: AUTH_CONFIG.timeout.duration,
         warningDuration: AUTH_CONFIG.timeout.warning,
         onLogout: () => {

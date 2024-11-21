@@ -17,15 +17,15 @@ interface AutoLogoutConfig {
     whitelistRoutes?: string[];
 }
 
-export const useAutoLogout = ({
-                                  timeoutDuration = AUTH_CONFIG.timeout.duration,
-                                  warningDuration = AUTH_CONFIG.timeout.warning,
-                                  isEnabled = true,
-                                  onLogout,
-                                  onWarning,
-                                  onTimerReset,
-                                  whitelistRoutes = AUTH_CONFIG.whitelistRoutes
-                              }: AutoLogoutConfig) => {
+export const useAutoLogout = (locale, {
+    timeoutDuration = AUTH_CONFIG.timeout.duration,
+    warningDuration = AUTH_CONFIG.timeout.warning,
+    isEnabled = true,
+    onLogout,
+    onWarning,
+    onTimerReset,
+    whitelistRoutes = AUTH_CONFIG.whitelistRoutes
+}: AutoLogoutConfig) => {
     const router = useRouter();
     const pathname = usePathname();
     const [lastActivity, setLastActivity] = useState<number>(Date.now());
@@ -43,7 +43,7 @@ export const useAutoLogout = ({
         localStorage.removeItem('token');
         localStorage.removeItem('user'); // 确保移除用户信息
         AuthEventEmitter.emit(); // 触发登出事件
-        router.push('/auth');
+        router.push(`/${locale}/auth`);
     }, [onLogout, router]);
 
 

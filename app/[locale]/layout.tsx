@@ -64,7 +64,7 @@ export default async function RootLayout({
             <Header dictionary={dictionary}/>
             <main className="flex-grow">
                 {children}
-                <AutoLogoutWarning dictionary={dictionary}/>
+                <AutoLogoutWarning dictionary={dictionary} locale={locale}/>
             </main>
             <Footer dictionary={dictionary}/>
         </>
