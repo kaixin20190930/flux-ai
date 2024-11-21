@@ -5,6 +5,7 @@ import {Env} from '@/worker/types';
 import {logWithTimestamp} from "@/utils/logUtils";
 import {insertTransaction, updateUserPurchase} from "@/utils/userUtils";
 
+export const runtime = 'edge';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: '2024-09-30.acacia',
