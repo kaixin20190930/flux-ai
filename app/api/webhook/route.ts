@@ -29,7 +29,6 @@ interface ResponseForWebhook {
 }
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
-export const runtime = 'edge';
 
 export async function POST(req: NextRequest) {
     const body = await req.text();
