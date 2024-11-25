@@ -1,42 +1,29 @@
-import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
+import NextAuth, {NextAuthOptions} from "next-auth";
 
 export const runtime = 'edge';
-const handler = NextAuth({
+const authOptions: NextAuthOptions = {
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
         }),
     ],
+    secret: process.env.NEXTAUTH_SECRET,
+    debug: false,
     callbacks: {
-        async jwt({token, user, account}) {
-            // 当用户首次登录时，将获得的信息添加到 token 中
-            if (account && user) {
-                return {
-                    ...token,
-                    accessToken: account.access_token,
-                    user: {
-                        id: user.id,
-                        name: user.name,
-                        email: user.email,
-                        image: user.image,
-                    },
-                }
-            }
-            return token
+        async signIn({user, account, profile, email, credentials}) {
+            return true
         },
-        async session({session, token}) {
-            // 将 token 中的信息添加到 session 中
-            session.user = token.user as any
-            session.accessToken = token.accessToken as string
-            return session
+        async redirect({url, baseUrl}) {
+            // Allows relative callback URLs
+            if (url.startsWith("/")) return `${baseUrl}${url}`
+            // Allows callback URLs on the same origin
+            else if (new URL(url).origin === baseUrl) return url
+            return baseUrl
         },
-    },
-    pages: {
-        signIn: '/auth/signin',
-        error: '/auth/error',
-    },
-})
+    }
+};
+const handler = NextAuth(authOptions);
 
-export {handler as GET, handler as POST}
+export {handler as GET, handler as POST};
