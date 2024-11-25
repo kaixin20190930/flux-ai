@@ -6,6 +6,7 @@ import type {Metadata} from 'next'
 import {AutoLogoutWarning} from "@/components/AutoLogoutWarning"
 import {getDictionary} from './i18n/utils'
 import {defaultLocale} from './i18n/settings'
+import Providers from "@/components/Providers";
 
 // 为根路径生成 metadata
 export async function generateMetadata(): Promise<Metadata> {
@@ -126,7 +127,7 @@ export default async function RootLayout({
     return (
         <html>
         <body className="flex flex-col min-h-screen">
-        {children}
+        <Providers>{children}</Providers>
         </body>
         </html>
     )

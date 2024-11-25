@@ -6,9 +6,18 @@ import {useRouter, useParams} from 'next/navigation'
 import {logWithTimestamp} from "@/utils/logUtils"
 import Cookies from 'js-cookie'
 import type {Dictionary} from '@/app/i18n/settings'
+import {signIn, useSession} from 'next-auth/react'
+import {SignInResponse} from 'next-auth/react'
 
 interface AuthFormProps {
     dictionary: Dictionary
+}
+
+interface GoogleOAuthConfig {
+    client_id: string;
+    redirect_uri: string;
+    scope: string;
+    response_type: string;
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
@@ -19,7 +28,15 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
     const [error, setError] = useState('')
     const router = useRouter()
     const params = useParams()
+    const {data: session} = useSession()
     const currentLocale = params.locale || 'en'
+
+    // const googleOAuthConfig: GoogleOAuthConfig = {
+    //     client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || '',
+    //     redirect_uri: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/google/callback`,
+    //     scope: 'email profile',
+    //     response_type: 'code'
+    // }
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -62,6 +79,30 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
             logWithTimestamp('Error during authentication:' + err)
         }
     }
+
+    const handleGoogleLogin = async () => {
+        try {
+            const result = await signIn('google', {
+                callbackUrl: `/${currentLocale}/flux-1-1-ultra`,
+                redirect: true,
+            }) as SignInResponse | undefined
+
+            // 使用可选链操作符安全地访问 error 属性
+            if (result?.error) {
+                setError(dictionary.auth.errors.unexpected)
+                logWithTimestamp(`Google sign in error: ${result.error}`)
+            }
+        } catch (err) {
+            setError(dictionary.auth.errors.unexpected)
+            logWithTimestamp(`Error during Google authentication: ${err}`)
+        }
+    }
+    React.useEffect(() => {
+        if (session) {
+            router.push(`/${currentLocale}/flux-1-1-ultra`)
+        }
+    }, [session, router, currentLocale])
+
 
     return (
         <div
@@ -138,6 +179,30 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
                         </button>
                     </div>
                 </form>
+                <div className="mt-6">
+                    <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                            <div className="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div className="relative flex justify-center text-sm">
+                            <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                        </div>
+                    </div>
+
+                    <div className="mt-6 grid grid-cols-1 gap-3">
+                        <button
+                            type="button"
+                            onClick={handleGoogleLogin}
+                            className="w-full inline-flex justify-center items-center px-4 py-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        >
+                            <img
+                                src="/icons/google.svg"
+                                alt="Google"
+                                className="h-5 w-5"
+                            />
+                        </button>
+                    </div>
+                </div>
                 <div className="text-center">
                     <button
                         onClick={() => setIsLogin(!isLogin)}

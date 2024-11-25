@@ -7,6 +7,7 @@ import {AutoLogoutWarning} from "@/components/AutoLogoutWarning"
 import {getDictionary} from '../i18n/utils'
 import {Locale, defaultLocale, locales} from '../i18n/settings'
 import {redirect} from 'next/navigation'
+import Providers from '@/components/Providers'
 
 // 动态生成 metadata
 export async function generateMetadata({params: {locale}}: { params: { locale: string } }): Promise<Metadata> {
