@@ -4,6 +4,7 @@ import GoogleProvider from "next-auth/providers/google"
 import type {Session, Token} from 'next-auth'
 
 export const runtime = 'edge';
+export const dynamic = "force-dynamic"
 
 const handler = NextAuth({
     providers: [
@@ -12,6 +13,7 @@ const handler = NextAuth({
             clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
         }),
     ],
+    secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async jwt({token, user, account}) {
             // 如果是新登录，可以在这里添加额外的用户信息

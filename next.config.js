@@ -5,11 +5,7 @@ const nextConfig = {
         domains: ['replicate.delivery'],
     },
     experimental: {
-        appDir: true,
-        runtime: 'edge',
-        edge: {
-            env: ['JWT_SECRET'],
-        },
+        webpackBuildWorker: true
     },
     env: {
         JWT_SECRET: process.env.JWT_SECRET,
