@@ -61,26 +61,3 @@ export interface ImagePreviewProps {
     onDownload: () => void;
     imageDimensions: { width: number; height: number } | null;
 }
-
-declare module "next-auth" {
-    interface Session {
-        accessToken?: string
-        customToken?: string
-        user: {
-            name?: string | null
-            email?: string | null
-            image?: string | null
-        }
-    }
-    interface Token {
-        accessToken?: string;
-        customToken?: string;
-    }
-}
-
-declare module "next-auth/jwt" {
-    interface JWT {
-        accessToken?: string
-        customToken?: string
-    }
-}

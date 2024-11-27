@@ -7,7 +7,6 @@ import {logWithTimestamp} from "@/utils/logUtils"
 import Cookies from 'js-cookie'
 import type {Dictionary} from '@/app/i18n/settings'
 import {signIn, useSession} from 'next-auth/react'
-import {SignInResponse} from 'next-auth/react'
 
 interface AuthFormProps {
     dictionary: Dictionary
@@ -81,21 +80,9 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
     }
 
     const handleGoogleLogin = async () => {
-        try {
-            const result = await signIn('google', {
-                callbackUrl: `/${currentLocale}/flux-1-1-ultra`,
-                redirect: true,
-            }) as SignInResponse | undefined
-
-            // 使用可选链操作符安全地访问 error 属性
-            if (result?.error) {
-                setError(dictionary.auth.errors.unexpected)
-                logWithTimestamp(`Google sign in error: ${result.error}`)
-            }
-        } catch (err) {
-            setError(dictionary.auth.errors.unexpected)
-            logWithTimestamp(`Error during Google authentication: ${err}`)
-        }
+        signIn('google', {
+            callbackUrl: `/${currentLocale}/flux-1-1-ultra` // 登录成功后跳转
+        })
     }
     React.useEffect(() => {
         if (session) {
