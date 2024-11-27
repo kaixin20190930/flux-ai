@@ -64,12 +64,23 @@ export interface ImagePreviewProps {
 
 declare module "next-auth" {
     interface Session {
+        accessToken?: string
+        customToken?: string
         user: {
-            id: string
-            name: string
-            email: string
-            image: string
+            name?: string | null
+            email?: string | null
+            image?: string | null
         }
-        accessToken: string
+    }
+    interface Token {
+        accessToken?: string;
+        customToken?: string;
+    }
+}
+
+declare module "next-auth/jwt" {
+    interface JWT {
+        accessToken?: string
+        customToken?: string
     }
 }
