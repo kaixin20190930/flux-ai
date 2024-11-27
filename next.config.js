@@ -2,7 +2,6 @@
 const nextConfig = {
     experimental: {
         webpackBuildWorker: true,
-        runtime: 'edge'
     },
     webpack: (config) => {
         config.resolve.fallback = {

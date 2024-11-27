@@ -1,5 +1,5 @@
 import React from 'react';
-
+export const runtime = 'edge'
 const PrivacyPolicy = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-indigo-800 text-white">

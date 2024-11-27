@@ -1,7 +1,7 @@
 import Pricing from '@/components/Pricing';
 import {getDictionary} from "@/app/i18n/utils";
 import type {Locale} from "@/app/i18n/settings";
-
+export const runtime = 'edge'
 export default async function PricingPage({
                                               params: {locale},
                                           }: {
