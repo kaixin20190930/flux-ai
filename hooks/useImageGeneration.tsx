@@ -10,12 +10,8 @@ import type {GenerationState, GenerationData} from '@/public/types/type';
 import {useRouter} from "next/navigation";
 import type {Dictionary} from "@/app/i18n/settings";
 
-interface AIImageGeneratorProps {
-    locale: string
 
-}
-
-export const useImageGeneration = (locale) => {
+export const useImageGeneration = (locale: string) => {
     const router = useRouter();
     const [state, setState] = useState<GenerationState>({
         prompt: '',
