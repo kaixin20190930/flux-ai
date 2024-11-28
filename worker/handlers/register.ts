@@ -8,7 +8,7 @@ const allowedOrigins = [
     'https://flux-ai-img.com'
 ]
 
-export async function handleRegister(request: Request, env: Env): Promise<Response> {
+export async function handleRegister(request: Request, env: Env): Promise<any> {
     const origin = request.headers.get('Origin')
 
     const corsHeaders = {
@@ -59,7 +59,7 @@ export async function handleRegister(request: Request, env: Env): Promise<Respon
                     })));
                 }
 
-                const googleUser = await googleUserResponse.json();
+                const googleUser = await googleUserResponse.json() as any;
 
                 // 验证邮箱是否匹配
                 if (googleUser.email !== email) {
