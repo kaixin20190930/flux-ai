@@ -25,7 +25,7 @@ export async function handleRegister(request: Request, env: Env): Promise<any> {
         const {name, email, password, googleToken} = await request.json() as any;
 
         // 检查必要字段
-        if (!name || !email || (!password && !googleToken)) {
+        if (!name || !email) {
             return new Promise((resolve) => resolve(new Response('Missing required fields', {
                 status: 400,
                 headers: corsHeaders,
@@ -78,8 +78,19 @@ export async function handleRegister(request: Request, env: Env): Promise<any> {
         }
 
         // 处理密码
-        const hashedPassword = password ? await hashPassword(password) : null;
-
+        let hashedPassword;
+        if (googleToken && !password) {
+            // 生成随机密码
+            const randomPassword = crypto.randomUUID().toString();
+            hashedPassword = await hashPassword(randomPassword);
+        } else if (password) {
+            hashedPassword = await hashPassword(password);
+        } else {
+            return new Promise((resolve) => resolve(new Response('Password is required for non-Google registration', {
+                status: 400,
+                headers: corsHeaders,
+            })));
+        }
         // 插入用户数据
         const result = await env.DB.prepare(
             'INSERT INTO users (name, email, password, is_google_user) VALUES (?, ?, ?, ?)'
