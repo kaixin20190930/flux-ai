@@ -7,8 +7,16 @@ import {
     ERROR_MESSAGES
 } from '@/public/constants/constants';
 import type {GenerationState, GenerationData} from '@/public/types/type';
+import {useRouter} from "next/navigation";
+import type {Dictionary} from "@/app/i18n/settings";
 
-export const useImageGeneration = () => {
+interface AIImageGeneratorProps {
+    locale: string
+
+}
+
+export const useImageGeneration = (locale) => {
+    const router = useRouter();
     const [state, setState] = useState<GenerationState>({
         prompt: '',
         generatedImage: null,
@@ -47,7 +55,11 @@ export const useImageGeneration = () => {
 
     const handleGenerate = useCallback(async () => {
         const {prompt, selectedModel, userPoints, isLoggedIn} = state;
-
+        // 检查登录状态
+        if (!isLoggedIn) {
+            router.push(`/${locale}/auth`);
+            return;
+        }
         if (!prompt.trim()) {
             setState(prev => ({...prev, error: ERROR_MESSAGES.INVALID_PROMPT}));
             return;

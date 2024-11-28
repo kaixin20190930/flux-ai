@@ -16,15 +16,16 @@ import type {Dictionary} from '@/app/i18n/settings';
 
 interface AIImageGeneratorProps {
     dictionary: Dictionary;
+    locale: string
 }
 
-export const AIImageGenerator: React.FC<AIImageGeneratorProps> = ({dictionary}) => {
+export const AIImageGenerator: React.FC<AIImageGeneratorProps> = ({dictionary, locale}) => {
     const {
         state,
         updateState,
         handleGenerate,
         handleDownload,
-    } = useImageGeneration();
+    } = useImageGeneration(locale);
 
     const isButtonDisabled = (): boolean => {
         const model = state.selectedModel as ModelType;
