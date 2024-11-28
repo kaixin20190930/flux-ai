@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
             )
         }
 
-        const tokenData = await tokenResponse.json()
+        const tokenData = await tokenResponse.json() as any
 
         // 2. 获取用户信息
         const userResponse = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
             )
         }
 
-        const userData = await userResponse.json()
+        const userData = await userResponse.json() as any
 
         // 3. 使用现有的登录接口
         const workerUrl = 'https://flux-ai.liukai19911010.workers.dev'
@@ -72,7 +72,7 @@ export async function GET(request: NextRequest) {
         })
 
         if (loginResponse.ok) {
-            const data = await loginResponse.json()
+            const data = await loginResponse.json() as any
 
             // 设置 cookie 和返回重定向
             setCookie('token', data.token, {
@@ -108,7 +108,7 @@ export async function GET(request: NextRequest) {
             })
 
             if (registerResponse.ok) {
-                const data = await registerResponse.json()
+                const data = await registerResponse.json() as any
 
                 // 设置 cookie 和返回重定向
                 setCookie('token', data.token, {
