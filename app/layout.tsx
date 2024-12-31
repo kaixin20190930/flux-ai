@@ -6,6 +6,7 @@ import type {Metadata} from 'next'
 import {AutoLogoutWarning} from "@/components/AutoLogoutWarning"
 import {getDictionary} from './i18n/utils'
 import {defaultLocale} from './i18n/settings'
+import Script from "next/script";
 
 // 为根路径生成 metadata
 export async function generateMetadata(): Promise<Metadata> {
@@ -125,6 +126,16 @@ export default async function RootLayout({
 
     return (
         <html>
+        <head>
+            {/* Google AdSense 代码 */}
+            <Script
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+                strategy="afterInteractive"
+                crossOrigin="anonymous"
+                data-ad-client="ca-pub-5252543031076112" // 替换成你的发布商 ID
+            />
+        </head>
         <body className="flex flex-col min-h-screen">
         {children}
         </body>
