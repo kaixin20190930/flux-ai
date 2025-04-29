@@ -335,6 +335,7 @@
     "registerButton": "Daftar",
     "noAccount": "Belum punya akun? Daftar",
     "hasAccount": "Sudah punya akun? Masuk",
+    "loading": "Sedang memuat...",
     "errors": {
       "unexpected": "Terjadi kesalahan tak terduga. Silakan coba lagi.",
       "invalidFormat": "Format respons tidak sesuai",

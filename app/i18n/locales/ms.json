@@ -335,6 +335,7 @@
     "registerButton": "Daftar",
     "noAccount": "Tiada akaun? Daftar sekarang",
     "hasAccount": "Sudah ada akaun? Log masuk",
+    "loading": "Sedang memuat...",
     "errors": {
       "unexpected": "Ralat tidak dijangka berlaku. Sila cuba lagi.",
       "invalidFormat": "Format respons tidak dijangka",

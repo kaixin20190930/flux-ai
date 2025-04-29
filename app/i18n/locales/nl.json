@@ -335,6 +335,7 @@
     "registerButton": "Registreren",
     "noAccount": "Geen account? Registreer nu",
     "hasAccount": "Al een account? Log in",
+    "loading": "Bezig met laden...",
     "errors": {
       "unexpected": "Er is een onverwachte fout opgetreden. Probeer het opnieuw.",
       "invalidFormat": "Onverwacht antwoordformaat",
