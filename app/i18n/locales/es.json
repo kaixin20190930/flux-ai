@@ -335,6 +335,7 @@
     "registerButton": "Registrarse",
     "noAccount": "¿No tiene cuenta? Regístrese",
     "hasAccount": "¿Ya tiene cuenta? Inicie sesión",
+    "loading": "Cargando...",
     "errors": {
       "unexpected": "Ha ocurrido un error inesperado. Por favor, inténtelo de nuevo.",
       "invalidFormat": "Formato de respuesta inesperado",

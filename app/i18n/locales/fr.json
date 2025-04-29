@@ -326,7 +326,7 @@
     }
   },
   "auth": {
-    "signIn": "Connexion à votre compte",
+    "signIn": "Connectez-vous à votre compte",
     "createAccount": "Créer un nouveau compte",
     "fullName": "Nom complet",
     "emailAddress": "Adresse e-mail",
@@ -335,6 +335,7 @@
     "registerButton": "S'inscrire",
     "noAccount": "Pas de compte ? Inscrivez-vous",
     "hasAccount": "Déjà un compte ? Connectez-vous",
+    "loading": "Chargement...",
     "errors": {
       "unexpected": "Une erreur inattendue s'est produite. Veuillez réessayer.",
       "invalidFormat": "Format de réponse inattendu",

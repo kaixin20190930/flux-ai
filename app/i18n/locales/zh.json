@@ -335,6 +335,7 @@
     "registerButton": "注册",
     "noAccount": "还没有账户？立即注册",
     "hasAccount": "已有账户？立即登录",
+    "loading": "加载中...",
     "errors": {
       "unexpected": "发生意外错误，请重试",
       "invalidFormat": "响应格式无效",

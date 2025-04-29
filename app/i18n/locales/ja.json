@@ -326,18 +326,19 @@
     }
   },
   "auth": {
-    "signIn": "アカウントにログイン",
+    "signIn": "アカウントにサインイン",
     "createAccount": "新規アカウント作成",
-    "fullName": "氏名",
+    "fullName": "フルネーム",
     "emailAddress": "メールアドレス",
     "password": "パスワード",
-    "signInButton": "ログイン",
+    "signInButton": "サインイン",
     "registerButton": "登録",
-    "noAccount": "アカウントをお持ちでない方は登録",
-    "hasAccount": "既にアカウントをお持ちの方はログイン",
+    "noAccount": "アカウントをお持ちでない場合？登録",
+    "hasAccount": "すでにアカウントをお持ちですか？サインイン",
+    "loading": "読み込み中...",
     "errors": {
       "unexpected": "予期せぬエラーが発生しました。もう一度お試しください。",
-      "invalidFormat": "応答フォーマットが無効です",
+      "invalidFormat": "予期せぬ応答形式",
       "authFailed": "認証に失敗しました"
     }
   },

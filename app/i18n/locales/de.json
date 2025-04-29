@@ -335,6 +335,7 @@
     "registerButton": "Registrieren",
     "noAccount": "Kein Konto? Jetzt registrieren",
     "hasAccount": "Bereits ein Konto? Einloggen",
+    "loading": "Wird geladen...",
     "errors": {
       "unexpected": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
       "invalidFormat": "Unerwartetes Antwortformat",

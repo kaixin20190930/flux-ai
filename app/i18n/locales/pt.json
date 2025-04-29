@@ -327,16 +327,17 @@
   },
   "auth": {
     "signIn": "Entrar na sua conta",
-    "createAccount": "Criar uma nova conta",
+    "createAccount": "Criar nova conta",
     "fullName": "Nome completo",
-    "emailAddress": "Endereço de email",
+    "emailAddress": "Endereço de e-mail",
     "password": "Senha",
     "signInButton": "Entrar",
-    "registerButton": "Cadastrar",
-    "noAccount": "Não tem uma conta? Cadastre-se",
+    "registerButton": "Registrar",
+    "noAccount": "Não tem uma conta? Registre-se",
     "hasAccount": "Já tem uma conta? Entre",
+    "loading": "Carregando...",
     "errors": {
-      "unexpected": "Ocorreu um erro inesperado. Tente novamente.",
+      "unexpected": "Ocorreu um erro inesperado. Por favor, tente novamente.",
       "invalidFormat": "Formato de resposta inesperado",
       "authFailed": "Falha na autenticação"
     }

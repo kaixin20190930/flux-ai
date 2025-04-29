@@ -49,7 +49,7 @@
       "flexiblePricing": {
         "title": "Esnek Fiyat Planları",
         "subtitle": "FLUX AI Fiyatlandırma",
-        "description": "Ücretsiz katmanımızla başlayın (Giriş Yapmadan Günde 3 Ücretsiz Üretim) veya premium planlara 200 üretim için $9,9’dan itibaren yükseltin. Daha yüksek çözünürlük, öncelikli üretim ve artırılmış üretim limitleri gibi gelişmiş özelliklere erişim sağlayın.",
+        "description": "Ücretsiz katmanımızla başlayın (Giriş Yapmadan Günde 3 Ücretsiz Üretim) veya premium planlara 200 üretim için $9,9'dan itibaren yükseltin. Daha yüksek çözünürlük, öncelikli üretim ve artırılmış üretim limitleri gibi gelişmiş özelliklere erişim sağlayın.",
         "highlight": "Ücretsizden başlayan fiyatlarla"
       }
     },
@@ -70,13 +70,13 @@
       "describe": {
         "title": "Vizyonunuzu Tanımlayın",
         "subtitle": "AI Güçlü Metin Anlaması",
-        "description": "Oluşturmak istediğiniz görüntüyü tanımlamak için bir açıklama yazmanız yeterlidir. AI’miz doğal dil girişini anlar.",
+        "description": "Oluşturmak istediğiniz görüntüyü tanımlamak için bir açıklama yazmanız yeterlidir. AI'miz doğal dil girişini anlar.",
         "highlight": "Doğal Dil İşleme"
       },
       "generate": {
         "title": "AI Büyüsü İş Başında",
         "subtitle": "Gelişmiş Görüntü Üretimi",
-        "description": "Güçlü AI’miz açıklamanızı işler ve vizyonunuza uygun benzersiz görüntü seçenekleri oluşturur.",
+        "description": "Güçlü AI'miz açıklamanızı işler ve vizyonunuza uygun benzersiz görüntü seçenekleri oluşturur.",
         "highlight": "Birden fazla stil seçeneği"
       },
       "refine": {
@@ -328,13 +328,14 @@
   "auth": {
     "signIn": "Hesabınıza giriş yapın",
     "createAccount": "Yeni hesap oluştur",
-    "fullName": "Ad Soyad",
+    "fullName": "Tam ad",
     "emailAddress": "E-posta adresi",
     "password": "Şifre",
     "signInButton": "Giriş yap",
-    "registerButton": "Kaydol",
-    "noAccount": "Hesabınız yok mu? Kaydolun",
+    "registerButton": "Kayıt ol",
+    "noAccount": "Hesabınız yok mu? Kayıt olun",
     "hasAccount": "Zaten hesabınız var mı? Giriş yapın",
+    "loading": "Yükleniyor...",
     "errors": {
       "unexpected": "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.",
       "invalidFormat": "Beklenmeyen yanıt formatı",

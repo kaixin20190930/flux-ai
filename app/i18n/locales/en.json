@@ -327,7 +327,7 @@
   },
   "auth": {
     "signIn": "Sign in to your account",
-    "createAccount": "Create a new account",
+    "createAccount": "Create new account",
     "fullName": "Full name",
     "emailAddress": "Email address",
     "password": "Password",
@@ -335,6 +335,7 @@
     "registerButton": "Register",
     "noAccount": "Don't have an account? Sign up",
     "hasAccount": "Already have an account? Sign in",
+    "loading": "Loading...",
     "errors": {
       "unexpected": "An unexpected error occurred. Please try again.",
       "invalidFormat": "Unexpected response format",

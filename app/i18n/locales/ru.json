@@ -99,7 +99,7 @@
     "questions": {
       "what": {
         "question": "Что такое модель Flux AI?",
-        "answer": "Flux AI - это передовая модель искусственного интеллекта, предназначенная для помощи в творческих задачах, генер CopyClaude’s response was limited as it hit the maximum length allowed at this time. Claude does not have internet access. Links provided may not be accurate or up to date.GC继续ации изображений и рабочих процессах дизайна. Она использует современные алгоритмы машинного обучения для понимания и генерации визуального контента на основе пользовательского ввода."
+        "answer": "Flux AI - это передовая модель искусственного интеллекта, предназначенная для помощи в творческих задачах, генер CopyClaude's response was limited as it hit the maximum length allowed at this time. Claude does not have internet access. Links provided may not be accurate or up to date.GCции изображений и рабочих процессах дизайна. Она использует современные алгоритмы машинного обучения для понимания и генерации визуального контента на основе пользовательского ввода."
       },
       "versions": {
         "question": "Какие существуют версии FLUX AI?",
@@ -329,14 +329,15 @@
     "signIn": "Войти в аккаунт",
     "createAccount": "Создать новый аккаунт",
     "fullName": "Полное имя",
-    "emailAddress": "Электронная почта",
+    "emailAddress": "Адрес электронной почты",
     "password": "Пароль",
     "signInButton": "Войти",
     "registerButton": "Зарегистрироваться",
-    "noAccount": "Нет аккаунта? Зарегистрируйтесь",
+    "noAccount": "Нет аккаунта? Зарегистрироваться",
     "hasAccount": "Уже есть аккаунт? Войти",
+    "loading": "Загрузка...",
     "errors": {
-      "unexpected": "Произошла неожиданная ошибка. Пожалуйста, попробуйте снова.",
+      "unexpected": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте снова.",
       "invalidFormat": "Неожиданный формат ответа",
       "authFailed": "Ошибка аутентификации"
     }

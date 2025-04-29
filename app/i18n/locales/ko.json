@@ -326,18 +326,19 @@
     }
   },
   "auth": {
-    "signIn": "계정 로그인",
+    "signIn": "계정에 로그인",
     "createAccount": "새 계정 만들기",
-    "fullName": "이름",
+    "fullName": "전체 이름",
     "emailAddress": "이메일 주소",
     "password": "비밀번호",
     "signInButton": "로그인",
-    "registerButton": "회원가입",
-    "noAccount": "계정이 없으신가요? 가입하기",
+    "registerButton": "등록",
+    "noAccount": "계정이 없으신가요? 등록하기",
     "hasAccount": "이미 계정이 있으신가요? 로그인",
+    "loading": "로딩 중...",
     "errors": {
       "unexpected": "예기치 않은 오류가 발생했습니다. 다시 시도해 주세요.",
-      "invalidFormat": "응답 형식이 잘못되었습니다",
+      "invalidFormat": "예기치 않은 응답 형식",
       "authFailed": "인증 실패"
     }
   },

@@ -327,7 +327,7 @@
   },
   "auth": {
     "signIn": "Accedi al tuo account",
-    "createAccount": "Crea nuovo account",
+    "createAccount": "Crea un nuovo account",
     "fullName": "Nome completo",
     "emailAddress": "Indirizzo email",
     "password": "Password",
@@ -335,9 +335,10 @@
     "registerButton": "Registrati",
     "noAccount": "Non hai un account? Registrati",
     "hasAccount": "Hai già un account? Accedi",
+    "loading": "Caricamento...",
     "errors": {
       "unexpected": "Si è verificato un errore imprevisto. Riprova.",
-      "invalidFormat": "Formato di risposta inatteso",
+      "invalidFormat": "Formato di risposta imprevisto",
       "authFailed": "Autenticazione fallita"
     }
   },
