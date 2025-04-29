@@ -14,39 +14,82 @@ export async function handleUpdateUserPointsForPurchase(request: Request, env: E
 
     const corsHeaders = {
         'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
-        // 'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Access-Control-Allow-Credentials': 'true',
     };
-    // const token = request.headers.get('Authorization')?.split('Bearer ')[1];
-    // if (!token) {
-    //     return new Promise((resolve) => resolve(new Response('Unauthorized', {status: 401, headers: corsHeaders})));
-    // }
+
+    // 验证请求来源
+    if (!origin || !allowedOrigins.includes(origin)) {
+        logWithTimestamp('Invalid origin:', origin);
+        return new Promise((resolve) => resolve(new Response('Invalid origin', {
+            status: 403,
+            headers: corsHeaders
+        })));
+    }
 
     try {
-        // const decoded = await verifyJWT(token, env.JWT_SECRET);
-        // const userId = decoded.userId;
+        const {points, userId, purchaseId} = await request.json() as any;
 
-        const {points, userId} = await request.json() as any;
-        console.log('update points value is:', points)
-        console.log('update userId is:', userId)
+        // 验证必要参数
+        if (typeof points !== 'number' || !userId || !purchaseId) {
+            logWithTimestamp('Invalid request parameters:', {points, userId, purchaseId});
+            return new Promise((resolve) => resolve(new Response('Invalid request parameters', {
+                status: 400,
+                headers: corsHeaders
+            })));
+        }
 
-        // 更新数据库中的用户点数
-        const result = await env.DB.prepare('UPDATE users SET points = points + ? WHERE id = ?')
-            .bind(points, userId)
+        // 检查购买记录是否存在且未使用
+        const purchaseRecord = await env.DB.prepare(
+            'SELECT * FROM purchases WHERE id = ? AND user_id = ? AND status = ?'
+        )
+            .bind(purchaseId, userId, 'pending')
+            .first();
+
+        if (!purchaseRecord) {
+            logWithTimestamp('Invalid or used purchase record:', purchaseId);
+            return new Promise((resolve) => resolve(new Response('Invalid or used purchase record', {
+                status: 400,
+                headers: corsHeaders
+            })));
+        }
+
+        // 使用事务来确保点数更新的原子性
+        const result = await env.DB.prepare(`
+            BEGIN TRANSACTION;
+            UPDATE users SET points = points + ? WHERE id = ?;
+            UPDATE purchases SET status = 'completed' WHERE id = ?;
+            SELECT points FROM users WHERE id = ?;
+            COMMIT;
+        `)
+            .bind(points, userId, purchaseId, userId)
             .run();
 
         if (result.success) {
-            return new Promise((resolve) => resolve(new Response(JSON.stringify({success: true, points}), {
+            const updatedPoints = await env.DB.prepare('SELECT points FROM users WHERE id = ?')
+                .bind(userId)
+                .first();
+
+            if (!updatedPoints) {
+                throw new Error('Failed to retrieve updated points');
+            }
+
+            logWithTimestamp(`Successfully updated points for user ${userId} to ${updatedPoints.points}`);
+            
+            return new Promise((resolve) => resolve(new Response(JSON.stringify({
+                success: true,
+                points: updatedPoints.points
+            }), {
                 status: 200,
                 headers: {...corsHeaders, 'Content-Type': 'application/json'},
             })));
         } else {
+            logWithTimestamp('Failed to update user points in database');
             throw new Error('Failed to update user points in database');
         }
     } catch (error) {
-        console.error('Error updating user points:', error);
+        logWithTimestamp('Error updating user points:', error);
         return new Promise((resolve) => resolve(new Response(JSON.stringify({
             error: error instanceof Error ? error.message : 'Unknown error',
             success: false

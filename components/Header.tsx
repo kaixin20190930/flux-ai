@@ -38,6 +38,30 @@ const Header: React.FC<HeaderProps> = ({dictionary}) => {
     const dropdownRef = useRef<HTMLLIElement | null>(null)
     const langDropdownRef = useRef<HTMLLIElement | null>(null)
     const isHomePage = pathname === `/${currentLocale}` || pathname === '/'
+    const [isFluxToolsOpen, setIsFluxToolsOpen] = useState(false);
+
+    const fluxToolsItems = [
+        {
+            name: 'Flux Redux',
+            path: '/flux-redux',
+            description: 'Image Variation and Restyling with Flux Redux'
+        },
+        {
+            name: 'Flux Fill',
+            path: '/flux-fill',
+            description: 'Inpainting and Outpainting images with Flux Fill'
+        },
+        {
+            name: 'Flux Depth',
+            path: '/flux-depth',
+            description: 'Edit images while preserving spatial relationships with Flux Depth.'
+        },
+        {
+            name: 'Flux Canny',
+            path: '/flux-canny',
+            description: 'Control structure and composition with Flux Canny.'
+        }
+    ];
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         if (isHomePage) {
@@ -160,11 +184,50 @@ const Header: React.FC<HeaderProps> = ({dictionary}) => {
                     {/* 中间导航 */}
                     <nav className="flex-1 flex justify-center">
                         <ul className="flex items-center space-x-6">
-                            <li>
-                                <Link href={`/${currentLocale}`}
-                                      className="text-indigo-200 hover:text-white transition duration-300">
-                                    {dictionary.navigation.home}
-                                </Link>
+                            <li
+                                className="relative"
+                                onMouseEnter={() => setIsFluxToolsOpen(true)}
+                                onMouseLeave={() => setIsFluxToolsOpen(false)}
+                            >
+                                <div
+                                    className="text-indigo-200 hover:text-white transition duration-300 flex items-center space-x-1 cursor-pointer">
+                                    <span>Flux Tools</span>
+                                    <svg
+                                        className={`w-4 h-4 transition-transform duration-300 ease-in-out ${
+                                            isFluxToolsOpen ? 'rotate-180' : ''
+                                        }`}
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                              d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </div>
+                                {/* 下拉菜单 */}
+                                <div
+                                    className={`absolute left-0 top-full w-[480px] transition-all duration-300 ease-in-out ${
+                                        isFluxToolsOpen
+                                            ? 'opacity-100 visible translate-y-0'
+                                            : 'opacity-0 invisible -translate-y-1'
+                                    }`}>
+                                    <div className="pt-2">
+                                        <div
+                                            className="bg-gradient-to-r from-purple-900/95 via-indigo-900/95 to-indigo-800/95 backdrop-blur-md rounded-md shadow-lg py-1">
+                                            {fluxToolsItems.map((item) => (
+                                                <Link
+                                                    key={item.name}
+                                                    href={`/${currentLocale}/flux-tools/${item.path}`}
+                                                    onClick={() => setIsFluxToolsOpen(false)}  // 点击时关闭下拉框
+                                                    className="block px-4 py-3 text-indigo-200 hover:text-white hover:bg-indigo-700/50 transition-colors duration-150 space-y-1"
+                                                >
+                                                    <div className="font-medium text-sm">{item.name}</div>
+                                                    <div className="text-xs text-indigo-300/90">{item.description}</div>
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li>
                                 <Link href={`/${currentLocale}/flux-1-1-ultra`}
@@ -179,9 +242,21 @@ const Header: React.FC<HeaderProps> = ({dictionary}) => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href={`/${currentLocale}/hub`}
+                                <Link href={`/${currentLocale}/create`}
                                       className="text-indigo-200 hover:text-white transition duration-300">
-                                    {dictionary.navigation.hub}
+                                    Flux Lora
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href={`/${currentLocale}/flux-1-1-ultra`}
+                                      className="text-indigo-200 hover:text-white transition duration-300">
+                                    Magic Tools
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href={`/${currentLocale}/flux-1-1-ultra`}
+                                      className="text-indigo-200 hover:text-white transition duration-300">
+                                    Social Media Specs
                                 </Link>
                             </li>
                         </ul>
@@ -263,7 +338,7 @@ const Header: React.FC<HeaderProps> = ({dictionary}) => {
                                 {isDropdownOpen && (
                                     <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
                                         <Link
-                                            href={`/${currentLocale}/profile`}
+                                            href={`/${currentLocale}/hub`}
                                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white"
                                         >
                                             {dictionary.navigation.profile}

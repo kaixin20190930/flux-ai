@@ -48,7 +48,7 @@ export const MODEL_CONFIG: Record<ModelType, ModelConfig> = {
 };
 
 export const ICON_COMPONENTS = {
-    'ThumbsUp':ThumbsUp,
+    'ThumbsUp': ThumbsUp,
     'Zap': Zap,
     'Star': Star,
     'Sparkles': Sparkles,
@@ -76,6 +76,62 @@ export const ASPECT_RATIOS: AspectRatio[] = [
         description: 'Great for mobile wallpapers',
         width: 1080,
         height: 1920
+    },
+    {
+        value: '4:3',
+        label: 'Classic (4:3)',
+        description: 'Traditional photo format',
+        width: 1600,
+        height: 1200
+    },
+    {
+        value: '3:4',
+        label: 'Portrait Classic (3:4)',
+        description: 'Vertical traditional format',
+        width: 1200,
+        height: 1600
+    },
+    {
+        value: '3:2',
+        label: 'Photo (3:2)',
+        description: 'Standard DSLR camera ratio',
+        width: 1800,
+        height: 1200
+    },
+    {
+        value: '2:3',
+        label: 'Portrait Photo (2:3)',
+        description: 'Vertical DSLR camera ratio',
+        width: 1200,
+        height: 1800
+    },
+    {
+        value: '21:9',
+        label: 'Ultrawide (21:9)',
+        description: 'Perfect for cinematic content',
+        width: 2560,
+        height: 1080
+    },
+    {
+        value: '9:21',
+        label: 'Vertical Ultrawide (9:21)',
+        description: 'Vertical cinematic format',
+        width: 1080,
+        height: 2560
+    },
+    {
+        value: '5:4',
+        label: 'Large Format (5:4)',
+        description: 'Ideal for printed photos',
+        width: 1250,
+        height: 1000
+    },
+    {
+        value: '4:5',
+        label: 'Instagram Portrait (4:5)',
+        description: 'Perfect for Instagram portrait posts',
+        width: 1080,
+        height: 1350
     }
 ];
 

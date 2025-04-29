@@ -24,9 +24,10 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
     const params = useParams()
-    const currentLocale = params.locale || 'en'
+    const currentLocale = params.locale as string
 
     const googleOAuthConfig: GoogleOAuthConfig = {
         client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || '',
@@ -37,10 +38,10 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
+        setIsLoading(true)
         setError('')
 
-        const workerUrl = 'https://flux-ai.liukai19911010.workers.dev'
-        const endpoint = isLogin ? `${workerUrl}/login` : `${workerUrl}/register`
+        const endpoint = 'https://flux-ai.liukai19911010.workers.dev/login'
         const body = isLogin ? {email, password} : {name, email, password}
 
         try {
@@ -58,8 +59,17 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
                 logWithTimestamp('response is:' + JSON.stringify(data))
 
                 if (data.token && data.user) {
-                    Cookies.set('token', data.token, {expires: 7})
-                    localStorage.setItem('user', JSON.stringify(data.user))
+                    // 统一使用 cookie 存储
+                    Cookies.set('token', data.token, {
+                        expires: 7,
+                        secure: process.env.NODE_ENV === 'production',
+                        sameSite: 'lax'
+                    })
+                    Cookies.set('user', JSON.stringify(data.user), {
+                        expires: 7,
+                        secure: process.env.NODE_ENV === 'production',
+                        sameSite: 'lax'
+                    })
                     logWithTimestamp('user data: ' + JSON.stringify(data.user))
 
                     // 保持语言设置的路由跳转
@@ -72,8 +82,10 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
                 setError(errorData.message || dictionary.auth.errors.authFailed)
             }
         } catch (err) {
+            logWithTimestamp('Error during authentication:', err)
             setError(dictionary.auth.errors.unexpected)
-            logWithTimestamp('Error during authentication:' + err)
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -102,8 +114,11 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
 
     return (
         <div
-            className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-indigo-800 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
+            className="h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white flex items-center justify-center px-4 pb-8 lg:overflow-hidden relative">
+            <div className="absolute inset-0 bg-black opacity-50 z-0"/>
+            <div
+                className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] z-0"/>
+            <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg z-10">
                 <div>
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
                         {isLogin ? dictionary.auth.signIn : dictionary.auth.createAccount}
@@ -169,9 +184,10 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
                     <div>
                         <button
                             type="submit"
-                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            disabled={isLoading}
+                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
                         >
-                            {isLogin ? dictionary.auth.signInButton : dictionary.auth.registerButton}
+                            {isLoading ? dictionary.auth.loading : isLogin ? dictionary.auth.signInButton : dictionary.auth.registerButton}
                         </button>
                     </div>
                 </form>
