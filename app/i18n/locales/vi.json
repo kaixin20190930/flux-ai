@@ -335,6 +335,7 @@
     "registerButton": "Đăng ký",
     "noAccount": "Chưa có tài khoản? Đăng ký ngay",
     "hasAccount": "Đã có tài khoản? Đăng nhập",
+    "loading": "Đang tải...",
     "errors": {
       "unexpected": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.",
       "invalidFormat": "Định dạng phản hồi không mong đợi",
