@@ -7,6 +7,7 @@ import { MODEL_CONFIG } from "@/public/constants/constants";
 import { ModelType } from "@/public/types/type";
 import { getGenerationRecord, updateGenerationRecord } from "@/utils/generationUtils";
 import { checkRateLimit } from "@/utils/rateLimit";
+import { Env } from '@/worker/types';
 
 interface GenerateRequest {
     prompt: string;
@@ -41,7 +42,6 @@ export async function POST(req: NextRequest) {
 
         // 获取服务器端生成记录
         const generationRecord = await getGenerationRecord(req, env);
-        const today = new Date().toDateString();
 
         // 验证生成次数
         if (generationRecord.count >= MAX_DAILY_GENERATIONS) {
@@ -128,13 +128,13 @@ export async function POST(req: NextRequest) {
             type: typeof output,
             isArray: Array.isArray(output)
         });
-        let imageUrl = ''
+        let imageUrl = '';
         if (Array.isArray(output) && output.length > 0) {
             imageUrl = output[0];
-        } else if (typeof output === 'string' && String(output).length > 0) {
-            imageUrl = output as string;
-
+        } else if (typeof output === 'string') {
+            imageUrl = output;
         }
+
         if (imageUrl) {
             let updatedUserPoints = userPoints;
 
@@ -184,7 +184,8 @@ export async function POST(req: NextRequest) {
 
             return response;
         } else {
-            throw new Error('No image generated');
+            logWithTimestamp('No image generated');
+            return Response.json({ error: 'Failed to generate image' }, { status: 500 });
         }
     } catch (error) {
         logWithTimestamp('Error generating image:', error);
