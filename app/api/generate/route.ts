@@ -1,11 +1,21 @@
-import {NextRequest, NextResponse} from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import Replicate from "replicate";
-import {getGenerationData} from '@/utils/cookieUtils';
-import {logWithTimestamp} from '@/utils/logUtils';
-import {updateUserPoints} from "@/utils/userUtils";
-import {MODEL_CONFIG} from "@/public/constants/constants";
-import {ModelType} from "@/public/types/type";
+import { getGenerationData } from '@/utils/cookieUtils';
+import { logWithTimestamp } from '@/utils/logUtils';
+import { updateUserPoints } from "@/utils/userUtils";
+import { MODEL_CONFIG } from "@/public/constants/constants";
+import { ModelType } from "@/public/types/type";
+import { getGenerationRecord, updateGenerationRecord } from "@/utils/generationUtils";
+import { checkRateLimit } from "@/utils/rateLimit";
 
+interface GenerateRequest {
+    prompt: string;
+    userPoints?: number;
+    userId?: string;
+    model: ModelType;
+    aspectRatio: string;
+    format: string;
+}
 
 const replicate = new Replicate({
     auth: process.env.REPLICATE_API_TOKEN,
@@ -15,42 +25,49 @@ const MAX_DAILY_GENERATIONS = 3;
 const COOKIE_NAME = 'fluxAIGenerations';
 
 export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
-    let generationData = getGenerationData(req);
-    const today = new Date().toDateString();
-    logWithTimestamp('Generation request received', {generationData});
-
-    if (generationData.date !== today) {
-        generationData = {count: 0, date: today};
-        logWithTimestamp('New day, reset generation count');
-    }
-
     try {
+        const env = process.env as unknown as Env;
+        
+        // 检查速率限制
+        const isWithinRateLimit = await checkRateLimit(req, env);
+        if (!isWithinRateLimit) {
+            return Response.json({
+                error: 'Too many requests. Please try again later.',
+            }, { status: 429 });
+        }
+
+        // 获取服务器端生成记录
+        const generationRecord = await getGenerationRecord(req, env);
+        const today = new Date().toDateString();
+
+        // 验证生成次数
+        if (generationRecord.count >= MAX_DAILY_GENERATIONS) {
+            return Response.json({
+                error: 'Daily generation limit reached',
+            }, { status: 403 });
+        }
+
+        // 获取请求数据
+        const requestData = await req.json() as GenerateRequest;
         const {
             prompt, userPoints, userId, model,
-            aspectRatio,
-            format
-        } = await req.json() as {
-            prompt: string,
-            userPoints?: number,
-            userId?: string,
-            model: ModelType,
-            aspectRatio: string,
-            format: string
-        };
+            aspectRatio, format
+        } = requestData;
 
         const modelConfig = MODEL_CONFIG[model];
         if (!modelConfig) {
-            return Response.json({error: 'Invalid model selected'}, {status: 400});
+            return Response.json({ error: 'Invalid model selected' }, { status: 400 });
         }
         const isLoggedIn = userPoints !== undefined && userId !== undefined;
         const pointsRequired = modelConfig.points;
-        const remainingFreePoints = Math.max(0, MAX_DAILY_GENERATIONS - generationData.count);
+        const remainingFreePoints = Math.max(0, MAX_DAILY_GENERATIONS - generationRecord.count);
 
         if (!prompt) {
             logWithTimestamp('No prompt provided');
-            return Response.json({error: 'Prompt is required'}, {status: 400});
+            return Response.json({ error: 'Prompt is required' }, { status: 400 });
         }
 
         let useUserPoints = false;
@@ -63,14 +80,14 @@ export async function POST(req: NextRequest) {
             if (model !== 'flux-schnell' && model !== 'flux-dev' && model !== 'flux-1.1-pro-ultra') {
                 return Response.json({
                     error: 'Premium model selected. Please login to continue.',
-                }, {status: 403});
+                }, { status: 403 });
             }
 
             // 检查免费额度是否足够
             if (remainingFreePoints < pointsRequired) {
                 return Response.json({
                     error: 'Insufficient free generations. Please login to continue.',
-                }, {status: 403});
+                }, { status: 403 });
             }
 
             pointsToDeductFromFree = pointsRequired;
@@ -85,11 +102,11 @@ export async function POST(req: NextRequest) {
             if (userPoints < pointsToDeductFromUser) {
                 return Response.json({
                     error: `Insufficient points. You need ${pointsToDeductFromUser} more points.`,
-                }, {status: 403});
+                }, { status: 403 });
             }
         }
 
-        logWithTimestamp('Generating image', {prompt, useUserPoints});
+        logWithTimestamp('Generating image', { prompt, useUserPoints });
         const identifier: string = "black-forest-labs/" + model;
         const output = await replicate.run(
             identifier as any,
@@ -122,7 +139,7 @@ export async function POST(req: NextRequest) {
             let updatedUserPoints = userPoints;
 
             if (pointsToDeductFromFree > 0) {
-                generationData.count += pointsToDeductFromFree;
+                generationRecord.count += pointsToDeductFromFree;
             }
 
             // 如果需要扣除用户点数
@@ -130,8 +147,8 @@ export async function POST(req: NextRequest) {
                 updatedUserPoints = userPoints - pointsToDeductFromUser;
                 const updateSuccess = await updateUserPoints(req, updatedUserPoints);
                 if (!updateSuccess) {
-                    logWithTimestamp('Failed to update user points', {userId, newPoints: updatedUserPoints});
-                    return Response.json({error: 'Failed to update user points'}, {status: 500});
+                    logWithTimestamp('Failed to update user points', { userId, newPoints: updatedUserPoints });
+                    return Response.json({ error: 'Failed to update user points' }, { status: 500 });
                 }
                 logWithTimestamp('User points updated', {
                     userId,
@@ -140,9 +157,15 @@ export async function POST(req: NextRequest) {
                 });
             }
 
-            const remainingFreeGenerations = Math.max(0, MAX_DAILY_GENERATIONS - generationData.count);
+            const remainingFreeGenerations = Math.max(0, MAX_DAILY_GENERATIONS - generationRecord.count);
 
-            logWithTimestamp('Image generated successfully', {remainingFreeGenerations, generationData});
+            logWithTimestamp('Image generated successfully', { remainingFreeGenerations, generationRecord });
+
+            // 更新服务器端生成记录
+            const updateGenerationSuccess = await updateGenerationRecord(req, env, pointsRequired);
+            if (!updateGenerationSuccess) {
+                return Response.json({ error: 'Failed to update generation record' }, { status: 500 });
+            }
 
             const response = NextResponse.json({
                 image: imageUrl,
@@ -156,16 +179,15 @@ export async function POST(req: NextRequest) {
             });
 
             // 设置 cookie
-            const cookieValue = `${COOKIE_NAME}=${JSON.stringify(generationData)}; Path=/; Max-Age=${60 * 60 * 24}; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}`;
+            const cookieValue = `${COOKIE_NAME}=${JSON.stringify(generationRecord)}; Path=/; Max-Age=${60 * 60 * 24}; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}`;
             response.headers.set('Set-Cookie', cookieValue);
 
             return response;
         } else {
             throw new Error('No image generated');
         }
-    } catch
-        (error) {
-        logWithTimestamp('Error generating image', error);
-        return Response.json({error: 'Failed to generate image'}, {status: 500});
+    } catch (error) {
+        logWithTimestamp('Error generating image:', error);
+        return Response.json({ error: 'Failed to generate image' }, { status: 500 });
     }
 }
