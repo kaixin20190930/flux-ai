@@ -359,7 +359,11 @@
     "freeGenerations": "Free generations",
     "points": "Points",
     "loginForMore": "Login for more generations",
-    "error": "An error occurred"
+    "error": "An error occurred",
+    "guidanceLabel": "Guidance Strength",
+    "outputQualityLabel": "Output Quality",
+    "inferenceStepsLabel": "Inference Steps",
+    "numOutputsLabel": "Number of Outputs"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "What makes Flux 1.1 Pro Ultra different from other models?",
         "answer": "Flux 1.1 Pro Ultra stands out with its ability to generate larger 4 megapixel images, enhanced realism particularly in raw mode, and improved natural image generation compared to previous versions."
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "Aspect Ratio",
+      "outputFormatLabel": "Output Format",
+      "generateButton": "Generate Image",
+      "generating": "Generating...",
+      "downloadButton": "Download",
+      "previewPlaceholder": "Upload an image to start",
+      "invalidFileType": "Please upload a JPG or PNG image",
+      "noImageError": "Please upload an image first",
+      "generationError": "Generation failed, please try again"
+    },
+    "redux": {
+      "title": "Create Beautiful Images with Flux Redux",
+      "subtitle": "Transform your ideas into visual masterpieces in seconds",
+      "pageTitle": "Flux Redux Image Generation",
+      "description": "Use advanced AI technology to transform your creativity into beautiful images",
+      "guidanceLabel": "Guidance Scale",
+      "outputQualityLabel": "Output Quality",
+      "inferenceStepsLabel": "Inference Steps",
+      "numOutputsLabel": "Number of Outputs"
+    },
+    "depth": {
+      "title": "Create Depth Maps with Flux Depth",
+      "subtitle": "Transform your images into depth maps in seconds",
+      "pageTitle": "Flux Depth Map Generation",
+      "description": "Use advanced AI technology to create precise depth maps for your images",
+      "guidanceLabel": "Guidance Scale",
+      "outputQualityLabel": "Output Quality",
+      "inferenceStepsLabel": "Inference Steps",
+      "numOutputsLabel": "Number of Outputs",
+      "cannyLowThresholdLabel": "Low Threshold",
+      "cannyHighThresholdLabel": "High Threshold",
+      "safetyToleranceLabel": "Safety Tolerance",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Enter a prompt, e.g., a car on a city street",
+      "promptUpsamplingLabel": "Prompt Upsampling"
+    },
+    "fill": {
+      "title": "Flux Fill Image Inpainting",
+      "subtitle": "Intelligently fill and repair any area in your images",
+      "pageTitle": "Flux Fill Image Inpainting",
+      "description": "Use advanced AI technology to intelligently fill and repair any area in your images",
+      "maskLabel": "Select area to repair",
+      "clearMask": "Clear Mask",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Describe what you want to fill, e.g., a green grass field",
+      "guidanceLabel": "Guidance Scale",
+      "inferenceStepsLabel": "Inference Steps",
+      "outputFormatLabel": "Output Format",
+      "safetyToleranceLabel": "Safety Tolerance",
+      "promptUpsamplingLabel": "Prompt Upsampling",
+      "promptUpsamplingEnabled": "Enable Prompt Upsampling",
+      "outpaintingLabel": "Image Outpainting",
+      "outpaintingOptions": {
+        "none": "None",
+        "zoomOut15": "Zoom out 1.5x",
+        "zoomOut2": "Zoom out 2x",
+        "makeSquare": "Make Square",
+        "leftOutpaint": "Left Outpaint",
+        "rightOutpaint": "Right Outpaint",
+        "topOutpaint": "Top Outpaint",
+        "bottomOutpaint": "Bottom Outpaint"
+      }
+    },
+    "canny": {
+      "title": "Create Edge Maps with Flux Canny",
+      "subtitle": "Transform your images into edge maps in seconds",
+      "pageTitle": "Flux Canny Edge Detection",
+      "description": "Use advanced AI technology to create precise edge maps for your images",
+      "guidanceLabel": "Guidance Scale",
+      "outputQualityLabel": "Output Quality",
+      "inferenceStepsLabel": "Inference Steps",
+      "numOutputsLabel": "Number of Outputs",
+      "cannyLowThresholdLabel": "Low Threshold",
+      "cannyHighThresholdLabel": "High Threshold",
+      "safetyToleranceLabel": "Safety Tolerance",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Enter a prompt, e.g., a car on a city street",
+      "promptUpsamplingLabel": "Prompt Upsampling"
     }
   }
 }

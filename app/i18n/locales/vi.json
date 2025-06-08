@@ -200,7 +200,7 @@
     },
     "models": {
       "ultra": {
-        "name": "Flux 1.1 CopyClaude’s response was limited as it hit the maximum length allowed at this time. Claude does not have the ability to run the code it generates yet.GC继续Pro Ultra",
+        "name": "Flux 1.1 CopyClaude's response was limited as it hit the maximum length allowed at this time. Claude does not have the ability to run the code it generates yet.GC continue Pro Ultra",
         "description": "Hình ảnh lên đến 4 megapixel. Sử dụng chế độ thô để tăng tính chân thực.",
         "features": [
           "Độ phân giải cao hơn",
@@ -359,7 +359,11 @@
     "freeGenerations": "Số lần tạo miễn phí",
     "points": "Điểm",
     "loginForMore": "Đăng nhập để có thêm lượt tạo",
-    "error": "Đã xảy ra lỗi"
+    "error": "Đã xảy ra lỗi",
+    "guidanceLabel": "Độ mạnh hướng dẫn",
+    "outputQualityLabel": "Chất lượng đầu ra",
+    "inferenceStepsLabel": "Bước suy luận",
+    "numOutputsLabel": "Số lượng đầu ra"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "Điều gì làm cho Flux 1.1 Pro Ultra khác biệt so với các mô hình khác?",
         "answer": "Flux 1.1 Pro Ultra nổi bật với khả năng tạo hình ảnh lớn hơn 4 megapixel, độ chân thực được cải thiện đặc biệt trong chế độ raw, và khả năng tạo hình ảnh tự nhiên được cải thiện so với các phiên bản trước."
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "Tỷ lệ khung hình",
+      "outputFormatLabel": "Định dạng đầu ra",
+      "generateButton": "Tạo hình ảnh",
+      "generating": "Đang tạo...",
+      "downloadButton": "Tải xuống",
+      "previewPlaceholder": "Tải lên hình ảnh để bắt đầu",
+      "invalidFileType": "Vui lòng tải lên hình ảnh JPG hoặc PNG",
+      "noImageError": "Vui lòng tải lên hình ảnh trước",
+      "generationError": "Tạo thất bại. Vui lòng thử lại"
+    },
+    "redux": {
+      "title": "Tạo hình ảnh đẹp với Flux Redux",
+      "subtitle": "Biến ý tưởng của bạn thành tác phẩm nghệ thuật trong vài giây",
+      "pageTitle": "Tạo hình ảnh Flux Redux",
+      "description": "Biến ý tưởng sáng tạo của bạn thành hình ảnh đẹp với công nghệ AI tiên tiến",
+      "guidanceLabel": "Mức độ hướng dẫn",
+      "outputQualityLabel": "Chất lượng đầu ra",
+      "inferenceStepsLabel": "Số bước suy luận",
+      "numOutputsLabel": "Số lượng đầu ra"
+    },
+    "depth": {
+      "title": "Tạo bản đồ độ sâu với Flux Depth",
+      "subtitle": "Biến hình ảnh thành bản đồ độ sâu trong vài giây",
+      "pageTitle": "Tạo bản đồ độ sâu Flux Depth",
+      "description": "Tạo bản đồ độ sâu chính xác cho hình ảnh bằng công nghệ AI tiên tiến",
+      "guidanceLabel": "Mức độ hướng dẫn",
+      "outputQualityLabel": "Chất lượng đầu ra",
+      "inferenceStepsLabel": "Số bước suy luận",
+      "numOutputsLabel": "Số lượng đầu ra",
+      "cannyLowThresholdLabel": "Ngưỡng thấp",
+      "cannyHighThresholdLabel": "Ngưỡng cao",
+      "safetyToleranceLabel": "Mức độ an toàn",
+      "promptLabel": "Gợi ý",
+      "promptPlaceholder": "Nhập gợi ý (ví dụ: xe chạy trên đường phố)",
+      "promptUpsamplingLabel": "Tăng độ phân giải gợi ý"
+    },
+    "fill": {
+      "title": "Sửa chữa hình ảnh với Flux Fill",
+      "subtitle": "Điền và sửa chữa mọi phần của hình ảnh một cách thông minh",
+      "pageTitle": "Sửa chữa hình ảnh Flux Fill",
+      "description": "Điền và sửa chữa mọi phần của hình ảnh một cách thông minh với công nghệ AI tiên tiến",
+      "maskLabel": "Chọn khu vực cần sửa chữa",
+      "clearMask": "Xóa mặt nạ",
+      "promptLabel": "Gợi ý",
+      "promptPlaceholder": "Mô tả những gì bạn muốn điền (ví dụ: cỏ xanh)",
+      "guidanceLabel": "Mức độ hướng dẫn",
+      "inferenceStepsLabel": "Số bước suy luận",
+      "outputFormatLabel": "Định dạng đầu ra",
+      "safetyToleranceLabel": "Mức độ an toàn",
+      "promptUpsamplingLabel": "Tăng độ phân giải gợi ý",
+      "promptUpsamplingEnabled": "Bật tăng độ phân giải gợi ý",
+      "outpaintingLabel": "Mở rộng hình ảnh",
+      "outpaintingOptions": {
+        "none": "Không",
+        "zoomOut15": "Thu nhỏ 1.5×",
+        "zoomOut2": "Thu nhỏ 2×",
+        "makeSquare": "Tạo hình vuông",
+        "leftOutpaint": "Mở rộng bên trái",
+        "rightOutpaint": "Mở rộng bên phải",
+        "topOutpaint": "Mở rộng phía trên",
+        "bottomOutpaint": "Mở rộng phía dưới"
+      }
+    },
+    "canny": {
+      "title": "Tạo bản đồ cạnh với Flux Canny",
+      "subtitle": "Biến hình ảnh thành bản đồ cạnh trong vài giây",
+      "pageTitle": "Phát hiện cạnh Flux Canny",
+      "description": "Tạo bản đồ cạnh chính xác cho hình ảnh bằng công nghệ AI tiên tiến",
+      "guidanceLabel": "Mức độ hướng dẫn",
+      "outputQualityLabel": "Chất lượng đầu ra",
+      "inferenceStepsLabel": "Số bước suy luận",
+      "numOutputsLabel": "Số lượng đầu ra",
+      "cannyLowThresholdLabel": "Ngưỡng thấp",
+      "cannyHighThresholdLabel": "Ngưỡng cao",
+      "safetyToleranceLabel": "Mức độ an toàn",
+      "promptLabel": "Gợi ý",
+      "promptPlaceholder": "Nhập gợi ý (ví dụ: xe chạy trên đường phố)",
+      "promptUpsamplingLabel": "Tăng độ phân giải gợi ý"
     }
   }
 }

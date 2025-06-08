@@ -359,7 +359,11 @@
     "freeGenerations": "मुफ्त जनरेशन",
     "points": "पॉइंट्स",
     "loginForMore": "अधिक जनरेशन के लिए लॉग इन करें",
-    "error": "एक त्रुटि हुई"
+    "error": "एक त्रुटि हुई",
+    "guidanceLabel": "मार्गदर्शन शक्ति",
+    "outputQualityLabel": "आउटपुट गुणवत्ता",
+    "inferenceStepsLabel": "अनुमान चरण",
+    "numOutputsLabel": "आउटपुट की संख्या"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "Flux 1.1 Pro Ultra अन्य मॉडलों से कैसे अलग है?",
         "answer": "Flux 1.1 Pro Ultra अपनी 4 मेगापिक्सेल की बड़ी छवियां बनाने की क्षमता, विशेष रूप से raw मोड में बेहतर यथार्थवाद, और पिछले संस्करणों की तुलना में बेहतर प्राकृतिक छवि जनरेशन के साथ अलग होता है।"
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "आस्पेक्ट रेशियो",
+      "outputFormatLabel": "आउटपुट फॉर्मेट",
+      "generateButton": "छवि बनाएं",
+      "generating": "बन रहा है...",
+      "downloadButton": "डाउनलोड",
+      "previewPlaceholder": "शुरू करने के लिए एक छवि अपलोड करें",
+      "invalidFileType": "कृपया JPG या PNG छवि अपलोड करें",
+      "noImageError": "कृपया पहले एक छवि अपलोड करें",
+      "generationError": "निर्माण विफल, कृपया पुनः प्रयास करें"
+    },
+    "redux": {
+      "title": "Flux Redux के साथ सुंदर छवियां बनाएं",
+      "subtitle": "कुछ ही सेकंड में अपने विचारों को दृश्य कृतियों में बदलें",
+      "pageTitle": "Flux Redux छवि निर्माण",
+      "description": "उन्नत AI तकनीक का उपयोग करके अपनी रचनात्मकता को सुंदर छवियों में बदलें",
+      "guidanceLabel": "मार्गदर्शन स्केल",
+      "outputQualityLabel": "आउटपुट गुणवत्ता",
+      "inferenceStepsLabel": "इन्फरेंस स्टेप्स",
+      "numOutputsLabel": "आउटपुट की संख्या"
+    },
+    "depth": {
+      "title": "Flux Depth के साथ डेप्थ मैप बनाएं",
+      "subtitle": "कुछ ही सेकंड में छवियों को डेप्थ मैप में बदलें",
+      "pageTitle": "Flux Depth डेप्थ मैप निर्माण",
+      "description": "उन्नत AI तकनीक का उपयोग करके छवियों के सटीक डेप्थ मैप बनाएं",
+      "guidanceLabel": "मार्गदर्शन स्केल",
+      "outputQualityLabel": "आउटपुट गुणवत्ता",
+      "inferenceStepsLabel": "इन्फरेंस स्टेप्स",
+      "numOutputsLabel": "आउटपुट की संख्या",
+      "cannyLowThresholdLabel": "निम्न थ्रेशोल्ड",
+      "cannyHighThresholdLabel": "उच्च थ्रेशोल्ड",
+      "safetyToleranceLabel": "सुरक्षा सहनशीलता",
+      "promptLabel": "प्रॉम्प्ट",
+      "promptPlaceholder": "प्रॉम्प्ट दर्ज करें (उदाहरण: शहर की सड़क पर चलती कार)",
+      "promptUpsamplingLabel": "प्रॉम्प्ट अपसैम्पलिंग"
+    },
+    "fill": {
+      "title": "Flux Fill छवि पुनर्स्थापना",
+      "subtitle": "छवि के सभी क्षेत्रों को बुद्धिमानी से भरें और पुनर्स्थापित करें",
+      "pageTitle": "Flux Fill छवि पुनर्स्थापना",
+      "description": "उन्नत AI तकनीक का उपयोग करके छवि के सभी क्षेत्रों को बुद्धिमानी से भरें और पुनर्स्थापित करें",
+      "maskLabel": "पुनर्स्थापित करने के लिए क्षेत्र चुनें",
+      "clearMask": "मास्क साफ़ करें",
+      "promptLabel": "प्रॉम्प्ट",
+      "promptPlaceholder": "आप क्या भरना चाहते हैं उसका वर्णन करें (उदाहरण: हरी घास)",
+      "guidanceLabel": "मार्गदर्शन स्केल",
+      "inferenceStepsLabel": "इन्फरेंस स्टेप्स",
+      "outputFormatLabel": "आउटपुट फॉर्मेट",
+      "safetyToleranceLabel": "सुरक्षा सहनशीलता",
+      "promptUpsamplingLabel": "प्रॉम्प्ट अपसैम्पलिंग",
+      "promptUpsamplingEnabled": "प्रॉम्प्ट अपसैम्पलिंग सक्षम करें",
+      "outpaintingLabel": "छवि विस्तार",
+      "outpaintingOptions": {
+        "none": "कोई नहीं",
+        "zoomOut15": "1.5× ज़ूम आउट",
+        "zoomOut2": "2× ज़ूम आउट",
+        "makeSquare": "वर्ग बनाएं",
+        "leftOutpaint": "बाईं ओर विस्तार",
+        "rightOutpaint": "दाईं ओर विस्तार",
+        "topOutpaint": "ऊपर विस्तार",
+        "bottomOutpaint": "नीचे विस्तार"
+      }
+    },
+    "canny": {
+      "title": "Flux Canny के साथ एज मैप बनाएं",
+      "subtitle": "कुछ ही सेकंड में छवियों को एज मैप में बदलें",
+      "pageTitle": "Flux Canny एज डिटेक्शन",
+      "description": "उन्नत AI तकनीक का उपयोग करके छवियों के सटीक एज मैप बनाएं",
+      "guidanceLabel": "मार्गदर्शन स्केल",
+      "outputQualityLabel": "आउटपुट गुणवत्ता",
+      "inferenceStepsLabel": "इन्फरेंस स्टेप्स",
+      "numOutputsLabel": "आउटपुट की संख्या",
+      "cannyLowThresholdLabel": "निम्न थ्रेशोल्ड",
+      "cannyHighThresholdLabel": "उच्च थ्रेशोल्ड",
+      "safetyToleranceLabel": "सुरक्षा सहनशीलता",
+      "promptLabel": "प्रॉम्प्ट",
+      "promptPlaceholder": "प्रॉम्प्ट दर्ज करें (उदाहरण: शहर की सड़क पर चलती कार)",
+      "promptUpsamplingLabel": "प्रॉम्प्ट अपसैम्पलिंग"
     }
   }
 }

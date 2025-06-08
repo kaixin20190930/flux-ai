@@ -359,7 +359,11 @@
     "freeGenerations": "Бесплатные генерации",
     "points": "Баллы",
     "loginForMore": "Войдите для получения дополнительных генераций",
-    "error": "Произошла ошибка"
+    "error": "Произошла ошибка",
+    "guidanceLabel": "Сила направления",
+    "outputQualityLabel": "Качество вывода",
+    "inferenceStepsLabel": "Шаги вывода",
+    "numOutputsLabel": "Количество выводов"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "Чем Flux 1.1 Pro Ultra отличается от других моделей?",
         "answer": "Flux 1.1 Pro Ultra выделяется способностью генерировать более крупные изображения в 4 мегапикселя, улучшенным реализмом особенно в режиме raw и улучшенной генерацией естественных изображений по сравнению с предыдущими версиями."
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "Соотношение сторон",
+      "outputFormatLabel": "Формат вывода",
+      "generateButton": "Сгенерировать изображение",
+      "generating": "Генерация...",
+      "downloadButton": "Скачать",
+      "previewPlaceholder": "Загрузите изображение, чтобы начать",
+      "invalidFileType": "Пожалуйста, загрузите изображение в формате JPG или PNG",
+      "noImageError": "Пожалуйста, сначала загрузите изображение",
+      "generationError": "Ошибка генерации, пожалуйста, попробуйте снова"
+    },
+    "redux": {
+      "title": "Создавайте красивые изображения с Flux Redux",
+      "subtitle": "Превращайте свои идеи в визуальные шедевры за секунды",
+      "pageTitle": "Генерация изображений Flux Redux",
+      "description": "Используйте передовые технологии ИИ для преобразования вашего творчества в красивые изображения",
+      "guidanceLabel": "Масштаб направленности",
+      "outputQualityLabel": "Качество вывода",
+      "inferenceStepsLabel": "Шаги вывода",
+      "numOutputsLabel": "Количество выходов"
+    },
+    "depth": {
+      "title": "Создавайте карты глубины с Flux Depth",
+      "subtitle": "Превращайте свои изображения в карты глубины за секунды",
+      "pageTitle": "Генерация карт глубины Flux Depth",
+      "description": "Используйте передовые технологии ИИ для создания точных карт глубины для ваших изображений",
+      "guidanceLabel": "Масштаб направленности",
+      "outputQualityLabel": "Качество вывода",
+      "inferenceStepsLabel": "Шаги вывода",
+      "numOutputsLabel": "Количество выходов",
+      "cannyLowThresholdLabel": "Нижний порог",
+      "cannyHighThresholdLabel": "Верхний порог",
+      "safetyToleranceLabel": "Допуск безопасности",
+      "promptLabel": "Промпт",
+      "promptPlaceholder": "Введите промпт, например, автомобиль на городской улице",
+      "promptUpsamplingLabel": "Апсемплинг промпта"
+    },
+    "fill": {
+      "title": "Восстановление изображений Flux Fill",
+      "subtitle": "Интеллектуально заполняйте и восстанавливайте любые области на ваших изображениях",
+      "pageTitle": "Восстановление изображений Flux Fill",
+      "description": "Используйте передовые технологии ИИ для интеллектуального заполнения и восстановления любых областей на ваших изображениях",
+      "maskLabel": "Выберите область для восстановления",
+      "clearMask": "Очистить маску",
+      "promptLabel": "Промпт",
+      "promptPlaceholder": "Опишите, что вы хотите заполнить, например, зеленое травяное поле",
+      "guidanceLabel": "Масштаб направленности",
+      "inferenceStepsLabel": "Шаги вывода",
+      "outputFormatLabel": "Формат вывода",
+      "safetyToleranceLabel": "Допуск безопасности",
+      "promptUpsamplingLabel": "Апсемплинг промпта",
+      "promptUpsamplingEnabled": "Включить апсемплинг промпта",
+      "outpaintingLabel": "Расширение изображения",
+      "outpaintingOptions": {
+        "none": "Нет",
+        "zoomOut15": "Уменьшить 1.5x",
+        "zoomOut2": "Уменьшить 2x",
+        "makeSquare": "Сделать квадратным",
+        "leftOutpaint": "Расширить влево",
+        "rightOutpaint": "Расширить вправо",
+        "topOutpaint": "Расширить вверх",
+        "bottomOutpaint": "Расширить вниз"
+      }
+    },
+    "canny": {
+      "title": "Создавайте карты границ с Flux Canny",
+      "subtitle": "Превращайте свои изображения в карты границ за секунды",
+      "pageTitle": "Обнаружение границ Flux Canny",
+      "description": "Используйте передовые технологии ИИ для создания точных карт границ для ваших изображений",
+      "guidanceLabel": "Масштаб направленности",
+      "outputQualityLabel": "Качество вывода",
+      "inferenceStepsLabel": "Шаги вывода",
+      "numOutputsLabel": "Количество выходов",
+      "cannyLowThresholdLabel": "Нижний порог",
+      "cannyHighThresholdLabel": "Верхний порог",
+      "safetyToleranceLabel": "Допуск безопасности",
+      "promptLabel": "Промпт",
+      "promptPlaceholder": "Введите промпт, например, автомобиль на городской улице",
+      "promptUpsamplingLabel": "Апсемплинг промпта"
     }
   }
 }

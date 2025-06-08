@@ -359,7 +359,11 @@
     "freeGenerations": "Générations gratuites",
     "points": "Points",
     "loginForMore": "Connectez-vous pour plus de générations",
-    "error": "Une erreur s'est produite"
+    "error": "Une erreur s'est produite",
+    "guidanceLabel": "Force de guidage",
+    "outputQualityLabel": "Qualité de sortie",
+    "inferenceStepsLabel": "Étapes d'inférence",
+    "numOutputsLabel": "Nombre de sorties"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "Qu'est-ce qui distingue Flux 1.1 Pro Ultra des autres modèles ?",
         "answer": "Flux 1.1 Pro Ultra se distingue par sa capacité à générer des images plus grandes de 4 mégapixels, un réalisme amélioré particulièrement en mode raw, et une génération d'images naturelles améliorée par rapport aux versions précédentes."
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "Ratio d'aspect",
+      "outputFormatLabel": "Format de sortie",
+      "generateButton": "Générer l'image",
+      "generating": "Génération en cours...",
+      "downloadButton": "Télécharger",
+      "previewPlaceholder": "Téléchargez une image pour commencer",
+      "invalidFileType": "Veuillez télécharger une image JPG ou PNG",
+      "noImageError": "Veuillez d'abord télécharger une image",
+      "generationError": "Échec de la génération, veuillez réessayer"
+    },
+    "redux": {
+      "title": "Créez de belles images avec Flux Redux",
+      "subtitle": "Transformez vos idées en chefs-d'œuvre visuels en quelques secondes",
+      "pageTitle": "Génération d'images Flux Redux",
+      "description": "Utilisez la technologie AI avancée pour transformer votre créativité en belles images",
+      "guidanceLabel": "Échelle de guidage",
+      "outputQualityLabel": "Qualité de sortie",
+      "inferenceStepsLabel": "Étapes d'inférence",
+      "numOutputsLabel": "Nombre de sorties"
+    },
+    "depth": {
+      "title": "Créez des cartes de profondeur avec Flux Depth",
+      "subtitle": "Transformez vos images en cartes de profondeur en quelques secondes",
+      "pageTitle": "Génération de cartes de profondeur Flux Depth",
+      "description": "Utilisez la technologie AI avancée pour créer des cartes de profondeur précises pour vos images",
+      "guidanceLabel": "Échelle de guidage",
+      "outputQualityLabel": "Qualité de sortie",
+      "inferenceStepsLabel": "Étapes d'inférence",
+      "numOutputsLabel": "Nombre de sorties",
+      "cannyLowThresholdLabel": "Seuil bas",
+      "cannyHighThresholdLabel": "Seuil haut",
+      "safetyToleranceLabel": "Tolérance de sécurité",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Entrez un prompt, ex. : une voiture dans une rue de ville",
+      "promptUpsamplingLabel": "Suréchantillonnage du prompt"
+    },
+    "fill": {
+      "title": "Restauration d'image Flux Fill",
+      "subtitle": "Remplissez et réparez intelligemment n'importe quelle zone de vos images",
+      "pageTitle": "Restauration d'image Flux Fill",
+      "description": "Utilisez la technologie AI avancée pour remplir et réparer intelligemment n'importe quelle zone de vos images",
+      "maskLabel": "Sélectionnez la zone à réparer",
+      "clearMask": "Effacer le masque",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Décrivez ce que vous voulez remplir, ex. : un champ d'herbe verte",
+      "guidanceLabel": "Échelle de guidage",
+      "inferenceStepsLabel": "Étapes d'inférence",
+      "outputFormatLabel": "Format de sortie",
+      "safetyToleranceLabel": "Tolérance de sécurité",
+      "promptUpsamplingLabel": "Suréchantillonnage du prompt",
+      "promptUpsamplingEnabled": "Activer le suréchantillonnage du prompt",
+      "outpaintingLabel": "Extension d'image",
+      "outpaintingOptions": {
+        "none": "Aucun",
+        "zoomOut15": "Dézoomer 1.5x",
+        "zoomOut2": "Dézoomer 2x",
+        "makeSquare": "Rendre carré",
+        "leftOutpaint": "Extension gauche",
+        "rightOutpaint": "Extension droite",
+        "topOutpaint": "Extension haut",
+        "bottomOutpaint": "Extension bas"
+      }
+    },
+    "canny": {
+      "title": "Créez des cartes de contours avec Flux Canny",
+      "subtitle": "Transformez vos images en cartes de contours en quelques secondes",
+      "pageTitle": "Détection de contours Flux Canny",
+      "description": "Utilisez la technologie AI avancée pour créer des cartes de contours précises pour vos images",
+      "guidanceLabel": "Échelle de guidage",
+      "outputQualityLabel": "Qualité de sortie",
+      "inferenceStepsLabel": "Étapes d'inférence",
+      "numOutputsLabel": "Nombre de sorties",
+      "cannyLowThresholdLabel": "Seuil bas",
+      "cannyHighThresholdLabel": "Seuil haut",
+      "safetyToleranceLabel": "Tolérance de sécurité",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Entrez un prompt, ex. : une voiture dans une rue de ville",
+      "promptUpsamplingLabel": "Suréchantillonnage du prompt"
     }
   }
 }

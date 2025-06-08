@@ -359,7 +359,11 @@
     "freeGenerations": "Penjanaan percuma",
     "points": "Mata",
     "loginForMore": "Log masuk untuk lebih banyak penjanaan",
-    "error": "Ralat telah berlaku"
+    "error": "Ralat telah berlaku",
+    "guidanceLabel": "Kekuatan Panduan",
+    "outputQualityLabel": "Kualiti Output",
+    "inferenceStepsLabel": "Langkah Inferens",
+    "numOutputsLabel": "Bilangan Output"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "Apakah yang membezakan Flux 1.1 Pro Ultra daripada model lain?",
         "answer": "Flux 1.1 Pro Ultra menonjol dengan keupayaannya untuk menjana imej 4 megapiksel yang lebih besar, realisme yang dipertingkatkan terutamanya dalam mod raw, dan penjanaan imej semula jadi yang dipertingkatkan berbanding versi sebelumnya."
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "Nisbah Aspek",
+      "outputFormatLabel": "Format Output",
+      "generateButton": "Hasilkan Imej",
+      "generating": "Menghasilkan...",
+      "downloadButton": "Muat Turun",
+      "previewPlaceholder": "Muat naik imej untuk bermula",
+      "invalidFileType": "Sila muat naik imej JPG atau PNG",
+      "noImageError": "Sila muat naik imej terlebih dahulu",
+      "generationError": "Penghasilan gagal, sila cuba lagi"
+    },
+    "redux": {
+      "title": "Hasilkan Imej Cantik dengan Flux Redux",
+      "subtitle": "Ubah idea anda menjadi karya visual dalam beberapa saat",
+      "pageTitle": "Penghasilan Imej Flux Redux",
+      "description": "Ubah kreativiti anda menjadi imej cantik menggunakan teknologi AI termaju",
+      "guidanceLabel": "Skala Panduan",
+      "outputQualityLabel": "Kualiti Output",
+      "inferenceStepsLabel": "Langkah Inferens",
+      "numOutputsLabel": "Bilangan Output"
+    },
+    "depth": {
+      "title": "Hasilkan Peta Kedalaman dengan Flux Depth",
+      "subtitle": "Ubah imej menjadi peta kedalaman dalam beberapa saat",
+      "pageTitle": "Penghasilan Peta Kedalaman Flux Depth",
+      "description": "Hasilkan peta kedalaman yang tepat untuk imej menggunakan teknologi AI termaju",
+      "guidanceLabel": "Skala Panduan",
+      "outputQualityLabel": "Kualiti Output",
+      "inferenceStepsLabel": "Langkah Inferens",
+      "numOutputsLabel": "Bilangan Output",
+      "cannyLowThresholdLabel": "Ambang Rendah",
+      "cannyHighThresholdLabel": "Ambang Tinggi",
+      "safetyToleranceLabel": "Toleransi Keselamatan",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Masukkan prompt (contoh: kereta bergerak di jalan bandar)",
+      "promptUpsamplingLabel": "Upsampling Prompt"
+    },
+    "fill": {
+      "title": "Pemulihan Imej Flux Fill",
+      "subtitle": "Isi dan pulihkan semua kawasan imej secara pintar",
+      "pageTitle": "Pemulihan Imej Flux Fill",
+      "description": "Isi dan pulihkan semua kawasan imej secara pintar menggunakan teknologi AI termaju",
+      "maskLabel": "Pilih Kawasan untuk Dipulihkan",
+      "clearMask": "Kosongkan Topeng",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Terangkan apa yang anda mahu isi (contoh: rumput hijau)",
+      "guidanceLabel": "Skala Panduan",
+      "inferenceStepsLabel": "Langkah Inferens",
+      "outputFormatLabel": "Format Output",
+      "safetyToleranceLabel": "Toleransi Keselamatan",
+      "promptUpsamplingLabel": "Upsampling Prompt",
+      "promptUpsamplingEnabled": "Aktifkan Upsampling Prompt",
+      "outpaintingLabel": "Pengembangan Imej",
+      "outpaintingOptions": {
+        "none": "Tiada",
+        "zoomOut15": "Zum Keluar 1.5×",
+        "zoomOut2": "Zum Keluar 2×",
+        "makeSquare": "Buat Segi Empat",
+        "leftOutpaint": "Kembangkan Kiri",
+        "rightOutpaint": "Kembangkan Kanan",
+        "topOutpaint": "Kembangkan Atas",
+        "bottomOutpaint": "Kembangkan Bawah"
+      }
+    },
+    "canny": {
+      "title": "Hasilkan Peta Tepi dengan Flux Canny",
+      "subtitle": "Ubah imej menjadi peta tepi dalam beberapa saat",
+      "pageTitle": "Pengesanan Tepi Flux Canny",
+      "description": "Hasilkan peta tepi yang tepat untuk imej menggunakan teknologi AI termaju",
+      "guidanceLabel": "Skala Panduan",
+      "outputQualityLabel": "Kualiti Output",
+      "inferenceStepsLabel": "Langkah Inferens",
+      "numOutputsLabel": "Bilangan Output",
+      "cannyLowThresholdLabel": "Ambang Rendah",
+      "cannyHighThresholdLabel": "Ambang Tinggi",
+      "safetyToleranceLabel": "Toleransi Keselamatan",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Masukkan prompt (contoh: kereta bergerak di jalan bandar)",
+      "promptUpsamplingLabel": "Upsampling Prompt"
     }
   }
 }

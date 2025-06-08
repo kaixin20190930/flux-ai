@@ -359,7 +359,11 @@
     "freeGenerations": "Darmowe generacje",
     "points": "Punkty",
     "loginForMore": "Zaloguj się, aby uzyskać więcej generacji",
-    "error": "Wystąpił błąd"
+    "error": "Wystąpił błąd",
+    "guidanceLabel": "Siła prowadzenia",
+    "outputQualityLabel": "Jakość wyjścia",
+    "inferenceStepsLabel": "Kroki wnioskowania",
+    "numOutputsLabel": "Liczba wyników"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "Co wyróżnia Flux 1.1 Pro Ultra spośród innych modeli?",
         "answer": "Flux 1.1 Pro Ultra wyróżnia się możliwością generowania większych obrazów 4-megapikselowych, ulepszonym realizmem szczególnie w trybie raw oraz ulepszonym generowaniem naturalnych obrazów w porównaniu z poprzednimi wersjami."
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "Proporcje",
+      "outputFormatLabel": "Format wyjściowy",
+      "generateButton": "Generuj obraz",
+      "generating": "Generowanie...",
+      "downloadButton": "Pobierz",
+      "previewPlaceholder": "Prześlij obraz, aby rozpocząć",
+      "invalidFileType": "Prześlij obraz w formacie JPG lub PNG",
+      "noImageError": "Najpierw prześlij obraz",
+      "generationError": "Generowanie nie powiodło się, spróbuj ponownie"
+    },
+    "redux": {
+      "title": "Twórz wspaniałe obrazy z Flux Redux",
+      "subtitle": "Przekształć swoje pomysły w wizualne arcydzieła w kilka sekund",
+      "pageTitle": "Generowanie obrazów Flux Redux",
+      "description": "Przekształć swoje kreatywne pomysły w wspaniałe obrazy dzięki naszej zaawansowanej technologii AI",
+      "guidanceLabel": "Skala prowadzenia",
+      "outputQualityLabel": "Jakość wyjściowa",
+      "inferenceStepsLabel": "Kroki wnioskowania",
+      "numOutputsLabel": "Liczba wyjść"
+    },
+    "depth": {
+      "title": "Twórz mapy głębi z Flux Depth",
+      "subtitle": "Przekształć swoje obrazy w mapy głębi w kilka sekund",
+      "pageTitle": "Generowanie map głębi Flux Depth",
+      "description": "Twórz precyzyjne mapy głębi dla swoich obrazów dzięki naszej zaawansowanej technologii AI",
+      "guidanceLabel": "Skala prowadzenia",
+      "outputQualityLabel": "Jakość wyjściowa",
+      "inferenceStepsLabel": "Kroki wnioskowania",
+      "numOutputsLabel": "Liczba wyjść",
+      "cannyLowThresholdLabel": "Niski próg",
+      "cannyHighThresholdLabel": "Wysoki próg",
+      "safetyToleranceLabel": "Tolerancja bezpieczeństwa",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Wprowadź prompt, np. samochód na ulicy miasta",
+      "promptUpsamplingLabel": "Upsampling promptu"
+    },
+    "fill": {
+      "title": "Naprawa obrazów Flux Fill",
+      "subtitle": "Inteligentnie wypełniaj i naprawiaj dowolny obszar obrazu",
+      "pageTitle": "Naprawa obrazów Flux Fill",
+      "description": "Inteligentnie wypełniaj i naprawiaj dowolny obszar obrazu dzięki naszej zaawansowanej technologii AI",
+      "maskLabel": "Wybierz obszar do naprawy",
+      "clearMask": "Wyczyść maskę",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Opisz, co chcesz wypełnić, np. zielona trawa",
+      "guidanceLabel": "Skala prowadzenia",
+      "inferenceStepsLabel": "Kroki wnioskowania",
+      "outputFormatLabel": "Format wyjściowy",
+      "safetyToleranceLabel": "Tolerancja bezpieczeństwa",
+      "promptUpsamplingLabel": "Upsampling promptu",
+      "promptUpsamplingEnabled": "Włącz upsampling promptu",
+      "outpaintingLabel": "Rozszerzenie obrazu",
+      "outpaintingOptions": {
+        "none": "Brak",
+        "zoomOut15": "Oddalenie 1.5x",
+        "zoomOut2": "Oddalenie 2x",
+        "makeSquare": "Zrób kwadrat",
+        "leftOutpaint": "Rozszerz w lewo",
+        "rightOutpaint": "Rozszerz w prawo",
+        "topOutpaint": "Rozszerz w górę",
+        "bottomOutpaint": "Rozszerz w dół"
+      }
+    },
+    "canny": {
+      "title": "Twórz mapy krawędzi z Flux Canny",
+      "subtitle": "Przekształć swoje obrazy w mapy krawędzi w kilka sekund",
+      "pageTitle": "Wykrywanie krawędzi Flux Canny",
+      "description": "Twórz precyzyjne mapy krawędzi dla swoich obrazów dzięki naszej zaawansowanej technologii AI",
+      "guidanceLabel": "Skala prowadzenia",
+      "outputQualityLabel": "Jakość wyjściowa",
+      "inferenceStepsLabel": "Kroki wnioskowania",
+      "numOutputsLabel": "Liczba wyjść",
+      "cannyLowThresholdLabel": "Niski próg",
+      "cannyHighThresholdLabel": "Wysoki próg",
+      "safetyToleranceLabel": "Tolerancja bezpieczeństwa",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Wprowadź prompt, np. samochód na ulicy miasta",
+      "promptUpsamplingLabel": "Upsampling promptu"
     }
   }
 }

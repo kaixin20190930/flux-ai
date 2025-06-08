@@ -359,7 +359,11 @@
     "freeGenerations": "Gerações gratuitas",
     "points": "Pontos",
     "loginForMore": "Faça login para mais gerações",
-    "error": "Ocorreu um erro"
+    "error": "Ocorreu um erro",
+    "guidanceLabel": "Força de orientação",
+    "outputQualityLabel": "Qualidade de saída",
+    "inferenceStepsLabel": "Etapas de inferência",
+    "numOutputsLabel": "Número de saídas"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "O que torna o Flux 1.1 Pro Ultra diferente de outros modelos?",
         "answer": "O Flux 1.1 Pro Ultra se destaca por sua capacidade de gerar imagens maiores de 4 megapixels, realismo aprimorado, especialmente no modo raw, e geração de imagens naturais aprimorada em comparação com as versões anteriores."
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "Proporção",
+      "outputFormatLabel": "Formato de saída",
+      "generateButton": "Gerar imagem",
+      "generating": "Gerando...",
+      "downloadButton": "Baixar",
+      "previewPlaceholder": "Carregue uma imagem para começar",
+      "invalidFileType": "Carregue uma imagem em formato JPG ou PNG",
+      "noImageError": "Carregue uma imagem primeiro",
+      "generationError": "Falha na geração, tente novamente"
+    },
+    "redux": {
+      "title": "Crie imagens incríveis com Flux Redux",
+      "subtitle": "Transforme suas ideias em obras-primas visuais em segundos",
+      "pageTitle": "Geração de imagens Flux Redux",
+      "description": "Transforme suas ideias criativas em imagens incríveis com nossa tecnologia AI avançada",
+      "guidanceLabel": "Escala de orientação",
+      "outputQualityLabel": "Qualidade da saída",
+      "inferenceStepsLabel": "Passos de inferência",
+      "numOutputsLabel": "Número de saídas"
+    },
+    "depth": {
+      "title": "Crie mapas de profundidade com Flux Depth",
+      "subtitle": "Transforme suas imagens em mapas de profundidade em segundos",
+      "pageTitle": "Geração de mapas de profundidade Flux Depth",
+      "description": "Crie mapas de profundidade precisos para suas imagens com nossa tecnologia AI avançada",
+      "guidanceLabel": "Escala de orientação",
+      "outputQualityLabel": "Qualidade da saída",
+      "inferenceStepsLabel": "Passos de inferência",
+      "numOutputsLabel": "Número de saídas",
+      "cannyLowThresholdLabel": "Limiar baixo",
+      "cannyHighThresholdLabel": "Limiar alto",
+      "safetyToleranceLabel": "Tolerância de segurança",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Digite um prompt, ex. um carro em uma rua da cidade",
+      "promptUpsamplingLabel": "Upsampling do prompt"
+    },
+    "fill": {
+      "title": "Reparo de imagens Flux Fill",
+      "subtitle": "Preencha e repare inteligentemente qualquer área da imagem",
+      "pageTitle": "Reparo de imagens Flux Fill",
+      "description": "Preencha e repare inteligentemente qualquer área da imagem com nossa tecnologia AI avançada",
+      "maskLabel": "Selecione a área a ser reparada",
+      "clearMask": "Limpar máscara",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Descreva o que você quer preencher, ex. um gramado verde",
+      "guidanceLabel": "Escala de orientação",
+      "inferenceStepsLabel": "Passos de inferência",
+      "outputFormatLabel": "Formato de saída",
+      "safetyToleranceLabel": "Tolerância de segurança",
+      "promptUpsamplingLabel": "Upsampling do prompt",
+      "promptUpsamplingEnabled": "Ativar upsampling do prompt",
+      "outpaintingLabel": "Extensão da imagem",
+      "outpaintingOptions": {
+        "none": "Nenhuma",
+        "zoomOut15": "Zoom out 1.5x",
+        "zoomOut2": "Zoom out 2x",
+        "makeSquare": "Tornar quadrada",
+        "leftOutpaint": "Estender para esquerda",
+        "rightOutpaint": "Estender para direita",
+        "topOutpaint": "Estender para cima",
+        "bottomOutpaint": "Estender para baixo"
+      }
+    },
+    "canny": {
+      "title": "Crie mapas de bordas com Flux Canny",
+      "subtitle": "Transforme suas imagens em mapas de bordas em segundos",
+      "pageTitle": "Detecção de bordas Flux Canny",
+      "description": "Crie mapas de bordas precisos para suas imagens com nossa tecnologia AI avançada",
+      "guidanceLabel": "Escala de orientação",
+      "outputQualityLabel": "Qualidade da saída",
+      "inferenceStepsLabel": "Passos de inferência",
+      "numOutputsLabel": "Número de saídas",
+      "cannyLowThresholdLabel": "Limiar baixo",
+      "cannyHighThresholdLabel": "Limiar alto",
+      "safetyToleranceLabel": "Tolerância de segurança",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Digite um prompt, ex. um carro em uma rua da cidade",
+      "promptUpsamplingLabel": "Upsampling do prompt"
     }
   }
 }

@@ -6,7 +6,9 @@ import {headers} from "next/headers";
 const allowedOrigins = [
     'http://localhost:3000',          // 本地开发环境
     'http://10.124.124.163:3000',
-    'https://flux-ai-img.com'  // 生产环境
+    'https://flux-ai-img.com',  // 生产环境
+    'https://e83f-61-132-62-78.ngrok-free.app'
+
 ]
 
 interface UserPoints {
@@ -53,16 +55,16 @@ export async function handleUpdateUserPoints(request: Request, env: Env): Promis
             const updatedPoints = await env.DB.prepare('SELECT points FROM users WHERE id = ?')
                 .bind(userId)
                 .first<UserPoints>();
-            
+
             if (!updatedPoints) {
                 logWithTimestamp('Failed to retrieve updated points for user:', userId);
                 throw new Error('Failed to retrieve updated points');
             }
 
             logWithTimestamp(`Successfully updated points for user ${userId} to ${updatedPoints.points}`);
-            
+
             return new Promise((resolve) => resolve(new Response(JSON.stringify({
-                success: true, 
+                success: true,
                 points: updatedPoints.points
             }), {
                 status: 200,

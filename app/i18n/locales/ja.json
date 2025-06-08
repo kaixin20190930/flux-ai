@@ -359,7 +359,11 @@
     "freeGenerations": "無料生成回数",
     "points": "ポイント",
     "loginForMore": "ログインで追加生成回数を獲得",
-    "error": "エラーが発生しました"
+    "error": "エラーが発生しました",
+    "guidanceLabel": "ガイダンス強度",
+    "outputQualityLabel": "出力品質",
+    "inferenceStepsLabel": "推論ステップ",
+    "numOutputsLabel": "出力数"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "Flux 1.1 Pro Ultraが他のモデルと異なる点は何ですか？",
         "answer": "Flux 1.1 Pro Ultraは、より大きな4メガピクセルの画像を生成する能力、特にRAWモードでのリアリズムの向上、そして以前のバージョンと比較して改善された自然な画像生成能力が特徴です。"
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "アスペクト比",
+      "outputFormatLabel": "出力形式",
+      "generateButton": "画像生成",
+      "generating": "生成中...",
+      "downloadButton": "ダウンロード",
+      "previewPlaceholder": "画像をアップロードして開始",
+      "invalidFileType": "JPGまたはPNG画像をアップロードしてください",
+      "noImageError": "画像をアップロードしてください",
+      "generationError": "生成に失敗しました。もう一度お試しください"
+    },
+    "redux": {
+      "title": "Flux Reduxで美しい画像を作成",
+      "subtitle": "数秒でアイデアを視覚的な傑作に変換",
+      "pageTitle": "Flux Redux画像生成",
+      "description": "高度なAI技術を使用して、クリエイティビティを美しい画像に変換",
+      "guidanceLabel": "ガイダンススケール",
+      "outputQualityLabel": "出力品質",
+      "inferenceStepsLabel": "推論ステップ数",
+      "numOutputsLabel": "出力数"
+    },
+    "depth": {
+      "title": "Flux Depthで深度マップを作成",
+      "subtitle": "数秒で画像を深度マップに変換",
+      "pageTitle": "Flux Depth深度マップ生成",
+      "description": "高度なAI技術を使用して、画像の正確な深度マップを作成",
+      "guidanceLabel": "ガイダンススケール",
+      "outputQualityLabel": "出力品質",
+      "inferenceStepsLabel": "推論ステップ数",
+      "numOutputsLabel": "出力数",
+      "cannyLowThresholdLabel": "低閾値",
+      "cannyHighThresholdLabel": "高閾値",
+      "safetyToleranceLabel": "安全許容値",
+      "promptLabel": "プロンプト",
+      "promptPlaceholder": "プロンプトを入力してください（例：都市の通りを走る車）",
+      "promptUpsamplingLabel": "プロンプトアップサンプリング"
+    },
+    "fill": {
+      "title": "Flux Fill画像修復",
+      "subtitle": "画像の任意の領域をインテリジェントに修復",
+      "pageTitle": "Flux Fill画像修復",
+      "description": "高度なAI技術を使用して、画像の任意の領域をインテリジェントに修復",
+      "maskLabel": "修復する領域を選択",
+      "clearMask": "マスクをクリア",
+      "promptLabel": "プロンプト",
+      "promptPlaceholder": "修復したい内容を説明してください（例：緑の草原）",
+      "guidanceLabel": "ガイダンススケール",
+      "inferenceStepsLabel": "推論ステップ数",
+      "outputFormatLabel": "出力形式",
+      "safetyToleranceLabel": "安全許容値",
+      "promptUpsamplingLabel": "プロンプトアップサンプリング",
+      "promptUpsamplingEnabled": "プロンプトアップサンプリングを有効化",
+      "outpaintingLabel": "画像拡張",
+      "outpaintingOptions": {
+        "none": "なし",
+        "zoomOut15": "1.5倍縮小",
+        "zoomOut2": "2倍縮小",
+        "makeSquare": "正方形に",
+        "leftOutpaint": "左に拡張",
+        "rightOutpaint": "右に拡張",
+        "topOutpaint": "上に拡張",
+        "bottomOutpaint": "下に拡張"
+      }
+    },
+    "canny": {
+      "title": "Flux Cannyでエッジマップを作成",
+      "subtitle": "数秒で画像をエッジマップに変換",
+      "pageTitle": "Flux Cannyエッジ検出",
+      "description": "高度なAI技術を使用して、画像の正確なエッジマップを作成",
+      "guidanceLabel": "ガイダンススケール",
+      "outputQualityLabel": "出力品質",
+      "inferenceStepsLabel": "推論ステップ数",
+      "numOutputsLabel": "出力数",
+      "cannyLowThresholdLabel": "低閾値",
+      "cannyHighThresholdLabel": "高閾値",
+      "safetyToleranceLabel": "安全許容値",
+      "promptLabel": "プロンプト",
+      "promptPlaceholder": "プロンプトを入力してください（例：都市の通りを走る車）",
+      "promptUpsamplingLabel": "プロンプトアップサンプリング"
     }
   }
 }

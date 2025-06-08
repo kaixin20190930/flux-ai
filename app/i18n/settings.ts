@@ -48,7 +48,7 @@ export type Dictionary = {
         login: string
         profile: string
         logout: string
-        flux11Ultra: string  // 添加了这个字段
+        flux11Ultra: string
     }
     hero: {
         mainTitle: string
@@ -342,6 +342,92 @@ export type Dictionary = {
         points: string
         loginForMore: string
         error: string
+        guidanceLabel: string
+        outputQualityLabel: string
+        inferenceStepsLabel: string
+        numOutputsLabel: string
+    }
+    fluxTools: {
+        common: {
+            aspectRatioLabel: string
+            outputFormatLabel: string
+            generateButton: string
+            generating: string
+            downloadButton: string
+            previewPlaceholder: string
+            invalidFileType: string
+            noImageError: string
+            generationError: string
+        }
+        redux: {
+            title: string
+            subtitle: string
+            pageTitle: string
+            description: string
+            guidanceLabel: string
+            outputQualityLabel: string
+            inferenceStepsLabel: string
+            numOutputsLabel: string
+        }
+        depth: {
+            title: string
+            subtitle: string
+            pageTitle: string
+            description: string
+            guidanceLabel: string
+            outputQualityLabel: string
+            inferenceStepsLabel: string
+            numOutputsLabel: string
+            cannyLowThresholdLabel: string
+            cannyHighThresholdLabel: string
+            safetyToleranceLabel: string
+            promptLabel: string
+            promptPlaceholder: string
+            promptUpsamplingLabel: string
+        }
+        fill: {
+            title: string
+            subtitle: string
+            pageTitle: string
+            description: string
+            maskLabel: string
+            clearMask: string
+            promptLabel: string
+            promptPlaceholder: string
+            guidanceLabel: string
+            inferenceStepsLabel: string
+            outputFormatLabel: string
+            safetyToleranceLabel: string
+            promptUpsamplingLabel: string
+            promptUpsamplingEnabled: string
+            outpaintingLabel: string
+            outpaintingOptions: {
+                none: string
+                zoomOut15: string
+                zoomOut2: string
+                makeSquare: string
+                leftOutpaint: string
+                rightOutpaint: string
+                topOutpaint: string
+                bottomOutpaint: string
+            }
+        }
+        canny: {
+            title: string
+            subtitle: string
+            pageTitle: string
+            description: string
+            guidanceLabel: string
+            outputQualityLabel: string
+            inferenceStepsLabel: string
+            numOutputsLabel: string
+            cannyLowThresholdLabel: string
+            cannyHighThresholdLabel: string
+            safetyToleranceLabel: string
+            promptLabel: string
+            promptPlaceholder: string
+            promptUpsamplingLabel: string
+        }
     }
     "ultraHero": {
         "heroTitle": string

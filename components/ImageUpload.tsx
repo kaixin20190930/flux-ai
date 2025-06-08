@@ -14,7 +14,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({onImageChange}) => {
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
-            if (file.type === 'image/jpeg' || file.type === 'image/png') {
+            if (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/gif' || file.type === 'image/jpg' || file.type === 'image/webp') {
                 const reader = new FileReader();
                 reader.onload = () => {
                     setImage(reader.result as string);
@@ -164,7 +164,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({onImageChange}) => {
                                 <div className="text-gray-600">
                                     <span className="font-medium">Click to upload</span> or drag and drop
                                 </div>
-                                <p className="text-xs text-gray-500">PNG, JPG up to 10MB</p>
+                                <p className="text-xs text-gray-500">PNG, JPG, Webp up to 10MB</p>
                             </div>
                         </label>
                     )}

@@ -5,7 +5,8 @@ import {logWithTimestamp} from "@/utils/logUtils";
 const allowedOrigins = [
     'http://localhost:3000',
     'http://10.124.124.163:3000',
-    'https://flux-ai-img.com'
+    'https://flux-ai-img.com',
+    'https://e83f-61-132-62-78.ngrok-free.app'
 ]
 
 export async function handleRegister(request: Request, env: Env): Promise<any> {

@@ -359,7 +359,11 @@
     "freeGenerations": "الإنشاءات المجانية",
     "points": "النقاط",
     "loginForMore": "سجل الدخول للمزيد من الإنشاءات",
-    "error": "حدث خطأ"
+    "error": "حدث خطأ",
+    "guidanceLabel": "قوة التوجيه",
+    "outputQualityLabel": "جودة الإخراج",
+    "inferenceStepsLabel": "خطوات الاستدلال",
+    "numOutputsLabel": "عدد المخرجات"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "ما الذي يميز Flux 1.1 Pro Ultra عن النماذج الأخرى؟",
         "answer": "يتميز Flux 1.1 Pro Ultra بقدرته على إنشاء صور أكبر بحجم 4 ميجابكسل، وواقعية محسنة خاصة في وضع raw، وإنشاء صور طبيعية محسن مقارنة بالإصدارات السابقة."
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "نسبة العرض إلى الارتفاع",
+      "outputFormatLabel": "تنسيق الإخراج",
+      "generateButton": "إنشاء الصورة",
+      "generating": "جاري الإنشاء...",
+      "downloadButton": "تحميل",
+      "previewPlaceholder": "قم بتحميل صورة للبدء",
+      "invalidFileType": "يرجى تحميل صورة JPG أو PNG",
+      "noImageError": "يرجى تحميل صورة أولاً",
+      "generationError": "فشل الإنشاء، يرجى المحاولة مرة أخرى"
+    },
+    "redux": {
+      "title": "إنشاء صور جميلة باستخدام Flux Redux",
+      "subtitle": "تحويل أفكارك إلى روائع بصرية في ثوانٍ",
+      "pageTitle": "إنشاء صور Flux Redux",
+      "description": "تحويل إبداعك إلى صور جميلة باستخدام تقنية الذكاء الاصطناعي المتقدمة",
+      "guidanceLabel": "مقياس التوجيه",
+      "outputQualityLabel": "جودة الإخراج",
+      "inferenceStepsLabel": "خطوات الاستدلال",
+      "numOutputsLabel": "عدد المخرجات"
+    },
+    "depth": {
+      "title": "إنشاء خريطة عمق باستخدام Flux Depth",
+      "subtitle": "تحويل الصور إلى خرائط عمق في ثوانٍ",
+      "pageTitle": "إنشاء خريطة عمق Flux Depth",
+      "description": "إنشاء خريطة عمق دقيقة للصور باستخدام تقنية الذكاء الاصطناعي المتقدمة",
+      "guidanceLabel": "مقياس التوجيه",
+      "outputQualityLabel": "جودة الإخراج",
+      "inferenceStepsLabel": "خطوات الاستدلال",
+      "numOutputsLabel": "عدد المخرجات",
+      "cannyLowThresholdLabel": "عتبة منخفضة",
+      "cannyHighThresholdLabel": "عتبة عالية",
+      "safetyToleranceLabel": "مستوى التسامح",
+      "promptLabel": "الوصف",
+      "promptPlaceholder": "أدخل الوصف (مثال: سيارة تسير في شارع المدينة)",
+      "promptUpsamplingLabel": "تحسين الوصف"
+    },
+    "fill": {
+      "title": "إصلاح الصور باستخدام Flux Fill",
+      "subtitle": "ملء واستعادة جميع مناطق الصورة بذكاء",
+      "pageTitle": "إصلاح الصور باستخدام Flux Fill",
+      "description": "ملء واستعادة جميع مناطق الصورة بذكاء باستخدام تقنية الذكاء الاصطناعي المتقدمة",
+      "maskLabel": "اختر المنطقة للإصلاح",
+      "clearMask": "مسح القناع",
+      "promptLabel": "الوصف",
+      "promptPlaceholder": "صف ما تريد ملءه (مثال: عشب أخضر)",
+      "guidanceLabel": "مقياس التوجيه",
+      "inferenceStepsLabel": "خطوات الاستدلال",
+      "outputFormatLabel": "تنسيق الإخراج",
+      "safetyToleranceLabel": "مستوى التسامح",
+      "promptUpsamplingLabel": "تحسين الوصف",
+      "promptUpsamplingEnabled": "تفعيل تحسين الوصف",
+      "outpaintingLabel": "توسيع الصورة",
+      "outpaintingOptions": {
+        "none": "لا شيء",
+        "zoomOut15": "تصغير 1.5×",
+        "zoomOut2": "تصغير 2×",
+        "makeSquare": "جعلها مربعة",
+        "leftOutpaint": "توسيع اليسار",
+        "rightOutpaint": "توسيع اليمين",
+        "topOutpaint": "توسيع الأعلى",
+        "bottomOutpaint": "توسيع الأسفل"
+      }
+    },
+    "canny": {
+      "title": "إنشاء خريطة الحواف باستخدام Flux Canny",
+      "subtitle": "تحويل الصور إلى خرائط حواف في ثوانٍ",
+      "pageTitle": "كشف الحواف باستخدام Flux Canny",
+      "description": "إنشاء خريطة حواف دقيقة للصور باستخدام تقنية الذكاء الاصطناعي المتقدمة",
+      "guidanceLabel": "مقياس التوجيه",
+      "outputQualityLabel": "جودة الإخراج",
+      "inferenceStepsLabel": "خطوات الاستدلال",
+      "numOutputsLabel": "عدد المخرجات",
+      "cannyLowThresholdLabel": "عتبة منخفضة",
+      "cannyHighThresholdLabel": "عتبة عالية",
+      "safetyToleranceLabel": "مستوى التسامح",
+      "promptLabel": "الوصف",
+      "promptPlaceholder": "أدخل الوصف (مثال: سيارة تسير في شارع المدينة)",
+      "promptUpsamplingLabel": "تحسين الوصف"
     }
   }
 }

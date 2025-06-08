@@ -6,7 +6,8 @@ import {setCookie} from "@/utils/cookieUtils";
 const allowedOrigins = [
     'http://localhost:3000',
     'http://10.124.124.163:3000',
-    'https://flux-ai-img.com'
+    'https://flux-ai-img.com',
+    'https://e83f-61-132-62-78.ngrok-free.app'
 ]
 
 export async function handleLogin(request: Request, env: Env): Promise<any> {
@@ -30,8 +31,13 @@ export async function handleLogin(request: Request, env: Env): Promise<any> {
             })));
         }
 
+        const db = env.DB || env['DB-DEV'];
+        if (!db) {
+            throw new Error('No D1 database binding found!');
+        }
+
         // 查找用户
-        const user = await env.DB.prepare('SELECT * FROM users WHERE email = ?')
+        const user = await db.prepare('SELECT * FROM users WHERE email = ?')
             .bind(email)
             .first();
 

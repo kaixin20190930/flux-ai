@@ -2,7 +2,8 @@ import {getUserFromCookie, getUserFromLocalStorage} from './authUtils';
 import {NextRequest} from 'next/server';
 import {Env} from '@/worker/types';
 import {logWithTimestamp} from "@/utils/logUtils";
-import {verifyJWT} from "@/utils/auth";
+import {verifyJWT, getUserIdFromToken} from "@/utils/auth";
+import { Database } from './db';
 
 // import os from 'os';
 
@@ -30,80 +31,27 @@ interface Transaction {
     // 添加其他可能的用户属性
 }
 
-export async function getUserPoints(req: NextRequest) {
-    const token = req.cookies.get('token' as any)?.value;
-
-    if (!token) {
-        console.error('No token found');
-        return null;
-    }
-    logWithTimestamp('start get user points')
-    try {
-
-        logWithTimestamp('Received token:', token);
+export async function getUserPoints(env: Env, userId: number): Promise<number | null> {
         try {
-            const decoded = await verifyJWT(token, process.env.JWT_SECRET as string);
-
-            logWithTimestamp('Token verified successfully in getUserPoints');
-        } catch (error) {
-            logWithTimestamp('Token verification failed in getUserPoints:', error);
-        }
-
-        const response = await fetch('https://flux-ai.liukai19911010.workers.dev/getuserpoints', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            }
-        });
-
-        logWithTimestamp('get response status is:', response.status)
-        logWithTimestamp('get response ok is:', response.ok)
-
-        if (response.ok) {
-            const data: Data2 = await response.json();
-            logWithTimestamp('get data points is:', data)
-            return data.points;
-        } else {
-            console.error('Error fetching user points');
-            return null;
-        }
+        const db = new Database(env);
+        const result = await db.get<{ points: number }>('SELECT points FROM users WHERE id = ?', [userId]);
+        return result?.points ?? null;
     } catch (error) {
-        console.error('Error:', error);
+        console.error('获取用户点数失败:', error);
         return null;
     }
 }
 
-export async function updateUserPoints(req: NextRequest, newPoints: number) {
-    const token = req.cookies.get('token' as any)?.value;
-
-    if (!token) {
-        console.error('No token found');
-        return false;
-    }
-
-    logWithTimestamp('Start updating user points');
-
+export async function updateUserPoints(env: Env, userId: number, points: number): Promise<boolean> {
     try {
-        const response = await fetch('https://flux-ai.liukai19911010.workers.dev/updateuserpoints', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({points: newPoints})
-        });
-
-        if (response.ok) {
-            const data: { success: boolean, points: number } = await response.json();
-            logWithTimestamp('Update result:', data);
-            return data.success;
-        } else {
-            console.error('Error updating user points');
-            return false;
-        }
+        const db = new Database(env);
+        const result = await db.run(
+            'UPDATE users SET points = points + ? WHERE id = ?',
+            [points, userId]
+        );
+        return result.changes ? result.changes > 0 : false;
     } catch (error) {
-        console.error('Error:', error);
+        console.error('更新用户点数失败:', error);
         return false;
     }
 }
@@ -158,5 +106,67 @@ export async function getTransaction(sessionId: string) {
     } else {
         console.error('Error insert transaction');
         throw new Error('No transaction get');
+    }
+}
+
+// 检查是否登录并消耗点数
+export async function checkAndConsumePoints(env: Env, points: number, token: string): Promise<boolean> {
+    try {
+        const userId = await getUserIdFromToken(token);
+        if (!userId) {
+            logWithTimestamp('用户未登录');
+            return false;
+        }
+
+        const db = new Database(env);
+        const user = await db.get('SELECT points FROM users WHERE id = ?', [userId]);
+        
+        if (!user) {
+            logWithTimestamp('用户不存在');
+            return false;
+        }
+
+        const currentPoints = user.points || 0;
+        if (currentPoints < points) {
+            logWithTimestamp('积分不足');
+            return false;
+        }
+
+        const newPoints = currentPoints - points;
+        await db.run('UPDATE users SET points = ? WHERE id = ?', [newPoints, userId]);
+        logWithTimestamp(`用户 ${userId} 消费 ${points} 积分，剩余 ${newPoints} 积分`);
+        
+        return true;
+    } catch (error) {
+        logWithTimestamp('消费积分失败:', error);
+        return false;
+    }
+}
+
+export async function recordGeneration(env: Env, userId: number, modelType: string, prompt: string, imageUrl: string, pointsConsumed: number): Promise<boolean> {
+    try {
+        const db = new Database(env);
+        const result = await db.run(
+            'INSERT INTO generations (user_id, model_type, prompt, image_url, points_consumed) VALUES (?, ?, ?, ?, ?)',
+            [userId, modelType, prompt, imageUrl, pointsConsumed]
+        );
+        return result.lastID ? true : false;
+    } catch (error) {
+        console.error('记录生成历史失败:', error);
+        return false;
+    }
+}
+
+export async function recordToolUsage(env: Env, userId: number, toolType: string, inputImageUrl: string, outputImageUrl: string, pointsConsumed: number): Promise<boolean> {
+    try {
+        const db = new Database(env);
+        const result = await db.run(
+            'INSERT INTO flux_tools_usage (user_id, tool_type, input_image_url, output_image_url, points_consumed) VALUES (?, ?, ?, ?, ?)',
+            [userId, toolType, inputImageUrl, outputImageUrl, pointsConsumed]
+        );
+        return result.lastID ? true : false;
+    } catch (error) {
+        console.error('记录工具使用历史失败:', error);
+        return false;
     }
 }

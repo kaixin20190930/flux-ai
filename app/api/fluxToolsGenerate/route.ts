@@ -89,6 +89,14 @@ export async function POST(req: NextRequest) {
             }
         }
 
+        // 新增：depth、fill、redux、canny 仅限登录用户
+        const loginOnlyModels = ['depth', 'fill', 'redux', 'canny'];
+        if (loginOnlyModels.includes(model) && !isLoggedIn) {
+            return Response.json({
+                error: '请登录后使用该功能',
+            }, { status: 403 });
+        }
+
         logWithTimestamp('Generating image', {prompt, useUserPoints});
         const identifier: string = "black-forest-labs/" + model;
         const output = await replicate.run(

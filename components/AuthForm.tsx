@@ -24,10 +24,9 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-    const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
     const params = useParams()
-    const currentLocale = params.locale as string
+    const currentLocale = params.locale || 'en'
 
     const googleOAuthConfig: GoogleOAuthConfig = {
         client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || '',
@@ -38,10 +37,10 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        setIsLoading(true)
         setError('')
 
-        const endpoint = 'https://flux-ai.liukai19911010.workers.dev/login'
+        const workerUrl = 'https://flux-ai.liukai19911010.workers.dev'
+        const endpoint = isLogin ? `${workerUrl}/login` : `${workerUrl}/register`
         const body = isLogin ? {email, password} : {name, email, password}
 
         try {
@@ -59,17 +58,8 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
                 logWithTimestamp('response is:' + JSON.stringify(data))
 
                 if (data.token && data.user) {
-                    // 统一使用 cookie 存储
-                    Cookies.set('token', data.token, {
-                        expires: 7,
-                        secure: process.env.NODE_ENV === 'production',
-                        sameSite: 'lax'
-                    })
-                    Cookies.set('user', JSON.stringify(data.user), {
-                        expires: 7,
-                        secure: process.env.NODE_ENV === 'production',
-                        sameSite: 'lax'
-                    })
+                    Cookies.set('token', data.token, {expires: 7})
+                    localStorage.setItem('user', JSON.stringify(data.user))
                     logWithTimestamp('user data: ' + JSON.stringify(data.user))
 
                     // 保持语言设置的路由跳转
@@ -82,10 +72,8 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
                 setError(errorData.message || dictionary.auth.errors.authFailed)
             }
         } catch (err) {
-            logWithTimestamp('Error during authentication:', err)
             setError(dictionary.auth.errors.unexpected)
-        } finally {
-            setIsLoading(false)
+            logWithTimestamp('Error during authentication:' + err)
         }
     }
 
@@ -113,8 +101,9 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8">
+        <div
+            className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-indigo-800 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+            <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
                 <div>
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
                         {isLogin ? dictionary.auth.signIn : dictionary.auth.createAccount}
@@ -180,10 +169,9 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
                     <div>
                         <button
                             type="submit"
-                            disabled={isLoading}
-                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
-                            {isLoading ? 'Loading...' : isLogin ? dictionary.auth.signInButton : dictionary.auth.registerButton}
+                            {isLogin ? dictionary.auth.signInButton : dictionary.auth.registerButton}
                         </button>
                     </div>
                 </form>

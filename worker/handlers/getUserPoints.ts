@@ -6,7 +6,9 @@ import {headers} from "next/headers";
 const allowedOrigins = [
     'http://localhost:3000',          // 本地开发环境
     'http://10.124.124.163:3000',
-    'https://flux-ai-img.com'  // 生产环境
+    'https://flux-ai-img.com',  // 生产环境
+    'https://e83f-61-132-62-78.ngrok-free.app'
+
 ]
 
 export async function handleGetUserPoints(request: Request, env: Env): Promise<Response> {

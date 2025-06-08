@@ -184,6 +184,19 @@ const Header: React.FC<HeaderProps> = ({dictionary}) => {
                     {/* 中间导航 */}
                     <nav className="flex-1 flex justify-center">
                         <ul className="flex items-center space-x-6">
+
+                            <li>
+                                <Link href={`/${currentLocale}/`}
+                                      className="text-indigo-200 hover:text-white transition duration-300">
+                                    {dictionary.navigation.home}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href={`/${currentLocale}/create`}
+                                      className="text-indigo-200 hover:text-white transition duration-300">
+                                    {dictionary.navigation.create}
+                                </Link>
+                            </li>
                             <li
                                 className="relative"
                                 onMouseEnter={() => setIsFluxToolsOpen(true)}
@@ -229,36 +242,24 @@ const Header: React.FC<HeaderProps> = ({dictionary}) => {
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <Link href={`/${currentLocale}/flux-1-1-ultra`}
-                                      className="text-indigo-200 hover:text-white transition duration-300">
-                                    Flux 1.1 Ultra
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href={`/${currentLocale}/create`}
-                                      className="text-indigo-200 hover:text-white transition duration-300">
-                                    {dictionary.navigation.create}
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href={`/${currentLocale}/create`}
-                                      className="text-indigo-200 hover:text-white transition duration-300">
-                                    Flux Lora
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href={`/${currentLocale}/flux-1-1-ultra`}
-                                      className="text-indigo-200 hover:text-white transition duration-300">
-                                    Magic Tools
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href={`/${currentLocale}/flux-1-1-ultra`}
-                                      className="text-indigo-200 hover:text-white transition duration-300">
-                                    Social Media Specs
-                                </Link>
-                            </li>
+                            {/*<li>*/}
+                            {/*    <Link href={`/${currentLocale}/create`}*/}
+                            {/*          className="text-indigo-200 hover:text-white transition duration-300">*/}
+                            {/*        Flux Lora*/}
+                            {/*    </Link>*/}
+                            {/*</li>*/}
+                            {/*<li>*/}
+                            {/*    <Link href={`/${currentLocale}/flux-1-1-ultra`}*/}
+                            {/*          className="text-indigo-200 hover:text-white transition duration-300">*/}
+                            {/*        Magic Tools*/}
+                            {/*    </Link>*/}
+                            {/*</li>*/}
+                            {/*<li>*/}
+                            {/*    <Link href={`/${currentLocale}/flux-1-1-ultra`}*/}
+                            {/*          className="text-indigo-200 hover:text-white transition duration-300">*/}
+                            {/*        Social Media Specs*/}
+                            {/*    </Link>*/}
+                            {/*</li>*/}
                         </ul>
                     </nav>
 

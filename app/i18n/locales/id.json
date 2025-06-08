@@ -359,7 +359,11 @@
     "freeGenerations": "Pembuatan gratis",
     "points": "Poin",
     "loginForMore": "Masuk untuk pembuatan lebih banyak",
-    "error": "Terjadi kesalahan"
+    "error": "Terjadi kesalahan",
+    "guidanceLabel": "Kekuatan Panduan",
+    "outputQualityLabel": "Kualitas Output",
+    "inferenceStepsLabel": "Langkah Inferensi",
+    "numOutputsLabel": "Jumlah Output"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "Apa yang membuat Flux 1.1 Pro Ultra berbeda dari model lain?",
         "answer": "Flux 1.1 Pro Ultra menonjol dengan kemampuannya menghasilkan gambar 4 megapiksel yang lebih besar, realisme yang ditingkatkan khususnya dalam mode raw, dan pembuatan gambar alami yang ditingkatkan dibandingkan versi sebelumnya."
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "Rasio Aspek",
+      "outputFormatLabel": "Format Output",
+      "generateButton": "Buat Gambar",
+      "generating": "Membuat...",
+      "downloadButton": "Unduh",
+      "previewPlaceholder": "Unggah gambar untuk memulai",
+      "invalidFileType": "Silakan unggah gambar JPG atau PNG",
+      "noImageError": "Silakan unggah gambar terlebih dahulu",
+      "generationError": "Pembuatan gagal, silakan coba lagi"
+    },
+    "redux": {
+      "title": "Buat Gambar Indah dengan Flux Redux",
+      "subtitle": "Ubah ide Anda menjadi karya visual dalam hitungan detik",
+      "pageTitle": "Pembuatan Gambar Flux Redux",
+      "description": "Ubah kreativitas Anda menjadi gambar indah menggunakan teknologi AI canggih",
+      "guidanceLabel": "Skala Panduan",
+      "outputQualityLabel": "Kualitas Output",
+      "inferenceStepsLabel": "Langkah Inferensi",
+      "numOutputsLabel": "Jumlah Output"
+    },
+    "depth": {
+      "title": "Buat Peta Kedalaman dengan Flux Depth",
+      "subtitle": "Ubah gambar menjadi peta kedalaman dalam hitungan detik",
+      "pageTitle": "Pembuatan Peta Kedalaman Flux Depth",
+      "description": "Buat peta kedalaman yang akurat untuk gambar menggunakan teknologi AI canggih",
+      "guidanceLabel": "Skala Panduan",
+      "outputQualityLabel": "Kualitas Output",
+      "inferenceStepsLabel": "Langkah Inferensi",
+      "numOutputsLabel": "Jumlah Output",
+      "cannyLowThresholdLabel": "Ambang Rendah",
+      "cannyHighThresholdLabel": "Ambang Tinggi",
+      "safetyToleranceLabel": "Toleransi Keamanan",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Masukkan prompt (contoh: mobil berjalan di jalan kota)",
+      "promptUpsamplingLabel": "Upsampling Prompt"
+    },
+    "fill": {
+      "title": "Pemulihan Gambar Flux Fill",
+      "subtitle": "Isi dan pulihkan semua area gambar secara cerdas",
+      "pageTitle": "Pemulihan Gambar Flux Fill",
+      "description": "Isi dan pulihkan semua area gambar secara cerdas menggunakan teknologi AI canggih",
+      "maskLabel": "Pilih Area untuk Dipulihkan",
+      "clearMask": "Hapus Mask",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Jelaskan apa yang ingin Anda isi (contoh: rumput hijau)",
+      "guidanceLabel": "Skala Panduan",
+      "inferenceStepsLabel": "Langkah Inferensi",
+      "outputFormatLabel": "Format Output",
+      "safetyToleranceLabel": "Toleransi Keamanan",
+      "promptUpsamplingLabel": "Upsampling Prompt",
+      "promptUpsamplingEnabled": "Aktifkan Upsampling Prompt",
+      "outpaintingLabel": "Perluasan Gambar",
+      "outpaintingOptions": {
+        "none": "Tidak Ada",
+        "zoomOut15": "Perkecil 1.5×",
+        "zoomOut2": "Perkecil 2×",
+        "makeSquare": "Buat Persegi",
+        "leftOutpaint": "Perluas Kiri",
+        "rightOutpaint": "Perluas Kanan",
+        "topOutpaint": "Perluas Atas",
+        "bottomOutpaint": "Perluas Bawah"
+      }
+    },
+    "canny": {
+      "title": "Buat Peta Tepi dengan Flux Canny",
+      "subtitle": "Ubah gambar menjadi peta tepi dalam hitungan detik",
+      "pageTitle": "Deteksi Tepi Flux Canny",
+      "description": "Buat peta tepi yang akurat untuk gambar menggunakan teknologi AI canggih",
+      "guidanceLabel": "Skala Panduan",
+      "outputQualityLabel": "Kualitas Output",
+      "inferenceStepsLabel": "Langkah Inferensi",
+      "numOutputsLabel": "Jumlah Output",
+      "cannyLowThresholdLabel": "Ambang Rendah",
+      "cannyHighThresholdLabel": "Ambang Tinggi",
+      "safetyToleranceLabel": "Toleransi Keamanan",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Masukkan prompt (contoh: mobil berjalan di jalan kota)",
+      "promptUpsamplingLabel": "Upsampling Prompt"
     }
   }
 }

@@ -359,7 +359,11 @@
     "freeGenerations": "Ücretsiz oluşturma",
     "points": "Puan",
     "loginForMore": "Daha fazla oluşturma için giriş yapın",
-    "error": "Bir hata oluştu"
+    "error": "Bir hata oluştu",
+    "guidanceLabel": "Rehberlik Gücü",
+    "outputQualityLabel": "Çıktı Kalitesi",
+    "inferenceStepsLabel": "Çıkarım Adımları",
+    "numOutputsLabel": "Çıktı Sayısı"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "Flux 1.1 Pro Ultra'yı diğer modellerden farklı kılan nedir?",
         "answer": "Flux 1.1 Pro Ultra, 4 megapiksellik daha büyük görüntüler oluşturma yeteneği, özellikle raw modunda geliştirilmiş gerçekçilik ve önceki sürümlere kıyasla geliştirilmiş doğal görüntü oluşturma özellikleriyle öne çıkar."
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "En Boy Oranı",
+      "outputFormatLabel": "Çıktı Formatı",
+      "generateButton": "Görsel Oluştur",
+      "generating": "Oluşturuluyor...",
+      "downloadButton": "İndir",
+      "previewPlaceholder": "Başlamak için bir görsel yükleyin",
+      "invalidFileType": "JPG veya PNG formatında bir görsel yükleyin",
+      "noImageError": "Önce bir görsel yükleyin",
+      "generationError": "Oluşturma başarısız oldu, tekrar deneyin"
+    },
+    "redux": {
+      "title": "Flux Redux ile Harika Görseller Oluşturun",
+      "subtitle": "Fikirlerinizi saniyeler içinde görsel şaheserlere dönüştürün",
+      "pageTitle": "Flux Redux Görsel Oluşturma",
+      "description": "Yaratıcı fikirlerinizi gelişmiş AI teknolojimizle harika görsellere dönüştürün",
+      "guidanceLabel": "Yönlendirme Ölçeği",
+      "outputQualityLabel": "Çıktı Kalitesi",
+      "inferenceStepsLabel": "Çıkarım Adımları",
+      "numOutputsLabel": "Çıktı Sayısı"
+    },
+    "depth": {
+      "title": "Flux Depth ile Derinlik Haritaları Oluşturun",
+      "subtitle": "Görsellerinizi saniyeler içinde derinlik haritalarına dönüştürün",
+      "pageTitle": "Flux Depth Derinlik Haritası Oluşturma",
+      "description": "Gelişmiş AI teknolojimizle görselleriniz için hassas derinlik haritaları oluşturun",
+      "guidanceLabel": "Yönlendirme Ölçeği",
+      "outputQualityLabel": "Çıktı Kalitesi",
+      "inferenceStepsLabel": "Çıkarım Adımları",
+      "numOutputsLabel": "Çıktı Sayısı",
+      "cannyLowThresholdLabel": "Düşük Eşik",
+      "cannyHighThresholdLabel": "Yüksek Eşik",
+      "safetyToleranceLabel": "Güvenlik Toleransı",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Bir prompt girin, örn. şehir sokaklarında bir araba",
+      "promptUpsamplingLabel": "Prompt Yükseltme"
+    },
+    "fill": {
+      "title": "Flux Fill Görsel Onarımı",
+      "subtitle": "Görseldeki herhangi bir alanı akıllıca doldurun ve onarın",
+      "pageTitle": "Flux Fill Görsel Onarımı",
+      "description": "Gelişmiş AI teknolojimizle görseldeki herhangi bir alanı akıllıca doldurun ve onarın",
+      "maskLabel": "Onarılacak alanı seçin",
+      "clearMask": "Maskeyi temizle",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Ne doldurmak istediğinizi açıklayın, örn. yeşil bir çimen",
+      "guidanceLabel": "Yönlendirme Ölçeği",
+      "inferenceStepsLabel": "Çıkarım Adımları",
+      "outputFormatLabel": "Çıktı Formatı",
+      "safetyToleranceLabel": "Güvenlik Toleransı",
+      "promptUpsamplingLabel": "Prompt Yükseltme",
+      "promptUpsamplingEnabled": "Prompt yükseltmeyi etkinleştir",
+      "outpaintingLabel": "Görsel Genişletme",
+      "outpaintingOptions": {
+        "none": "Yok",
+        "zoomOut15": "1.5x uzaklaştır",
+        "zoomOut2": "2x uzaklaştır",
+        "makeSquare": "Kare yap",
+        "leftOutpaint": "Sola genişlet",
+        "rightOutpaint": "Sağa genişlet",
+        "topOutpaint": "Yukarı genişlet",
+        "bottomOutpaint": "Aşağı genişlet"
+      }
+    },
+    "canny": {
+      "title": "Flux Canny ile Kenar Haritaları Oluşturun",
+      "subtitle": "Görsellerinizi saniyeler içinde kenar haritalarına dönüştürün",
+      "pageTitle": "Flux Canny Kenar Tespiti",
+      "description": "Gelişmiş AI teknolojimizle görselleriniz için hassas kenar haritaları oluşturun",
+      "guidanceLabel": "Yönlendirme Ölçeği",
+      "outputQualityLabel": "Çıktı Kalitesi",
+      "inferenceStepsLabel": "Çıkarım Adımları",
+      "numOutputsLabel": "Çıktı Sayısı",
+      "cannyLowThresholdLabel": "Düşük Eşik",
+      "cannyHighThresholdLabel": "Yüksek Eşik",
+      "safetyToleranceLabel": "Güvenlik Toleransı",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Bir prompt girin, örn. şehir sokaklarında bir araba",
+      "promptUpsamplingLabel": "Prompt Yükseltme"
     }
   }
 }

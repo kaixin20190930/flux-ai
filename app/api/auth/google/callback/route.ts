@@ -1,9 +1,10 @@
 // app/api/auth/google/callback/route.ts
 import {NextRequest} from 'next/server'
 import {cookies} from 'next/headers'
-import {setCookie} from "@/utils/cookieUtils";
+import axios from 'axios'
 
-export const runtime = 'edge';
+// 移除 edge runtime
+// export const runtime = 'edge';
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
@@ -21,127 +22,124 @@ export async function GET(request: NextRequest) {
 
     if (!code) {
         return Response.redirect(
-            `/${locale}/auth?error=invalid_request`
+            `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/auth?error=invalid_request`
         )
     }
 
     try {
+        // 获取当前请求的完整 URL
+        const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http'
+        const host = request.headers.get('host') || 'localhost:3000'
+        const redirectUri = `${protocol}://${host}/api/auth/google/callback`
+
+        console.log('Using redirect URI:', redirectUri)
+
         // 1. 使用授权码获取访问令牌
-        const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                code,
-                client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-                client_secret: process.env.GOOGLE_CLIENT_SECRET,
-                redirect_uri: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/google/callback`,
-                grant_type: 'authorization_code',
-            }),
+        const tokenResponse = await axios.post('https://oauth2.googleapis.com/token', {
+            code,
+            client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+            client_secret: process.env.GOOGLE_CLIENT_SECRET,
+            redirect_uri: redirectUri,
+            grant_type: 'authorization_code',
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            timeout: 10000 // 设置10秒超时
         })
 
-        if (!tokenResponse.ok) {
-            return Response.redirect(
-                `/${locale}/auth?error=token_error`
-            )
-        }
-
-        const tokenData = await tokenResponse.json() as any
+        const tokenData = tokenResponse.data
+        console.log('Token data:', tokenData)
 
         // 2. 获取用户信息
-        const userResponse = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
-            headers: {Authorization: `Bearer ${tokenData.access_token}`},
+        const userResponse = await axios.get('https://www.googleapis.com/oauth2/v2/userinfo', {
+            headers: {
+                'Authorization': `Bearer ${tokenData.access_token}`,
+                'Accept': 'application/json'
+            },
+            timeout: 10000 // 设置10秒超时
         })
 
-        if (!userResponse.ok) {
-            return Response.redirect(
-                `/${locale}/auth?error=user_info_error`
-            )
-        }
-
-        const userData = await userResponse.json() as any
+        const userData = userResponse.data
+        console.log('User data:', userData)
 
         // 3. 使用现有的登录接口
         const workerUrl = 'https://flux-ai.liukai19911010.workers.dev'
-        const loginResponse = await fetch(`${workerUrl}/login`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
+        const origin = process.env.NEXT_PUBLIC_APP_URL || 
+            (process.env.NODE_ENV === 'production' 
+                ? 'https://flux-ai-img.com'
+                : 'http://localhost:3000')
+
+        try {
+            const loginResponse = await axios.post(`${workerUrl}/login`, {
                 email: userData.email,
-                googleToken: tokenData.access_token // 使用 Google token 作为验证
-            }),
-        })
-
-        if (loginResponse.ok) {
-            const data = await loginResponse.json() as any
-
-            // 设置 cookie 和返回重定向
-            setCookie('token', data.token, {
-                httpOnly: true,
-                secure: process.env.NODE_ENV === 'production',
-                sameSite: 'lax',
-                path: '/',
+                googleToken: tokenData.access_token
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Origin': origin
+                },
+                timeout: 10000 // 设置10秒超时
             })
 
-            // 需要设置 localStorage，通过注入脚本实现
-            const script = `
-                <script>
-                    localStorage.setItem('user', '${JSON.stringify(data.user)}');
-                    window.location.href = '${process.env.NEXT_PUBLIC_APP_URL}/${locale}/flux-1-1-ultra';
-                </script>
-            `;
+            const data = loginResponse.data
+            console.log('Login data:', data)
 
-            return new Response(script, {
-                headers: {
-                    'Content-Type': 'text/html',
-                },
-            });
-        } else {
+            // 设置 cookie
+            cookies().set('token', data.token, {
+                httpOnly: true,
+                path: '/',
+                sameSite: 'lax',
+                secure: process.env.NODE_ENV === 'production'
+            })
+
+            return Response.redirect(
+                `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/auth/success?user=${encodeURIComponent(JSON.stringify(data.user))}`
+            )
+        } catch (loginError) {
+            console.error('Login error:', loginError)
             // 如果登录失败，尝试注册
-            const registerResponse = await fetch(`${workerUrl}/register`, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
+            try {
+                const registerResponse = await axios.post(`${workerUrl}/register`, {
                     name: userData.name,
                     email: userData.email,
-                    googleToken: tokenData.access_token // 使用 Google token 作为验证
-                }),
-            })
-
-            if (registerResponse.ok) {
-                const data = await registerResponse.json() as any
-
-                // 设置 cookie 和返回重定向
-                setCookie('token', data.token, {
-                    httpOnly: true,
-                    secure: process.env.NODE_ENV === 'production',
-                    sameSite: 'lax',
-                    path: '/',
+                    googleToken: tokenData.access_token
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Origin': origin
+                    },
+                    timeout: 10000 // 设置10秒超时
                 })
 
-                const script = `
-                    <script>
-                        localStorage.setItem('user', '${JSON.stringify(data.user)}');
-                        window.location.href = '${process.env.NEXT_PUBLIC_APP_URL}/${locale}/flux-1-1-ultra';
-                    </script>
-                `;
+                const data = registerResponse.data
+                console.log('Register data:', data)
 
-                return new Response(script, {
-                    headers: {
-                        'Content-Type': 'text/html',
-                    },
-                });
+                // 设置 cookie
+                cookies().set('token', data.token, {
+                    httpOnly: true,
+                    path: '/',
+                    sameSite: 'lax',
+                    secure: process.env.NODE_ENV === 'production'
+                })
+
+                return Response.redirect(
+                    `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/auth/success?user=${encodeURIComponent(JSON.stringify(data.user))}`
+                )
+            } catch (registerError) {
+                console.error('Register error:', registerError)
+                return Response.redirect(
+                    `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/auth?error=auth_failed`
+                )
             }
         }
-
-        // 如果都失败了，返回错误
-        return Response.redirect(
-            `/${locale}/auth?error=auth_failed`
-        )
-
     } catch (error) {
         console.error('Google authentication error:', error)
         return Response.redirect(
-            `/${locale}/auth?error=google_auth_failed`
+            `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/auth?error=google_auth_failed`
         )
     }
 }

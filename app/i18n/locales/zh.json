@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Flux AI 免费图像生成器",
     "description": "使用 Flux AI 创建令人惊叹的 AI 生成图像",
-    "keywords": "AI, 图像生成器, 人工智能, Flux AI"
+    "keywords": "AI, 图像生成器, 人工智能, Flux AI, AI艺术, AI绘图"
   },
   "navigation": {
     "home": "首页",
@@ -18,7 +18,7 @@
     "mainTitle": "FLUX AI",
     "subTitle1": "将您的创意转化为",
     "subTitle2": "令人惊叹的视觉效果",
-    "description": "在几秒钟内创建独特的、AI驱动的杰作。通过我们先进的Flux AI,将您的想象力变为现实。",
+    "description": "在几秒钟内创建独特的 AI 驱动的杰作。使用我们先进的 Flux AI 将您的想象力变为现实。",
     "startButton": "开始创作",
     "learnMoreButton": "了解更多",
     "examplesButton": "示例",
@@ -356,10 +356,14 @@
     "outputFormatLabel": "输出格式",
     "generateButton": "生成图像",
     "generatingButton": "生成中...",
-    "freeGenerations": "免费生成次数",
+    "freeGenerations": "免费生成",
     "points": "点数",
-    "loginForMore": "登录获取更多生成次数",
-    "error": "发生错误"
+    "loginForMore": "登录生成更多",
+    "error": "错误发生了",
+    "guidanceLabel": "引导强度",
+    "outputQualityLabel": "输出质量",
+    "inferenceStepsLabel": "推理步数",
+    "numOutputsLabel": "输出数量"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "Flux 1.1 Pro Ultra 与其他模型相比有什么不同？",
         "answer": "Flux 1.1 Pro Ultra 的突出优势在于能够生成更大的 4 百万像素图像，特别是在原始模式下具有增强的真实感，与之前版本相比自然图像生成能力得到了改进。"
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "宽高比",
+      "outputFormatLabel": "输出格式",
+      "generateButton": "生成图像",
+      "generating": "生成中...",
+      "downloadButton": "下载",
+      "previewPlaceholder": "上传图片开始生成",
+      "invalidFileType": "请上传 JPG 或 PNG 格式的图片",
+      "noImageError": "请先上传图片",
+      "generationError": "生成失败，请重试"
+    },
+    "redux": {
+      "title": "使用 Flux Redux 创建精美图像",
+      "subtitle": "在几秒钟内将您的想法转化为视觉杰作",
+      "pageTitle": "Flux Redux 图像生成",
+      "description": "使用先进的 AI 技术，将您的创意转化为精美的图像",
+      "guidanceLabel": "引导强度",
+      "outputQualityLabel": "输出质量",
+      "inferenceStepsLabel": "推理步数",
+      "numOutputsLabel": "输出数量"
+    },
+    "depth": {
+      "title": "使用 Flux Depth 创建深度图",
+      "subtitle": "在几秒钟内将您的图像转化为深度图",
+      "pageTitle": "Flux Depth 深度图生成",
+      "description": "使用先进的 AI 技术，为您的图像创建精确的深度图",
+      "guidanceLabel": "引导强度",
+      "outputQualityLabel": "输出质量",
+      "inferenceStepsLabel": "推理步数",
+      "numOutputsLabel": "输出数量",
+      "cannyLowThresholdLabel": "低阈值",
+      "cannyHighThresholdLabel": "高阈值",
+      "safetyToleranceLabel": "安全容差",
+      "promptLabel": "提示词",
+      "promptPlaceholder": "输入提示词，例如：一辆城市街道上的汽车",
+      "promptUpsamplingLabel": "提示词上采样"
+    },
+    "fill": {
+      "title": "Flux Fill 图像修复",
+      "subtitle": "智能填充和修复图像中的任何区域",
+      "pageTitle": "Flux Fill 图像修复",
+      "description": "使用先进的 AI 技术，智能填充和修复图像中的任何区域",
+      "maskLabel": "选择要修复的区域",
+      "clearMask": "清除遮罩",
+      "promptLabel": "提示词",
+      "promptPlaceholder": "描述您想要填充的内容，例如：一片绿色的草地",
+      "guidanceLabel": "引导强度",
+      "inferenceStepsLabel": "推理步数",
+      "outputFormatLabel": "输出格式",
+      "safetyToleranceLabel": "安全容差",
+      "promptUpsamplingLabel": "提示词上采样",
+      "promptUpsamplingEnabled": "启用提示词上采样",
+      "outpaintingLabel": "图片扩展",
+      "outpaintingOptions": {
+        "none": "无",
+        "zoomOut15": "缩小1.5倍",
+        "zoomOut2": "缩小2倍",
+        "makeSquare": "制作正方形",
+        "leftOutpaint": "向左扩展",
+        "rightOutpaint": "向右扩展",
+        "topOutpaint": "向上扩展",
+        "bottomOutpaint": "向下扩展"
+      }
+    },
+    "canny": {
+      "title": "使用 Flux Canny 创建边缘图",
+      "subtitle": "在几秒钟内将您的图像转化为边缘图",
+      "pageTitle": "Flux Canny 边缘检测",
+      "description": "使用先进的 AI 技术，为您的图像创建精确的边缘图",
+      "guidanceLabel": "引导强度",
+      "outputQualityLabel": "输出质量",
+      "inferenceStepsLabel": "推理步数",
+      "numOutputsLabel": "输出数量",
+      "cannyLowThresholdLabel": "低阈值",
+      "cannyHighThresholdLabel": "高阈值",
+      "safetyToleranceLabel": "安全容差",
+      "promptLabel": "提示词",
+      "promptPlaceholder": "输入提示词，例如：一辆城市街道上的汽车",
+      "promptUpsamplingLabel": "提示词上采样"
     }
   }
 }

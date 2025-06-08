@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {useAutoLogout} from '@/hooks/useAutoLogout';
 import {AUTH_CONFIG} from '@/config/authLogout';
 import type {Dictionary} from '@/app/i18n/settings';
@@ -11,6 +11,7 @@ interface AutoLogoutWarningProps {
 }
 
 export const AutoLogoutWarning: React.FC<AutoLogoutWarningProps> = ({dictionary, locale}) => {
+    const [isMounted, setIsMounted] = useState(false);
     const {
         showWarning,
         timeRemaining,
@@ -26,7 +27,11 @@ export const AutoLogoutWarning: React.FC<AutoLogoutWarningProps> = ({dictionary,
         }
     });
 
-    if (typeof window === 'undefined' || !showWarning) return null;
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted || !showWarning) return null;
 
     const minutes = Math.ceil(timeRemaining / 1000 / 60);
     const warningMessage = dictionary.autoLogout.warningMessage.replace('{minutes}', minutes.toString());

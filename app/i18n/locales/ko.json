@@ -359,7 +359,11 @@
     "freeGenerations": "무료 생성 횟수",
     "points": "포인트",
     "loginForMore": "더 많은 생성을 위해 로그인",
-    "error": "오류가 발생했습니다"
+    "error": "오류가 발생했습니다",
+    "guidanceLabel": "가이드 강도",
+    "outputQualityLabel": "출력 품질",
+    "inferenceStepsLabel": "추론 단계",
+    "numOutputsLabel": "출력 수"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "Flux 1.1 Pro Ultra가 다른 모델과 다른 점은 무엇인가요?",
         "answer": "Flux 1.1 Pro Ultra는 더 큰 4메가픽셀 이미지 생성 능력, 특히 raw 모드에서의 향상된 사실감, 그리고 이전 버전과 비교하여 개선된 자연스러운 이미지 생성 능력이 특징입니다."
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "종횡비",
+      "outputFormatLabel": "출력 형식",
+      "generateButton": "이미지 생성",
+      "generating": "생성 중...",
+      "downloadButton": "다운로드",
+      "previewPlaceholder": "이미지를 업로드하여 시작",
+      "invalidFileType": "JPG 또는 PNG 이미지를 업로드하세요",
+      "noImageError": "이미지를 먼저 업로드하세요",
+      "generationError": "생성 실패, 다시 시도해주세요"
+    },
+    "redux": {
+      "title": "Flux Redux로 아름다운 이미지 만들기",
+      "subtitle": "몇 초 만에 아이디어를 시각적 걸작으로 변환",
+      "pageTitle": "Flux Redux 이미지 생성",
+      "description": "고급 AI 기술을 사용하여 창의성을 아름다운 이미지로 변환",
+      "guidanceLabel": "가이던스 스케일",
+      "outputQualityLabel": "출력 품질",
+      "inferenceStepsLabel": "추론 단계",
+      "numOutputsLabel": "출력 수"
+    },
+    "depth": {
+      "title": "Flux Depth로 깊이 맵 만들기",
+      "subtitle": "몇 초 만에 이미지를 깊이 맵으로 변환",
+      "pageTitle": "Flux Depth 깊이 맵 생성",
+      "description": "고급 AI 기술을 사용하여 이미지의 정확한 깊이 맵 생성",
+      "guidanceLabel": "가이던스 스케일",
+      "outputQualityLabel": "출력 품질",
+      "inferenceStepsLabel": "추론 단계",
+      "numOutputsLabel": "출력 수",
+      "cannyLowThresholdLabel": "낮은 임계값",
+      "cannyHighThresholdLabel": "높은 임계값",
+      "safetyToleranceLabel": "안전 허용치",
+      "promptLabel": "프롬프트",
+      "promptPlaceholder": "프롬프트를 입력하세요 (예: 도시 거리를 달리는 자동차)",
+      "promptUpsamplingLabel": "프롬프트 업샘플링"
+    },
+    "fill": {
+      "title": "Flux Fill 이미지 복원",
+      "subtitle": "이미지의 모든 영역을 지능적으로 채우고 복원",
+      "pageTitle": "Flux Fill 이미지 복원",
+      "description": "고급 AI 기술을 사용하여 이미지의 모든 영역을 지능적으로 채우고 복원",
+      "maskLabel": "복원할 영역 선택",
+      "clearMask": "마스크 지우기",
+      "promptLabel": "프롬프트",
+      "promptPlaceholder": "채우고 싶은 내용을 설명하세요 (예: 녹색 잔디밭)",
+      "guidanceLabel": "가이던스 스케일",
+      "inferenceStepsLabel": "추론 단계",
+      "outputFormatLabel": "출력 형식",
+      "safetyToleranceLabel": "안전 허용치",
+      "promptUpsamplingLabel": "프롬프트 업샘플링",
+      "promptUpsamplingEnabled": "프롬프트 업샘플링 활성화",
+      "outpaintingLabel": "이미지 확장",
+      "outpaintingOptions": {
+        "none": "없음",
+        "zoomOut15": "1.5배 축소",
+        "zoomOut2": "2배 축소",
+        "makeSquare": "정사각형 만들기",
+        "leftOutpaint": "왼쪽 확장",
+        "rightOutpaint": "오른쪽 확장",
+        "topOutpaint": "위쪽 확장",
+        "bottomOutpaint": "아래쪽 확장"
+      }
+    },
+    "canny": {
+      "title": "Flux Canny로 엣지 맵 만들기",
+      "subtitle": "몇 초 만에 이미지를 엣지 맵으로 변환",
+      "pageTitle": "Flux Canny 엣지 검출",
+      "description": "고급 AI 기술을 사용하여 이미지의 정확한 엣지 맵 생성",
+      "guidanceLabel": "가이던스 스케일",
+      "outputQualityLabel": "출력 품질",
+      "inferenceStepsLabel": "추론 단계",
+      "numOutputsLabel": "출력 수",
+      "cannyLowThresholdLabel": "낮은 임계값",
+      "cannyHighThresholdLabel": "높은 임계값",
+      "safetyToleranceLabel": "안전 허용치",
+      "promptLabel": "프롬프트",
+      "promptPlaceholder": "프롬프트를 입력하세요 (예: 도시 거리를 달리는 자동차)",
+      "promptUpsamplingLabel": "프롬프트 업샘플링"
     }
   }
 }

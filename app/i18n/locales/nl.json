@@ -359,7 +359,11 @@
     "freeGenerations": "Gratis generaties",
     "points": "Punten",
     "loginForMore": "Log in voor meer generaties",
-    "error": "Er is een fout opgetreden"
+    "error": "Er is een fout opgetreden",
+    "guidanceLabel": "Begeleidingssterkte",
+    "outputQualityLabel": "Uitvoerkwaliteit",
+    "inferenceStepsLabel": "Inferentiestappen",
+    "numOutputsLabel": "Aantal outputs"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -448,6 +452,88 @@
         "question": "Wat onderscheidt Flux 1.1 Pro Ultra van andere modellen?",
         "answer": "Flux 1.1 Pro Ultra onderscheidt zich door zijn vermogen om grotere 4 megapixel afbeeldingen te genereren, verbeterd realisme vooral in raw-modus, en verbeterde natuurlijke beeldgeneratie in vergelijking met eerdere versies."
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "Beeldverhouding",
+      "outputFormatLabel": "Uitvoerformaat",
+      "generateButton": "Afbeelding genereren",
+      "generating": "Genereren...",
+      "downloadButton": "Downloaden",
+      "previewPlaceholder": "Upload een afbeelding om te beginnen",
+      "invalidFileType": "Upload een afbeelding in JPG of PNG formaat",
+      "noImageError": "Upload eerst een afbeelding",
+      "generationError": "Generatie mislukt, probeer opnieuw"
+    },
+    "redux": {
+      "title": "Maak prachtige afbeeldingen met Flux Redux",
+      "subtitle": "Transformeer je ideeën in visuele meesterwerken in seconden",
+      "pageTitle": "Flux Redux afbeeldingsgeneratie",
+      "description": "Transformeer je creatieve ideeën in prachtige afbeeldingen met onze geavanceerde AI-technologie",
+      "guidanceLabel": "Begeleidingsschaal",
+      "outputQualityLabel": "Uitvoerkwaliteit",
+      "inferenceStepsLabel": "Inferentiestappen",
+      "numOutputsLabel": "Aantal uitvoeren"
+    },
+    "depth": {
+      "title": "Maak dieptekaarten met Flux Depth",
+      "subtitle": "Transformeer je afbeeldingen in dieptekaarten in seconden",
+      "pageTitle": "Flux Depth dieptekaartgeneratie",
+      "description": "Maak nauwkeurige dieptekaarten voor je afbeeldingen met onze geavanceerde AI-technologie",
+      "guidanceLabel": "Begeleidingsschaal",
+      "outputQualityLabel": "Uitvoerkwaliteit",
+      "inferenceStepsLabel": "Inferentiestappen",
+      "numOutputsLabel": "Aantal uitvoeren",
+      "cannyLowThresholdLabel": "Lage drempel",
+      "cannyHighThresholdLabel": "Hoge drempel",
+      "safetyToleranceLabel": "Veiligheidstolerantie",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Voer een prompt in, bijv. een auto op een stadsstraat",
+      "promptUpsamplingLabel": "Prompt-upsampling"
+    },
+    "fill": {
+      "title": "Flux Fill afbeeldingsherstel",
+      "subtitle": "Vul en repareer intelligent elk gebied van de afbeelding",
+      "pageTitle": "Flux Fill afbeeldingsherstel",
+      "description": "Vul en repareer intelligent elk gebied van de afbeelding met onze geavanceerde AI-technologie",
+      "maskLabel": "Selecteer het te repareren gebied",
+      "clearMask": "Masker wissen",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Beschrijf wat je wilt invullen, bijv. een groen grasveld",
+      "guidanceLabel": "Begeleidingsschaal",
+      "inferenceStepsLabel": "Inferentiestappen",
+      "outputFormatLabel": "Uitvoerformaat",
+      "safetyToleranceLabel": "Veiligheidstolerantie",
+      "promptUpsamplingLabel": "Prompt-upsampling",
+      "promptUpsamplingEnabled": "Prompt-upsampling inschakelen",
+      "outpaintingLabel": "Afbeeldingsuitbreiding",
+      "outpaintingOptions": {
+        "none": "Geen",
+        "zoomOut15": "Uitzoomen 1.5x",
+        "zoomOut2": "Uitzoomen 2x",
+        "makeSquare": "Vierkant maken",
+        "leftOutpaint": "Links uitbreiden",
+        "rightOutpaint": "Rechts uitbreiden",
+        "topOutpaint": "Boven uitbreiden",
+        "bottomOutpaint": "Onder uitbreiden"
+      }
+    },
+    "canny": {
+      "title": "Maak randkaarten met Flux Canny",
+      "subtitle": "Transformeer je afbeeldingen in randkaarten in seconden",
+      "pageTitle": "Flux Canny randdetectie",
+      "description": "Maak nauwkeurige randkaarten voor je afbeeldingen met onze geavanceerde AI-technologie",
+      "guidanceLabel": "Begeleidingsschaal",
+      "outputQualityLabel": "Uitvoerkwaliteit",
+      "inferenceStepsLabel": "Inferentiestappen",
+      "numOutputsLabel": "Aantal uitvoeren",
+      "cannyLowThresholdLabel": "Lage drempel",
+      "cannyHighThresholdLabel": "Hoge drempel",
+      "safetyToleranceLabel": "Veiligheidstolerantie",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Voer een prompt in, bijv. een auto op een stadsstraat",
+      "promptUpsamplingLabel": "Prompt-upsampling"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Flux AI เครื่องมือสร้างภาพฟรี",
-    "description": "สร้างภาพที่น่าทึ่งด้วย AI กับ Flux AI",
+    "description": "สร้างภาพที่น่าทึ่งด้วย AI กบ Flux AI",
     "keywords": "AI, เครื่องมือสร้างภาพ, ปัญญาประดิษฐ์, Flux AI, ศิลปะ AI"
   },
   "navigation": {
@@ -359,7 +359,11 @@
     "freeGenerations": "การสร้างฟรี",
     "points": "คะแนน",
     "loginForMore": "เข้าสู่ระบบเพื่อสร้างเพิ่ม",
-    "error": "เกิดข้อผิดพลาด"
+    "error": "เกิดข้อผิดพลาด",
+    "guidanceLabel": "ความแรงของการแนะนำ",
+    "outputQualityLabel": "คุณภาพของผลลัพธ์",
+    "inferenceStepsLabel": "ขั้นตอนการอนุมาน",
+    "numOutputsLabel": "จำนวนผลลัพธ์"
   },
   "ultraHero": {
     "heroTitle": "FLUX 1.1 Ultra",
@@ -446,8 +450,90 @@
       },
       "comparison": {
         "question": "อะไรทำให้ Flux 1.1 Pro Ultra แตกต่างจากโมเดลอื่น?",
-        "answer": "Flux 1.1 Pro Ultra โดดเด่นด้วยความสามารถในการสร้างภาพขนาดใหญ่ 4 เมกะพิกเซล ความสมจริงที่ดีขึ้นโดยเฉพาะในโหมด raw และการสร้างภาพที่เป็นธรรมชาติที่ดีขึ้นเมื่อเทียบกับเวอร์ชันก่อนหน้า"
+        "answer": "Flux 1.1 Pro Ultra โดดเด่นด้วยความสามารถในการสร้างภาพขนาด 4 ล้านพิกเซล ความสมจริงที่ดีขึ้นโดยเฉพาะในโหมด raw และการสร้างภาพที่เป็นธรรมชาติที่ดีขึ้นเมื่อเทียบกับเวอร์ชันก่อนหน้า"
       }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "อัตราส่วนภาพ",
+      "outputFormatLabel": "รูปแบบผลลัพธ์",
+      "generateButton": "สร้างภาพ",
+      "generating": "กำลังสร้าง...",
+      "downloadButton": "ดาวน์โหลด",
+      "previewPlaceholder": "อัปโหลดภาพเพื่อเริ่มต้น",
+      "invalidFileType": "กรุณาอัปโหลดภาพ JPG หรือ PNG",
+      "noImageError": "กรุณาอัปโหลดภาพก่อน",
+      "generationError": "การสร้างล้มเหลว กรุณาลองใหม่อีกครั้ง"
+    },
+    "redux": {
+      "title": "สร้างภาพสวยงามด้วย Flux Redux",
+      "subtitle": "เปลี่ยนความคิดของคุณเป็นผลงานภาพในไม่กี่วินาที",
+      "pageTitle": "การสร้างภาพ Flux Redux",
+      "description": "เปลี่ยนความคิดสร้างสรรค์ของคุณเป็นภาพสวยงามด้วยเทคโนโลยี AI ขั้นสูง",
+      "guidanceLabel": "ระดับการชี้นำ",
+      "outputQualityLabel": "คุณภาพผลลัพธ์",
+      "inferenceStepsLabel": "ขั้นตอนการอนุมาน",
+      "numOutputsLabel": "จำนวนผลลัพธ์"
+    },
+    "depth": {
+      "title": "สร้างแผนที่ความลึกด้วย Flux Depth",
+      "subtitle": "เปลี่ยนภาพเป็นแผนที่ความลึกในไม่กี่วินาที",
+      "pageTitle": "การสร้างแผนที่ความลึก Flux Depth",
+      "description": "สร้างแผนที่ความลึกที่แม่นยำสำหรับภาพด้วยเทคโนโลยี AI ขั้นสูง",
+      "guidanceLabel": "ระดับการชี้นำ",
+      "outputQualityLabel": "คุณภาพผลลัพธ์",
+      "inferenceStepsLabel": "ขั้นตอนการอนุมาน",
+      "numOutputsLabel": "จำนวนผลลัพธ์",
+      "cannyLowThresholdLabel": "เกณฑ์ต่ำ",
+      "cannyHighThresholdLabel": "เกณฑ์สูง",
+      "safetyToleranceLabel": "ระดับความปลอดภัย",
+      "promptLabel": "คำสั่ง",
+      "promptPlaceholder": "ป้อนคำสั่ง (ตัวอย่าง: รถวิ่งบนถนนในเมือง)",
+      "promptUpsamplingLabel": "การเพิ่มความละเอียดคำสั่ง"
+    },
+    "fill": {
+      "title": "การซ่อมแซมภาพด้วย Flux Fill",
+      "subtitle": "เติมและซ่อมแซมทุกส่วนของภาพอย่างชาญฉลาด",
+      "pageTitle": "การซ่อมแซมภาพ Flux Fill",
+      "description": "เติมและซ่อมแซมทุกส่วนของภาพอย่างชาญฉลาดด้วยเทคโนโลยี AI ขั้นสูง",
+      "maskLabel": "เลือกพื้นที่ที่ต้องการซ่อมแซม",
+      "clearMask": "ล้างหน้ากาก",
+      "promptLabel": "คำสั่ง",
+      "promptPlaceholder": "อธิบายสิ่งที่คุณต้องการเติม (ตัวอย่าง: หญ้าสีเขียว)",
+      "guidanceLabel": "ระดับการชี้นำ",
+      "inferenceStepsLabel": "ขั้นตอนการอนุมาน",
+      "outputFormatLabel": "รูปแบบผลลัพธ์",
+      "safetyToleranceLabel": "ระดับความปลอดภัย",
+      "promptUpsamplingLabel": "การเพิ่มความละเอียดคำสั่ง",
+      "promptUpsamplingEnabled": "เปิดใช้งานการเพิ่มความละเอียดคำสั่ง",
+      "outpaintingLabel": "การขยายภาพ",
+      "outpaintingOptions": {
+        "none": "ไม่มี",
+        "zoomOut15": "ซูมออก 1.5×",
+        "zoomOut2": "ซูมออก 2×",
+        "makeSquare": "ทำให้เป็นสี่เหลี่ยมจัตุรัส",
+        "leftOutpaint": "ขยายด้านซ้าย",
+        "rightOutpaint": "ขยายด้านขวา",
+        "topOutpaint": "ขยายด้านบน",
+        "bottomOutpaint": "ขยายด้านล่าง"
+      }
+    },
+    "canny": {
+      "title": "สร้างแผนที่ขอบด้วย Flux Canny",
+      "subtitle": "เปลี่ยนภาพเป็นแผนที่ขอบในไม่กี่วินาที",
+      "pageTitle": "การตรวจจับขอบ Flux Canny",
+      "description": "สร้างแผนที่ขอบที่แม่นยำสำหรับภาพด้วยเทคโนโลยี AI ขั้นสูง",
+      "guidanceLabel": "ระดับการชี้นำ",
+      "outputQualityLabel": "คุณภาพผลลัพธ์",
+      "inferenceStepsLabel": "ขั้นตอนการอนุมาน",
+      "numOutputsLabel": "จำนวนผลลัพธ์",
+      "cannyLowThresholdLabel": "เกณฑ์ต่ำ",
+      "cannyHighThresholdLabel": "เกณฑ์สูง",
+      "safetyToleranceLabel": "ระดับความปลอดภัย",
+      "promptLabel": "คำสั่ง",
+      "promptPlaceholder": "ป้อนคำสั่ง (ตัวอย่าง: รถวิ่งบนถนนในเมือง)",
+      "promptUpsamplingLabel": "การเพิ่มความละเอียดคำสั่ง"
     }
   }
 }

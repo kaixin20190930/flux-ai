@@ -9,7 +9,8 @@ import {Locale, defaultLocale, locales} from '../i18n/settings'
 import {redirect} from 'next/navigation'
 
 // 动态生成 metadata
-export async function generateMetadata({params: {locale}}: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+    const { locale } = await Promise.resolve(params)
     // 验证语言并获取字典
     const validLocale = locales.includes(locale as Locale) ? locale : defaultLocale
     const dictionary = await getDictionary(validLocale)
@@ -45,11 +46,12 @@ async function getValidLocale(locale: string): Promise<Locale> {
 
 export default async function RootLayout({
                                              children,
-                                             params: {locale}
+                                             params,
                                          }: {
     children: React.ReactNode
     params: { locale: string }
 }) {
+    const { locale } = await Promise.resolve(params)
     const validLocale = await getValidLocale(locale)
 
     if (validLocale !== locale) {
@@ -59,7 +61,6 @@ export default async function RootLayout({
     const dictionary = await getDictionary(validLocale)
 
     return (
-        // 移除这里的 html 和 body 标签
         <>
             <Header dictionary={dictionary}/>
             <main className="flex-grow">
