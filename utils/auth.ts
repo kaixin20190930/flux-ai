@@ -1,7 +1,6 @@
 import * as bcrypt from 'bcryptjs';
 import { logWithTimestamp } from "@/utils/logUtils";
 import { Env } from '@/worker/types';
-import { Database } from './db';
 import * as workerJwt from '@tsndr/cloudflare-worker-jwt';
 
 export async function hashPassword(password: string): Promise<string> {
@@ -98,8 +97,9 @@ export async function generateToken(userId: number, env: Env): Promise<string> {
 
 export async function verifyUser(env: Env, userId: number): Promise<boolean> {
     try {
-        const db = new Database(env);
-        const user = await db.get('SELECT id FROM users WHERE id = ?', [userId]);
+        const db = env.DB || env['DB-DEV'];
+        if (!db) throw new Error('No D1 database binding found!');
+        const user = await db.prepare('SELECT id FROM users WHERE id = ?').bind(userId).first();
         return !!user;
     } catch (error) {
         console.error('用户验证失败:', error);
@@ -109,8 +109,9 @@ export async function verifyUser(env: Env, userId: number): Promise<boolean> {
 
 export async function isGoogleUser(env: Env, userId: number): Promise<boolean> {
     try {
-        const db = new Database(env);
-        const user = await db.get('SELECT is_google_user FROM users WHERE id = ?', [userId]);
+        const db = env.DB || env['DB-DEV'];
+        if (!db) throw new Error('No D1 database binding found!');
+        const user = await db.prepare('SELECT is_google_user FROM users WHERE id = ?').bind(userId).first();
         return user?.is_google_user === 1;
     } catch (error) {
         console.error('获取用户类型失败:', error);

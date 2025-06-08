@@ -3,7 +3,6 @@ import {NextRequest} from 'next/server';
 import {Env} from '@/worker/types';
 import {logWithTimestamp} from "@/utils/logUtils";
 import {verifyJWT, getUserIdFromToken} from "@/utils/auth";
-import { Database } from './db';
 
 // import os from 'os';
 
@@ -32,10 +31,11 @@ interface Transaction {
 }
 
 export async function getUserPoints(env: Env, userId: number): Promise<number | null> {
-        try {
-        const db = new Database(env);
-        const result = await db.get<{ points: number }>('SELECT points FROM users WHERE id = ?', [userId]);
-        return result?.points ?? null;
+    try {
+        const db = env.DB || env['DB-DEV'];
+        if (!db) throw new Error('No D1 database binding found!');
+        const result = await db.prepare('SELECT points FROM users WHERE id = ?').bind(userId).first();
+        return (result && typeof result.points === 'number') ? result.points : null;
     } catch (error) {
         console.error('获取用户点数失败:', error);
         return null;
@@ -44,12 +44,11 @@ export async function getUserPoints(env: Env, userId: number): Promise<number | 
 
 export async function updateUserPoints(env: Env, userId: number, points: number): Promise<boolean> {
     try {
-        const db = new Database(env);
-        const result = await db.run(
-            'UPDATE users SET points = points + ? WHERE id = ?',
-            [points, userId]
-        );
-        return result.changes ? result.changes > 0 : false;
+        const db = env.DB || env['DB-DEV'];
+        if (!db) throw new Error('No D1 database binding found!');
+        const result = await db.prepare('UPDATE users SET points = points + ? WHERE id = ?').bind(points, userId).run();
+        // D1Result 没有 changes 属性，判断 success
+        return result.success === true;
     } catch (error) {
         console.error('更新用户点数失败:', error);
         return false;
@@ -112,28 +111,29 @@ export async function getTransaction(sessionId: string) {
 // 检查是否登录并消耗点数
 export async function checkAndConsumePoints(env: Env, points: number, token: string): Promise<boolean> {
     try {
-        const userId = await getUserIdFromToken(token);
+        const userId = await getUserIdFromToken(token, env);
         if (!userId) {
             logWithTimestamp('用户未登录');
             return false;
         }
 
-        const db = new Database(env);
-        const user = await db.get('SELECT points FROM users WHERE id = ?', [userId]);
+        const db = env.DB || env['DB-DEV'];
+        if (!db) throw new Error('No D1 database binding found!');
+        const user = await db.prepare('SELECT points FROM users WHERE id = ?').bind(userId).first();
         
-        if (!user) {
+        if (!user || typeof user.points !== 'number') {
             logWithTimestamp('用户不存在');
             return false;
         }
 
-        const currentPoints = user.points || 0;
+        const currentPoints = user.points;
         if (currentPoints < points) {
             logWithTimestamp('积分不足');
             return false;
         }
 
         const newPoints = currentPoints - points;
-        await db.run('UPDATE users SET points = ? WHERE id = ?', [newPoints, userId]);
+        await db.prepare('UPDATE users SET points = ? WHERE id = ?').bind(newPoints, userId).run();
         logWithTimestamp(`用户 ${userId} 消费 ${points} 积分，剩余 ${newPoints} 积分`);
         
         return true;
@@ -145,12 +145,10 @@ export async function checkAndConsumePoints(env: Env, points: number, token: str
 
 export async function recordGeneration(env: Env, userId: number, modelType: string, prompt: string, imageUrl: string, pointsConsumed: number): Promise<boolean> {
     try {
-        const db = new Database(env);
-        const result = await db.run(
-            'INSERT INTO generations (user_id, model_type, prompt, image_url, points_consumed) VALUES (?, ?, ?, ?, ?)',
-            [userId, modelType, prompt, imageUrl, pointsConsumed]
-        );
-        return result.lastID ? true : false;
+        const db = env.DB || env['DB-DEV'];
+        if (!db) throw new Error('No D1 database binding found!');
+        const result = await db.prepare('INSERT INTO generations (user_id, model_type, prompt, image_url, points_consumed) VALUES (?, ?, ?, ?, ?)').bind(userId, modelType, prompt, imageUrl, pointsConsumed).run();
+        return result.success === true;
     } catch (error) {
         console.error('记录生成历史失败:', error);
         return false;
@@ -159,12 +157,10 @@ export async function recordGeneration(env: Env, userId: number, modelType: stri
 
 export async function recordToolUsage(env: Env, userId: number, toolType: string, inputImageUrl: string, outputImageUrl: string, pointsConsumed: number): Promise<boolean> {
     try {
-        const db = new Database(env);
-        const result = await db.run(
-            'INSERT INTO flux_tools_usage (user_id, tool_type, input_image_url, output_image_url, points_consumed) VALUES (?, ?, ?, ?, ?)',
-            [userId, toolType, inputImageUrl, outputImageUrl, pointsConsumed]
-        );
-        return result.lastID ? true : false;
+        const db = env.DB || env['DB-DEV'];
+        if (!db) throw new Error('No D1 database binding found!');
+        const result = await db.prepare('INSERT INTO flux_tools_usage (user_id, tool_type, input_image_url, output_image_url, points_consumed) VALUES (?, ?, ?, ?, ?)').bind(userId, toolType, inputImageUrl, outputImageUrl, pointsConsumed).run();
+        return result.success === true;
     } catch (error) {
         console.error('记录工具使用历史失败:', error);
         return false;
