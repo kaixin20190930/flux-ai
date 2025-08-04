@@ -3,6 +3,7 @@ import { getUserFromRequest } from '@/utils/authUtils';
 import { ErrorHandler } from '@/utils/errorHandler';
 import { ErrorCode } from '@/types/database';
 
+export const runtime = 'nodejs'
 export async function GET(request: NextRequest) {
   try {
     // 验证用户认证

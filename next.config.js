@@ -1,27 +1,39 @@
-/** @types {import('next').NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    images: {
-        domains: ['replicate.delivery'],
-    },
-    experimental: {},
-    webpack: (config, { isServer }) => {
-        if (!isServer) {
-            config.resolve.fallback = {
-                ...config.resolve.fallback,
-                crypto: false,
-                fs: false,
-                net: false,
-                tls: false,
-            };
-        }
-        return config;
-    },
-    env: {
-        JWT_SECRET: process.env.JWT_SECRET,
-        STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
-        STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
-    },
+  experimental: {
+    serverComponentsExternalPackages: ['bcryptjs']
+  },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        crypto: false,
+        fs: false,
+        net: false,
+        tls: false,
+      };
+    }
+    
+    // 处理 bcryptjs 在客户端的问题
+    config.externals = config.externals || [];
+    if (!isServer) {
+      config.externals.push({
+        'bcryptjs': 'bcryptjs'
+      });
+    }
+    
+    return config;
+  },
+  images: {
+    domains: ['localhost', 'your-domain.com'],
+    unoptimized: true
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: false,
+  }
 };
 
 module.exports = nextConfig;

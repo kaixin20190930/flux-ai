@@ -6,6 +6,7 @@ import { AppErrorClass, ErrorCode } from '@/types/database';
 // 管理员用户ID列表，实际应用中应该从数据库或环境变量中获取
 const ADMIN_USER_IDS = process.env.ADMIN_USER_IDS ? process.env.ADMIN_USER_IDS.split(',') : [];
 
+export const runtime = 'nodejs'
 export async function GET(request: NextRequest) {
   try {
     // 获取当前会话
