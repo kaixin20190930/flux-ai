@@ -7,7 +7,7 @@ const allowedOrigins = [
     'http://localhost:3000',          // 本地开发环境
     'http://10.124.124.163:3000',
     'https://flux-ai-img.com',  // 生产环境
-    'https://e83f-61-132-62-78.ngrok-free.app'
+    'https://2932-2409-8924-873-a935-8da0-94be-fcf3-d0c7.ngrok-free.app'
 
 ]
 
@@ -41,39 +41,15 @@ export async function handleUpdateUserPoints(request: Request, env: Env): Promis
             return new Promise((resolve) => resolve(new Response('Invalid points value', {status: 400, headers: corsHeaders})));
         }
 
-        // 使用事务来确保点数更新的原子性
-        const result = await env.DB.prepare(`
-            BEGIN TRANSACTION;
-            UPDATE users SET points = ? WHERE id = ?;
-            SELECT points FROM users WHERE id = ?;
-            COMMIT;
-        `)
-            .bind(points, userId, userId)
-            .run();
-
-        if (result.success) {
-            const updatedPoints = await env.DB.prepare('SELECT points FROM users WHERE id = ?')
-                .bind(userId)
-                .first<UserPoints>();
-
-            if (!updatedPoints) {
-                logWithTimestamp('Failed to retrieve updated points for user:', userId);
-                throw new Error('Failed to retrieve updated points');
-            }
-
-            logWithTimestamp(`Successfully updated points for user ${userId} to ${updatedPoints.points}`);
-
-            return new Promise((resolve) => resolve(new Response(JSON.stringify({
-                success: true,
-                points: updatedPoints.points
-            }), {
-                status: 200,
-                headers: {...corsHeaders, 'Content-Type': 'application/json'},
-            })));
-        } else {
-            logWithTimestamp('Failed to update user points in database');
-            throw new Error('Failed to update user points in database');
+        const db = env.DB || env['DB-DEV'];
+        if (!db) {
+            throw new Error('No D1 database binding found!');
         }
+
+        const result = await db.prepare('UPDATE users SET points = points + ? WHERE id = ?').bind(points, userId).run();
+        return new Response(JSON.stringify({ success: result.success === true }), {
+            headers: { 'Content-Type': 'application/json' }
+        });
     } catch (error) {
         logWithTimestamp('Error updating user points:', error);
         return new Promise((resolve) => resolve(new Response(JSON.stringify({

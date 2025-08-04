@@ -59,8 +59,13 @@ export async function handleGetUserPoints(request: Request, env: Env): Promise<R
 
 async function getUserPoints(env: Env, userId: string): Promise<number | null> {
     try {
+        const db = env.DB || env['DB-DEV'];
+        if (!db) {
+            throw new Error('No D1 database binding found!');
+        }
+
         logWithTimestamp('start get userPoints from DB')
-        const result = await env.DB.prepare('SELECT points FROM users WHERE id = ?')
+        const result = await db.prepare('SELECT points FROM users WHERE id = ?')
             .bind(userId)
             .first();
         // logWithTimestamp('get user result is', result?.toString())

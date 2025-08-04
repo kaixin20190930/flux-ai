@@ -43,6 +43,7 @@ export type Dictionary = {
     navigation: {
         home: string
         create: string
+        search: string
         hub: string
         pricing: string
         login: string
@@ -178,28 +179,85 @@ export type Dictionary = {
     pricing: {
         title: string
         subtitle: string
+        description: string
+        loginRequired: string
         tiers: {
+            starter: {
+                name: string
+                price: string
+                points: number
+                features: string[]
+            }
             basic: {
                 name: string
                 price: string
+                points: number
                 features: string[]
             }
             premium: {
                 name: string
                 price: string
+                points: number
                 features: string[]
                 recommended: string
             }
-            advanced: {
+            professional: {
                 name: string
                 price: string
+                points: number
+                features: string[]
+            }
+            enterprise: {
+                name: string
+                price: string
+                points: number
                 features: string[]
             }
             common: {
                 buyNowButton: string
-                subscribeButton: string
                 processingButton: string
+                loginToBuy: string
+                pointsLabel: string
+                permanentValidity: string
+                mostPopular: string
+                subscribeButton: string
                 comingSoonButton: string
+            }
+        }
+        pointsUsage: {
+            title: string
+            subtitle: string
+            models: {
+                fluxSchnell: {
+                    name: string
+                    points: number
+                    description: string
+                }
+                fluxDev: {
+                    name: string
+                    points: number
+                    description: string
+                }
+                fluxPro: {
+                    name: string
+                    points: number
+                    description: string
+                }
+                fluxProUltra: {
+                    name: string
+                    points: number
+                    description: string
+                }
+                imageSearch: {
+                    name: string
+                    points: number
+                    description: string
+                }
+                imageEdit: {
+                    name: string
+                    points: number
+                    description: string
+                }
             }
         }
     }

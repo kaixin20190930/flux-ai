@@ -3,10 +3,8 @@ import Image from 'next/image';
 import {Zap, Star, Crown, Sparkles} from 'lucide-react';
 import {ICON_COMPONENTS} from '@/public/constants/constants';
 import {ImagePreviewProps} from "@/public/types/type";
-import type {Dictionary} from '@/app/i18n/settings';
-
 interface LocalizedImagePreviewProps extends Omit<ImagePreviewProps, 'downloadText'> {
-    dictionary: Dictionary;
+    dictionary: any;
 }
 
 const ImagePreview: React.FC<LocalizedImagePreviewProps> = ({
@@ -84,8 +82,24 @@ const ImagePreview: React.FC<LocalizedImagePreviewProps> = ({
     if (isLoading) {
         return (
             <div className="w-full h-full flex flex-col items-center justify-center">
-                <div className="animate-spin rounded-full h-16 w-16 border-4 border-white/10 border-t-white"/>
-                <p className="text-white/70 text-sm mt-4 animate-pulse">{imagePreview.loading}</p>
+                <div className="relative">
+                    <div className="animate-spin rounded-full h-16 w-16 border-4 border-white/10 border-t-white"/>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <Sparkles className="w-6 h-6 text-white/50 animate-pulse" />
+                    </div>
+                </div>
+                <p className="text-white/90 text-lg font-medium mt-6 animate-pulse">
+                    {imagePreview.loading || 'Generating...'}
+                </p>
+                <p className="text-white/60 text-sm mt-2">
+                    {dictionary.imageGenerator?.generatingDescription || 'Creating your AI-generated image...'}
+                </p>
+                <div className="mt-4 flex items-center gap-2 text-white/50">
+                    <IconComponent className="w-4 h-4" />
+                    <span className="text-sm">{modelConfig.name}</span>
+                    <span className="text-xs">•</span>
+                    <span className="text-sm">{aspectRatio}</span>
+                </div>
             </div>
         );
     }

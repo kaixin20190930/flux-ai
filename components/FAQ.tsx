@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import {ChevronDown, ChevronUp} from 'lucide-react';
-import type {Dictionary} from '@/app/i18n/settings'
-
 interface FAQProps {
-    dictionary: Dictionary
+    dictionary: any
 }
 
 interface FAQItemProps {

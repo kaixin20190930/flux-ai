@@ -9,10 +9,8 @@ import {FAQ} from '@/components/FAQ'
 import {Hero} from "@/components/Hero"
 import Pricing from "@/components/Pricing"
 import FluxModelsComparison from "@/components/FluxModelsComparison"
-import type {Dictionary} from '@/app/i18n/settings'
-
 interface HomePageProps {
-    dictionary: Dictionary
+    dictionary: any
     locale: string;
 }
 

@@ -6,7 +6,7 @@ const allowedOrigins = [
     'http://localhost:3000',
     'http://10.124.124.163:3000',
     'https://flux-ai-img.com',
-    'https://e83f-61-132-62-78.ngrok-free.app'
+    'https://2932-2409-8924-873-a935-8da0-94be-fcf3-d0c7.ngrok-free.app'
 ]
 
 export async function handleRegister(request: Request, env: Env): Promise<any> {
@@ -19,8 +19,14 @@ export async function handleRegister(request: Request, env: Env): Promise<any> {
         'Access-Control-Allow-Credentials': 'true',
     };
 
+    const db = env.DB || env['DB-DEV'];
+    if (!db) {
+        throw new Error('No D1 database binding found!');
+    }
+
+
     logWithTimestamp('start register');
-    logWithTimestamp('Database:', env.DB.toString());
+    logWithTimestamp('Database:', db.toString());
 
     try {
         const {name, email, password, googleToken} = await request.json() as any;
@@ -34,7 +40,7 @@ export async function handleRegister(request: Request, env: Env): Promise<any> {
         }
 
         // 检查邮箱是否已存在
-        const existingUser = await env.DB.prepare('SELECT email FROM users WHERE email = ?')
+        const existingUser = await db.prepare('SELECT email FROM users WHERE email = ?')
             .bind(email)
             .first();
 
@@ -93,7 +99,7 @@ export async function handleRegister(request: Request, env: Env): Promise<any> {
             })));
         }
         // 插入用户数据
-        const result = await env.DB.prepare(
+        const result = await db.prepare(
             'INSERT INTO users (name, email, password, is_google_user) VALUES (?, ?, ?, ?)'
         )
             .bind(name, email, hashedPassword, googleToken ? 1 : 0)

@@ -1,7 +1,6 @@
 // app/i18n/utils.ts
-import {Dictionary} from './settings'
 
-const dictionaries: Record<string, () => Promise<Dictionary>> = {
+const dictionaries: Record<string, () => Promise<any>> = {
     en: () => import('./locales/en.json').then(module => module.default),
     zh: () => import('./locales/zh.json').then(module => module.default),
     'zh-TW': () => import('./locales/zh-TW.json').then(module => module.default),
@@ -24,7 +23,7 @@ const dictionaries: Record<string, () => Promise<Dictionary>> = {
     ms: () => import('./locales/ms.json').then(module => module.default),
 }
 
-export const getDictionary = async (locale: string) => {
+export const getany = async (locale: string) => {
     try {
         return await dictionaries[locale]()
     } catch (error) {

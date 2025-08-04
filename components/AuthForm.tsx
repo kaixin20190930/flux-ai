@@ -5,10 +5,11 @@ import React, {useState} from 'react'
 import {useRouter, useParams} from 'next/navigation'
 import {logWithTimestamp} from "@/utils/logUtils"
 import Cookies from 'js-cookie'
-import type {Dictionary} from '@/app/i18n/settings'
+import { syncAuthState } from '@/utils/authSync'
+import { triggerGlobalAuthRefresh } from '@/utils/globalAuthRefresh'
 
 interface AuthFormProps {
-    dictionary: Dictionary
+    dictionary: any
 }
 
 interface GoogleOAuthConfig {
@@ -39,8 +40,7 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
         e.preventDefault()
         setError('')
 
-        const workerUrl = 'https://flux-ai.liukai19911010.workers.dev'
-        const endpoint = isLogin ? `${workerUrl}/login` : `${workerUrl}/register`
+        const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register'
         const body = isLogin ? {email, password} : {name, email, password}
 
         try {
@@ -58,12 +58,23 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
                 logWithTimestamp('response is:' + JSON.stringify(data))
 
                 if (data.token && data.user) {
-                    Cookies.set('token', data.token, {expires: 7})
-                    localStorage.setItem('user', JSON.stringify(data.user))
+                    // 直接设置localStorage和cookie
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    document.cookie = `token=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax`;
+                    
                     logWithTimestamp('user data: ' + JSON.stringify(data.user))
+                    console.log('Login successful, user and token saved');
 
-                    // 保持语言设置的路由跳转
-                    router.push(`/${currentLocale}/flux-1-1-ultra`)
+                    // 检查是否有重定向URL
+                    const redirectUrl = localStorage.getItem('redirectAfterLogin')
+                    if (redirectUrl) {
+                        localStorage.removeItem('redirectAfterLogin')
+                        // 强制刷新页面以确保认证状态更新
+                        window.location.href = redirectUrl;
+                    } else {
+                        // 强制刷新页面以确保认证状态更新
+                        window.location.href = `/${currentLocale}/create`;
+                    }
                 } else {
                     setError(dictionary.auth.errors.invalidFormat)
                 }

@@ -8,12 +8,12 @@ import {FaUserCircle, FaSignOutAlt} from 'react-icons/fa'
 import Cookies from "js-cookie"
 import AuthEventEmitter from '../events/authEvents'
 import {Locale, locales} from '@/app/i18n/settings'
-import {Dictionary} from '@/app/i18n/settings'
+
 import {languageConfig} from "@/app/i18n/languageConfig";
 import {Globe} from "lucide-react";
 
 interface HeaderProps {
-    dictionary: Dictionary
+    dictionary: any
 }
 
 const Header: React.FC<HeaderProps> = ({dictionary}) => {
@@ -195,6 +195,12 @@ const Header: React.FC<HeaderProps> = ({dictionary}) => {
                                 <Link href={`/${currentLocale}/create`}
                                       className="text-indigo-200 hover:text-white transition duration-300">
                                     {dictionary.navigation.create}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href={`/${currentLocale}/image-search`}
+                                      className="text-indigo-200 hover:text-white transition duration-300">
+                                    {dictionary.navigation.search}
                                 </Link>
                             </li>
                             <li

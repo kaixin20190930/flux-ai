@@ -1,10 +1,9 @@
 'use client'
 import React, {useEffect, useState} from 'react'
 import Image from 'next/image'
-import type {Dictionary} from '@/app/i18n/settings'
 
 interface ExamplesProps {
-    dictionary: Dictionary
+    dictionary: any
 }
 
 const examples = [

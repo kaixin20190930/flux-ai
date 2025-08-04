@@ -5,10 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {BiMoney} from "react-icons/bi";
 import {DollarSign, Eye, Rabbit, TentTree} from "lucide-react";
-import type {Dictionary} from '@/app/i18n/settings'
 
 interface UltraFeaturerops {
-    dictionary: Dictionary
+    dictionary: any
 }
 
 interface Feature {

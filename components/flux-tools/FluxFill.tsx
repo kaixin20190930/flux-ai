@@ -2,7 +2,10 @@
 
 import React, {useState, useCallback, useRef, useEffect} from 'react';
 import ImageUpload from "@/components/ImageUpload";
-import {Dictionary} from '@/app/i18n/settings';
+;
+import {useUnifiedAuth} from '@/hooks/useUnifiedAuth';
+import {useRouter} from 'next/navigation';
+import Link from 'next/link';
 
 interface FillConfig {
     outpaint: string;
@@ -13,10 +16,11 @@ interface FillConfig {
     guidance: number;
     output_format: string;
     safety_tolerance: number;
+    image: string;
 }
 
 interface FillGeneratorProps {
-    dictionary: Dictionary;
+    dictionary: any;
     locale: string;
     config: FillConfig;
 }
@@ -55,9 +59,12 @@ const FillGenerator = ({
         prompt: '',
         guidance: 60,
         output_format: 'jpg',
-        safety_tolerance: 2
+        safety_tolerance: 2,
+        image: ''
     }
                        }: FillGeneratorProps) => {
+    const { isLoggedIn, loading: authLoading } = useUnifiedAuth();
+    const router = useRouter();
     const canvasRef = useRef<HTMLCanvasElement>(null as any);
     const [state, setState] = useState<FillState>({
         sourceImage: null,
@@ -217,6 +224,12 @@ const FillGenerator = ({
     };
 
     const handleGenerate = async () => {
+        // 检查登录状态
+        if (!isLoggedIn) {
+            router.push(`/${locale}/auth`);
+            return;
+        }
+        
         if (!state.sourceImage || (!state.maskImage && state.outpainting === 'None')) {
             updateState({error: dictionary.fluxTools.common.noImageError});
             return;
@@ -489,14 +502,29 @@ const FillGenerator = ({
 
                         {/* Generate Button */}
                         <div className="mt-6">
-                            <button
-                                onClick={handleGenerate}
-                                disabled={state.isLoading || !state.sourceImage || !state.maskImage}
-                                className="w-full py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 disabled:bg-white/50 disabled:text-indigo-400 transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center gap-2"
-                            >
-                                {state.isLoading ? 'Generating...' : 'Generate (Cost: 3 points)'}
-                                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                            </button>
+                            {!isLoggedIn ? (
+                                <div className="text-center">
+                                    <p className="text-white/70 mb-4">Please login to use this tool</p>
+                                    <Link 
+                                        href={`/${locale}/auth`}
+                                        className="inline-block px-6 py-3 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-indigo-100 transition-colors"
+                                    >
+                                        Login
+                                    </Link>
+                                </div>
+                            ) : (
+                                <button
+                                    onClick={handleGenerate}
+                                    disabled={state.isLoading || authLoading || !state.sourceImage || !state.maskImage}
+                                    className="w-full py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 disabled:bg-white/50 disabled:text-indigo-400 transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center gap-2"
+                                >
+                                    {state.isLoading ? 'Generating...' : 'Generate (Cost: 2 points)'}
+                                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" strokeWidth="2"
+                                         viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                </button>
+                            )}
 
                             {/* Error Message */}
                             {state.error && (

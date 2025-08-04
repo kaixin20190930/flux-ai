@@ -1,11 +1,11 @@
-import {getDictionary} from "@/app/i18n/utils";
+import {getany} from '@/app/i18n/utils';
 import {Locale} from "@/app/i18n/settings";
 import ReduxGenerator from "@/components/flux-tools/FluxRedux";
 
 export const runtime = 'edge';
 
 export default async function ReduxPage({params: {locale}}: { params: { locale: Locale } }) {
-    const dictionary = await getDictionary(locale);
+    const dictionary = await getany(locale);
 
     const reduxConfig = {
         guidance: 3,

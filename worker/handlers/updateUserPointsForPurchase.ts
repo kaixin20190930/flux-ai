@@ -7,7 +7,7 @@ const allowedOrigins = [
     'http://localhost:3000',          // 本地开发环境
     'http://10.124.124.163:3000',
     'https://flux-ai-img.com',  // 生产环境
-    'https://e83f-61-132-62-78.ngrok-free.app'
+    'https://2932-2409-8924-873-a935-8da0-94be-fcf3-d0c7.ngrok-free.app'
 
 ]
 
@@ -42,8 +42,14 @@ export async function handleUpdateUserPointsForPurchase(request: Request, env: E
             })));
         }
 
+        const db = env.DB || env['DB-DEV'];
+        if (!db) {
+            throw new Error('No D1 database binding found!');
+        }
+
+
         // 检查购买记录是否存在且未使用
-        const purchaseRecord = await env.DB.prepare(
+        const purchaseRecord = await db.prepare(
             'SELECT * FROM purchases WHERE id = ? AND user_id = ? AND status = ?'
         )
             .bind(purchaseId, userId, 'pending')
@@ -58,7 +64,7 @@ export async function handleUpdateUserPointsForPurchase(request: Request, env: E
         }
 
         // 使用事务来确保点数更新的原子性
-        const result = await env.DB.prepare(`
+        const result = await db.prepare(`
             BEGIN TRANSACTION;
             UPDATE users SET points = points + ? WHERE id = ?;
             UPDATE purchases SET status = 'completed' WHERE id = ?;
@@ -69,7 +75,7 @@ export async function handleUpdateUserPointsForPurchase(request: Request, env: E
             .run();
 
         if (result.success) {
-            const updatedPoints = await env.DB.prepare('SELECT points FROM users WHERE id = ?')
+            const updatedPoints = await db.prepare('SELECT points FROM users WHERE id = ?')
                 .bind(userId)
                 .first();
 

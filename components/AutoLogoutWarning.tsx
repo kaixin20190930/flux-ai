@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import {useAutoLogout} from '@/hooks/useAutoLogout';
 import {AUTH_CONFIG} from '@/config/authLogout';
-import type {Dictionary} from '@/app/i18n/settings';
+;
 
 interface AutoLogoutWarningProps {
-    dictionary: Dictionary;
+    dictionary: any;
     locale: string
 }
 

@@ -7,6 +7,7 @@
   "navigation": {
     "home": "首页",
     "create": "创建",
+    "search": "搜索",
     "hub": "作品",
     "pricing": "价格",
     "profile": "个人中心",
@@ -49,13 +50,13 @@
       "flexiblePricing": {
         "title": "灵活的定价方案",
         "subtitle": "FLUX AI 定价",
-        "description": "从我们的免费层开始（每天 3 次免费生成，无需登录）或升级到每 200 次生成 $9.9 起的高级计划。访问高级功能，包括更高的分辨率、优先生成和增加生成限制。",
-        "highlight": "免费开始"
+        "description": "所有功能都需要登录并消费点数。选择合适的套餐开始创作，享受高分辨率、优先生成和更多功能。",
+        "highlight": "点数制"
       }
     },
     "cta": {
       "title": "体验专业 AI 图像生成",
-      "tryButton": "免费试用",
+      "tryButton": "立即开始",
       "pricingButton": "查看定价"
     }
   },
@@ -123,7 +124,7 @@
       },
       "limits": {
         "question": "我可以生成多少图像有限制吗？",
-        "answer": "使用限制取决于您的订阅等级。免费用户每天可以生成最多 3 张图像，而高级用户可以享受无限生成和优先处理。"
+        "answer": "使用限制取决于您购买的点数套餐。不同的 AI 模型和功能消耗不同的点数，您可以根据需要购买合适的套餐。"
       },
       "updates": {
         "question": "FLUX AI 图像生成器更新的频率如何？",
@@ -140,45 +141,125 @@
     }
   },
   "pricing": {
-    "title": "定价",
-    "subtitle": "选择适合您的计划",
+    "title": "定价方案",
+    "subtitle": "选择适合您的点数套餐",
+    "description": "所有功能都需要消耗点数，请选择合适的套餐开始创作",
+    "loginRequired": "使用所有功能需要登录账户",
     "tiers": {
-      "basic": {
-        "name": "基础版",
-        "price": "¥68",
+      "starter": {
+        "name": "入门套餐",
+        "price": "¥39",
+        "points": 100,
         "features": [
-          "200点",
-          "高质量图像",
-          "更快的图像生成",
-          "无需订阅"
+          "100 点数",
+          "支持所有 AI 模型",
+          "高质量图像生成",
+          "图片搜索功能",
+          "永久有效"
+        ]
+      },
+      "basic": {
+        "name": "基础套餐",
+        "price": "¥98",
+        "points": 300,
+        "features": [
+          "300 点数",
+          "支持所有 AI 模型",
+          "高质量图像生成",
+          "图片搜索功能",
+          "优先处理队列",
+          "永久有效"
         ]
       },
       "premium": {
-        "name": "高级版",
-        "price": "¥206",
+        "name": "高级套餐",
+        "price": "¥268",
+        "points": 1000,
         "features": [
-          "1000点",
-          "高质量图像",
-          "更快的图像生成",
-          "包月订阅"
+          "1000 点数",
+          "支持所有 AI 模型",
+          "高质量图像生成",
+          "图片搜索功能",
+          "优先处理队列",
+          "批量生成功能",
+          "永久有效"
         ],
         "recommended": "推荐"
       },
-      "advanced": {
-        "name": "专业版",
+      "professional": {
+        "name": "专业套餐",
         "price": "¥688",
+        "points": 3000,
         "features": [
-          "5000点",
-          "高质量图像",
-          "更快的图像生成",
-          "包年订阅"
+          "3000 点数",
+          "支持所有 AI 模型",
+          "高质量图像生成",
+          "图片搜索功能",
+          "最高优先级处理",
+          "批量生成功能",
+          "API 访问权限",
+          "永久有效"
+        ]
+      },
+      "enterprise": {
+        "name": "企业套餐",
+        "price": "¥1688",
+        "points": 10000,
+        "features": [
+          "10000 点数",
+          "支持所有 AI 模型",
+          "高质量图像生成",
+          "图片搜索功能",
+          "最高优先级处理",
+          "批量生成功能",
+          "API 访问权限",
+          "专属客服支持",
+          "永久有效"
         ]
       },
       "common": {
         "buyNowButton": "立即购买",
-        "subscribeButton": "订阅",
         "processingButton": "处理中...",
-        "comingSoonButton": "即将推出"
+        "loginToBuy": "登录购买",
+        "pointsLabel": "点数",
+        "permanentValidity": "永久有效",
+        "mostPopular": "最受欢迎"
+      }
+    },
+    "pointsUsage": {
+      "title": "点数消耗说明",
+      "subtitle": "不同功能消耗的点数如下",
+      "models": {
+        "fluxSchnell": {
+          "name": "Flux Schnell",
+          "points": 1,
+          "description": "快速生成，适合测试和预览"
+        },
+        "fluxDev": {
+          "name": "Flux Dev",
+          "points": 3,
+          "description": "平衡质量和速度，适合日常使用"
+        },
+        "fluxPro": {
+          "name": "Flux Pro",
+          "points": 8,
+          "description": "最高质量，适合专业创作"
+        },
+        "fluxProUltra": {
+          "name": "Flux 1.1 Pro Ultra",
+          "points": 12,
+          "description": "超高分辨率，最新技术"
+        },
+        "imageSearch": {
+          "name": "图片搜索",
+          "points": 1,
+          "description": "文本或图片搜索功能"
+        },
+        "imageEdit": {
+          "name": "图片编辑工具",
+          "points": 2,
+          "description": "Canny、Fill、Redux 等工具"
+        }
       }
     }
   },
@@ -290,7 +371,7 @@
     }
   },
   "imagePreview": {
-    "loading": "正在创作您的杰作...",
+    "loading": "生成中...",
     "placeholder": "您的AI生成的图像将显示在此处",
     "downloadButton": "下载",
     "dimensions": {
@@ -356,9 +437,11 @@
     "outputFormatLabel": "输出格式",
     "generateButton": "生成图像",
     "generatingButton": "生成中...",
-    "freeGenerations": "免费生成",
+    "generatingDescription": "正在创建您的AI生成图像...",
     "points": "点数",
-    "loginForMore": "登录生成更多",
+    "loginRequired": "请登录使用",
+    "insufficientPoints": "点数不足",
+    "purchasePoints": "购买点数",
     "error": "错误发生了",
     "guidanceLabel": "引导强度",
     "outputQualityLabel": "输出质量",
@@ -534,6 +617,132 @@
       "promptLabel": "提示词",
       "promptPlaceholder": "输入提示词，例如：一辆城市街道上的汽车",
       "promptUpsamplingLabel": "提示词上采样"
+    }
+  },
+  "imageSearch": {
+    "title": "图片网络搜索",
+    "subtitle": "搜索、发现和保存来自网络的精美图片",
+    "tabs": {
+      "search": "搜索",
+      "saved": "已保存",
+      "history": "历史记录"
+    },
+    "searchTypes": {
+      "text": "文本搜索",
+      "image": "图片搜索"
+    },
+    "textSearch": {
+      "placeholder": "输入关键词搜索图片...",
+      "button": "搜索图片",
+      "searching": "搜索中..."
+    },
+    "imageSearch": {
+      "title": "上传图片搜索",
+      "description": "拖拽图片到这里，或点击选择文件",
+      "selectButton": "选择图片",
+      "supportedFormats": "支持 JPG, PNG, GIF 格式",
+      "button": "搜索相似图片",
+      "searching": "搜索中..."
+    },
+    "filters": {
+      "title": "高级过滤选项",
+      "size": {
+        "label": "图片尺寸",
+        "all": "所有尺寸",
+        "small": "小尺寸",
+        "medium": "中等尺寸",
+        "large": "大尺寸",
+        "wallpaper": "壁纸尺寸"
+      },
+      "color": {
+        "label": "颜色",
+        "all": "所有颜色",
+        "blackAndWhite": "黑白",
+        "black": "黑色",
+        "white": "白色",
+        "yellow": "黄色",
+        "orange": "橙色",
+        "red": "红色",
+        "purple": "紫色",
+        "magenta": "品红",
+        "green": "绿色",
+        "teal": "青色",
+        "blue": "蓝色"
+      },
+      "type": {
+        "label": "图片类型",
+        "all": "所有类型",
+        "photo": "照片",
+        "illustration": "插图",
+        "vector": "矢量图",
+        "animation": "动画"
+      },
+      "license": {
+        "label": "许可证",
+        "all": "所有许可证",
+        "free": "免费使用",
+        "commercial": "商业用途",
+        "modify": "可修改"
+      },
+      "safeSearch": "启用安全搜索（过滤成人内容）"
+    },
+    "results": {
+      "title": "搜索结果",
+      "noResults": "没有找到匹配的图片，请尝试其他关键词",
+      "untitled": "未命名图片",
+      "noDescription": "无描述"
+    },
+    "savedImages": {
+      "title": "已保存的图片",
+      "empty": "没有保存的图片",
+      "loginRequired": "请登录以查看和管理您保存的图片",
+      "loginButton": "登录",
+      "loadMore": "加载更多",
+      "unsaveTooltip": "取消收藏",
+      "viewOriginalTooltip": "查看原始图片",
+      "downloadTooltip": "下载图片",
+      "downloading": "下载中...",
+      "error": "加载失败",
+      "retry": "重试"
+    },
+    "searchHistory": {
+      "title": "搜索历史",
+      "empty": "没有搜索历史",
+      "loginRequired": "请登录以查看您的搜索历史",
+      "loginButton": "登录",
+      "loadMore": "加载更多",
+      "searchTypes": {
+        "text": "文本搜索",
+        "image": "图片搜索"
+      },
+      "providers": {
+        "prompthero": "PromptHero",
+        "googleVision": "Google Vision"
+      },
+      "resultsCount": "个结果",
+      "reSearchButton": "重新搜索",
+      "deleteTooltip": "删除搜索历史",
+      "error": "加载失败",
+      "retry": "重试",
+      "timeFormats": {
+        "today": "今天",
+        "yesterday": "昨天",
+        "weekdays": ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
+      }
+    },
+    "actions": {
+      "save": "保存",
+      "unsave": "取消保存",
+      "download": "下载",
+      "viewOriginal": "查看原图",
+      "delete": "删除"
+    },
+    "errors": {
+      "searchFailed": "搜索失败",
+      "saveFailed": "保存失败",
+      "loadFailed": "加载失败",
+      "deleteFailed": "删除失败",
+      "tryAgain": "请稍后再试"
     }
   }
 }

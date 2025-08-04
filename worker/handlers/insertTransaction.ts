@@ -39,8 +39,14 @@ export async function handleInsertTransaction(request: Request, env: Env): Promi
 
         const transaction: Transaction = await request.json() as any;
 
+        const db = env.DB || env['DB-DEV'];
+        if (!db) {
+            throw new Error('No D1 database binding found!');
+        }
+
+
         // 更新数据库中的用户点数
-        const insertTransactionResult = await env.DB
+        const insertTransactionResult = await db
             .prepare('INSERT INTO transactions (user_id, amount, points_added, stripe_session_id) VALUES (?, ?, ?, ?)')
             .bind(
                 transaction.client_reference_id,

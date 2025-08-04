@@ -136,7 +136,7 @@ export async function POST(req: NextRequest) {
             // 如果需要扣除用户点数
             if (pointsToDeductFromUser > 0 && isLoggedIn) {
                 updatedUserPoints = userPoints - pointsToDeductFromUser;
-                const updateSuccess = await updateUserPoints(req, updatedUserPoints);
+                const updateSuccess = await updateUserPoints(parseInt(userId), updatedUserPoints);
                 if (!updateSuccess) {
                     logWithTimestamp('Failed to update user points', {userId, newPoints: updatedUserPoints});
                     return Response.json({error: 'Failed to update user points'}, {status: 500});

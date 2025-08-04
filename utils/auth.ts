@@ -15,7 +15,7 @@ export async function createJWT(payload: object, secret: string): Promise<string
     if (secret.length === 0) {
         throw new Error('JWT secret cannot be empty');
     }
-    const expirationTime = Math.floor(Date.now() / 1000) + (60 * 60); // 1 hour from now
+    const expirationTime = Math.floor(Date.now() / 1000) + (7 * 24 * 60 * 60); // 7 days from now
     const fullPayload = {
         ...payload,
         exp: expirationTime,
@@ -53,36 +53,60 @@ export async function verifyJWT(token: string, secret: string): Promise<any> {
         throw new Error('JWT secret cannot be empty');
     }
 
-    await diagnoseJWT(token, secret);
-
     try {
+        // 首先验证token
+        const isValid = await workerJwt.verify(token, secret);
+        logWithTimestamp('JWT verification result:', isValid);
+        
+        if (!isValid) {
+            throw new Error('Token verification failed');
+        }
+
+        // 只有验证成功才解码
         const decoded = workerJwt.decode(token);
-        logWithTimestamp('Decoded JWT (without verification):', JSON.stringify(decoded));
+        logWithTimestamp('Decoded JWT:', JSON.stringify(decoded));
+        
         if (!decoded || !decoded.payload) {
             throw new Error('Invalid token structure');
         }
+
+        // 检查过期时间
         const now = Math.floor(Date.now() / 1000);
         if (decoded.payload.exp && decoded.payload.exp < now) {
-            throw new Error(`Token expired at ${new Date(decoded.payload.exp * 1000).toISOString()}, current time is ${new Date(now * 1000).toISOString()}`);
+            throw new Error(`Token expired at ${new Date(decoded.payload.exp * 1000).toISOString()}`);
         }
-
-        const isValid = await workerJwt.verify(token, secret);
-        logWithTimestamp('JWT verification result:', isValid);
 
         return decoded.payload;
 
     } catch (error) {
-        logWithTimestamp(`JWT verification or decoding failed: ${error}`);
+        logWithTimestamp(`JWT verification failed: ${error}`);
         throw error;
     }
 }
 
-export async function getUserIdFromToken(token: string, env: Env): Promise<number | null> {
+export async function getUserIdFromToken(token: string): Promise<number | null> {
     try {
-        const decoded = await verifyJWT(token, env.JWT_SECRET);
+        const decoded = await verifyJWT(token, process.env.JWT_SECRET as string);
         return decoded.userId;
     } catch (error) {
         console.error('Token验证失败:', error);
+        return null;
+    }
+}
+
+export async function getUserFromRequest(request: Request): Promise<any | null> {
+    try {
+        const token = request.headers.get('Authorization')?.replace('Bearer ', '') || 
+                     new URL(request.url).searchParams.get('token');
+        
+        if (!token) {
+            return null;
+        }
+        
+        const decoded = await verifyJWT(token, process.env.JWT_SECRET as string);
+        return decoded;
+    } catch (error) {
+        console.error('获取用户信息失败:', error);
         return null;
     }
 }

@@ -6,7 +6,7 @@ import {
     OUTPUT_FORMATS,
 } from '@/public/constants/constants';
 import ImageUpload from "@/components/ImageUpload";
-import {Dictionary} from '@/app/i18n/settings';
+;
 
 interface ReduxConfig {
     guidance: number;
@@ -20,7 +20,7 @@ interface ReduxConfig {
 }
 
 interface ReduxGeneratorProps {
-    dictionary: Dictionary;
+    dictionary: any;
     locale: string;
     config: ReduxConfig;
 }

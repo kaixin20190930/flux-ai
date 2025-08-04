@@ -1,5 +1,5 @@
-import Pricing from '@/components/Pricing';
-import {getDictionary} from "@/app/i18n/utils";
+import NewPricing from '@/components/NewPricing';
+import {getany} from '@/app/i18n/utils';
 import type {Locale} from "@/app/i18n/settings";
 
 export const runtime = 'edge';
@@ -9,7 +9,7 @@ export default async function PricingPage({
                                           }: {
     params: { locale: string };
 }) {
-    const dictionary = await getDictionary(locale as Locale);
+    const dictionary = await getany(locale as Locale);
 
-    return <Pricing dictionary={dictionary} locale={locale}/>;
+    return <NewPricing dictionary={dictionary} locale={locale}/>;
 }

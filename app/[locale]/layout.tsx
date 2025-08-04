@@ -4,7 +4,8 @@ import Footer from '@/components/Footer'
 import '@/styles/globals.css'
 import type {Metadata} from 'next'
 import {AutoLogoutWarning} from "@/components/AutoLogoutWarning"
-import {getDictionary} from '../i18n/utils'
+import {AuthChecker} from "@/components/AuthChecker"
+import {getany} from '../i18n/utils'
 import {Locale, defaultLocale, locales} from '../i18n/settings'
 import {redirect} from 'next/navigation'
 
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     const { locale } = await Promise.resolve(params)
     // 验证语言并获取字典
     const validLocale = locales.includes(locale as Locale) ? locale : defaultLocale
-    const dictionary = await getDictionary(validLocale)
+    const dictionary = await getany(validLocale)
 
     return {
         title: {
@@ -58,10 +59,11 @@ export default async function RootLayout({
         redirect(`/${validLocale}`)
     }
 
-    const dictionary = await getDictionary(validLocale)
+    const dictionary = await getany(validLocale)
 
     return (
         <>
+            <AuthChecker />
             <Header dictionary={dictionary}/>
             <main className="flex-grow">
                 {children}

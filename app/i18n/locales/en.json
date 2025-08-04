@@ -7,6 +7,7 @@
   "navigation": {
     "home": "Home",
     "create": "Create",
+    "search": "Search",
     "hub": "Hub",
     "pricing": "Pricing",
     "profile": "Profile",
@@ -49,13 +50,13 @@
       "flexiblePricing": {
         "title": "Flexible Pricing Plans",
         "subtitle": "FLUX AI Pricing",
-        "description": "Start with our free tier (3 Free Generations per day with No Login) or upgrade to premium plans from $9.9 200 generations . Access advanced features including higher resolution, priority generation, and increased generation limits.",
-        "highlight": "Starting from Free"
+        "description": "All features require login and points consumption. Choose the right package to start creating and enjoy high resolution, priority generation, and more features.",
+        "highlight": "Points-based"
       }
     },
     "cta": {
       "title": "Experience Professional AI Image Generation",
-      "tryButton": "Try It Free",
+      "tryButton": "Get Started",
       "pricingButton": "View Pricing"
     }
   },
@@ -94,45 +95,127 @@
     }
   },
   "pricing": {
-    "title": "Pricing",
-    "subtitle": "Choose the right plan for you",
+    "title": "Pricing Plans",
+    "subtitle": "Choose the right points package for you",
+    "description": "All features require points to use. Choose a suitable package to start creating",
+    "loginRequired": "Login required to use all features",
     "tiers": {
-      "basic": {
-        "name": "Basic",
-        "price": "$9.9",
+      "starter": {
+        "name": "Starter Package",
+        "price": "$5.9",
+        "points": 100,
         "features": [
-          "200 points",
-          "High quality images",
-          "Faster Image generation",
-          "No subscription"
+          "100 Points",
+          "All AI Models Supported",
+          "High-Quality Image Generation",
+          "Image Search Feature",
+          "Permanent Validity"
+        ]
+      },
+      "basic": {
+        "name": "Basic Package",
+        "price": "$14.9",
+        "points": 300,
+        "features": [
+          "300 Points",
+          "All AI Models Supported",
+          "High-Quality Image Generation",
+          "Image Search Feature",
+          "Priority Processing Queue",
+          "Permanent Validity"
         ]
       },
       "premium": {
-        "name": "Premium Plan",
-        "price": "$29.9",
+        "name": "Premium Package",
+        "price": "$39.9",
+        "points": 1000,
         "features": [
-          "1000 points",
-          "High quality images",
-          "Faster Image generation",
-          "Monthly subscription"
+          "1000 Points",
+          "All AI Models Supported",
+          "High-Quality Image Generation",
+          "Image Search Feature",
+          "Priority Processing Queue",
+          "Batch Generation Feature",
+          "Permanent Validity"
         ],
         "recommended": "Recommended"
       },
-      "advanced": {
-        "name": "Advanced Plan",
+      "professional": {
+        "name": "Professional Package",
         "price": "$99.9",
+        "points": 3000,
         "features": [
-          "5000 points",
-          "High quality images",
-          "Faster Image generation",
-          "Annual subscription"
+          "3000 Points",
+          "All AI Models Supported",
+          "High-Quality Image Generation",
+          "Image Search Feature",
+          "Highest Priority Processing",
+          "Batch Generation Feature",
+          "API Access",
+          "Permanent Validity"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise Package",
+        "price": "$249.9",
+        "points": 10000,
+        "features": [
+          "10000 Points",
+          "All AI Models Supported",
+          "High-Quality Image Generation",
+          "Image Search Feature",
+          "Highest Priority Processing",
+          "Batch Generation Feature",
+          "API Access",
+          "Dedicated Customer Support",
+          "Permanent Validity"
         ]
       },
       "common": {
         "buyNowButton": "Buy Now",
-        "subscribeButton": "Subscribe",
         "processingButton": "Processing...",
+        "loginToBuy": "Login to Buy",
+        "pointsLabel": "Points",
+        "permanentValidity": "Permanent Validity",
+        "mostPopular": "Most Popular",
+        "subscribeButton": "Subscribe",
         "comingSoonButton": "Coming Soon"
+      }
+    },
+    "pointsUsage": {
+      "title": "Points Usage Guide",
+      "subtitle": "Points consumed by different features",
+      "models": {
+        "fluxSchnell": {
+          "name": "Flux Schnell",
+          "points": 1,
+          "description": "Fast generation, suitable for testing and preview"
+        },
+        "fluxDev": {
+          "name": "Flux Dev",
+          "points": 3,
+          "description": "Balanced quality and speed, suitable for daily use"
+        },
+        "fluxPro": {
+          "name": "Flux Pro",
+          "points": 8,
+          "description": "Highest quality, suitable for professional creation"
+        },
+        "fluxProUltra": {
+          "name": "Flux 1.1 Pro Ultra",
+          "points": 12,
+          "description": "Ultra-high resolution, latest technology"
+        },
+        "imageSearch": {
+          "name": "Image Search",
+          "points": 1,
+          "description": "Text or image search functionality"
+        },
+        "imageEdit": {
+          "name": "Image Editing Tools",
+          "points": 2,
+          "description": "Canny, Fill, Redux and other tools"
+        }
       }
     }
   },
@@ -290,7 +373,7 @@
     }
   },
   "imagePreview": {
-    "loading": "Creating your masterpiece...",
+    "loading": "Generating...",
     "placeholder": "Your AI-generated image will appear here",
     "downloadButton": "Download",
     "dimensions": {
@@ -356,9 +439,11 @@
     "outputFormatLabel": "Output Format",
     "generateButton": "Generate Image",
     "generatingButton": "Generating...",
-    "freeGenerations": "Free generations",
+    "generatingDescription": "Creating your AI-generated image...",
     "points": "Points",
-    "loginForMore": "Login for more generations",
+    "loginRequired": "Please login to use",
+    "insufficientPoints": "Insufficient points",
+    "purchasePoints": "Purchase Points",
     "error": "An error occurred",
     "guidanceLabel": "Guidance Strength",
     "outputQualityLabel": "Output Quality",
@@ -534,6 +619,132 @@
       "promptLabel": "Prompt",
       "promptPlaceholder": "Enter a prompt, e.g., a car on a city street",
       "promptUpsamplingLabel": "Prompt Upsampling"
+    }
+  },
+  "imageSearch": {
+    "title": "Image Network Search",
+    "subtitle": "Search, discover and save beautiful images from the web",
+    "tabs": {
+      "search": "Search",
+      "saved": "Saved",
+      "history": "History"
+    },
+    "searchTypes": {
+      "text": "Text Search",
+      "image": "Image Search"
+    },
+    "textSearch": {
+      "placeholder": "Enter keywords to search images...",
+      "button": "Search Images",
+      "searching": "Searching..."
+    },
+    "imageSearch": {
+      "title": "Upload Image to Search",
+      "description": "Drag image here, or click to select file",
+      "selectButton": "Select Image",
+      "supportedFormats": "Supports JPG, PNG, GIF formats",
+      "button": "Search Similar Images",
+      "searching": "Searching..."
+    },
+    "filters": {
+      "title": "Advanced Filter Options",
+      "size": {
+        "label": "Image Size",
+        "all": "All Sizes",
+        "small": "Small",
+        "medium": "Medium",
+        "large": "Large",
+        "wallpaper": "Wallpaper"
+      },
+      "color": {
+        "label": "Color",
+        "all": "All Colors",
+        "blackAndWhite": "Black & White",
+        "black": "Black",
+        "white": "White",
+        "yellow": "Yellow",
+        "orange": "Orange",
+        "red": "Red",
+        "purple": "Purple",
+        "magenta": "Magenta",
+        "green": "Green",
+        "teal": "Teal",
+        "blue": "Blue"
+      },
+      "type": {
+        "label": "Image Type",
+        "all": "All Types",
+        "photo": "Photo",
+        "illustration": "Illustration",
+        "vector": "Vector",
+        "animation": "Animation"
+      },
+      "license": {
+        "label": "License",
+        "all": "All Licenses",
+        "free": "Free to Use",
+        "commercial": "Commercial Use",
+        "modify": "Modifiable"
+      },
+      "safeSearch": "Enable Safe Search (filter adult content)"
+    },
+    "results": {
+      "title": "Search Results",
+      "noResults": "No matching images found, please try other keywords",
+      "untitled": "Untitled Image",
+      "noDescription": "No Description"
+    },
+    "savedImages": {
+      "title": "Saved Images",
+      "empty": "No saved images",
+      "loginRequired": "Please login to view and manage your saved images",
+      "loginButton": "Login",
+      "loadMore": "Load More",
+      "unsaveTooltip": "Remove from favorites",
+      "viewOriginalTooltip": "View original image",
+      "downloadTooltip": "Download image",
+      "downloading": "Downloading...",
+      "error": "Failed to load",
+      "retry": "Retry"
+    },
+    "searchHistory": {
+      "title": "Search History",
+      "empty": "No search history",
+      "loginRequired": "Please login to view your search history",
+      "loginButton": "Login",
+      "loadMore": "Load More",
+      "searchTypes": {
+        "text": "Text Search",
+        "image": "Image Search"
+      },
+      "providers": {
+        "prompthero": "PromptHero",
+        "googleVision": "Google Vision"
+      },
+      "resultsCount": "results",
+      "reSearchButton": "Search Again",
+      "deleteTooltip": "Delete search history",
+      "error": "Failed to load",
+      "retry": "Retry",
+      "timeFormats": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "weekdays": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+      }
+    },
+    "actions": {
+      "save": "Save",
+      "unsave": "Unsave",
+      "download": "Download",
+      "viewOriginal": "View Original",
+      "delete": "Delete"
+    },
+    "errors": {
+      "searchFailed": "Search failed",
+      "saveFailed": "Save failed",
+      "loadFailed": "Load failed",
+      "deleteFailed": "Delete failed",
+      "tryAgain": "Please try again later"
     }
   }
 }

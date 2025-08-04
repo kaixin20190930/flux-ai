@@ -30,29 +30,42 @@ interface Transaction {
     // 添加其他可能的用户属性
 }
 
-export async function getUserPoints(env: Env, userId: number): Promise<number | null> {
+export async function getUserPoints(userId: number): Promise<number | null> {
     try {
-        const db = env.DB || env['DB-DEV'];
-        if (!db) throw new Error('No D1 database binding found!');
-        const result = await db.prepare('SELECT points FROM users WHERE id = ?').bind(userId).first();
-        return (result && typeof result.points === 'number') ? result.points : null;
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5秒超时
+        
+        const response = await fetch('https://flux-ai.liukai19911010.workers.dev/getuserpoints', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({userId}),
+            signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        
+        if (!response.ok) {
+            console.error('getUserPoints failed:', response.status, response.statusText);
+            return null;
+        }
+        
+        const data = await response.json() as { points?: number };
+        return typeof data.points === 'number' ? data.points : null;
     } catch (error) {
-        console.error('获取用户点数失败:', error);
+        console.error('getUserPoints error:', error);
         return null;
     }
 }
 
-export async function updateUserPoints(env: Env, userId: number, points: number): Promise<boolean> {
-    try {
-        const db = env.DB || env['DB-DEV'];
-        if (!db) throw new Error('No D1 database binding found!');
-        const result = await db.prepare('UPDATE users SET points = points + ? WHERE id = ?').bind(points, userId).run();
-        // D1Result 没有 changes 属性，判断 success
-        return result.success === true;
-    } catch (error) {
-        console.error('更新用户点数失败:', error);
-        return false;
-    }
+export async function updateUserPoints(userId: number, points: number): Promise<boolean> {
+    const response = await fetch('https://flux-ai.liukai19911010.workers.dev/updateuserpoints', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({userId, points})
+    });
+    if (!response.ok) return false;
+    const data = await response.json() as { success?: boolean };
+    return data.success === true;
 }
 
 export async function updateUserPurchase(points: number, userId: string) {
@@ -109,60 +122,65 @@ export async function getTransaction(sessionId: string) {
 }
 
 // 检查是否登录并消耗点数
-export async function checkAndConsumePoints(env: Env, points: number, token: string): Promise<boolean> {
-    try {
-        const userId = await getUserIdFromToken(token, env);
-        if (!userId) {
-            logWithTimestamp('用户未登录');
-            return false;
-        }
-
-        const db = env.DB || env['DB-DEV'];
-        if (!db) throw new Error('No D1 database binding found!');
-        const user = await db.prepare('SELECT points FROM users WHERE id = ?').bind(userId).first();
-        
-        if (!user || typeof user.points !== 'number') {
-            logWithTimestamp('用户不存在');
-            return false;
-        }
-
-        const currentPoints = user.points;
-        if (currentPoints < points) {
-            logWithTimestamp('积分不足');
-            return false;
-        }
-
-        const newPoints = currentPoints - points;
-        await db.prepare('UPDATE users SET points = ? WHERE id = ?').bind(newPoints, userId).run();
-        logWithTimestamp(`用户 ${userId} 消费 ${points} 积分，剩余 ${newPoints} 积分`);
-        
-        return true;
-    } catch (error) {
-        logWithTimestamp('消费积分失败:', error);
-        return false;
-    }
+export async function checkAndConsumePoints(points: number, token: string): Promise<boolean> {
+    const response = await fetch('https://flux-ai.liukai19911010.workers.dev/checkAndConsumePoints', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({points, token})
+    });
+    if (!response.ok) return false;
+    const data = await response.json() as { success?: boolean };
+    return data.success === true;
 }
 
-export async function recordGeneration(env: Env, userId: number, modelType: string, prompt: string, imageUrl: string, pointsConsumed: number): Promise<boolean> {
-    try {
-        const db = env.DB || env['DB-DEV'];
-        if (!db) throw new Error('No D1 database binding found!');
-        const result = await db.prepare('INSERT INTO generations (user_id, model_type, prompt, image_url, points_consumed) VALUES (?, ?, ?, ?, ?)').bind(userId, modelType, prompt, imageUrl, pointsConsumed).run();
-        return result.success === true;
-    } catch (error) {
-        console.error('记录生成历史失败:', error);
-        return false;
-    }
+export async function recordGeneration(userId: number, modelType: string, prompt: string, imageUrl: string, pointsConsumed: number): Promise<boolean> {
+    const response = await fetch('https://flux-ai.liukai19911010.workers.dev/recordGeneration', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({userId, modelType, prompt, imageUrl, pointsConsumed})
+    });
+    if (!response.ok) return false;
+    const data = await response.json() as { success?: boolean };
+    return data.success === true;
 }
 
-export async function recordToolUsage(env: Env, userId: number, toolType: string, inputImageUrl: string, outputImageUrl: string, pointsConsumed: number): Promise<boolean> {
-    try {
-        const db = env.DB || env['DB-DEV'];
-        if (!db) throw new Error('No D1 database binding found!');
-        const result = await db.prepare('INSERT INTO flux_tools_usage (user_id, tool_type, input_image_url, output_image_url, points_consumed) VALUES (?, ?, ?, ?, ?)').bind(userId, toolType, inputImageUrl, outputImageUrl, pointsConsumed).run();
-        return result.success === true;
-    } catch (error) {
-        console.error('记录工具使用历史失败:', error);
-        return false;
-    }
+export async function recordToolUsage(userId: number, toolType: string, inputImageUrl: string, outputImageUrl: string, pointsConsumed: number): Promise<boolean> {
+    const response = await fetch('https://flux-ai.liukai19911010.workers.dev/recordToolUsage', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({userId, toolType, inputImageUrl, outputImageUrl, pointsConsumed})
+    });
+    if (!response.ok) return false;
+    const data = await response.json() as { success?: boolean };
+    return data.success === true;
+}
+
+export async function getGenerationRecord(userId: number) {
+    const response = await fetch('https://flux-ai.liukai19911010.workers.dev/getGenerationRecord', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({userId})
+    });
+    if (!response.ok) return null;
+    return await response.json();
+}
+
+export async function updateGenerationRecord(userId: number, data: any) {
+    const response = await fetch('https://flux-ai.liukai19911010.workers.dev/updateGenerationRecord', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({userId, data})
+    });
+    if (!response.ok) return null;
+    return await response.json();
+}
+
+export async function checkRateLimit(userId: number) {
+    const response = await fetch('https://flux-ai.liukai19911010.workers.dev/checkRateLimit', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({userId})
+    });
+    if (!response.ok) return true;
+    return (await response.json() as any).allowed;
 }

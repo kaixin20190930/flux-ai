@@ -6,19 +6,21 @@ import {
     OUTPUT_FORMATS,
 } from '@/public/constants/constants';
 import ImageUpload from "@/components/ImageUpload";
-import {Dictionary} from '@/app/i18n/settings';
+;
 
 interface DepthConfig {
+    seed: number;
     steps: number;
     prompt: string;
     guidance: number;
     output_format: string;
+    image: string;
     safety_tolerance: number;
     prompt_upsampling: boolean;
 }
 
 interface DepthGeneratorProps {
-    dictionary: Dictionary;
+    dictionary: any;
     locale: string;
     config: DepthConfig;
 }
@@ -101,6 +103,7 @@ const DepthGenerator = ({dictionary, locale, config}: DepthGeneratorProps) => {
             const response = await fetch('/api/flux-tools/depth', {
                 method: 'POST',
                 body: formData,
+                credentials: 'include',
                 headers: {
                     'Accept': 'application/json'
                 }
@@ -273,7 +276,10 @@ const DepthGenerator = ({dictionary, locale, config}: DepthGeneratorProps) => {
                                 className="w-full py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 disabled:bg-white/50 disabled:text-indigo-400 transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center gap-2"
                             >
                                 {state.isLoading ? 'Generating...' : 'Generate (Cost: 2 points)'}
-                                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" strokeWidth="2"
+                                     viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
                             </button>
 
                             {/* Error Message */}

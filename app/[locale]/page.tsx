@@ -1,7 +1,7 @@
 'use client'
 
 import {useEffect, useState} from 'react'
-import {getDictionary} from '../i18n/utils'
+import {getany} from '../i18n/utils'
 import {useParams} from 'next/navigation'
 import {Features} from '@/components/Features'
 import {Examples} from '@/components/Examples'
@@ -10,20 +10,19 @@ import {FAQ} from '@/components/FAQ'
 import {Hero} from "@/components/Hero"
 import Pricing from "@/components/Pricing"
 import FluxModelsComparison from "@/components/FluxModelsComparison"
-import type {Dictionary} from '../i18n/settings'
 
 export default function Home() {
     const params = useParams()
-    const [dictionary, setDictionary] = useState<Dictionary | null>(null)
+    const [dictionary, setany] = useState<any | null>(null)
     const [showHeader, setShowHeader] = useState(false)
     const locale = params?.locale as string || 'en'
 
     useEffect(() => {
-        const loadDictionary = async () => {
-            const dict = await getDictionary(locale)
-            setDictionary(dict)
+        const loadany = async () => {
+            const dict = await getany(locale)
+            setany(dict)
         }
-        loadDictionary()
+        loadany()
     }, [locale])
 
     useEffect(() => {
@@ -34,7 +33,19 @@ export default function Home() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    if (!dictionary) return null
+    // 显示加载状态而不是返回null
+    if (!dictionary) {
+        return (
+            <div className="flex flex-col min-h-screen">
+                <main className="flex-grow flex items-center justify-center">
+                    <div className="text-center">
+                        <div className="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin mx-auto mb-4"></div>
+                        <p className="text-gray-600">Loading...</p>
+                    </div>
+                </main>
+            </div>
+        )
+    }
 
     return (
         <div className="flex flex-col min-h-screen">

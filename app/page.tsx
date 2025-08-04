@@ -3,11 +3,11 @@ import {HomePage} from '@/components/HomePage'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import {AutoLogoutWarning} from "@/components/AutoLogoutWarning"
-import {getDictionary} from './i18n/utils'
+import {getany} from './i18n/utils'
 import {defaultLocale} from './i18n/settings'
 
 export default async function RootPage() {
-    const dictionary = await getDictionary(defaultLocale)
+    const dictionary = await getany(defaultLocale)
 
     return (
         <>

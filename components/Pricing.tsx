@@ -3,10 +3,10 @@
 import React, {useState} from 'react';
 import {stripePromise} from '@/utils/stripe';
 import {logWithTimestamp} from "@/utils/logUtils";
-import type {Dictionary} from '@/app/i18n/settings';
+;
 
 interface PricingProps {
-    dictionary: Dictionary;
+    dictionary: any;
     locale: string;
 }
 
@@ -21,7 +21,7 @@ interface PricingTierProps {
     purchaseType: 'onetime' | 'monthly' | 'yearly';
     points?: number;
     disabled?: boolean;
-    buttonTexts: Dictionary['pricing']['tiers']['common'];
+    buttonTexts: any['pricing']['tiers']['common'];
 }
 
 const PricingTier: React.FC<PricingTierProps> = ({
@@ -71,24 +71,24 @@ const PricingTier: React.FC<PricingTierProps> = ({
 
     return (
         <div
-            className={`bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col ${tier.recommended ? 'border-4 border-indigo-500' : ''}`}>
-            {tier.recommended && (
+            className={`bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col ${tier?.recommended ? 'border-4 border-indigo-500' : ''}`}>
+            {tier?.recommended && (
                 <div className="bg-indigo-500 text-white text-center py-2 font-semibold">
                     {tier.recommended}
                 </div>
             )}
             <div className="px-6 py-8 flex-grow">
-                <h3 className="text-2xl font-semibold text-gray-900">{tier.name}</h3>
-                <p className="mt-4 text-4xl font-extrabold text-gray-900">{tier.price}</p>
+                <h3 className="text-2xl font-semibold text-gray-900">{tier?.name || 'Package'}</h3>
+                <p className="mt-4 text-4xl font-extrabold text-gray-900">{tier?.price || '$0'}</p>
                 <p className="mt-1 text-gray-500">
                     {purchaseType === 'onetime'
-                        ? `${points} points`
+                        ? `${points || 0} points`
                         : purchaseType === 'monthly'
                             ? 'per month'
                             : 'per year'}
                 </p>
                 <ul className="mt-6 space-y-4">
-                    {tier.features.map((feature, index) => (
+                    {(tier?.features || []).map((feature, index) => (
                         <li key={index} className="flex items-start">
                             <svg className="flex-shrink-0 h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
@@ -143,24 +143,24 @@ const Pricing: React.FC<PricingProps> = ({dictionary}) => {
                     </div>
                     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                         <PricingTier
-                            tier={pricing.tiers.basic}
+                            tier={pricing.tiers.basic || { name: 'Basic', price: '$14.9', features: [] }}
                             priceId={process.env.NEXT_PUBLIC_STRIPE_BASIC_PRICE_ID!}
                             purchaseType="onetime"
-                            points={200}
-                            buttonTexts={pricing.tiers.common}
+                            points={300}
+                            buttonTexts={pricing.tiers.common || { buyNowButton: 'Buy Now', processingButton: 'Processing...', comingSoonButton: 'Coming Soon', subscribeButton: 'Subscribe' }}
                         />
                         <PricingTier
-                            tier={pricing.tiers.premium}
+                            tier={pricing.tiers.premium || { name: 'Premium', price: '$39.9', features: [] }}
                             priceId={process.env.NEXT_PUBLIC_STRIPE_PRO_MONTH_PRICE_ID!}
-                            purchaseType="monthly"
-                            disabled={true}
+                            purchaseType="onetime"
+                            points={1000}
                             buttonTexts={pricing.tiers.common}
                         />
                         <PricingTier
-                            tier={pricing.tiers.advanced}
+                            tier={pricing.tiers.professional || { name: 'Professional', price: '$99.9', features: [] }}
                             priceId={process.env.NEXT_PUBLIC_STRIPE_PRO_YEAR_PRICE_ID!}
-                            purchaseType="yearly"
-                            disabled={true}
+                            purchaseType="onetime"
+                            points={3000}
                             buttonTexts={pricing.tiers.common}
                         />
                     </div>

@@ -3,19 +3,18 @@ import React from 'react';
 import Link from 'next/link';
 import {Crown} from 'lucide-react';
 import {useImageGeneration} from '@/hooks/useImageGeneration';
+import {useUnifiedAuth} from '@/hooks/useUnifiedAuth';
 import {
     MODEL_CONFIG,
     ICON_COMPONENTS,
     ASPECT_RATIOS,
     OUTPUT_FORMATS,
-    MAX_DAILY_GENERATIONS,
 } from '@/public/constants/constants';
+import { getModelPoints } from '@/utils/pointsSystem';
 import type {ModelType} from '@/public/types/type';
 import ImagePreview from "@/components/ImagePreview";
-import type {Dictionary} from '@/app/i18n/settings';
-
 interface AIImageGeneratorProps {
-    dictionary: Dictionary;
+    dictionary: any;
     locale: string
 }
 
@@ -26,18 +25,63 @@ export const AIImageGenerator: React.FC<AIImageGeneratorProps> = ({dictionary, l
         handleGenerate,
         handleDownload,
     } = useImageGeneration(locale);
+    
+    // 使用统一认证系统
+    const { user, isLoggedIn, userPoints, loading: authLoading } = useUnifiedAuth();
+
+    // 同步认证状态到useImageGeneration
+    React.useEffect(() => {
+        if (!authLoading) {
+            updateState({
+                isLoggedIn,
+                userPoints,
+                userId: user?.userId || null
+            });
+        }
+    }, [isLoggedIn, userPoints, user?.userId, authLoading, updateState]);
+
+    // 如果认证还在加载中，显示加载状态
+    if (authLoading) {
+        return (
+            <div className="h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white flex items-center justify-center">
+                <div className="text-center">
+                    <div className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
+                    <p className="text-white/80">Loading AI Image Generator...</p>
+                </div>
+            </div>
+        );
+    }
 
     const isButtonDisabled = (): boolean => {
         const model = state.selectedModel as ModelType;
-        const isPremiumUnavailable = MODEL_CONFIG[model].isPremium &&
-            (!state.isLoggedIn || (state.userPoints !== null && state.userPoints < MODEL_CONFIG[model].points));
-
+        const requiredPoints = getModelPoints(model);
+        
         return Boolean(
             state.isLoading ||
+            authLoading ||
             !state.prompt ||
-            (state.remainingFreeGenerations <= 0 && (state.userPoints === null || state.userPoints <= 0)) ||
-            isPremiumUnavailable
+            !isLoggedIn ||
+            (userPoints !== null && userPoints < requiredPoints)
         );
+    };
+
+    const getButtonText = (): string => {
+        if (state.isLoading || authLoading) {
+            return dictionary.imageGenerator.generatingButton;
+        }
+        
+        if (!isLoggedIn) {
+            return dictionary.imageGenerator.loginRequired;
+        }
+        
+        const model = state.selectedModel as ModelType;
+        const requiredPoints = getModelPoints(model);
+        
+        if (userPoints !== null && userPoints < requiredPoints) {
+            return dictionary.imageGenerator.insufficientPoints;
+        }
+        
+        return dictionary.imageGenerator.generateButton;
     };
 
     return (
@@ -152,11 +196,14 @@ export const AIImageGenerator: React.FC<AIImageGeneratorProps> = ({dictionary, l
                         <button
                             onClick={handleGenerate}
                             disabled={isButtonDisabled()}
-                            className="w-full py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 disabled:bg-white/50 disabled:text-indigo-400 transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center gap-2 "
+                            className="w-full py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 disabled:bg-white/50 disabled:text-indigo-400 transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center gap-2"
                         >
-                            {state.isLoading ? dictionary.imageGenerator.generatingButton : dictionary.imageGenerator.generateButton}
+                            {state.isLoading && (
+                                <div className="w-5 h-5 border-2 border-indigo-600/30 border-t-indigo-600 rounded-full animate-spin mr-2"></div>
+                            )}
+                            {getButtonText()}
                             {MODEL_CONFIG[state.selectedModel].isPremium &&
-                                (!state.isLoggedIn || (state.userPoints !== null && state.userPoints < MODEL_CONFIG[state.selectedModel].points)) && (
+                                (!isLoggedIn || (userPoints !== null && userPoints < MODEL_CONFIG[state.selectedModel].points)) && (
                                     <Crown className="w-4 h-4 text-indigo-400"/>
                                 )}
                         </button>
@@ -168,18 +215,29 @@ export const AIImageGenerator: React.FC<AIImageGeneratorProps> = ({dictionary, l
                             </div>
                         )}
                         <div className="text-indigo-200 px-4 py-2 bg-indigo-500/10 rounded-lg">
-                            <p>
-                                {dictionary.imageGenerator.freeGenerations} {state.remainingFreeGenerations} / {MAX_DAILY_GENERATIONS}
-                                {state.isLoggedIn && state.userPoints !== null && (
-                                    <span className="ml-4">
-                    {dictionary.imageGenerator.points}: {state.userPoints}
-                  </span>
-                                )}
-                            </p>
-                            {state.remainingFreeGenerations <= 0 && !state.isLoggedIn && (
-                                <p className="mt-1">
-                                    <Link href="/auth" className="underline hover:text-white">
-                                        {dictionary.imageGenerator.loginForMore}
+                            {authLoading ? (
+                                <p>Loading...</p>
+                            ) : isLoggedIn ? (
+                                <p>
+                                    {dictionary.imageGenerator.points}: {userPoints || 0}
+                                    <span className="ml-4 text-sm opacity-75">
+                                        ({getModelPoints(state.selectedModel)} {dictionary.imageGenerator.points.toLowerCase()} / {dictionary.imageGenerator.generateButton.toLowerCase()})
+                                    </span>
+                                </p>
+                            ) : (
+                                <p>
+                                    {dictionary.imageGenerator.loginRequired}
+                                    <Link href={`/${locale}/auth`} className="ml-2 underline hover:text-white">
+                                        {dictionary.auth?.signIn || 'Login'}
+                                    </Link>
+                                </p>
+                            )}
+                            
+                            {isLoggedIn && userPoints !== null && userPoints < getModelPoints(state.selectedModel) && (
+                                <p className="mt-1 text-yellow-300">
+                                    {dictionary.imageGenerator.insufficientPoints}
+                                    <Link href={`/${locale}/pricing`} className="ml-2 underline hover:text-white">
+                                        {dictionary.imageGenerator.purchasePoints}
                                     </Link>
                                 </p>
                             )}

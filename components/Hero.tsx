@@ -5,10 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {motion} from 'framer-motion'
 import {ArrowRight} from 'lucide-react'
-import type {Dictionary} from '@/app/i18n/settings'
 
 interface HeroProps {
-    dictionary: Dictionary;
+    dictionary: any;
     locale: string;
 }
 

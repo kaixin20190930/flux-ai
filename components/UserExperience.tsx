@@ -1,9 +1,8 @@
 import React from 'react';
 import {Camera, Wand2, Sliders, Download} from 'lucide-react';
-import type {Dictionary} from '@/app/i18n/settings'
 
 interface UserExperienceProps {
-    dictionary: Dictionary
+    dictionary: any
 }
 
 export const UserExperience: React.FC<UserExperienceProps> = ({dictionary}) => {

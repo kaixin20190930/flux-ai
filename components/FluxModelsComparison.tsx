@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {Zap, Code, Wand2, Crown, Sparkles, Star, Terminal, CheckCheck, Copy, ThumbsUp} from 'lucide-react';
-import type {Dictionary} from '@/app/i18n/settings'
+
 
 interface FluxModelsComparisonProps {
-    dictionary: Dictionary
+    dictionary: any
 }
 
 const FluxModelsComparison: React.FC<FluxModelsComparisonProps> = ({dictionary}) => {
@@ -145,7 +145,7 @@ const FluxModelsComparison: React.FC<FluxModelsComparisonProps> = ({dictionary})
                                                         {dictionary.modelComparison.modelDetails.bestFor}
                                                     </h4>
                                                     <div className="flex flex-wrap gap-2">
-                                                        {model.suitableFor.map((use, idx) => (
+                                                        {model.suitableFor.map((use: string, idx: number) => (
                                                             <span
                                                                 key={idx}
                                                                 className="bg-white/10 rounded-full px-3 py-1 text-xs text-indigo-200"
@@ -232,7 +232,7 @@ const FluxModelsComparison: React.FC<FluxModelsComparisonProps> = ({dictionary})
                                         {dictionary.modelComparison.modelDetails.keyFeatures}
                                     </h4>
                                     <ul className="grid grid-cols-2 gap-2">
-                                        {selectedModel.features.map((feature, idx) => (
+                                        {selectedModel.features.map((feature: string, idx: number) => (
                                             <li key={idx} className="text-indigo-200 text-sm flex items-center gap-2">
                                                 <div className="w-1 h-1 bg-purple-400 rounded-full"/>
                                                 {feature}

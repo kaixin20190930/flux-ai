@@ -4,13 +4,15 @@ import Footer from '@/components/Footer'
 import '@/styles/globals.css'
 import type {Metadata} from 'next'
 import {AutoLogoutWarning} from "@/components/AutoLogoutWarning"
-import {getDictionary} from './i18n/utils'
+import {getany} from './i18n/utils'
 import {defaultLocale} from './i18n/settings'
 import Script from "next/script";
+import { initializePerformanceMonitoring } from '@/utils/performanceInit';
+import { ErrorNotificationContainer } from '@/components/ErrorNotification';
 
 // 为根路径生成 metadata
 export async function generateMetadata(): Promise<Metadata> {
-    const dictionary = await getDictionary(defaultLocale)
+    const dictionary = await getany(defaultLocale)
 
     return {
         title: {
@@ -122,7 +124,7 @@ export default async function RootLayout({
                                          }: {
     children: React.ReactNode
 }) {
-    const dictionary = await getDictionary(defaultLocale)
+    const dictionary = await getany(defaultLocale)
 
     return (
         <html>
@@ -138,6 +140,111 @@ export default async function RootLayout({
         </head>
         <body className="flex flex-col min-h-screen">
         {children}
+        <ErrorNotificationContainer />
+        <Script id="performance-init" strategy="afterInteractive">
+          {`
+            // 初始化客户端性能监控和错误处理
+            if (typeof window !== 'undefined') {
+              // 设置全局错误处理器
+              window.addEventListener('error', function(event) {
+                // 发送错误到性能监控
+                fetch('/api/performance/metrics', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    name: 'client.javascript_error',
+                    value: 1,
+                    unit: 'count',
+                    context: {
+                      message: event.message,
+                      filename: event.filename,
+                      lineno: event.lineno,
+                      colno: event.colno,
+                      userAgent: navigator.userAgent,
+                      url: window.location.href,
+                      timestamp: new Date().toISOString()
+                    }
+                  })
+                }).catch(function() {});
+              });
+
+              // 处理未捕获的Promise拒绝
+              window.addEventListener('unhandledrejection', function(event) {
+                fetch('/api/performance/metrics', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    name: 'client.unhandled_rejection',
+                    value: 1,
+                    unit: 'count',
+                    context: {
+                      reason: String(event.reason),
+                      userAgent: navigator.userAgent,
+                      url: window.location.href,
+                      timestamp: new Date().toISOString()
+                    }
+                  })
+                }).catch(function() {});
+              });
+              
+              window.addEventListener('load', function() {
+                // 记录页面性能指标
+                setTimeout(function() {
+                  const navigation = performance.getEntriesByType('navigation')[0];
+                  if (navigation) {
+                    // 页面加载时间
+                    fetch('/api/performance/metrics', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        name: 'client.page_load_time',
+                        value: navigation.loadEventEnd - navigation.fetchStart,
+                        unit: 'ms',
+                        context: {
+                          url: window.location.pathname,
+                          userAgent: navigator.userAgent
+                        }
+                      })
+                    }).catch(function() {});
+
+                    // DOM内容加载时间
+                    fetch('/api/performance/metrics', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        name: 'client.dom_content_loaded',
+                        value: navigation.domContentLoadedEventEnd - navigation.fetchStart,
+                        unit: 'ms',
+                        context: {
+                          url: window.location.pathname,
+                          userAgent: navigator.userAgent
+                        }
+                      })
+                    }).catch(function() {});
+
+                    // 首次内容绘制时间
+                    const paintEntries = performance.getEntriesByType('paint');
+                    paintEntries.forEach(function(entry) {
+                      fetch('/api/performance/metrics', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          name: 'client.' + entry.name.replace('-', '_'),
+                          value: entry.startTime,
+                          unit: 'ms',
+                          context: {
+                            url: window.location.pathname,
+                            userAgent: navigator.userAgent
+                          }
+                        })
+                      }).catch(function() {});
+                    });
+                  }
+                }, 0);
+              });
+            }
+          `}
+        </Script>
         </body>
         </html>
     )

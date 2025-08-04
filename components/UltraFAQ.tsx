@@ -2,10 +2,9 @@
 
 import React, {useState} from 'react';
 import {ChevronDown, ChevronUp} from 'lucide-react';
-import type {Dictionary} from '@/app/i18n/settings'
 
 interface UltraFAQProps {
-    dictionary: Dictionary
+    dictionary: any
 }
 
 interface FAQItemProps {
@@ -57,7 +56,7 @@ export const UltraFAQ: React.FC<UltraFAQProps> = ({dictionary}) => {
 
                 <div
                     className="max-w-3xl mx-auto bg-white/10 backdrop-filter backdrop-blur-sm rounded-xl shadow-lg overflow-hidden">
-                    {dictionary.faqData.map((faq, index) => (
+                    {dictionary.faqData.map((faq: any, index: number) => (
                         <FAQItem
                             key={index}
                             question={faq.question}

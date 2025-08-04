@@ -8,7 +8,7 @@ import {
 } from '@/public/constants/constants';
 import type {GenerationState, GenerationData} from '@/public/types/type';
 import {useRouter} from "next/navigation";
-import type {Dictionary} from "@/app/i18n/settings";
+
 
 
 export const useImageGeneration = (locale: string) => {
@@ -50,34 +50,30 @@ export const useImageGeneration = (locale: string) => {
     }, []);
 
     const handleGenerate = useCallback(async () => {
-        const {prompt, selectedModel, userPoints, isLoggedIn} = state;
-        // 检查登录状态
-        if (!isLoggedIn) {
-            router.push(`/${locale}/auth`);
-            return;
-        }
-        if (!prompt.trim()) {
+        if (!state.prompt.trim()) {
             setState(prev => ({...prev, error: ERROR_MESSAGES.INVALID_PROMPT}));
-            return;
-        }
-
-        if (state.remainingFreeGenerations <= 0 && !isLoggedIn) {
-            setState(prev => ({...prev, error: ERROR_MESSAGES.DAILY_LIMIT_REACHED}));
             return;
         }
 
         setState(prev => ({...prev, isLoading: true, error: null}));
 
         try {
+            // 使用当前状态中的认证信息，不再重新获取
+            if (!state.isLoggedIn) {
+                router.push(`/${locale}/auth`);
+                return;
+            }
+
             const response = await fetch('/api/generate', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    prompt,
-                    model: selectedModel,
+                    prompt: state.prompt,
+                    model: state.selectedModel,
                     aspectRatio: state.aspectRatio,
                     format: state.outputFormat,
-                    ...(isLoggedIn && {userPoints, userId: state.userId})
+                    userPoints: state.userPoints,
+                    userId: state.userId
                 })
             });
 
@@ -90,8 +86,9 @@ export const useImageGeneration = (locale: string) => {
             setState(prev => ({
                 ...prev,
                 generatedImage: data.image,
-                remainingFreeGenerations: data.remainingFreeGenerations,
-                userPoints: isLoggedIn ? data.userPoints : prev.userPoints
+                remainingFreeGenerations: data.remainingFreeGenerations || prev.remainingFreeGenerations,
+                userPoints: data.userPoints || prev.userPoints,
+                imageDimensions: data.imageDimensions || null
             }));
         } catch (error) {
             setState(prev => ({
@@ -101,7 +98,7 @@ export const useImageGeneration = (locale: string) => {
         } finally {
             setState(prev => ({...prev, isLoading: false}));
         }
-    }, [state]);
+    }, [state.prompt, state.selectedModel, state.aspectRatio, state.outputFormat, locale, router]);
 
     const handleDownload = useCallback(() => {
         if (state.generatedImage) {

@@ -4,10 +4,9 @@
 import React from 'react'
 import Link from 'next/link'
 import {useParams} from 'next/navigation'
-import type {Dictionary} from '@/app/i18n/settings'
 
 interface FooterProps {
-    dictionary: Dictionary
+    dictionary: any
 }
 
 const Footer: React.FC<FooterProps> = ({dictionary}) => {

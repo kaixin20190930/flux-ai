@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 登录功能测试</h1>
+        
+        <div class="form-group">
+            <label for="email">邮箱:</label>
+            <input type="email" id="email" value="test@example.com">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">密码:</label>
+            <input type="password" id="password" value="password">
+        </div>
+        
+        <button onclick="testLogin()">测试登录</button>
+        <button onclick="testAuthStatus()">检查认证状态</button>
+        <button onclick="clearAuth()">清除认证</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function showResult(message, type = 'info') {
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = `result ${type}`;
+            resultDiv.textContent = message;
+        }
+
+        async function testLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                showResult('正在登录...', 'info');
+                
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password }),
+                    credentials: 'include'
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // 设置cookie和localStorage
+                    document.cookie = `token=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax`;
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    showResult(`✅ 登录成功！
+用户信息: ${JSON.stringify(data.user, null, 2)}
+Token: ${data.token.substring(0, 50)}...`, 'success');
+                } else {
+                    showResult(`❌ 登录失败: ${data.error}`, 'error');
+                }
+            } catch (error) {
+                showResult(`❌ 网络错误: ${error.message}`, 'error');
+            }
+        }
+
+        async function testAuthStatus() {
+            try {
+                showResult('正在检查认证状态...', 'info');
+                
+                const response = await fetch('/api/test-auth', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                
+                const data = await response.json();
+                
+                showResult(`📊 认证状态:
+${JSON.stringify(data, null, 2)}`, 'info');
+                
+            } catch (error) {
+                showResult(`❌ 检查失败: ${error.message}`, 'error');
+            }
+        }
+
+        function clearAuth() {
+            // 清除cookie
+            document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Lax';
+            // 清除localStorage
+            localStorage.removeItem('user');
+            
+            showResult('🧹 认证数据已清除', 'success');
+        }
+
+        // 页面加载时检查当前状态
+        window.onload = function() {
+            const user = localStorage.getItem('user');
+            const hasToken = document.cookie.includes('token=');
+            
+            if (user && hasToken) {
+                showResult(`当前已登录用户: ${user}`, 'success');
+            } else {
+                showResult('当前未登录', 'info');
+            }
+        };
+    </script>
+</body>
+</html>

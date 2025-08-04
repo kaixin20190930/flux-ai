@@ -1,9 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import type {Dictionary} from '@/app/i18n/settings'
 
 interface FeaturesProps {
-    dictionary: Dictionary
+    dictionary: any
     locale: string
 }
 
