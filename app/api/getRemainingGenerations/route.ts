@@ -8,6 +8,7 @@ const MAX_DAILY_GENERATIONS = 3;
 
 // 移除edge runtime以提高稳定性
 // export const runtime = 'edge';
+export const dynamic = 'force-dynamic'
 
 export async function GET(req: NextRequest) {
     try {

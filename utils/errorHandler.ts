@@ -202,6 +202,17 @@ export class ErrorHandler {
   private static inferErrorCode(error: Error): ErrorCode {
     const message = error.message.toLowerCase();
     
+    // 检查是否是 Next.js 构建时的动态服务器使用错误
+    if (message.includes('dynamic server usage') || 
+        message.includes("couldn't be rendered statically") ||
+        message.includes('used `headers`') ||
+        message.includes('used `cookies`') ||
+        message.includes('used `request.')) {
+      // 这些是构建时错误，不是真正的数据库错误
+      console.warn('Next.js build-time dynamic usage detected:', message);
+      return ErrorCode.VALIDATION_ERROR; // 使用较轻的错误级别
+    }
+    
     if (message.includes('unauthorized') || message.includes('authentication')) {
       return ErrorCode.UNAUTHORIZED;
     }

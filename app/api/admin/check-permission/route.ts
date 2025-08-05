@@ -7,6 +7,7 @@ import { AppErrorClass, ErrorCode } from '@/types/database';
 const ADMIN_USER_IDS = process.env.ADMIN_USER_IDS ? process.env.ADMIN_USER_IDS.split(',') : [];
 
 export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
 export async function GET(request: NextRequest) {
   try {
     // 获取当前会话

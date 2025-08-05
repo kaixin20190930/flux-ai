@@ -3,6 +3,7 @@ import { Database } from '@/utils/db';
 import { Env } from '@/worker/types';
 
 export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
 export async function GET(request: NextRequest) {
     try {
         const searchParams = request.nextUrl.searchParams;
