@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 验证密码
-    const isValidPassword = await await EdgeAuth.verifyPassword(password, user.password);
+    const isValidPassword = await EdgeAuth.verifyPassword(password, user.password);
     if (!isValidPassword) {
       return NextResponse.json(
         { error: 'Invalid credentials' },

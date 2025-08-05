@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 加密密码
-    const hashedPassword = await await EdgeAuth.hashPassword(password, 10);
+    const hashedPassword = await EdgeAuth.hashPassword(password);
 
     // 创建新用户
     const newUser = {

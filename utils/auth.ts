@@ -4,7 +4,7 @@ import { Env } from '@/worker/types';
 import * as workerJwt from '@tsndr/cloudflare-worker-jwt';
 
 export async function hashPassword(password: string): Promise<string> {
-    return EdgeAuth.hashPassword(password, 10);
+    return EdgeAuth.hashPassword(password);
 }
 
 export async function verifyPassword(password: string, hashedPassword: string): Promise<boolean> {
