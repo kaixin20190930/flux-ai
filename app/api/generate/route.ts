@@ -27,7 +27,7 @@ const replicate = new Replicate({
 const MAX_DAILY_GENERATIONS = 3;
 const COOKIE_NAME = 'fluxAIGenerations';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {

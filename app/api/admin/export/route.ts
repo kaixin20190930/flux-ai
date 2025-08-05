@@ -7,6 +7,8 @@ import { Env } from '@/worker/types';
 import { cookies } from 'next/headers';
 import { verifyAdminAccess } from '@/utils/authUtils';
 
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
 export async function POST(request: NextRequest) {
   try {
     // 获取当前会话

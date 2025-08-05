@@ -9,7 +9,10 @@
     "lint": "next lint",
     "type-check": "tsc",
     "build:clean": "node scripts/build-with-ignore.js",
-    "build:force": "NEXT_TELEMETRY_DISABLED=1 next build"
+    "build:force": "NEXT_TELEMETRY_DISABLED=1 next build",
+    "build:cloudflare": "npx @cloudflare/next-on-pages@1",
+    "deploy:cloudflare": "node scripts/deploy-cloudflare.js",
+    "preview:cloudflare": "npx wrangler pages dev .vercel/output/static"
   },
   "dependencies": {
     "@cloudflare/workers-types": "^4.20240821.1",

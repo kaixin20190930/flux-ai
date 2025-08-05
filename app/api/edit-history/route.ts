@@ -4,6 +4,8 @@ import { getUserFromRequest } from '../../../utils/auth';
 import { saveEditHistory, getEditHistoryByGenerationId } from '../../../utils/dao';
 import { handleApiError } from '../../../utils/errorHandler';
 
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
 export async function POST(request: NextRequest) {
   try {
     // Get user from request

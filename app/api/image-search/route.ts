@@ -17,6 +17,8 @@ function createEnv(request: NextRequest): { DB: any; 'DB-DEV': any; JWT_SECRET: 
   };
 }
 
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
 export async function POST(request: NextRequest) {
   try {
     const body: { 

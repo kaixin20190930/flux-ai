@@ -14,6 +14,8 @@ function createEnv(request: NextRequest): Env {
   };
 }
 
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
 export async function GET(request: NextRequest) {
   try {
     // 获取用户信息

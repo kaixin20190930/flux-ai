@@ -1,5 +1,7 @@
 'use client'
 
+export const runtime = 'edge'
+
 import { useEffect, useState } from 'react'
 import { useUnifiedAuth } from '@/hooks/useUnifiedAuth'
 import { logAuthDebugInfo, checkAuthConsistency } from '@/utils/authDebug'

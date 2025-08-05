@@ -7,6 +7,8 @@ interface ConsumePointsRequest {
     type: string;
 }
 
+export const runtime = 'edge'
+export const dynamic = 'force-dynamic'
 export async function POST(req: NextRequest) {
     try {
         console.log('收到consume points请求');

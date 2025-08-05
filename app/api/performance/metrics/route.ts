@@ -5,6 +5,8 @@ import { ErrorHandler } from '@/utils/errorHandler';
 import { ErrorCode } from '@/types/database';
 
 // GET /api/performance/metrics - 获取性能指标
+export const runtime = 'edge'
+export const dynamic = 'force-dynamic'
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);

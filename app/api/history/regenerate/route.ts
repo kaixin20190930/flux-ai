@@ -41,6 +41,8 @@ function createEnv(request: NextRequest): Env {
 }
 
 // 重新生成图像
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
 export async function POST(request: NextRequest) {
   try {
     // 获取用户ID
