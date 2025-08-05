@@ -10,8 +10,11 @@ interface ReplicateResponse {
     output: string;
 }
 
-export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
+
+// 强制使用 Edge Runtime (Cloudflare Pages 要求)
+export const runtime = 'edge';
+
 export async function POST(req: NextRequest) {
     try {
         console.log('收到depth请求');

@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
 import { ErrorHandler } from '@/utils/errorHandler';
 import { AppErrorClass, ErrorCode } from '@/types/database';
 import { SystemMetricsDAO, UserAnalyticsDAO, GenerationHistoryDAO, BatchJobDAO } from '@/utils/dao';
@@ -7,8 +6,11 @@ import { Env } from '@/worker/types';
 import { cookies } from 'next/headers';
 import { verifyAdminAccess } from '@/utils/authUtils';
 
-export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
+
+// 强制使用 Edge Runtime (Cloudflare Pages 要求)
+export const runtime = 'edge';
+
 export async function POST(request: NextRequest) {
   try {
     // 获取当前会话

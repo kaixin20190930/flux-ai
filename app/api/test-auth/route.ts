@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getUserFromCookie } from '@/utils/authUtils';
 
-export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
+
+// 强制使用 Edge Runtime (Cloudflare Pages 要求)
+export const runtime = 'edge';
+
 export async function GET(request: NextRequest) {
   const result: any = {
     timestamp: new Date().toISOString(),

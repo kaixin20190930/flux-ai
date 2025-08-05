@@ -7,8 +7,11 @@ import {logWithTimestamp} from '../../../utils/logUtils';
 const MAX_DAILY_GENERATIONS = 3;
 
 // 移除edge runtime以提高稳定性
-// export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
+
+
+// 强制使用 Edge Runtime (Cloudflare Pages 要求)
+export const runtime = 'edge';
 
 export async function GET(req: NextRequest) {
     try {

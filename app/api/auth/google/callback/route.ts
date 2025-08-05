@@ -4,8 +4,11 @@ import {cookies} from 'next/headers'
 import axios from 'axios'
 
 // 移除 edge runtime
-// export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
+
+
+// 强制使用 Edge Runtime (Cloudflare Pages 要求)
+export const runtime = 'edge';
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams

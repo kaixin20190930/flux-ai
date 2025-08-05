@@ -41,8 +41,11 @@ function createEnv(request: NextRequest): Env {
 }
 
 // 重新生成图像
-export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
+
+// 强制使用 Edge Runtime (Cloudflare Pages 要求)
+export const runtime = 'edge';
+
 export async function POST(request: NextRequest) {
   try {
     // 获取用户ID

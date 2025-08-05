@@ -27,8 +27,11 @@ const replicate = new Replicate({
 const MAX_DAILY_GENERATIONS = 3;
 const COOKIE_NAME = 'fluxAIGenerations';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+
+
+// 强制使用 Edge Runtime (Cloudflare Pages 要求)
+export const runtime = 'edge';
 
 export async function POST(req: NextRequest) {
     return PerformanceMonitor.measureAsync('api.generate', async () => {

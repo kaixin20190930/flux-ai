@@ -8,8 +8,11 @@ const replicate = new Replicate({
     auth: process.env.REPLICATE_API_TOKEN,
 });
 
-export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
+
+// 强制使用 Edge Runtime (Cloudflare Pages 要求)
+export const runtime = 'edge';
+
 export async function POST(request: NextRequest) {
     try {
         const formData = await request.formData();

@@ -41,8 +41,11 @@ function createEnv(request: NextRequest): Env {
 }
 
 // 获取用户历史记录列表
-export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
+
+// 强制使用 Edge Runtime (Cloudflare Pages 要求)
+export const runtime = 'edge';
+
 export async function GET(request: NextRequest) {
   try {
     // 获取用户ID

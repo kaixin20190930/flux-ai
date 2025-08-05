@@ -5,8 +5,11 @@ import { ErrorCode, AppErrorClass } from '@/types/database';
 import { cookies } from 'next/headers';
 import { verifyAdminAccess } from '@/utils/authUtils';
 
-export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
+
+// 强制使用 Edge Runtime (Cloudflare Pages 要求)
+export const runtime = 'edge';
+
 export async function GET(request: Request) {
   try {
     // 获取用户会话和验证管理员权限

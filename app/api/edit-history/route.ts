@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { randomUUID } from 'crypto';
+import { generateUUID } from '@/utils/edgeUtils';
 import { getUserFromRequest } from '../../../utils/auth';
 import { saveEditHistory, getEditHistoryByGenerationId } from '../../../utils/dao';
 import { handleApiError } from '../../../utils/errorHandler';
 
-export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
+
+// 强制使用 Edge Runtime (Cloudflare Pages 要求)
+export const runtime = 'edge';
+
 export async function POST(request: NextRequest) {
   try {
     // Get user from request
@@ -31,7 +34,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create edit history record
-    const editHistoryId = randomUUID();
+    const editHistoryId = generateUUID();
     const editHistory = {
       id: editHistoryId,
       generationId,
