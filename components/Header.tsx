@@ -43,22 +43,22 @@ const Header: React.FC<HeaderProps> = ({dictionary}) => {
     const fluxToolsItems = [
         {
             name: 'Flux Redux',
-            path: '/flux-redux',
+            path: 'flux-redux',
             description: 'Image Variation and Restyling with Flux Redux'
         },
         {
             name: 'Flux Fill',
-            path: '/flux-fill',
+            path: 'flux-fill',
             description: 'Inpainting and Outpainting images with Flux Fill'
         },
         {
             name: 'Flux Depth',
-            path: '/flux-depth',
+            path: 'flux-depth',
             description: 'Edit images while preserving spatial relationships with Flux Depth.'
         },
         {
             name: 'Flux Canny',
-            path: '/flux-canny',
+            path: 'flux-canny',
             description: 'Control structure and composition with Flux Canny.'
         }
     ];
