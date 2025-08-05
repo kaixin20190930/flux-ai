@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import bcrypt from 'bcryptjs';
+import { EdgeAuth } from '@/utils/edgeUtils';
+// bcrypt replaced with EdgeAuth for Edge Runtime compatibility
 import { createJWT } from '@/utils/auth';
 
 // 模拟用户数据库（实际应用中应该使用真实数据库）
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 验证密码
-    const isValidPassword = await bcrypt.compare(password, user.password);
+    const isValidPassword = await await EdgeAuth.verifyPassword(password, user.password);
     if (!isValidPassword) {
       return NextResponse.json(
         { error: 'Invalid credentials' },

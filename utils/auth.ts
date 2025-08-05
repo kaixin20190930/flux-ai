@@ -1,14 +1,14 @@
-import * as bcrypt from 'bcryptjs';
+import { EdgeAuth } from '@/utils/edgeUtils';
 import { logWithTimestamp } from "@/utils/logUtils";
 import { Env } from '@/worker/types';
 import * as workerJwt from '@tsndr/cloudflare-worker-jwt';
 
 export async function hashPassword(password: string): Promise<string> {
-    return bcrypt.hash(password, 10);
+    return EdgeAuth.hashPassword(password, 10);
 }
 
 export async function verifyPassword(password: string, hashedPassword: string): Promise<boolean> {
-    return bcrypt.compare(password, hashedPassword);
+    return EdgeAuth.verifyPassword(password, hashedPassword);
 }
 
 export async function createJWT(payload: object, secret: string): Promise<string> {

@@ -109,7 +109,8 @@ export class EdgeAuth {
     );
     
     const signature = await crypto.subtle.sign('HMAC', key, encoder.encode(data));
-    const encodedSignature = btoa(String.fromCharCode(...new Uint8Array(signature))).replace(/=/g, '');
+    const signatureArray = Array.from(new Uint8Array(signature));
+    const encodedSignature = btoa(String.fromCharCode(...signatureArray)).replace(/=/g, '');
     
     return `${data}.${encodedSignature}`;
   }

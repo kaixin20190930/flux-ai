@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import bcrypt from 'bcryptjs';
+import { EdgeAuth } from '@/utils/edgeUtils';
+// bcrypt replaced with EdgeAuth for Edge Runtime compatibility
 import { createJWT } from '@/utils/auth';
 
 // 模拟用户数据库（实际应用中应该使用真实数据库）
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 加密密码
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await await EdgeAuth.hashPassword(password, 10);
 
     // 创建新用户
     const newUser = {
