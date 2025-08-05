@@ -1,6 +1,12 @@
 import {getany} from '@/app/i18n/utils';
 import type {Locale} from "@/app/i18n/settings";
-import DepthGenerator from "@/components/flux-tools/FluxDepth";
+import dynamic from 'next/dynamic';
+
+// 动态导入客户端组件，避免在服务器端执行
+const DepthGenerator = dynamic(() => import("@/components/flux-tools/FluxDepth"), {
+    ssr: false,
+    loading: () => <div className="flex justify-center items-center h-64">Loading...</div>
+});
 
 export const runtime = 'edge';
 

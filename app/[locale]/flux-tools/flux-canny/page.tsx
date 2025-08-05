@@ -1,6 +1,12 @@
 import {getany} from '@/app/i18n/utils';
 import {Locale} from "@/app/i18n/settings";
-import CannyGenerator from "@/components/flux-tools/FluxCanny";
+import dynamic from 'next/dynamic';
+
+// 动态导入客户端组件，避免在服务器端执行
+const CannyGenerator = dynamic(() => import("@/components/flux-tools/FluxCanny"), {
+    ssr: false,
+    loading: () => <div className="flex justify-center items-center h-64">Loading...</div>
+});
 
 export const runtime = 'edge';
 
