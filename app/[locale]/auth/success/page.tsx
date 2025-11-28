@@ -5,6 +5,7 @@ export const runtime = 'edge'
 import { Locale } from '@/app/i18n/settings'
 import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
+import React from 'react'
 
 interface AuthSuccessPageProps {
   params: {
@@ -14,7 +15,33 @@ interface AuthSuccessPageProps {
 
 function AuthSuccessContent({ locale }: { locale: Locale }) {
   const searchParams = useSearchParams()
-  const message = searchParams.get('message') || 'success'
+  const userParam = searchParams.get('user')
+  
+  // Save user data to localStorage and redirect
+  React.useEffect(() => {
+    if (userParam) {
+      try {
+        const userData = JSON.parse(decodeURIComponent(userParam))
+        localStorage.setItem('user', JSON.stringify(userData))
+        
+        // Redirect to create page after a short delay
+        setTimeout(() => {
+          window.location.href = `/${locale}/create`
+        }, 1500)
+      } catch (error) {
+        console.error('Failed to parse user data:', error)
+        // Redirect to auth page on error
+        setTimeout(() => {
+          window.location.href = `/${locale}/auth`
+        }, 2000)
+      }
+    } else {
+      // No user data, redirect to auth page
+      setTimeout(() => {
+        window.location.href = `/${locale}/auth`
+      }, 2000)
+    }
+  }, [userParam, locale])
   
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -29,15 +56,10 @@ function AuthSuccessContent({ locale }: { locale: Locale }) {
             Authentication Successful
           </h3>
           <p className="mt-1 text-sm text-gray-500">
-            You have been successfully authenticated.
+            Redirecting you to the app...
           </p>
           <div className="mt-6">
-            <a
-              href={`/${locale}`}
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Continue
-            </a>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mx-auto"></div>
           </div>
         </div>
       </div>

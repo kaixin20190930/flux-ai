@@ -1,12 +1,12 @@
 // components/AuthForm.tsx
 'use client'
 
-import React, {useState} from 'react'
-import {useRouter, useParams} from 'next/navigation'
-import {logWithTimestamp} from "@/utils/logUtils"
-import Cookies from 'js-cookie'
-import { syncAuthState } from '@/utils/authSync'
-import { triggerGlobalAuthRefresh } from '@/utils/globalAuthRefresh'
+import React, { useState, useEffect } from 'react'
+import { useRouter, useParams } from 'next/navigation'
+import { logWithTimestamp } from "@/utils/logUtils"
+import { unifiedAuthManager, LoginCredentials, GoogleCredentials } from '@/utils/unifiedAuthManager'
+import { AuthError, AuthErrorCode } from '@/utils/authenticationService'
+import { authErrorHandler } from '@/utils/authErrorHandler'
 
 interface AuthFormProps {
     dictionary: any
@@ -19,12 +19,32 @@ interface GoogleOAuthConfig {
     response_type: string;
 }
 
+interface FormErrors {
+    name?: string;
+    email?: string;
+    password?: string;
+    general?: string;
+}
+
+interface FormState {
+    isSubmitting: boolean;
+    showRetry: boolean;
+    retryCount: number;
+    lastError: AuthError | null;
+}
+
 const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
     const [isLogin, setIsLogin] = useState(true)
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
+    const [formErrors, setFormErrors] = useState<FormErrors>({})
+    const [formState, setFormState] = useState<FormState>({
+        isSubmitting: false,
+        showRetry: false,
+        retryCount: 0,
+        lastError: null
+    })
     const router = useRouter()
     const params = useParams()
     const currentLocale = params.locale || 'en'
@@ -36,63 +56,182 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
         response_type: 'code'
     }
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        setError('')
+    // Set error handler locale
+    useEffect(() => {
+        authErrorHandler.setDefaultLocale(currentLocale as string);
+    }, [currentLocale]);
 
-        const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register'
-        const body = isLogin ? {email, password} : {name, email, password}
+    // Form validation
+    const validateForm = (): boolean => {
+        const errors: FormErrors = {};
+        
+        // Email validation
+        if (!email) {
+            errors.email = dictionary.auth.errors.emailRequired || 'Email is required';
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errors.email = dictionary.auth.errors.emailInvalid || 'Please enter a valid email address';
+        }
+
+        // Password validation
+        if (!password) {
+            errors.password = dictionary.auth.errors.passwordRequired || 'Password is required';
+        } else if (password.length < 6) {
+            errors.password = dictionary.auth.errors.passwordTooShort || 'Password must be at least 6 characters';
+        }
+
+        // Name validation for registration
+        if (!isLogin && !name.trim()) {
+            errors.name = dictionary.auth.errors.nameRequired || 'Name is required';
+        }
+
+        setFormErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
+
+    // Clear form errors when switching between login/register
+    useEffect(() => {
+        setFormErrors({});
+        setFormState(prev => ({ ...prev, lastError: null, showRetry: false }));
+    }, [isLogin]);
+
+    // Handle authentication error
+    const handleAuthError = (error: AuthError) => {
+        setFormState(prev => ({
+            ...prev,
+            isSubmitting: false,
+            lastError: error,
+            showRetry: prev.retryCount < 3,
+            retryCount: prev.retryCount + 1
+        }));
+
+        // Set specific field errors based on error code
+        const errors: FormErrors = {};
+        
+        switch (error.code) {
+            case AuthErrorCode.USER_NOT_FOUND:
+                errors.email = dictionary.auth.errors.userNotFound || 'No account found with this email';
+                break;
+            case AuthErrorCode.INVALID_CREDENTIALS:
+                errors.password = dictionary.auth.errors.invalidCredentials || 'Invalid password';
+                break;
+            case AuthErrorCode.EMAIL_ALREADY_EXISTS:
+                errors.email = dictionary.auth.errors.emailExists || 'An account with this email already exists';
+                break;
+            case AuthErrorCode.VALIDATION_ERROR:
+                errors.general = dictionary.auth.errors.validationError || 'Please check your input and try again';
+                break;
+            default:
+                errors.general = error.message;
+        }
+
+        setFormErrors(errors);
+    };
+
+    // Retry last operation
+    const handleRetry = () => {
+        setFormState(prev => ({ ...prev, showRetry: false, lastError: null }));
+        setFormErrors({});
+        
+        if (formState.lastError?.code === AuthErrorCode.GOOGLE_AUTH_FAILED) {
+            handleGoogleLogin();
+        } else {
+            handleSubmit(new Event('submit') as any);
+        }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        // Clear previous errors
+        setFormErrors({});
+        
+        // Validate form
+        if (!validateForm()) {
+            return;
+        }
+
+        setFormState(prev => ({ ...prev, isSubmitting: true, lastError: null }));
 
         try {
-            const response = await fetch(endpoint, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(body),
-            })
+            if (isLogin) {
+                // Login with email and password
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
 
-            logWithTimestamp('endpoint:' + endpoint)
-            logWithTimestamp('get response from worker is:' + response.ok)
+                const data = await response.json() as any;
 
-            if (response.ok) {
-                const data = await response.json() as any
-                logWithTimestamp('response is:' + JSON.stringify(data))
-
-                if (data.token && data.user) {
-                    // 直接设置localStorage和cookie
-                    localStorage.setItem('user', JSON.stringify(data.user));
-                    document.cookie = `token=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax`;
+                if (response.ok && data.success) {
+                    logWithTimestamp('Login successful:', data.user?.id);
                     
-                    logWithTimestamp('user data: ' + JSON.stringify(data.user))
+                    // Save user data to localStorage
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    logWithTimestamp('user data: ' + JSON.stringify(data.user));
                     console.log('Login successful, user and token saved');
 
-                    // 检查是否有重定向URL
-                    const redirectUrl = localStorage.getItem('redirectAfterLogin')
+                    // Check for redirect URL
+                    const redirectUrl = localStorage.getItem('redirectAfterLogin');
                     if (redirectUrl) {
-                        localStorage.removeItem('redirectAfterLogin')
-                        // 强制刷新页面以确保认证状态更新
+                        localStorage.removeItem('redirectAfterLogin');
                         window.location.href = redirectUrl;
                     } else {
-                        // 强制刷新页面以确保认证状态更新
                         window.location.href = `/${currentLocale}/create`;
                     }
                 } else {
-                    setError(dictionary.auth.errors.invalidFormat)
+                    // Handle login error
+                    const errorMessage = data.error?.message || dictionary.auth.errors.authFailed;
+                    setFormErrors({ general: errorMessage });
+                    setFormState(prev => ({ ...prev, isSubmitting: false }));
                 }
             } else {
-                const errorData = await response.json() as any
-                setError(errorData.message || dictionary.auth.errors.authFailed)
+                // Register new user
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, password }),
+                });
+
+                const data = await response.json() as any;
+
+                if (response.ok && data.success) {
+                    logWithTimestamp('Registration successful:', data.user?.id);
+                    
+                    // Save user data to localStorage
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    console.log('Registration successful, user and token saved');
+
+                    // Redirect to create page
+                    window.location.href = `/${currentLocale}/create`;
+                } else {
+                    // Handle registration error
+                    const errorMessage = data.error?.message || dictionary.auth.errors.authFailed;
+                    setFormErrors({ general: errorMessage });
+                    setFormState(prev => ({ ...prev, isSubmitting: false }));
+                }
             }
         } catch (err) {
-            setError(dictionary.auth.errors.unexpected)
-            logWithTimestamp('Error during authentication:' + err)
+            logWithTimestamp('Error during authentication:', err);
+            setFormErrors({ general: dictionary.auth.errors.unexpected });
+            setFormState(prev => ({ ...prev, isSubmitting: false }));
         }
     }
 
     const handleGoogleLogin = async () => {
         try {
-            // 在状态中加入当前语言
+            // 在状态中加入当前语言和CSRF保护
             const state = JSON.stringify({
-                locale: currentLocale
+                locale: currentLocale,
+                timestamp: Date.now(),
+                origin: window.location.origin,
+                nonce: Math.random().toString(36).substring(2, 15)
             })
 
             // 构建 Google OAuth URL
@@ -106,8 +245,8 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
             }).toString()}`
 
         } catch (err) {
-            setError(dictionary.auth.errors.unexpected)
-            logWithTimestamp('Error during Google authentication:' + err)
+            setFormErrors({ general: dictionary.auth.errors.unexpected });
+            logWithTimestamp('Error during Google authentication:', err);
         }
     }
 
@@ -175,14 +314,19 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
                         </div>
                     </div>
 
-                    {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+                    {formErrors.general && (
+                        <div className="rounded-md bg-red-50 p-4">
+                            <p className="text-sm text-red-800">{formErrors.general}</p>
+                        </div>
+                    )}
 
                     <div>
                         <button
                             type="submit"
-                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            disabled={formState.isSubmitting}
+                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            {isLogin ? dictionary.auth.signInButton : dictionary.auth.registerButton}
+                            {formState.isSubmitting ? 'Processing...' : (isLogin ? dictionary.auth.signInButton : dictionary.auth.registerButton)}
                         </button>
                     </div>
                 </form>
