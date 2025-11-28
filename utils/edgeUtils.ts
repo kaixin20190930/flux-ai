@@ -78,7 +78,15 @@ export class EdgeAuth {
    * 验证密码
    */
   static async verifyPassword(password: string, hash: string): Promise<boolean> {
+    console.log('[EdgeAuth.verifyPassword] Verifying password');
+    console.log('[EdgeAuth.verifyPassword] Input password length:', password.length);
+    console.log('[EdgeAuth.verifyPassword] Stored hash length:', hash.length);
+    console.log('[EdgeAuth.verifyPassword] Stored hash:', hash);
+    
     const computedHash = await this.hashPassword(password);
+    console.log('[EdgeAuth.verifyPassword] Computed hash:', computedHash);
+    console.log('[EdgeAuth.verifyPassword] Hashes match:', computedHash === hash);
+    
     return computedHash === hash;
   }
   

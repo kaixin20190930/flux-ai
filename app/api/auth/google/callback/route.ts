@@ -8,8 +8,8 @@ import { logWithTimestamp } from '@/utils/logUtils';
 
 export const dynamic = 'force-dynamic';
 
-// 强制使用 Edge Runtime (Cloudflare Pages 要求)
-export const runtime = 'edge';
+// 只在生产环境使用 Edge Runtime
+export const runtime = process.env.NODE_ENV === 'production' ? 'edge' : 'nodejs';
 
 // Initialize authentication service
 const authService = new AuthenticationService(

@@ -2,6 +2,7 @@ import { Database } from './db';
 import { Env } from '@/worker/types';
 import { AppErrorClass, ErrorCode } from '@/types/database';
 import { EdgeAuth } from './edgeUtils';
+import { MemoryStore } from './memoryStore';
 
 // User interface based on current schema and requirements
 export interface User {
@@ -180,9 +181,15 @@ export class UserRepository {
       }, 'findByEmail');
     }
 
-    // Fallback to hardcoded users
-    const user = this.fallbackUsers.find(u => u.email === email && u.status !== 'deleted');
-    return user || null;
+    // Use global memory store for development
+    const user = MemoryStore.getUserByEmail(email);
+    if (user && user.status !== 'deleted') {
+      return user;
+    }
+
+    // Fallback to hardcoded users (legacy)
+    const fallbackUser = this.fallbackUsers.find(u => u.email === email && u.status !== 'deleted');
+    return fallbackUser || null;
   }
 
   /**
@@ -210,9 +217,15 @@ export class UserRepository {
       }, 'findById');
     }
 
-    // Fallback to hardcoded users
-    const user = this.fallbackUsers.find(u => u.id === id && u.status !== 'deleted');
-    return user || null;
+    // Use global memory store for development
+    const user = MemoryStore.getUserById(id);
+    if (user && user.status !== 'deleted') {
+      return user;
+    }
+
+    // Fallback to hardcoded users (legacy)
+    const fallbackUser = this.fallbackUsers.find(u => u.id === id && u.status !== 'deleted');
+    return fallbackUser || null;
   }
 
   /**
@@ -307,7 +320,7 @@ export class UserRepository {
       }, 'createUser');
     }
 
-    // Fallback to hardcoded users (for development)
+    // Fallback to memory store (for development)
     let hashedPassword: string | undefined;
     if (userData.password) {
       hashedPassword = await EdgeAuth.hashPassword(userData.password);
@@ -326,7 +339,12 @@ export class UserRepository {
       updatedAt: now
     };
 
+    // Save to global memory store
+    MemoryStore.saveUser(newUser);
+    
+    // Also add to fallback array for backward compatibility
     this.fallbackUsers.push(newUser);
+    
     return newUser;
   }
 
@@ -410,6 +428,12 @@ export class UserRepository {
       }, 'updateUser');
     }
 
+    // Use global memory store for development
+    const memoryUser = MemoryStore.updateUser(userId, updates);
+    if (memoryUser) {
+      return memoryUser;
+    }
+
     // Fallback to hardcoded users
     const userIndex = this.fallbackUsers.findIndex(u => u.id === userId);
     if (userIndex === -1) {
@@ -435,18 +459,33 @@ export class UserRepository {
    */
   async validateCredentials(email: string, password: string): Promise<boolean> {
     if (!email || !password) {
+      console.log('[validateCredentials] Missing email or password');
       return false;
     }
 
     const user = await this.findByEmail(email);
-    if (!user || !user.password) {
+    if (!user) {
+      console.log('[validateCredentials] User not found:', email);
+      return false;
+    }
+    
+    if (!user.password) {
+      console.log('[validateCredentials] User has no password (Google user?):', email);
       return false;
     }
 
+    console.log('[validateCredentials] Found user:', {
+      email: user.email,
+      hasPassword: !!user.password,
+      passwordLength: user.password?.length
+    });
+
     try {
-      return await EdgeAuth.verifyPassword(password, user.password);
+      const isValid = await EdgeAuth.verifyPassword(password, user.password);
+      console.log('[validateCredentials] Password verification result:', isValid);
+      return isValid;
     } catch (error) {
-      console.error('Password verification error:', error);
+      console.error('[validateCredentials] Password verification error:', error);
       return false;
     }
   }
