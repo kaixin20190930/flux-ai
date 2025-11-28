@@ -127,8 +127,11 @@ export class AuthenticationService {
       this.userRepository.initialize(env);
     }
 
-    // Validate configuration
-    this.validateConfiguration();
+    // Only validate configuration on server-side
+    // Skip validation in browser environment
+    if (typeof window === 'undefined') {
+      this.validateConfiguration();
+    }
   }
 
   /**
@@ -162,7 +165,11 @@ export class AuthenticationService {
     this.env = env;
     this.jwtSecret = env.JWT_SECRET || this.jwtSecret;
     this.userRepository.initialize(env);
-    this.validateConfiguration();
+    
+    // Only validate configuration on server-side
+    if (typeof window === 'undefined') {
+      this.validateConfiguration();
+    }
   }
 
   /**
