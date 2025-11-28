@@ -1,20 +1,39 @@
 -- Cloudflare D1 数据库表结构
 -- 用于 flux-ai 项目的 Edge Runtime 迁移
 
--- 用户表
+-- 用户表 (优化后的结构)
 CREATE TABLE IF NOT EXISTS users (
   id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
   email TEXT UNIQUE NOT NULL,
-  password_hash TEXT NOT NULL,
-  name TEXT,
+  password_hash TEXT, -- 可选，Google用户可能没有密码
+  is_google_user INTEGER DEFAULT 0,
+  google_id TEXT, -- Google用户ID
+  points INTEGER DEFAULT 50,
+  status TEXT DEFAULT 'active', -- active, suspended, deleted
   avatar_url TEXT,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   is_admin BOOLEAN DEFAULT FALSE,
   subscription_type TEXT DEFAULT 'free',
   subscription_expires_at DATETIME,
   total_generations INTEGER DEFAULT 0,
-  remaining_generations INTEGER DEFAULT 10
+  remaining_generations INTEGER DEFAULT 10,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  last_login_at DATETIME
+);
+
+-- 认证会话表
+CREATE TABLE IF NOT EXISTS auth_sessions (
+  id TEXT PRIMARY KEY,
+  user_id TEXT NOT NULL,
+  token_hash TEXT NOT NULL,
+  expires_at DATETIME NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  last_used_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  user_agent TEXT,
+  ip_address TEXT,
+  is_active INTEGER DEFAULT 1,
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
 -- 生成历史表
@@ -78,7 +97,14 @@ CREATE TABLE IF NOT EXISTS user_analytics (
 
 -- 创建索引以提高查询性能
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+CREATE INDEX IF NOT EXISTS idx_users_google_id ON users(google_id);
+CREATE INDEX IF NOT EXISTS idx_users_status ON users(status);
 CREATE INDEX IF NOT EXISTS idx_users_created_at ON users(created_at);
+
+CREATE INDEX IF NOT EXISTS idx_auth_sessions_token ON auth_sessions(token_hash);
+CREATE INDEX IF NOT EXISTS idx_auth_sessions_user ON auth_sessions(user_id);
+CREATE INDEX IF NOT EXISTS idx_auth_sessions_expires ON auth_sessions(expires_at);
+CREATE INDEX IF NOT EXISTS idx_auth_sessions_active ON auth_sessions(is_active);
 
 CREATE INDEX IF NOT EXISTS idx_generation_history_user_id ON generation_history(user_id);
 CREATE INDEX IF NOT EXISTS idx_generation_history_created_at ON generation_history(created_at);

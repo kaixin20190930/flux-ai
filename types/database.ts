@@ -205,6 +205,62 @@ export interface BatchJobListResponse {
   limit: number
 }
 
+// 认证会话类型
+export interface AuthSession {
+  id: string
+  userId: string
+  tokenHash: string
+  expiresAt: Date
+  createdAt: Date
+  lastUsedAt: Date
+  userAgent?: string
+  ipAddress?: string
+  isActive: boolean
+}
+
+export interface SessionInfo {
+  sessionId: string
+  userId: string
+  isValid: boolean
+  expiresAt: Date
+  lastUsedAt: Date
+}
+
+// 用户类型 (优化后)
+export interface User {
+  id: string
+  name: string
+  email: string
+  password?: string // Optional for Google users
+  isGoogleUser: boolean
+  googleId?: string
+  points: number
+  status: 'active' | 'suspended' | 'deleted'
+  createdAt: Date
+  updatedAt: Date
+  lastLoginAt?: Date
+}
+
+export interface CreateUserData {
+  name: string
+  email: string
+  password?: string
+  isGoogleUser?: boolean
+  googleId?: string
+  points?: number
+}
+
+export interface UserCredentials {
+  email: string
+  password: string
+}
+
+export interface GoogleUserData {
+  email: string
+  name: string
+  googleId: string
+}
+
 // 环境类型
 export interface Env {
   DB?: any

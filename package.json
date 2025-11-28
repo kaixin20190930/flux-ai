@@ -13,7 +13,17 @@
     "build:cloudflare": "next build",
     "deploy:cloudflare": "node scripts/deploy-cloudflare.js",
     "preview:cloudflare": "npx wrangler pages dev .vercel/output/static",
-    "dev:cloudflare": "wrangler pages dev"
+    "dev:cloudflare": "wrangler pages dev",
+    "migrate:auth": "tsx scripts/run-auth-migrations.ts",
+    "migrate:auth:check": "tsx scripts/run-auth-migrations.ts check",
+    "test:auth-db": "tsx scripts/test-auth-database.ts",
+    "validate-env": "tsx scripts/validate-env-config.ts",
+    "validate-env:verbose": "tsx scripts/validate-env-config.ts --verbose",
+    "validate-env:fix": "tsx scripts/validate-env-config.ts --fix",
+    "test:worker-config": "tsx scripts/test-worker-config.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@cloudflare/workers-types": "^4.20240821.1",
@@ -53,11 +63,17 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18",
     "@types/uuid": "^10.0.0",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.9",
+    "tsx": "^4.19.1",
     "typescript": "^5.5.4",
     "vercel": "^39.1.1"
   }

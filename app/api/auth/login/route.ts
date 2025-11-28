@@ -1,90 +1,99 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { EdgeAuth } from '@/utils/edgeUtils';
-// bcrypt replaced with EdgeAuth for Edge Runtime compatibility
-import { createJWT } from '@/utils/auth';
-
-// 模拟用户数据库（实际应用中应该使用真实数据库）
-const users = [
-  {
-    id: '1',
-    email: 'test@example.com',
-    password: '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-    name: 'Test User',
-    points: 100
-  }
-];
+import { AuthenticationService } from '@/utils/authenticationService';
+import { authErrorHandler } from '@/utils/authErrorHandler';
+import { userRepository } from '@/utils/userRepository';
+import { logWithTimestamp } from '@/utils/logUtils';
 
 export const dynamic = 'force-dynamic'
 
 // 强制使用 Edge Runtime (Cloudflare Pages 要求)
 export const runtime = 'edge';
 
+// Initialize authentication service
+const authService = new AuthenticationService(
+  userRepository,
+  process.env.JWT_SECRET
+);
+
 export async function POST(request: NextRequest) {
   try {
+    logWithTimestamp('Login API called');
+
     const body = await request.json();
     const { email, password } = body as { email: string; password: string };
 
+    // Basic input validation
     if (!email || !password) {
+      const error = authErrorHandler.createEnhancedError(
+        'VALIDATION_ERROR' as any,
+        new Error('Email and password are required'),
+        'login-input-validation'
+      );
+      
       return NextResponse.json(
-        { error: 'Email and password are required' },
+        authErrorHandler.formatForResponse(error),
         { status: 400 }
       );
     }
 
-    // 查找用户
-    const user = users.find(u => u.email === email);
-    if (!user) {
+    // Attempt login using authentication service
+    const result = await authService.loginWithPassword(email, password);
+
+    if (result.success && result.token && result.user) {
+      logWithTimestamp('Login successful for user:', result.user.id);
+      
+      // Set secure cookie
+      const response = NextResponse.json({
+        success: true,
+        token: result.token,
+        user: {
+          userId: result.user.id,
+          id: result.user.id, // For backward compatibility
+          email: result.user.email,
+          name: result.user.name,
+          points: result.user.points,
+          isGoogleUser: result.user.isGoogleUser
+        }
+      });
+
+      // Set HTTP-only cookie for additional security
+      const isProduction = process.env.NODE_ENV === 'production';
+      response.cookies.set('token', result.token, {
+        httpOnly: true,
+        secure: isProduction,
+        sameSite: 'lax',
+        maxAge: 7 * 24 * 60 * 60, // 7 days
+        path: '/'
+      });
+
+      return response;
+    } else {
+      // Handle authentication failure
+      logWithTimestamp('Login failed:', result.error?.code);
+      
+      const statusCode = result.error?.code === 'VALIDATION_ERROR' ? 400 : 401;
+      
       return NextResponse.json(
-        { error: 'Invalid credentials' },
-        { status: 401 }
+        {
+          success: false,
+          error: {
+            code: result.error?.code || 'AUTHENTICATION_FAILED',
+            message: result.error?.message || 'Authentication failed',
+            timestamp: new Date().toISOString()
+          }
+        },
+        { status: statusCode }
       );
     }
-
-    // 验证密码
-    const isValidPassword = await EdgeAuth.verifyPassword(password, user.password);
-    if (!isValidPassword) {
-      return NextResponse.json(
-        { error: 'Invalid credentials' },
-        { status: 401 }
-      );
-    }
-
-    // 生成JWT token
-    const JWT_SECRET = process.env.JWT_SECRET;
-    if (!JWT_SECRET) {
-      return NextResponse.json(
-        { error: 'Server configuration error' },
-        { status: 500 }
-      );
-    }
-
-    const token = await createJWT(
-      { 
-        userId: user.id,
-        email: user.email,
-        name: user.name
-      },
-      JWT_SECRET
-    );
-
-    // 返回用户信息和token
-    const userData = {
-      userId: user.id,
-      email: user.email,
-      name: user.name,
-      points: user.points
-    };
-
-    return NextResponse.json({
-      success: true,
-      token,
-      user: userData
-    });
 
   } catch (error) {
-    console.error('Login error:', error);
+    logWithTimestamp('Login API error:', error);
+    
+    // Handle unexpected errors
+    const authError = authErrorHandler.handleAuthError(error, 'login-api');
+    
     return NextResponse.json(
-      { error: 'Internal server error' },
+      authErrorHandler.formatForResponse(authError),
       { status: 500 }
     );
   }
