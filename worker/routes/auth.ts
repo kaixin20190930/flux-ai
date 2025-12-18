@@ -154,14 +154,15 @@ auth.post('/register', zValidator('json', registerSchema), async (c) => {
       }, 400);
     }
     
-    // 插入用户数据（新用户默认 50 积分）
-    const result = await db.prepare(
-      'INSERT INTO users (name, email, password_hash, is_google_user, points) VALUES (?, ?, ?, ?, ?)'
-    )
-      .bind(name, email, hashedPassword, googleToken ? 1 : 0, 50)
-      .run();
+    // 生成用户 ID
+    const userId = crypto.randomUUID();
     
-    const userId = result.meta.last_row_id;
+    // 插入用户数据（新用户默认 3 积分）
+    await db.prepare(
+      'INSERT INTO users (id, name, email, password_hash, is_google_user, points) VALUES (?, ?, ?, ?, ?, ?)'
+    )
+      .bind(userId, name, email, hashedPassword, googleToken ? 1 : 0, 3)
+      .run();
     
     // 创建 JWT token
     const token = await createJWT(

@@ -58,8 +58,11 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
     }
 
     const handleGoogleSignIn = () => {
-        // TODO: Implement Google OAuth with new auth system
-        alert('Google OAuth 登录功能正在开发中，请使用邮箱密码登录');
+        // Google OAuth 功能暂时禁用
+        // 需要配置 Google OAuth 客户端 ID 和回调 URL
+        setFormErrors({
+            general: dictionary.auth?.googleOAuthDisabled || 'Google 登录功能暂时不可用，请使用邮箱密码注册/登录'
+        });
     }
 
     return (
