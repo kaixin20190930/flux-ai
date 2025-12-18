@@ -1,7 +1,5 @@
 // 点数系统工具类
-// TODO: This file needs to be refactored to use NextAuth instead of custom JWT
-// import { verifyJWT } from '@/utils/auth'; // OLD AUTH - REMOVED
-import { getUserPoints, updateUserPoints } from '@/utils/userUtils';
+// 100% Cloudflare 架构 - 所有点数操作通过 Worker API
 import ToolsConfigManager from '@/config/tools';
 
 // 保持向后兼容的类型定义

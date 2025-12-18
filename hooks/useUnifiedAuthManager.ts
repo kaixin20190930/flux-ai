@@ -6,7 +6,7 @@ import {
   GoogleCredentials, 
   AuthResult 
 } from '@/utils/unifiedAuthManager';
-import { User } from '@/utils/userUtils';
+import { User } from '@/types/user';
 
 /**
  * React hook for unified authentication management

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { User } from '@/utils/userUtils';
+import { User } from '@/types/user';
 import { unifiedAuthManager } from '@/utils/unifiedAuthManager';
 
 interface AuthState {

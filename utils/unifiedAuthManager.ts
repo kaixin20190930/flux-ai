@@ -3,7 +3,7 @@
  * 简化版本，用于支持 useUnifiedAuth hook
  */
 
-import { User } from './userUtils';
+import { User } from '@/types/user';
 
 export interface AuthState {
   user: User | null;
