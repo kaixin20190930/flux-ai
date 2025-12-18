@@ -99,10 +99,11 @@ export async function handleRegister(request: Request, env: Env): Promise<any> {
             })));
         }
         // 插入用户数据（赠送 3 积分）
+        // 同时插入 password 和 password_hash 以兼容旧表结构
         const result = await db.prepare(
-            'INSERT INTO users (name, email, password_hash, is_google_user, points) VALUES (?, ?, ?, ?, 3)'
+            'INSERT INTO users (name, email, password, password_hash, is_google_user, points) VALUES (?, ?, ?, ?, ?, 3)'
         )
-            .bind(name, email, hashedPassword, googleToken ? 1 : 0)
+            .bind(name, email, hashedPassword, hashedPassword, googleToken ? 1 : 0)
             .run();
 
         // 获取新插入的用户ID
