@@ -1,0 +1,24 @@
+{
+  "name": "部署前完整检查",
+  "description": "手动触发的部署前检查，运行所有测试和验证",
+  "trigger": {
+    "type": "manual",
+    "label": "🚀 部署前检查"
+  },
+  "actions": [
+    {
+      "type": "sendMessage",
+      "message": "开始部署前完整检查...\n\n将依次执行：\n1. TypeScript 类型检查\n2. ESLint 代码检查\n3. 完整测试套件\n4. 环境变量验证\n5. 构建测试\n\n这可能需要几分钟时间..."
+    },
+    {
+      "type": "executeCommand",
+      "command": "npm run type-check && npm run lint && npm test && npm run validate-env && npm run build",
+      "description": "运行完整的部署前检查"
+    },
+    {
+      "type": "sendMessage",
+      "message": "✅ 部署前检查完成！\n\n如果所有检查都通过，可以安全部署。\n\n部署命令：\n- Vercel: `npm run deploy:vercel`\n- Cloudflare: `npm run deploy:cloudflare`"
+    }
+  ],
+  "enabled": true
+}

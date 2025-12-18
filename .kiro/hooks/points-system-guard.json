@@ -1,0 +1,20 @@
+{
+  "name": "积分系统修改保护",
+  "description": "修改积分相关代码时，运行积分测试并验证业务逻辑",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "{lib/points.ts,utils/pointsSystem.ts,utils/securePointsService.ts,hooks/usePoints.ts,app/api/points/**/*.ts}"
+  },
+  "actions": [
+    {
+      "type": "sendMessage",
+      "message": "⚠️ 检测到积分系统修改！这是核心业务逻辑，正在验证...\n\n关键检查项：\n1. ✅ 积分扣除是否使用 Prisma 事务？\n2. ✅ 是否防止负数积分？\n3. ✅ 是否正确处理并发扣除？\n4. ✅ 是否记录了积分变动日志？\n5. ✅ 免费用户和付费用户的逻辑是否正确？"
+    },
+    {
+      "type": "executeCommand",
+      "command": "npm test -- lib/__tests__/points.test.ts hooks/__tests__/usePoints.test.ts",
+      "description": "运行积分系统测试"
+    }
+  ],
+  "enabled": true
+}

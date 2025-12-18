@@ -1,0 +1,54 @@
+[
+  {
+    "id": "cmizfj86z0000f3fm283oso95",
+    "name": "akai",
+    "email": "akai@qq.com",
+    "emailVerified": null,
+    "image": null,
+    "password": "$2a$10$dKBk33FQIRw4eRcXy4yOEu6TUEtR1PQrI8AAGrG18947pDO30DbY2",
+    "points": 50,
+    "createdAt": "2025-12-10T03:08:19.644Z",
+    "updatedAt": "2025-12-10T03:08:19.644Z",
+    "accounts": [],
+    "sessions": []
+  },
+  {
+    "id": "cmizjyh7p0000jtjj7vdcrl48",
+    "name": "akai",
+    "email": "liukai19911010@gmail.com",
+    "emailVerified": null,
+    "image": null,
+    "password": "$2a$10$wQEopRqCM3dbYLHcmAHiw./ZBlBJdZTTJ29Lg4M0trozcNNRBxxHC",
+    "points": 50,
+    "createdAt": "2025-12-10T05:12:09.637Z",
+    "updatedAt": "2025-12-10T05:12:09.637Z",
+    "accounts": [],
+    "sessions": []
+  },
+  {
+    "id": "cmj0v4xon000012vamzzosvno",
+    "name": "akai",
+    "email": "akai1991@qq.com",
+    "emailVerified": null,
+    "image": null,
+    "password": "$2a$10$0CSLwNnzlnclAesVu.a1auXCktEvKM6DoX2lk93TFvZS1x5Om8WdS",
+    "points": 50,
+    "createdAt": "2025-12-11T03:12:52.871Z",
+    "updatedAt": "2025-12-11T03:12:52.871Z",
+    "accounts": [],
+    "sessions": []
+  },
+  {
+    "id": "cmj117mhf000013quai9a2jze",
+    "name": "DB",
+    "email": "juq1991@gmail.com",
+    "emailVerified": null,
+    "image": null,
+    "password": "$2a$10$FJkWNmNXGTK3MCD3HqV3MODd9R9hoUGZB1OCNcC8JQFfBWP7qDGL.",
+    "points": 50,
+    "createdAt": "2025-12-11T06:02:56.019Z",
+    "updatedAt": "2025-12-11T06:02:56.019Z",
+    "accounts": [],
+    "sessions": []
+  }
+]

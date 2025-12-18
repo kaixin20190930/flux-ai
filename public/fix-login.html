@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录问题诊断和修复工具</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .section h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 18px;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #5568d3;
+        }
+        button.danger {
+            background: #dc3545;
+        }
+        button.danger:hover {
+            background: #c82333;
+        }
+        .status {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .hidden {
+            display: none;
+        }
+        code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 登录问题诊断和修复工具</h1>
+        <p class="subtitle">这个工具可以帮助您诊断和修复登录相关的问题</p>
+
+        <!-- 当前状态 -->
+        <div class="section">
+            <h2>📊 当前登录状态</h2>
+            <div id="currentStatus" class="status info">检查中...</div>
+            <button onclick="checkStatus()">🔄 刷新状态</button>
+        </div>
+
+        <!-- 诊断工具 -->
+        <div class="section">
+            <h2>🔍 诊断工具</h2>
+            <button onclick="diagnoseStorage()">检查 localStorage</button>
+            <button onclick="diagnoseCookies()">检查 Cookies</button>
+            <button onclick="testAuthEvent()">测试认证事件</button>
+            <div id="diagnoseResult" class="status hidden"></div>
+        </div>
+
+        <!-- 修复工具 -->
+        <div class="section">
+            <h2>🛠️ 修复工具</h2>
+            <button onclick="fixHeaderDisplay()">修复Header显示</button>
+            <button onclick="refreshAuthState()">刷新认证状态</button>
+            <button class="danger" onclick="clearAllAuth()">清除所有认证数据</button>
+            <div id="fixResult" class="status hidden"></div>
+        </div>
+
+        <!-- 测试工具 -->
+        <div class="section">
+            <h2>🧪 测试工具</h2>
+            <button onclick="testLogin()">测试登录流程</button>
+            <button onclick="simulateLogin()">模拟登录</button>
+            <div id="testResult" class="status hidden"></div>
+        </div>
+    </div>
+
+    <script>
+        // 检查当前状态
+        function checkStatus() {
+            const user = localStorage.getItem('user');
+            const token = localStorage.getItem('token');
+            const sessionId = localStorage.getItem('auth_session_id');
+            
+            let status = '当前登录状态:\n\n';
+            
+            if (user && token) {
+                try {
+                    const userData = JSON.parse(user);
+                    status += '✅ 已登录\n\n';
+                    status += `用户名: ${userData.name}\n`;
+                    status += `邮箱: ${userData.email}\n`;
+                    status += `积分: ${userData.points}\n`;
+                    status += `用户ID: ${userData.userId || userData.id}\n`;
+                    status += `\nToken: ${token.substring(0, 30)}...\n`;
+                    if (sessionId) {
+                        status += `Session ID: ${sessionId}\n`;
+                    }
+                } catch (e) {
+                    status += '⚠️ localStorage数据格式错误\n';
+                    status += `User数据: ${user}\n`;
+                    status += `错误: ${e.message}`;
+                }
+            } else {
+                status += '❌ 未登录\n\n';
+                if (!user) status += '- 缺少用户数据\n';
+                if (!token) status += '- 缺少Token\n';
+            }
+            
+            document.getElementById('currentStatus').textContent = status;
+            document.getElementById('currentStatus').className = 'status ' + (user && token ? 'success' : 'error');
+        }
+
+        // 诊断localStorage
+        function diagnoseStorage() {
+            const result = document.getElementById('diagnoseResult');
+            result.className = 'status info';
+            result.classList.remove('hidden');
+            
+            let output = 'localStorage 诊断结果:\n\n';
+            
+            // 检查所有认证相关的键
+            const keys = ['user', 'token', 'auth_session_id', 'auth_last_sync'];
+            keys.forEach(key => {
+                const value = localStorage.getItem(key);
+                if (value) {
+                    output += `✅ ${key}: ${value.length} 字符\n`;
+                    if (key === 'user') {
+                        try {
+                            const parsed = JSON.parse(value);
+                            output += `   - 可以解析为JSON ✓\n`;
+                            output += `   - 包含字段: ${Object.keys(parsed).join(', ')}\n`;
+                        } catch (e) {
+                            output += `   - ❌ JSON解析失败: ${e.message}\n`;
+                        }
+                    }
+                } else {
+                    output += `❌ ${key}: 不存在\n`;
+                }
+            });
+            
+            result.textContent = output;
+        }
+
+        // 诊断Cookies
+        function diagnoseCookies() {
+            const result = document.getElementById('diagnoseResult');
+            result.className = 'status info';
+            result.classList.remove('hidden');
+            
+            const cookies = document.cookie.split(';').map(c => c.trim());
+            let output = 'Cookies 诊断结果:\n\n';
+            
+            const tokenCookie = cookies.find(c => c.startsWith('token='));
+            if (tokenCookie) {
+                output += `✅ 找到token cookie\n`;
+                output += `   值: ${tokenCookie.substring(0, 50)}...\n`;
+            } else {
+                output += `❌ 没有找到token cookie\n`;
+            }
+            
+            output += `\n所有cookies (${cookies.length}个):\n`;
+            cookies.forEach(c => {
+                const [name] = c.split('=');
+                output += `- ${name}\n`;
+            });
+            
+            result.textContent = output;
+        }
+
+        // 测试认证事件
+        function testAuthEvent() {
+            const result = document.getElementById('diagnoseResult');
+            result.className = 'status info';
+            result.classList.remove('hidden');
+            
+            const user = localStorage.getItem('user');
+            if (!user) {
+                result.textContent = '❌ 没有用户数据，无法测试事件';
+                result.className = 'status error';
+                return;
+            }
+            
+            try {
+                const userData = JSON.parse(user);
+                const event = new CustomEvent('auth-state-changed', {
+                    detail: {
+                        isAuthenticated: true,
+                        user: userData,
+                        timestamp: Date.now()
+                    }
+                });
+                
+                window.dispatchEvent(event);
+                
+                result.textContent = '✅ 已触发 auth-state-changed 事件\n\n请检查页面右上角是否显示用户名';
+                result.className = 'status success';
+            } catch (e) {
+                result.textContent = `❌ 触发事件失败: ${e.message}`;
+                result.className = 'status error';
+            }
+        }
+
+        // 修复Header显示
+        function fixHeaderDisplay() {
+            const result = document.getElementById('fixResult');
+            result.classList.remove('hidden');
+            
+            const user = localStorage.getItem('user');
+            const token = localStorage.getItem('token');
+            
+            if (!user || !token) {
+                result.textContent = '❌ 没有登录数据，无法修复\n\n请先登录';
+                result.className = 'status error';
+                return;
+            }
+            
+            try {
+                // 1. 验证数据格式
+                const userData = JSON.parse(user);
+                
+                // 2. 触发storage事件（跨标签同步）
+                window.dispatchEvent(new StorageEvent('storage', {
+                    key: 'user',
+                    newValue: user,
+                    oldValue: null,
+                    storageArea: localStorage
+                }));
+                
+                // 3. 触发auth-state-changed事件
+                window.dispatchEvent(new CustomEvent('auth-state-changed', {
+                    detail: {
+                        isAuthenticated: true,
+                        user: userData,
+                        timestamp: Date.now()
+                    }
+                }));
+                
+                // 4. 强制刷新页面（如果事件不起作用）
+                setTimeout(() => {
+                    result.textContent += '\n\n如果仍未显示，将在3秒后刷新页面...';
+                    setTimeout(() => location.reload(), 3000);
+                }, 1000);
+                
+                result.textContent = '✅ 已执行修复操作:\n\n1. 触发storage事件\n2. 触发auth-state-changed事件\n\n请检查页面右上角';
+                result.className = 'status success';
+            } catch (e) {
+                result.textContent = `❌ 修复失败: ${e.message}`;
+                result.className = 'status error';
+            }
+        }
+
+        // 刷新认证状态
+        function refreshAuthState() {
+            const result = document.getElementById('fixResult');
+            result.classList.remove('hidden');
+            result.textContent = '正在刷新认证状态...';
+            result.className = 'status info';
+            
+            // 重新读取localStorage并触发所有相关事件
+            const user = localStorage.getItem('user');
+            const token = localStorage.getItem('token');
+            
+            if (user && token) {
+                try {
+                    const userData = JSON.parse(user);
+                    
+                    // 触发所有可能的事件
+                    ['auth-state-changed', 'auth-login', 'auth-token-refresh'].forEach(eventName => {
+                        window.dispatchEvent(new CustomEvent(eventName, {
+                            detail: {
+                                isAuthenticated: true,
+                                user: userData,
+                                timestamp: Date.now()
+                            }
+                        }));
+                    });
+                    
+                    result.textContent = '✅ 认证状态已刷新\n\n如果问题仍然存在，请尝试刷新页面';
+                    result.className = 'status success';
+                    
+                    setTimeout(() => location.reload(), 2000);
+                } catch (e) {
+                    result.textContent = `❌ 刷新失败: ${e.message}`;
+                    result.className = 'status error';
+                }
+            } else {
+                result.textContent = '❌ 没有登录数据';
+                result.className = 'status error';
+            }
+        }
+
+        // 清除所有认证数据
+        function clearAllAuth() {
+            if (!confirm('确定要清除所有认证数据吗？这将登出您的账号。')) {
+                return;
+            }
+            
+            const result = document.getElementById('fixResult');
+            result.classList.remove('hidden');
+            
+            // 清除localStorage
+            ['user', 'token', 'auth_session_id', 'auth_last_sync'].forEach(key => {
+                localStorage.removeItem(key);
+            });
+            
+            // 清除所有cookies
+            document.cookie.split(";").forEach(c => {
+                document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+            });
+            
+            result.textContent = '✅ 已清除所有认证数据\n\n页面将在2秒后刷新...';
+            result.className = 'status success';
+            
+            setTimeout(() => location.reload(), 2000);
+        }
+
+        // 测试登录流程
+        function testLogin() {
+            const result = document.getElementById('testResult');
+            result.classList.remove('hidden');
+            result.className = 'status info';
+            result.textContent = '测试登录流程...\n\n请在Console中查看详细日志';
+            
+            console.log('=== 登录流程测试 ===');
+            console.log('1. localStorage状态:', {
+                user: !!localStorage.getItem('user'),
+                token: !!localStorage.getItem('token')
+            });
+            
+            console.log('2. Cookies:', document.cookie);
+            
+            console.log('3. 测试事件监听器...');
+            let eventReceived = false;
+            const testListener = () => {
+                eventReceived = true;
+                console.log('✅ auth-state-changed 事件已接收');
+            };
+            window.addEventListener('auth-state-changed', testListener);
+            
+            window.dispatchEvent(new CustomEvent('auth-state-changed', {
+                detail: { test: true }
+            }));
+            
+            setTimeout(() => {
+                window.removeEventListener('auth-state-changed', testListener);
+                console.log('事件监听器测试结果:', eventReceived ? '✅ 正常' : '❌ 未接收到事件');
+                
+                result.textContent += '\n\n测试完成，请查看Console获取详细结果';
+            }, 100);
+        }
+
+        // 模拟登录
+        function simulateLogin() {
+            const result = document.getElementById('testResult');
+            result.classList.remove('hidden');
+            result.className = 'status info';
+            
+            const mockUser = {
+                userId: 'test-' + Date.now(),
+                id: 'test-' + Date.now(),
+                email: 'test@example.com',
+                name: 'Test User',
+                points: 50,
+                isGoogleUser: false
+            };
+            
+            const mockToken = 'mock-token-' + Date.now();
+            
+            localStorage.setItem('user', JSON.stringify(mockUser));
+            localStorage.setItem('token', mockToken);
+            localStorage.setItem('auth_session_id', 'session-' + Date.now());
+            
+            window.dispatchEvent(new CustomEvent('auth-state-changed', {
+                detail: {
+                    isAuthenticated: true,
+                    user: mockUser,
+                    timestamp: Date.now()
+                }
+            }));
+            
+            result.textContent = '✅ 已模拟登录\n\n用户: Test User\n邮箱: test@example.com\n\n请检查页面右上角是否显示';
+            result.className = 'status success';
+            
+            setTimeout(() => {
+                result.textContent += '\n\n页面将在3秒后刷新...';
+                setTimeout(() => location.reload(), 3000);
+            }, 2000);
+        }
+
+        // 页面加载时自动检查状态
+        window.addEventListener('DOMContentLoaded', checkStatus);
+    </script>
+</body>
+</html>

@@ -1,0 +1,540 @@
+{
+  "metadata": {
+    "title": "Flux AI 無料画像ジェネレーター",
+    "description": "Flux AIで素晴らしいAI生成画像を作成",
+    "keywords": "AI, 画像生成, 人工知能, Flux AI, AIアート, 画像生成ツール"
+  },
+  "navigation": {
+    "home": "ホーム",
+    "create": "作成",
+    "search": "検索",
+    "hub": "ギャラリー",
+    "pricing": "料金",
+    "profile": "プロフィール",
+    "logout": "ログアウト",
+    "login": "ログイン",
+    "flux11Ultra": "Flux 1.1 Ultra"
+  },
+  "hero": {
+    "mainTitle": "FLUX AI",
+    "subTitle1": "アイデアを",
+    "subTitle2": "素晴らしいビジュアルに変換",
+    "description": "数秒で独自のAI駆動の傑作を作成します。先進のFlux AIで想像力を現実のものにしましょう。",
+    "startButton": "作成を開始",
+    "learnMoreButton": "詳細を見る",
+    "examplesButton": "例",
+    "imageAlt": "AI生成アート例"
+  },
+  "features": {
+    "title": "Flux AIを選ぶ理由",
+    "subtitle": "プロのクリエイターのためのエンタープライズ級のAI画像生成",
+    "cards": {
+      "advancedAI": {
+        "title": "高度なAI画像生成",
+        "subtitle": "FLUX AI プロフェッショナル画像クリエイター",
+        "description": "トランスフォーマーベースのAIモデルを使用して、最大1440x1440の解像度で優れた画像を生成します。BlackForestLabsのFLUX [pro]、[dev]、[schnell]の画像生成モデルをサポートしています。",
+        "highlight": "最大1440x1440の解像度"
+      },
+      "multipleStyles": {
+        "title": "複数のスタイル制御",
+        "subtitle": "FLUX AI スタイルエンジン",
+        "description": "写実的なものから芸術的なものまで、様々なスタイルで画像を作成します。アニメ、デジタルアート、油絵など、正確なプロンプト制御により包括的なスタイル制御をサポートします。",
+        "highlight": "複数の芸術的スタイル"
+      },
+      "advancedModel": {
+        "title": "高度なモデルアーキテクチャ",
+        "subtitle": "FLUX AI テクノロジー",
+        "description": "120億以上のパラメータを持つ最先端のトランスフォーマーアーキテクチャによって駆動され、独自のトレーニング手法により優れた画質と正確なプロンプト遵守を実現します。",
+        "highlight": "120億以上のパラメータ"
+      },
+      "flexiblePricing": {
+        "title": "柔軟な価格プラン",
+        "subtitle": "FLUX AI 価格",
+        "description": "無料プラン（ログイン不要で1日3回の無料生成）から始めるか、$9.9から200回の生成ができるプレミアムプランにアップグレードしてください。高解像度、優先生成、生成回数の増加など、高度な機能にアクセスできます。",
+        "highlight": "無料から開始可能"
+      }
+    },
+    "cta": {
+      "title": "プロフェッショナルなAI画像生成を体験",
+      "tryButton": "無料で試す",
+      "pricingButton": "価格を見る"
+    }
+  },
+  "examples": {
+    "title": "AI生成例",
+    "subtitle": "FLUX AIで何が作れるかを見つける"
+  },
+  "userExperience": {
+    "title": "使い方",
+    "subtitle": "Flux AI画像ジェネレーターで素晴らしいAI生成画像を作成する",
+    "steps": {
+      "describe": {
+        "title": "ビジョンを描写する",
+        "subtitle": "AIによるテキスト理解",
+        "description": "作成したい画像の説明を入力するだけです。私たちのAIは自然言語の入力を理解します。",
+        "highlight": "自然言語処理"
+      },
+      "generate": {
+        "title": "AIの魔法が働く",
+        "subtitle": "高度な画像生成",
+        "description": "強力なAIがあなたの説明を処理し、ビジョンに合致するユニークな画像オプションを生成します。",
+        "highlight": "複数のスタイルオプション"
+      },
+      "refine": {
+        "title": "改良と完成",
+        "subtitle": "結果を微調整する",
+        "description": "直感的なツールを使って、生成された画像を期待通りになるまで調整し、洗練させます。",
+        "highlight": "プロ向けの編集ツール"
+      },
+      "download": {
+        "title": "ダウンロードと使用",
+        "subtitle": "プロジェクトに使える",
+        "description": "AI生成の傑作を高解像度でダウンロードし、クリエイティブなプロジェクトに使用できます。",
+        "highlight": "高解像度の出力"
+      }
+    }
+  },
+  "faq": {
+    "title": "よくある質問",
+    "subtitle": "Flux AIについてのよくある質問と、それがどのようにクリエイティブなワークフローを向上させるかについての回答を得る",
+    "questions": {
+      "what": {
+        "question": "Flux AIモデルとは何ですか？",
+        "answer": "Flux AIは、クリエイティブなタスク、画像生成、デザインワークフローを支援するように設計された最先端の人工知能モデルです。高度な機械学習アルゴリズムを使用して、ユーザーの入力に基づいてビジュアルコンテンツを理解し生成します。"
+      },
+      "versions": {
+        "question": "FLUX AIにはどのようなバージョンがありますか？",
+        "answer": "FLUX AIには3つのバリエーションがあります：最高のパフォーマンスのためのFLUX.1 [pro]、非商用アプリケーション用のFLUX.1 [dev]、高速なローカル開発用のFLUX.1 [schnell]です。"
+      },
+      "comparison": {
+        "question": "Flux AIは他のAIモデルと比べてどうですか？",
+        "answer": "Flux AIは、優れた画質、より高速な生成時間、より直感的なコントロールによって際立っています。私たちのモデルは、高品質のクリエイティブコンテンツで特別にトレーニングされており、デザインやアートのアプリケーションに特に効果的です。"
+      },
+      "imageTypes": {
+        "question": "Flux AIはどのようなタイプの画像を生成できますか？",
+        "answer": "Flux AIは、イラスト、コンセプトアート、プロダクトデザイン、キャラクターデザイン、環境シーンなど、幅広いビジュアルコンテンツを生成できます。このモデルは様々な芸術的スタイルをサポートし、特定のビジュアル要件に適応できます。"
+      },
+      "requirements": {
+        "question": "Flux AIを使用するための技術的要件は何ですか？",
+        "answer": "Flux AIはクラウドで動作し、最新のWebブラウザからアクセスできます。特別なハードウェアは必要ありませんが、最適なパフォーマンスのためには安定したインターネット接続が推奨されます。"
+      },
+      "fineTuning": {
+        "question": "自分のデータセットでFLUX AI画像ジェネレーターを微調整できますか？",
+        "answer": "微調整オプションは、エンタープライズクライアント向けに利用可能な場合があります。特定のニーズについては、Black Forest Labsに直接お問い合わせください。"
+      },
+      "limits": {
+        "question": "生成できる画像の数に制限はありますか？",
+        "answer": "使用制限はサブスクリプションプランによって異なります。無料ユーザーは1日あたり最大3枚の画像を生成でき、プレミアムユーザーは無制限の生成と優先処理を楽しめます。"
+      },
+      "updates": {
+        "question": "FLUX AI画像ジェネレーターはどのくらいの頻度で更新されますか？",
+        "answer": "Black Forest Labsは継続的な改善に取り組んでいます。具体的な更新スケジュールは提供されていませんが、FLUX AIの定期的な拡張と改良を期待できます。"
+      },
+      "feedback": {
+        "question": "FLUX AIに関するフィードバックを提供したり、問題を報告したりするにはどうすればよいですか？",
+        "answer": "Black Forest Labsはフィードバックを歓迎します。公式チャネルから連絡を取るか、flux@blackforestlabs.aiにメールを送って、サポートを受けたり、問題を報告したりすることができます。"
+      },
+      "commercial": {
+        "question": "FLUX AI画像ジェネレーターを商用プロジェクトに使用できますか？",
+        "answer": "FLUX.1 [schnell]は個人使用なら無料ですが、Flux AI画像ジェネレーターの商用アプリケーション用にFLUX.1 [pro]とFLUX.1 [dev]を提供しています。これらのバージョンは機能が強化されており、APIまたはパートナー経由で利用できます。FLUX AI画像ジェネレーターの商用利用に関するお問い合わせは、juq1991@gmail.comまでご連絡ください。"
+      }
+    }
+  },
+  "pricing": {
+    "title": "価格",
+    "subtitle": "あなたに合ったプランを選択してください",
+    "tiers": {
+      "basic": {
+        "name": "ベーシック",
+        "price": "¥980",
+        "features": [
+          "200ポイント",
+          "高品質画像",
+          "より高速な画像生成",
+          "サブスクリプションなし"
+        ]
+      },
+      "premium": {
+        "name": "プレミアムプラン",
+        "price": "¥2,970",
+        "features": [
+          "1000ポイント",
+          "高品質画像",
+          "より高速な画像生成",
+          "月額サブスクリプション"
+        ],
+        "recommended": "おすすめ"
+      },
+      "advanced": {
+        "name": "アドバンスドプラン",
+        "price": "¥9,800",
+        "features": [
+          "5000ポイント",
+          "高品質画像",
+          "より高速な画像生成",
+          "年間サブスクリプション"
+        ]
+      },
+      "common": {
+        "buyNowButton": "今すぐ購入",
+        "subscribeButton": "サブスクリプション",
+        "processingButton": "処理中...",
+        "comingSoonButton": "近日公開"
+      }
+    }
+  },
+  "modelComparison": {
+    "title": "Flux AI モデル比較",
+    "subtitle": "クリエイティブなニーズに最適なモデルを選択",
+    "promptSection": {
+      "showPrompt": "プロンプトを表示",
+      "hidePrompt": "プロンプトを非表示",
+      "promptTitle": "すべてのモデルで使用されるプロンプト",
+      "copyButton": "プロンプトをコピー",
+      "copiedButton": "コピーしました！"
+    },
+    "modelDetails": {
+      "processingTime": "処理時間",
+      "outputSize": "出力サイズ",
+      "bestFor": "最適な用途",
+      "keyFeatures": "主な特徴"
+    },
+    "models": {
+      "ultra": {
+        "name": "Flux 1.1 Pro Ultra",
+        "description": "画像は最大400万画素。リアルな表現にはRAWモードを使用。",
+        "features": [
+          "より高い解像度",
+          "速度を犠牲にしない",
+          "RAWモード"
+        ],
+        "suitableFor": [
+          "人物被写体",
+          "自然写真"
+        ],
+        "highlight": "リアリズム",
+        "details": "FLUX1.1 [pro]に新しい高解像度機能を追加し、4倍の高解像度（最大400万画素）をサポートしながら、わずか10秒という印象的な生成時間を維持します。",
+        "processingTime": "10秒",
+        "imageSize": "2096*2096"
+      },
+      "schnell": {
+        "name": "Flux Schnell",
+        "description": "ローカル開発や個人利用に最適化された最速の画像生成モデル。",
+        "features": [
+          "高性能",
+          "高速生成",
+          "オープンライセンス"
+        ],
+        "suitableFor": [
+          "個人利用",
+          "科学研究",
+          "商業利用"
+        ],
+        "highlight": "速度最適化",
+        "details": "速度と効率性を最適化し、初期コンセプトや高速プロトタイピングに最適な結果を提供するFlux Schnell。迅速な反復が必要な開発者やデザイナーに最適です。",
+        "processingTime": "0.8秒",
+        "imageSize": "1024*1024"
+      },
+      "dev": {
+        "name": "Flux Dev",
+        "description": "120億パラメータの整流フロートランスフォーマーで、テキスト記述から画像を生成可能。",
+        "features": [
+          "競争力のある性能",
+          "効率的なトレーニング",
+          "オープンリサーチ"
+        ],
+        "suitableFor": [
+          "個人利用",
+          "科学研究",
+          "商業利用"
+        ],
+        "highlight": "より効率的",
+        "details": "強力な120億パラメータの画像生成モデルで、高品質な出力、商業利用のサポート、最適化されたパフォーマンス、責任あるAI開発のための明確な倫理ガイドラインを提供します。",
+        "processingTime": "3-5秒",
+        "imageSize": "1024*1024"
+      },
+      "pro11": {
+        "name": "Flux 1.1 Pro",
+        "description": "より高速で優れたFLUX Pro。優れた画質、プロンプト追従性、出力の多様性を備えたテキストから画像への生成モデル。",
+        "features": [
+          "6倍高速な生成",
+          "品質向上",
+          "先進的アーキテクチャ"
+        ],
+        "suitableFor": [
+          "プロフェッショナルワークフロー",
+          "品質重視プロジェクト",
+          "本番環境"
+        ],
+        "highlight": "品質向上",
+        "details": "最先端の120億パラメータ画像生成モデルで、6倍の高速化、品質向上、ベンチマークをリードするパフォーマンスを実現。マルチモーダルと並列拡散トランスフォーマーブロックを組み合わせた先進的なハイブリッドアーキテクチャを採用し、プロフェッショナルや本番環境に適しています。",
+        "processingTime": "8-10秒",
+        "imageSize": "1440*1440"
+      },
+      "pro": {
+        "name": "Flux Pro",
+        "description": "最先端の画像生成技術で、トップクラスのプロンプト追従性、視覚品質、画像詳細度、出力の多様性を実現。",
+        "features": [
+          "トップパフォーマンス",
+          "柔軟な解像度",
+          "先進的アーキテクチャ"
+        ],
+        "suitableFor": [
+          "プロフェッショナルプロジェクト",
+          "多目的アプリケーション"
+        ],
+        "highlight": "プレミアム品質",
+        "details": "プレミアムな120億パラメータ画像生成モデルで、最先端のパフォーマンス、優れた視覚品質、柔軟な解像度サポートを提供。マルチモーダルと並列拡散トランスフォーマーブロックを組み合わせたハイブリッドアーキテクチャを採用。",
+        "processingTime": "15-25秒",
+        "imageSize": "1440*1440"
+      }
+    }
+  },
+  "imagePreview": {
+    "loading": "傑作を作成中...",
+    "placeholder": "AI生成画像がここに表示されます",
+    "downloadButton": "ダウンロード",
+    "dimensions": {
+      "width": "幅",
+      "height": "高さ"
+    }
+  },
+  "autoLogout": {
+    "warningMessage": "あと{minutes}分でセッションの有効期限が切れます。",
+    "stayLoggedIn": "ログイン状態を維持"
+  },
+  "footer": {
+    "description": "Flux AIのパワーでアイデアを魅力的なビジュアルに変換",
+    "quickLinks": "クイックリンク",
+    "pricing": "料金",
+    "contact": "お問い合わせ",
+    "legal": "法的情報",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー",
+    "support": "サポート",
+    "allRightsReserved": "All rights reserved",
+    "fluxAI": {
+      "title": "Flux 画像生成",
+      "desc": "Flux AIの画像生成ツールを体験"
+    },
+    "soraAI": {
+      "title": "SORA AI",
+      "desc": "SORA AIの機能を探索"
+    },
+    "aiBestTool": {
+      "title": "AI ベストツール",
+      "desc": "最高のAIツールを見つける"
+    }
+  },
+  "auth": {
+    "signIn": "アカウントにサインイン",
+    "createAccount": "新規アカウント作成",
+    "fullName": "フルネーム",
+    "emailAddress": "メールアドレス",
+    "password": "パスワード",
+    "signInButton": "サインイン",
+    "registerButton": "登録",
+    "noAccount": "アカウントをお持ちでない場合？登録",
+    "hasAccount": "すでにアカウントをお持ちですか？サインイン",
+    "loading": "読み込み中...",
+    "errors": {
+      "unexpected": "予期せぬエラーが発生しました。もう一度お試しください。",
+      "invalidFormat": "予期せぬ応答形式",
+      "authFailed": "認証に失敗しました"
+    }
+  },
+  "imageGenerator": {
+    "title": "Flux AIで魅力的な画像を作成",
+    "subtitle": "アイデアを数秒で視覚的な傑作に変換",
+    "pageTitle": "Flux AI 画像生成ツール",
+    "description": "アイデアを魅力的なビジュアルに変換",
+    "promptLabel": "画像の説明",
+    "promptPlaceholder": "例：夕暮れの山頂に座る雄大なライオン...",
+    "modelLabel": "AIモデル",
+    "modelPoints": "ポイント|ポイント",
+    "modelPremium": "プレミアム",
+    "aspectRatioLabel": "アスペクト比",
+    "outputFormatLabel": "出力形式",
+    "generateButton": "画像を生成",
+    "generatingButton": "生成中...",
+    "freeGenerations": "無料生成回数",
+    "points": "ポイント",
+    "loginForMore": "ログインで追加生成回数を獲得",
+    "error": "エラーが発生しました",
+    "guidanceLabel": "ガイダンス強度",
+    "outputQualityLabel": "出力品質",
+    "inferenceStepsLabel": "推論ステップ",
+    "numOutputsLabel": "出力数"
+  },
+  "ultraHero": {
+    "heroTitle": "FLUX 1.1 Ultra",
+    "heroSubtitle": "次世代",
+    "heroDescription": "FLUX1.1 [pro]に高解像度機能が追加され、最大4MPの高解像度画像を10秒以内で生成できるようになりました。",
+    "heroCallToAction": "Ultraを今すぐ体験",
+    "heroExploreFeatures": "機能を探索",
+    "sectionNewRelease": "新リリース",
+    "imageAlt": "FLUX 1.1 Ultra サンプル"
+  },
+  "faqData": [
+    {
+      "question": "Flux 1.1 Pro Ultraとは何ですか？",
+      "answer": "Flux 1.1 Pro Ultraは、最大400万ピクセルの解像度で非常にリアルな画像を作成できる高度なAI画像生成モデルです。画像生成の柔軟性を最大限に高めるために、ウルトラモードとRAWモードの両方を提供しています。"
+    },
+    {
+      "question": "Flux 1.1 Pro Ultraを試すにはどうすればよいですか？",
+      "answer": "アカウントにログインすることで、Flux 1.1 Pro Ultraを無料で試すことができます。新規ユーザーは、この高度なモデルの強化された機能を体験するために、3ポイント（1回）を取得できます。"
+    },
+    {
+      "question": "Flux 1.1 Pro Ultraの主な特徴は何ですか？",
+      "answer": "主な特徴には、最大400万ピクセルのサイズの画像を生成できること、写実的な出力に最適化されたRAWモード、以前のモデルと比較して自然画像生成機能が向上していることが含まれます。"
+    },
+    {
+      "question": "ウルトラモードとRAWモードの違いは何ですか？",
+      "answer": "両方のモードで高品質の画像を生成できますが、RAWモードは特に高度にリアルで自然な画像を作成するように最適化されています。ウルトラモードは、より汎用的な画像生成機能を提供します。"
+    },
+    {
+      "question": "Flux 1.1 Pro Ultraを他のモデルと異なるものにしているのは何ですか？",
+      "answer": "Flux 1.1 Pro Ultraは、より大きな400万ピクセルの画像を生成できる能力、特にRAWモードでのリアリズムの向上、以前のバージョンと比較した自然画像生成の改善点が際立っています。"
+    }
+  ],
+  "ultraFeatures": {
+    "title": "FLUX 1.1 Ultra の機能",
+    "subtitle": "リアルな結果のためのRAWモード",
+    "features": {
+      "resolution": {
+        "title": "超高解像度",
+        "subtitle": "FLUX 1.1 Ultra 解像度エンジン",
+        "description": "最大2096x2096の解像度で、exceptional な詳細と鮮明さを持つ画像を作成。プロフェッショナルな用途や大判印刷に最適です。",
+        "highlight": "最大2096x2096"
+      },
+      "speed": {
+        "title": "速度を維持",
+        "subtitle": "より高速に",
+        "description": "高解像度で大幅な速度低下を経験する他のモデルとは異なり、当社のパフォーマンスベンチマークは、同等の高解像度製品の2.5倍以上の持続的な高速生成時間を示しています。",
+        "highlight": "10秒 2.5倍速"
+      },
+      "price": {
+        "title": "競争力のある価格",
+        "subtitle": "数量増加でも価格据え置き",
+        "description": "このモデルは他のProバージョンと同じ画像単価で、競争力のある価格設定となっています。",
+        "highlight": "コスト効率"
+      },
+      "rawMode": {
+        "title": "RAWモードのリアリズム",
+        "subtitle": "FLUX Ultra 生成",
+        "description": "FLUX1.1 [pro] – RAWモード：本物志向のクリエイター向けに、新しいRAWモードは自然な写真の雰囲気を捉えます。より合成感の少ない、自然な美的効果を生成するためにこの機能を使用してください。",
+        "highlight": "人物と自然の表現"
+      }
+    },
+    "tryNow": "Ultraを試す",
+    "viewPricing": "価格を見る"
+  },
+  "ultraFAQ": {
+    "title": "よくある質問",
+    "subtitle": "Flux 1.1 Ultraに関する一般的な質問と、クリエイティブワークフローを向上させる方法について",
+    "questions": {
+      "what": {
+        "question": "Flux 1.1 Pro Ultraとは何ですか？",
+        "answer": "Flux 1.1 Pro Ultraは、最大4メガピクセルの高解像度で非常にリアルな画像を作成できる高度なAI画像生成モデルです。最大限の柔軟性のために、ウルトラモードとRAWモードの両方を提供しています。"
+      },
+      "howToTry": {
+        "question": "Flux 1.1 Pro Ultraを試すにはどうすればよいですか？",
+        "answer": "アカウントにログインすることで、Flux 1.1 Pro Ultraを無料で試すことができます。新規ユーザーは、この高度なモデルの機能を体験するために3ポイント（1回分）を獲得できます。"
+      },
+      "keyFeatures": {
+        "question": "Flux 1.1 Pro Ultraの主な機能は何ですか？",
+        "answer": "主な機能には、最大4メガピクセルのサイズの画像生成能力、写真のようなリアルな出力に最適化されたRAWモード、そして以前のモデルと比較して向上した自然な画像生成機能が含まれます。"
+      },
+      "modeDifference": {
+        "question": "ウルトラモードとRAWモードの違いは何ですか？",
+        "answer": "両方のモードで高品質な画像を生成できますが、RAWモードは特に高度にリアルで自然な見た目の画像の作成に最適化されています。ウルトラモードはより汎用的な画像生成機能を提供します。"
+      },
+      "comparison": {
+        "question": "Flux 1.1 Pro Ultraが他のモデルと異なる点は何ですか？",
+        "answer": "Flux 1.1 Pro Ultraは、より大きな4メガピクセルの画像を生成する能力、特にRAWモードでのリアリズムの向上、そして以前のバージョンと比較して改善された自然な画像生成能力が特徴です。"
+      }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "アスペクト比",
+      "outputFormatLabel": "出力形式",
+      "generateButton": "画像生成",
+      "generating": "生成中...",
+      "downloadButton": "ダウンロード",
+      "previewPlaceholder": "画像をアップロードして開始",
+      "invalidFileType": "JPGまたはPNG画像をアップロードしてください",
+      "noImageError": "画像をアップロードしてください",
+      "generationError": "生成に失敗しました。もう一度お試しください"
+    },
+    "redux": {
+      "title": "Flux Reduxで美しい画像を作成",
+      "subtitle": "数秒でアイデアを視覚的な傑作に変換",
+      "pageTitle": "Flux Redux画像生成",
+      "description": "高度なAI技術を使用して、クリエイティビティを美しい画像に変換",
+      "guidanceLabel": "ガイダンススケール",
+      "outputQualityLabel": "出力品質",
+      "inferenceStepsLabel": "推論ステップ数",
+      "numOutputsLabel": "出力数"
+    },
+    "depth": {
+      "title": "Flux Depthで深度マップを作成",
+      "subtitle": "数秒で画像を深度マップに変換",
+      "pageTitle": "Flux Depth深度マップ生成",
+      "description": "高度なAI技術を使用して、画像の正確な深度マップを作成",
+      "guidanceLabel": "ガイダンススケール",
+      "outputQualityLabel": "出力品質",
+      "inferenceStepsLabel": "推論ステップ数",
+      "numOutputsLabel": "出力数",
+      "cannyLowThresholdLabel": "低閾値",
+      "cannyHighThresholdLabel": "高閾値",
+      "safetyToleranceLabel": "安全許容値",
+      "promptLabel": "プロンプト",
+      "promptPlaceholder": "プロンプトを入力してください（例：都市の通りを走る車）",
+      "promptUpsamplingLabel": "プロンプトアップサンプリング"
+    },
+    "fill": {
+      "title": "Flux Fill画像修復",
+      "subtitle": "画像の任意の領域をインテリジェントに修復",
+      "pageTitle": "Flux Fill画像修復",
+      "description": "高度なAI技術を使用して、画像の任意の領域をインテリジェントに修復",
+      "maskLabel": "修復する領域を選択",
+      "clearMask": "マスクをクリア",
+      "promptLabel": "プロンプト",
+      "promptPlaceholder": "修復したい内容を説明してください（例：緑の草原）",
+      "guidanceLabel": "ガイダンススケール",
+      "inferenceStepsLabel": "推論ステップ数",
+      "outputFormatLabel": "出力形式",
+      "safetyToleranceLabel": "安全許容値",
+      "promptUpsamplingLabel": "プロンプトアップサンプリング",
+      "promptUpsamplingEnabled": "プロンプトアップサンプリングを有効化",
+      "outpaintingLabel": "画像拡張",
+      "outpaintingOptions": {
+        "none": "なし",
+        "zoomOut15": "1.5倍縮小",
+        "zoomOut2": "2倍縮小",
+        "makeSquare": "正方形に",
+        "leftOutpaint": "左に拡張",
+        "rightOutpaint": "右に拡張",
+        "topOutpaint": "上に拡張",
+        "bottomOutpaint": "下に拡張"
+      }
+    },
+    "canny": {
+      "title": "Flux Cannyでエッジマップを作成",
+      "subtitle": "数秒で画像をエッジマップに変換",
+      "pageTitle": "Flux Cannyエッジ検出",
+      "description": "高度なAI技術を使用して、画像の正確なエッジマップを作成",
+      "guidanceLabel": "ガイダンススケール",
+      "outputQualityLabel": "出力品質",
+      "inferenceStepsLabel": "推論ステップ数",
+      "numOutputsLabel": "出力数",
+      "cannyLowThresholdLabel": "低閾値",
+      "cannyHighThresholdLabel": "高閾値",
+      "safetyToleranceLabel": "安全許容値",
+      "promptLabel": "プロンプト",
+      "promptPlaceholder": "プロンプトを入力してください（例：都市の通りを走る車）",
+      "promptUpsamplingLabel": "プロンプトアップサンプリング"
+    }
+  }
+}

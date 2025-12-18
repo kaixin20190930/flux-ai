@@ -1,0 +1,20 @@
+{
+  "name": "认证系统修改保护",
+  "description": "修改认证相关代码时，运行完整的认证测试套件",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "{lib/auth.ts,lib/auth-utils.ts,app/api/auth/**/*.ts,middleware.ts}"
+  },
+  "actions": [
+    {
+      "type": "sendMessage",
+      "message": "⚠️ 检测到认证系统修改！这是关键功能，正在运行完整的认证测试套件...\n\n请确认：\n1. ✅ 是否保持使用 database sessions（不是 JWT）？\n2. ✅ 是否保持 NextAuth v5 的配置？\n3. ✅ 是否测试了 Google OAuth 和邮箱密码登录？\n4. ✅ 是否验证了积分系统集成？"
+    },
+    {
+      "type": "executeCommand",
+      "command": "npm test -- lib/__tests__/auth.test.ts lib/__tests__/e2e-auth-flow.test.ts",
+      "description": "运行认证测试套件"
+    }
+  ],
+  "enabled": true
+}

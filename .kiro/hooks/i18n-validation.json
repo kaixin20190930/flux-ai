@@ -1,0 +1,20 @@
+{
+  "name": "i18n 多语言验证",
+  "description": "修改组件时检查是否正确使用 i18n，修改翻译文件时验证 JSON 格式",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "{components/**/*.tsx,app/[locale]/**/*.tsx,app/i18n/locales/*.json}"
+  },
+  "actions": [
+    {
+      "type": "sendMessage",
+      "message": "检测到 UI 组件或翻译文件修改。\n\n请确认：\n1. ✅ 组件中是否有硬编码的文案？（应该使用 dictionary）\n2. ✅ 新增的文案是否已添加到所有 20 种语言的翻译文件？\n3. ✅ 翻译 JSON 文件格式是否正确？\n4. ✅ 是否通过 props 传递 dictionary 到客户端组件？\n\n正在验证 JSON 格式和类型..."
+    },
+    {
+      "type": "executeCommand",
+      "command": "node -e \"const fs = require('fs'); const files = fs.readdirSync('app/i18n/locales'); files.forEach(f => { try { JSON.parse(fs.readFileSync('app/i18n/locales/' + f, 'utf8')); console.log('✅', f, '格式正确'); } catch(e) { console.error('❌', f, '格式错误:', e.message); process.exit(1); } });\"",
+      "description": "验证所有翻译文件的 JSON 格式"
+    }
+  ],
+  "enabled": true
+}

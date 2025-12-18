@@ -1,0 +1,540 @@
+{
+  "metadata": {
+    "title": "Generator Gambar Flux AI Gratis",
+    "description": "Buat gambar menakjubkan yang dihasilkan AI dengan Flux AI",
+    "keywords": "AI, generator gambar, kecerdasan buatan, Flux AI"
+  },
+  "navigation": {
+    "home": "Beranda",
+    "create": "Buat",
+    "search": "Cari",
+    "hub": "Hub",
+    "pricing": "Harga",
+    "profile": "Profil",
+    "logout": "Keluar",
+    "login": "Masuk",
+    "flux11Ultra": "Flux 1.1 Ultra"
+  },
+  "hero": {
+    "mainTitle": "FLUX AI",
+    "subTitle1": "Ubah Ide Anda Menjadi",
+    "subTitle2": "Visual Menakjubkan",
+    "description": "Ciptakan karya indah unik dengan AI dalam hitungan detik. Wujudkan imajinasi Anda menjadi kenyataan dengan Flux AI canggih kami.",
+    "startButton": "Mulai Membuat",
+    "learnMoreButton": "Pelajari Lebih Lanjut",
+    "examplesButton": "Contoh",
+    "imageAlt": "Contoh Seni Yang Dihasilkan AI"
+  },
+  "features": {
+    "title": "Mengapa Memilih Flux AI",
+    "subtitle": "Pembuatan Gambar AI Kelas Perusahaan untuk Kreator Profesional",
+    "cards": {
+      "advancedAI": {
+        "title": "Pembuatan Gambar AI Lanjutan",
+        "subtitle": "Pencipta Gambar Profesional FLUX AI",
+        "description": "Hasilkan gambar luar biasa dengan resolusi hingga 1440x1440 menggunakan model AI berbasis transformer kami. Mendukung model pembuatan gambar FLUX [pro], [dev], dan [schnell] dari BlackForestLabs.",
+        "highlight": "Resolusi hingga 1440x1440"
+      },
+      "multipleStyles": {
+        "title": "Kendali Gaya yang Beragam",
+        "subtitle": "Mesin Gaya FLUX AI",
+        "description": "Ciptakan gambar dalam berbagai gaya dari fotorealistik hingga artistik. Mendukung kendali gaya yang komprehensif termasuk anime, seni digital, lukisan minyak, dan lainnya dengan kontrol yang presisi melalui prompt.",
+        "highlight": "Beragam gaya artistik"
+      },
+      "advancedModel": {
+        "title": "Arsitektur Model Canggih",
+        "subtitle": "Teknologi FLUX AI",
+        "description": "Didukung oleh arsitektur transformer mutakhir dengan lebih dari 12 miliar parameter, memberikan kualitas gambar luar biasa dan kepatuhan prompt yang presisi melalui teknik pelatihan eksklusif kami.",
+        "highlight": "Lebih dari 12 miliar parameter"
+      },
+      "flexiblePricing": {
+        "title": "Paket Harga Fleksibel",
+        "subtitle": "Harga FLUX AI",
+        "description": "Mulai dengan paket gratis kami (3 Pembuatan Gratis per hari tanpa Login) atau tingkatkan ke paket premium mulai dari $9,9 untuk 200 pembuatan. Akses fitur lanjutan termasuk resolusi lebih tinggi, prioritas pembuatan, dan batas pembuatan yang ditingkatkan.",
+        "highlight": "Dimulai dari Gratis"
+      }
+    },
+    "cta": {
+      "title": "Rasakan Pembuatan Gambar AI Profesional",
+      "tryButton": "Coba Gratis",
+      "pricingButton": "Lihat Harga"
+    }
+  },
+  "examples": {
+    "title": "Contoh Pembuatan AI",
+    "subtitle": "Temukan apa yang bisa Anda buat dengan FLUX AI"
+  },
+  "userExperience": {
+    "title": "Bagaimana Cara Kerjanya",
+    "subtitle": "Ciptakan gambar AI yang menakjubkan dengan pembuat gambar Flux AI",
+    "steps": {
+      "describe": {
+        "title": "Jelaskan Visi Anda",
+        "subtitle": "Pemahaman Teks AI",
+        "description": "Cukup ketik deskripsi gambar yang ingin Anda buat. AI kami memahami input bahasa alami.",
+        "highlight": "Pemrosesan Bahasa Alami"
+      },
+      "generate": {
+        "title": "Keajaiban AI Beraksi",
+        "subtitle": "Pembuatan Gambar Lanjutan",
+        "description": "AI kami yang kuat akan memproses deskripsi Anda dan menghasilkan opsi gambar unik yang sesuai dengan visi Anda.",
+        "highlight": "Beragam Pilihan Gaya"
+      },
+      "refine": {
+        "title": "Sempurnakan Hasil",
+        "subtitle": "Sesuaikan Hasil Anda",
+        "description": "Gunakan alat intuitif kami untuk menyesuaikan dan menyempurnakan gambar yang dihasilkan hingga sesuai dengan harapan Anda.",
+        "highlight": "Alat Pengeditan Profesional"
+      },
+      "download": {
+        "title": "Unduh dan Gunakan",
+        "subtitle": "Siap untuk Proyek Anda",
+        "description": "Unduh karya AI Anda dalam resolusi tinggi, siap untuk proyek kreatif Anda.",
+        "highlight": "Hasil Resolusi Tinggi"
+      }
+    }
+  },
+  "faq": {
+    "title": "Pertanyaan yang Sering Diajukan",
+    "subtitle": "Dapatkan jawaban atas pertanyaan umum tentang Flux AI dan bagaimana hal itu dapat meningkatkan alur kerja kreatif Anda",
+    "questions": {
+      "what": {
+        "question": "Apa itu Model Flux AI?",
+        "answer": "Flux AI adalah model kecerdasan buatan mutakhir yang dirancang untuk membantu tugas kreatif, pembuatan gambar, dan alur kerja desain. Model ini menggunakan algoritma pembelajaran mesin canggih untuk memahami dan menghasilkan konten visual berdasarkan input pengguna."
+      },
+      "versions": {
+        "question": "Apa saja versi FLUX AI yang tersedia?",
+        "answer": "FLUX AI hadir dalam tiga varian: FLUX.1 [pro] untuk performa terbaik, FLUX.1 [dev] untuk aplikasi non-komersial, dan FLUX.1 [schnell] untuk pengembangan cepat lokal."
+      },
+      "comparison": {
+        "question": "Bagaimana Flux AI dibandingkan dengan model AI lainnya?",
+        "answer": "Flux AI menonjol melalui kualitas gambar superior, waktu pembuatan lebih cepat, dan kontrol yang lebih intuitif. Model ini dilatih secara khusus pada konten kreatif berkualitas tinggi, menjadikannya sangat efektif untuk aplikasi desain dan seni."
+      },
+      "imageTypes": {
+        "question": "Jenis gambar apa yang dapat dihasilkan oleh Flux AI?",
+        "answer": "Flux AI dapat menghasilkan berbagai jenis konten visual termasuk ilustrasi, seni konsep, desain produk, desain karakter, dan pemandangan lingkungan. Model ini mendukung berbagai gaya artistik dan dapat menyesuaikan kebutuhan visual tertentu."
+      },
+      "requirements": {
+        "question": "Apa persyaratan teknis untuk menggunakan Flux AI?",
+        "answer": "Flux AI berjalan di cloud dan dapat diakses melalui browser web modern apa pun. Tidak memerlukan perangkat keras khusus, namun koneksi internet yang stabil direkomendasikan untuk performa optimal."
+      },
+      "fineTuning": {
+        "question": "Bisakah saya menyempurnakan FLUX AI Image Generator dengan dataset saya sendiri?",
+        "answer": "Opsi penyempurnaan mungkin tersedia untuk klien perusahaan. Silakan hubungi Black Forest Labs secara langsung untuk mendiskusikan kebutuhan spesifik Anda."
+      },
+      "limits": {
+        "question": "Apakah ada batasan berapa banyak gambar yang dapat saya hasilkan?",
+        "answer": "Batas penggunaan tergantung pada tingkat langganan Anda. Pengguna gratis dapat menghasilkan hingga 3 gambar per hari, sementara pengguna premium menikmati pembuatan tanpa batas dan pemrosesan prioritas."
+      },
+      "updates": {
+        "question": "Seberapa sering FLUX AI Image Generator diperbarui?",
+        "answer": "Black Forest Labs berkomitmen untuk perbaikan terus-menerus. Meskipun jadwal pembaruan khusus tidak disediakan, Anda dapat mengharapkan peningkatan dan penyempurnaan secara berkala untuk FLUX AI."
+      },
+      "feedback": {
+        "question": "Bagaimana saya dapat memberikan umpan balik atau melaporkan masalah dengan FLUX AI?",
+        "answer": "Black Forest Labs menyambut umpan balik. Anda dapat menghubungi melalui saluran resmi mereka atau email flux@blackforestlabs.ai untuk dukungan dan melaporkan masalah apa pun."
+      },
+      "commercial": {
+        "question": "Bisakah saya menggunakan FLUX AI Image Generator untuk proyek komersial?",
+        "answer": "Meskipun FLUX.1 [schnell] gratis untuk penggunaan pribadi, kami menawarkan FLUX.1 [pro] dan FLUX.1 [dev] untuk aplikasi komersial FLUX AI Image Generator. Versi ini menyediakan fitur yang ditingkatkan dan tersedia melalui API atau mitra. Untuk pertanyaan tentang penggunaan komersial FLUX AI Image Generator, silakan hubungi kami di juq1991@gmail.com."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Harga",
+    "subtitle": "Pilih paket yang tepat untuk Anda",
+    "tiers": {
+      "basic": {
+        "name": "Dasar",
+        "price": "$9,9",
+        "features": [
+          "200 poin",
+          "Gambar berkualitas tinggi",
+          "Pembuatan gambar lebih cepat",
+          "Tanpa berlangganan"
+        ]
+      },
+      "premium": {
+        "name": "Paket Premium",
+        "price": "$29,9",
+        "features": [
+          "1000 poin",
+          "Gambar berkualitas tinggi",
+          "Pembuatan gambar lebih cepat",
+          "Berlangganan bulanan"
+        ],
+        "recommended": "Direkomendasikan"
+      },
+      "advanced": {
+        "name": "Paket Lanjutan",
+        "price": "$99,9",
+        "features": [
+          "5000 poin",
+          "Gambar berkualitas tinggi",
+          "Pembuatan gambar lebih cepat",
+          "Berlangganan tahunan"
+        ]
+      },
+      "common": {
+        "buyNowButton": "Beli Sekarang",
+        "subscribeButton": "Berlangganan",
+        "processingButton": "Memproses...",
+        "comingSoonButton": "Segera Hadir"
+      }
+    }
+  },
+  "modelComparison": {
+    "title": "Perbandingan Model Flux AI",
+    "subtitle": "Pilih model sempurna untuk kebutuhan kreatif Anda",
+    "promptSection": {
+      "showPrompt": "Tampilkan Prompt",
+      "hidePrompt": "Sembunyikan Prompt",
+      "promptTitle": "Prompt yang digunakan untuk semua model",
+      "copyButton": "Salin prompt",
+      "copiedButton": "Tersalin!"
+    },
+    "modelDetails": {
+      "processingTime": "Waktu Pemrosesan",
+      "outputSize": "Ukuran Output",
+      "bestFor": "Terbaik Untuk",
+      "keyFeatures": "Fitur Utama"
+    },
+    "models": {
+      "ultra": {
+        "name": "Flux 1.1 Pro Ultra",
+        "description": "Gambar hingga 4 megapiksel. Gunakan mode raw untuk realisme.",
+        "features": [
+          "Resolusi Lebih Tinggi",
+          "Tanpa Kompromi dalam Kecepatan",
+          "Mode Raw"
+        ],
+        "suitableFor": [
+          "Subjek Manusia",
+          "Fotografi Alam"
+        ],
+        "highlight": "Realisme",
+        "details": "Kemampuan resolusi tinggi baru untuk FLUX1.1 [pro], memperluas fungsionalitasnya untuk mendukung resolusi gambar 4x lebih tinggi (hingga 4MP) sambil mempertahankan waktu pembuatan yang mengesankan hanya 10 detik per sampel.",
+        "processingTime": "10 detik",
+        "imageSize": "2096*2096"
+      },
+      "schnell": {
+        "name": "Flux Schnell",
+        "description": "Model pembuatan gambar tercepat yang disesuaikan untuk pengembangan lokal dan penggunaan pribadi.",
+        "features": [
+          "Kinerja Tinggi",
+          "Pembuatan Cepat",
+          "Lisensi Terbuka"
+        ],
+        "suitableFor": [
+          "Pribadi",
+          "Ilmiah",
+          "Tujuan Komersial"
+        ],
+        "highlight": "Dioptimalkan untuk Kecepatan",
+        "details": "Dioptimalkan untuk kecepatan dan efisiensi, Flux Schnell memberikan hasil cepat sempurna untuk konsep awal dan prototipe cepat. Ideal untuk pengembang dan desainer yang membutuhkan iterasi cepat.",
+        "processingTime": "0,8 detik",
+        "imageSize": "1024*1024"
+      },
+      "dev": {
+        "name": "Flux Dev",
+        "description": "Transformer aliran terkoreksi 12 miliar parameter yang mampu menghasilkan gambar dari deskripsi teks.",
+        "features": [
+          "Kinerja Kompetitif",
+          "Pelatihan Efisien",
+          "Penelitian Terbuka"
+        ],
+        "suitableFor": [
+          "Pribadi",
+          "Ilmiah",
+          "Tujuan Komersial"
+        ],
+        "highlight": "Lebih Efisien",
+        "details": "Model pembuatan gambar 12B parameter yang kuat menghasilkan output berkualitas tinggi dengan dukungan penggunaan komersial, kinerja yang dioptimalkan, dan pedoman etis yang jelas untuk pengembangan AI yang bertanggung jawab.",
+        "processingTime": "3-5 detik",
+        "imageSize": "1024*1024"
+      },
+      "pro11": {
+        "name": "Flux 1.1 Pro",
+        "description": "FLUX Pro lebih cepat, lebih baik. Model teks-ke-gambar dengan kualitas gambar, kepatuhan prompt, dan keragaman output yang sangat baik.",
+        "features": [
+          "Pembuatan 6x Lebih Cepat",
+          "Kualitas Ditingkatkan",
+          "Arsitektur Lanjutan"
+        ],
+        "suitableFor": [
+          "Alur Kerja Profesional",
+          "Proyek Kritis Kualitas",
+          "Lingkungan Produksi"
+        ],
+        "highlight": "Kualitas Ditingkatkan",
+        "details": "Model pembuatan gambar 12B parameter mutakhir dengan kecepatan 6x lebih cepat, kualitas yang ditingkatkan, dan kinerja terdepan dalam tolok ukur, dibangun dengan arsitektur hybrid canggih yang menggabungkan blok transformer difusi multimodal dan paralel untuk lingkungan profesional dan produksi.",
+        "processingTime": "8-10 detik",
+        "imageSize": "1440*1440"
+      },
+      "pro": {
+        "name": "Flux Pro",
+        "description": "Pembuatan gambar mutakhir dengan kepatuhan prompt, kualitas visual, detail gambar, dan keragaman output terbaik di kelasnya.",
+        "features": [
+          "Kinerja Terbaik",
+          "Resolusi Fleksibel",
+          "Arsitektur Lanjutan"
+        ],
+        "suitableFor": [
+          "Proyek Profesional",
+          "Aplikasi Serbaguna"
+        ],
+        "highlight": "Kualitas Premium",
+        "details": "Model pembuatan gambar 12B parameter premium yang menawarkan kinerja mutakhir dengan kualitas visual superior dan dukungan resolusi serbaguna, didukung oleh arsitektur hybrid yang menggabungkan blok transformer difusi multimodal dan paralel.",
+        "processingTime": "15-25 detik",
+        "imageSize": "1440*1440"
+      }
+    }
+  },
+  "imagePreview": {
+    "loading": "Menciptakan karya Anda...",
+    "placeholder": "Gambar yang dihasilkan AI Anda akan muncul di sini",
+    "downloadButton": "Unduh",
+    "dimensions": {
+      "width": "Lebar",
+      "height": "Tinggi"
+    }
+  },
+  "autoLogout": {
+    "warningMessage": "Sesi Anda akan berakhir dalam {minutes} menit.",
+    "stayLoggedIn": "Tetap masuk"
+  },
+  "footer": {
+    "description": "Mengubah ide menjadi visual menakjubkan dengan kekuatan Flux AI",
+    "quickLinks": "Tautan Cepat",
+    "pricing": "Harga",
+    "contact": "Kontak",
+    "legal": "Hukum",
+    "terms": "Syarat Layanan",
+    "privacy": "Kebijakan Privasi",
+    "support": "Dukungan",
+    "allRightsReserved": "Hak cipta dilindungi",
+    "fluxAI": {
+      "title": "Flux Image AI",
+      "desc": "Rasakan alat pembuatan gambar Flux AI"
+    },
+    "soraAI": {
+      "title": "SORA AI",
+      "desc": "Jelajahi kemampuan SORA AI"
+    },
+    "aiBestTool": {
+      "title": "AI Best Tool",
+      "desc": "Temukan alat AI terbaik"
+    }
+  },
+  "auth": {
+    "signIn": "Masuk ke akun Anda",
+    "createAccount": "Buat akun baru",
+    "fullName": "Nama lengkap",
+    "emailAddress": "Alamat email",
+    "password": "Kata sandi",
+    "signInButton": "Masuk",
+    "registerButton": "Daftar",
+    "noAccount": "Belum punya akun? Daftar",
+    "hasAccount": "Sudah punya akun? Masuk",
+    "loading": "Sedang memuat...",
+    "errors": {
+      "unexpected": "Terjadi kesalahan tak terduga. Silakan coba lagi.",
+      "invalidFormat": "Format respons tidak sesuai",
+      "authFailed": "Autentikasi gagal"
+    }
+  },
+  "imageGenerator": {
+    "title": "Buat Gambar Menakjubkan dengan Flux AI",
+    "subtitle": "Ubah ide Anda menjadi karya visual dalam hitungan detik",
+    "pageTitle": "Generator Gambar Flux AI",
+    "description": "Ubah ide Anda menjadi visual menakjubkan",
+    "promptLabel": "Deskripsi Gambar",
+    "promptPlaceholder": "Coba: Seekor singa gagah duduk di puncak gunung saat matahari terbenam...",
+    "modelLabel": "Model AI",
+    "modelPoints": "Poin|Poin",
+    "modelPremium": "Premium",
+    "aspectRatioLabel": "Rasio Aspek",
+    "outputFormatLabel": "Format Output",
+    "generateButton": "Hasilkan Gambar",
+    "generatingButton": "Menghasilkan...",
+    "freeGenerations": "Pembuatan gratis",
+    "points": "Poin",
+    "loginForMore": "Masuk untuk pembuatan lebih banyak",
+    "error": "Terjadi kesalahan",
+    "guidanceLabel": "Kekuatan Panduan",
+    "outputQualityLabel": "Kualitas Output",
+    "inferenceStepsLabel": "Langkah Inferensi",
+    "numOutputsLabel": "Jumlah Output"
+  },
+  "ultraHero": {
+    "heroTitle": "FLUX 1.1 Ultra",
+    "heroSubtitle": "Generasi Berikutnya",
+    "heroDescription": "Kemampuan resolusi tinggi baru untuk FLUX1.1 [pro], memperluas fungsionalitasnya untuk mendukung resolusi gambar 4x lebih tinggi (hingga 4MP) sambil mempertahankan waktu pembuatan yang mengesankan hanya 10 detik per sampel.",
+    "heroCallToAction": "Coba Ultra Sekarang",
+    "heroExploreFeatures": "Jelajahi Fitur",
+    "sectionNewRelease": "Rilis Baru",
+    "imageAlt": "Contoh Flux 1.1 Ultra"
+  },
+  "faqData": [
+    {
+      "question": "Apa itu Flux 1.1 Pro Ultra?",
+      "answer": "Flux 1.1 Pro Ultra adalah model generator gambar AI canggih yang dapat membuat gambar sangat realistis hingga resolusi 4 megapiksel. Ini menawarkan mode ultra dan raw untuk fleksibilitas maksimal dalam pembuatan gambar."
+    },
+    {
+      "question": "Bagaimana cara mencoba Flux 1.1 Pro Ultra?",
+      "answer": "Anda dapat mencoba Flux 1.1 Pro Ultra secara gratis dengan masuk ke akun Anda. Pengguna baru mendapatkan 3 poin (1 kali) untuk merasakan kemampuan yang ditingkatkan dari model canggih ini."
+    },
+    {
+      "question": "Apa fitur utama Flux 1.1 Pro Ultra?",
+      "answer": "Fitur utama termasuk kemampuan menghasilkan gambar hingga 4 megapiksel, mode raw yang dioptimalkan untuk output fotorealistik, dan kemampuan pembuatan gambar alami yang ditingkatkan dibandingkan model sebelumnya."
+    },
+    {
+      "question": "Apa perbedaan antara mode ultra dan raw?",
+      "answer": "Meskipun kedua mode dapat menghasilkan gambar berkualitas tinggi, mode raw secara khusus dioptimalkan untuk membuat gambar yang sangat realistis dan terlihat alami. Mode ultra menawarkan kemampuan pembuatan gambar yang lebih umum."
+    },
+    {
+      "question": "Apa yang membuat Flux 1.1 Pro Ultra berbeda dari model lain?",
+      "answer": "Flux 1.1 Pro Ultra menonjol dengan kemampuannya menghasilkan gambar 4 megapiksel yang lebih besar, realisme yang ditingkatkan khususnya dalam mode raw, dan pembuatan gambar alami yang ditingkatkan dibandingkan versi sebelumnya."
+    }
+  ],
+  "ultraFeatures": {
+    "title": "Fitur FLUX 1.1 Ultra",
+    "subtitle": "Gunakan mode raw untuk realisme",
+    "features": {
+      "resolution": {
+        "title": "Resolusi Ultra Lebih Tinggi",
+        "subtitle": "Mesin Resolusi FLUX 1.1 Ultra",
+        "description": "Buat gambar memukau hingga resolusi 2096x2096 dengan detail dan kejernihan luar biasa. Sempurna untuk penggunaan profesional dan pencetakan format besar.",
+        "highlight": "Hingga 2096x2096"
+      },
+      "speed": {
+        "title": "Tanpa Kompromi dalam Kecepatan",
+        "subtitle": "Lebih Cepat",
+        "description": "Tidak seperti banyak model resolusi tinggi yang mengalami perlambatan signifikan pada resolusi lebih tinggi, tolok ukur kinerja kami menunjukkan waktu pembuatan cepat yang berkelanjutan—lebih dari 2,5x lebih cepat dari penawaran resolusi tinggi yang sebanding.",
+        "highlight": "10d 2.5X"
+      },
+      "price": {
+        "title": "Harga Kompetitif",
+        "subtitle": "peningkatan dalam kuantitas tapi bukan harga",
+        "description": "Model ini memiliki harga yang kompetitif, dengan harga per gambar yang sama dengan versi Pro lainnya.",
+        "highlight": "Keunggulan Material"
+      },
+      "rawMode": {
+        "title": "Realisme Mode Raw",
+        "subtitle": "Pembuatan FLUX Ultra",
+        "description": "FLUX1.1 [pro] – mode raw: Untuk kreator yang mencari keaslian, mode raw baru kami menangkap nuansa asli fotografi candid. Aktifkan fitur ini untuk menghasilkan gambar dengan estetika yang kurang sintetis, lebih alami.",
+        "highlight": "Subjek Manusia dan Alam"
+      }
+    },
+    "tryNow": "Coba Ultra Sekarang",
+    "viewPricing": "Lihat Harga"
+  },
+  "ultraFAQ": {
+    "title": "Pertanyaan yang Sering Diajukan",
+    "subtitle": "Dapatkan jawaban untuk pertanyaan umum tentang Flux 1.1 Ultra dan bagaimana ia dapat meningkatkan alur kerja kreatif Anda",
+    "questions": {
+      "what": {
+        "question": "Apa itu Flux 1.1 Pro Ultra?",
+        "answer": "Flux 1.1 Pro Ultra adalah model generator gambar AI canggih yang dapat membuat gambar sangat realistis hingga resolusi 4 megapiksel. Ini menawarkan mode ultra dan raw untuk fleksibilitas maksimal dalam pembuatan gambar."
+      },
+      "howToTry": {
+        "question": "Bagaimana cara mencoba Flux 1.1 Pro Ultra?",
+        "answer": "Anda dapat mencoba Flux 1.1 Pro Ultra secara gratis dengan masuk ke akun Anda. Pengguna baru mendapatkan 3 poin (1 kali) untuk merasakan kemampuan yang ditingkatkan dari model canggih ini."
+      },
+      "keyFeatures": {
+        "question": "Apa fitur utama Flux 1.1 Pro Ultra?",
+        "answer": "Fitur utama termasuk kemampuan menghasilkan gambar hingga 4 megapiksel, mode raw yang dioptimalkan untuk output fotorealistik, dan kemampuan pembuatan gambar alami yang ditingkatkan dibandingkan model sebelumnya."
+      },
+      "modeDifference": {
+        "question": "Apa perbedaan antara mode ultra dan raw?",
+        "answer": "Meskipun kedua mode dapat menghasilkan gambar berkualitas tinggi, mode raw secara khusus dioptimalkan untuk membuat gambar yang sangat realistis dan terlihat alami. Mode ultra menawarkan kemampuan pembuatan gambar yang lebih umum."
+      },
+      "comparison": {
+        "question": "Apa yang membuat Flux 1.1 Pro Ultra berbeda dari model lain?",
+        "answer": "Flux 1.1 Pro Ultra menonjol dengan kemampuannya menghasilkan gambar 4 megapiksel yang lebih besar, realisme yang ditingkatkan khususnya dalam mode raw, dan pembuatan gambar alami yang ditingkatkan dibandingkan versi sebelumnya."
+      }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "Rasio Aspek",
+      "outputFormatLabel": "Format Output",
+      "generateButton": "Buat Gambar",
+      "generating": "Membuat...",
+      "downloadButton": "Unduh",
+      "previewPlaceholder": "Unggah gambar untuk memulai",
+      "invalidFileType": "Silakan unggah gambar JPG atau PNG",
+      "noImageError": "Silakan unggah gambar terlebih dahulu",
+      "generationError": "Pembuatan gagal, silakan coba lagi"
+    },
+    "redux": {
+      "title": "Buat Gambar Indah dengan Flux Redux",
+      "subtitle": "Ubah ide Anda menjadi karya visual dalam hitungan detik",
+      "pageTitle": "Pembuatan Gambar Flux Redux",
+      "description": "Ubah kreativitas Anda menjadi gambar indah menggunakan teknologi AI canggih",
+      "guidanceLabel": "Skala Panduan",
+      "outputQualityLabel": "Kualitas Output",
+      "inferenceStepsLabel": "Langkah Inferensi",
+      "numOutputsLabel": "Jumlah Output"
+    },
+    "depth": {
+      "title": "Buat Peta Kedalaman dengan Flux Depth",
+      "subtitle": "Ubah gambar menjadi peta kedalaman dalam hitungan detik",
+      "pageTitle": "Pembuatan Peta Kedalaman Flux Depth",
+      "description": "Buat peta kedalaman yang akurat untuk gambar menggunakan teknologi AI canggih",
+      "guidanceLabel": "Skala Panduan",
+      "outputQualityLabel": "Kualitas Output",
+      "inferenceStepsLabel": "Langkah Inferensi",
+      "numOutputsLabel": "Jumlah Output",
+      "cannyLowThresholdLabel": "Ambang Rendah",
+      "cannyHighThresholdLabel": "Ambang Tinggi",
+      "safetyToleranceLabel": "Toleransi Keamanan",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Masukkan prompt (contoh: mobil berjalan di jalan kota)",
+      "promptUpsamplingLabel": "Upsampling Prompt"
+    },
+    "fill": {
+      "title": "Pemulihan Gambar Flux Fill",
+      "subtitle": "Isi dan pulihkan semua area gambar secara cerdas",
+      "pageTitle": "Pemulihan Gambar Flux Fill",
+      "description": "Isi dan pulihkan semua area gambar secara cerdas menggunakan teknologi AI canggih",
+      "maskLabel": "Pilih Area untuk Dipulihkan",
+      "clearMask": "Hapus Mask",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Jelaskan apa yang ingin Anda isi (contoh: rumput hijau)",
+      "guidanceLabel": "Skala Panduan",
+      "inferenceStepsLabel": "Langkah Inferensi",
+      "outputFormatLabel": "Format Output",
+      "safetyToleranceLabel": "Toleransi Keamanan",
+      "promptUpsamplingLabel": "Upsampling Prompt",
+      "promptUpsamplingEnabled": "Aktifkan Upsampling Prompt",
+      "outpaintingLabel": "Perluasan Gambar",
+      "outpaintingOptions": {
+        "none": "Tidak Ada",
+        "zoomOut15": "Perkecil 1.5×",
+        "zoomOut2": "Perkecil 2×",
+        "makeSquare": "Buat Persegi",
+        "leftOutpaint": "Perluas Kiri",
+        "rightOutpaint": "Perluas Kanan",
+        "topOutpaint": "Perluas Atas",
+        "bottomOutpaint": "Perluas Bawah"
+      }
+    },
+    "canny": {
+      "title": "Buat Peta Tepi dengan Flux Canny",
+      "subtitle": "Ubah gambar menjadi peta tepi dalam hitungan detik",
+      "pageTitle": "Deteksi Tepi Flux Canny",
+      "description": "Buat peta tepi yang akurat untuk gambar menggunakan teknologi AI canggih",
+      "guidanceLabel": "Skala Panduan",
+      "outputQualityLabel": "Kualitas Output",
+      "inferenceStepsLabel": "Langkah Inferensi",
+      "numOutputsLabel": "Jumlah Output",
+      "cannyLowThresholdLabel": "Ambang Rendah",
+      "cannyHighThresholdLabel": "Ambang Tinggi",
+      "safetyToleranceLabel": "Toleransi Keamanan",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Masukkan prompt (contoh: mobil berjalan di jalan kota)",
+      "promptUpsamplingLabel": "Upsampling Prompt"
+    }
+  }
+}

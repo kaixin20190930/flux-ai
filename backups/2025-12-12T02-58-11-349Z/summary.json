@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-12-12T02:58:17.180Z",
+  "database": "Neon PostgreSQL",
+  "tables": {
+    "users": 4,
+    "accounts": 0,
+    "sessions": 0,
+    "transactions": 0,
+    "generations": 0,
+    "fluxToolUsages": 0
+  },
+  "backupDir": "/Users/liukai/web/flux-ai/backups/2025-12-12T02-58-11-349Z"
+}

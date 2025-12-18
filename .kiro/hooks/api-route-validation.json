@@ -1,0 +1,20 @@
+{
+  "name": "API 路由修改验证",
+  "description": "修改 API 路由时，自动检查类型安全、环境变量和认证逻辑",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "app/api/**/*.ts"
+  },
+  "actions": [
+    {
+      "type": "sendMessage",
+      "message": "检测到 API 路由修改。请确认以下检查项：\n\n1. ✅ 是否使用了 TypeScript 类型定义？\n2. ✅ 是否使用 zod 验证输入参数？\n3. ✅ 是否检查了用户认证（如需要）？\n4. ✅ 是否使用了 logWithTimestamp 记录日志？\n5. ✅ 是否处理了错误情况？\n6. ✅ 是否添加了 export const dynamic = 'force-dynamic'？\n7. ✅ 新的环境变量是否已添加到 .env.example 和 env-validator.ts？\n\n正在运行类型检查..."
+    },
+    {
+      "type": "executeCommand",
+      "command": "npm run type-check",
+      "description": "运行 TypeScript 类型检查"
+    }
+  ],
+  "enabled": true
+}

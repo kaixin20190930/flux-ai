@@ -1,0 +1,20 @@
+{
+  "name": "环境变量配置验证",
+  "description": "修改环境变量相关文件时，自动验证配置完整性",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "{.env.example,.env.local,lib/env-validator.ts}"
+  },
+  "actions": [
+    {
+      "type": "sendMessage",
+      "message": "检测到环境变量配置修改。\n\n请确认：\n1. ✅ 新的环境变量是否已添加到 .env.example？\n2. ✅ 是否在 lib/env-validator.ts 中添加了验证？\n3. ✅ 是否在文档中说明了用途？\n4. ✅ 敏感信息是否已添加到 .gitignore？\n\n正在运行环境变量验证..."
+    },
+    {
+      "type": "executeCommand",
+      "command": "npm run validate-env",
+      "description": "验证环境变量配置"
+    }
+  ],
+  "enabled": true
+}

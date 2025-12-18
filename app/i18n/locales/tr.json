@@ -1,0 +1,540 @@
+{
+  "metadata": {
+    "title": "Flux AI Ücretsiz Görüntü Oluşturucu",
+    "description": "Flux AI ile etkileyici AI üretilmiş görüntüler oluşturun",
+    "keywords": "AI, görüntü oluşturucu, yapay zeka, Flux AI, AI sanatı"
+  },
+  "navigation": {
+    "home": "Ana Sayfa",
+    "create": "Oluştur",
+    "search": "Arama",
+    "hub": "Galeri",
+    "pricing": "Fiyatlar",
+    "profile": "Profil",
+    "logout": "Çıkış Yap",
+    "login": "Giriş Yap",
+    "flux11Ultra": "Flux 1.1 Ultra"
+  },
+  "hero": {
+    "mainTitle": "FLUX AI",
+    "subTitle1": "Fikirlerinizi Dönüştürün",
+    "subTitle2": "Çarpıcı Görsellere",
+    "description": "Saniyeler içinde benzersiz, AI destekli şaheserler oluşturun. Gelişmiş Flux AI'mızla hayal gücünüzü gerçeğe dönüştürün.",
+    "startButton": "Oluşturmaya Başla",
+    "learnMoreButton": "Daha Fazla Bilgi",
+    "examplesButton": "Örnekler",
+    "imageAlt": "AI Tarafından Oluşturulan Sanat Örneği"
+  },
+  "features": {
+    "title": "Neden Flux AI'yi Seçmelisiniz?",
+    "subtitle": "Profesyonel Yaratıcılar için Kurumsal Düzeyde AI Görüntü Üretimi",
+    "cards": {
+      "advancedAI": {
+        "title": "Gelişmiş AI Görüntü Üretimi",
+        "subtitle": "FLUX AI Profesyonel Görüntü Oluşturucu",
+        "description": "Transformer tabanlı AI modelimizle 1440x1440 çözünürlüğe kadar olağanüstü görüntüler oluşturun. BlackForestLabs'ten FLUX [pro], [dev] ve [schnell] görüntü oluşturma modellerini destekler.",
+        "highlight": "1440x1440 çözünürlüğe kadar"
+      },
+      "multipleStyles": {
+        "title": "Çoklu Stil Kontrolleri",
+        "subtitle": "FLUX AI Stil Motoru",
+        "description": "Fotogerçekçi ve sanatsaldan farklı stillerde görüntüler oluşturun. Anime, dijital sanat, yağlı boya ve daha fazlasını içeren kapsamlı stil kontrollerini, kesin prompt kontrolüyle destekler.",
+        "highlight": "Birden fazla sanatsal stil"
+      },
+      "advancedModel": {
+        "title": "Gelişmiş Model Mimarisi",
+        "subtitle": "FLUX AI Teknolojisi",
+        "description": "12 milyar parametreden fazla içeren en son teknoloji transformer mimarisiyle desteklenmektedir. Özel eğitim tekniklerimizle olağanüstü görüntü kalitesi ve hassas prompt uyumu sağlar.",
+        "highlight": "12 milyardan fazla parametre"
+      },
+      "flexiblePricing": {
+        "title": "Esnek Fiyat Planları",
+        "subtitle": "FLUX AI Fiyatlandırma",
+        "description": "Ücretsiz katmanımızla başlayın (Giriş Yapmadan Günde 3 Ücretsiz Üretim) veya premium planlara 200 üretim için $9,9'dan itibaren yükseltin. Daha yüksek çözünürlük, öncelikli üretim ve artırılmış üretim limitleri gibi gelişmiş özelliklere erişim sağlayın.",
+        "highlight": "Ücretsizden başlayan fiyatlarla"
+      }
+    },
+    "cta": {
+      "title": "Profesyonel AI Görüntü Üretimini Deneyimleyin",
+      "tryButton": "Ücretsiz Deneyin",
+      "pricingButton": "Fiyatları Görüntüle"
+    }
+  },
+  "examples": {
+    "title": "AI Üretim Örnekleri",
+    "subtitle": "FLUX AI ile neler oluşturabileceğinizi keşfedin"
+  },
+  "userExperience": {
+    "title": "Nasıl Çalışır?",
+    "subtitle": "Flux AI görüntü oluşturucu ile etkileyici AI üretilmiş görüntüler oluşturun",
+    "steps": {
+      "describe": {
+        "title": "Vizyonunuzu Tanımlayın",
+        "subtitle": "AI Güçlü Metin Anlaması",
+        "description": "Oluşturmak istediğiniz görüntüyü tanımlamak için bir açıklama yazmanız yeterlidir. AI'miz doğal dil girişini anlar.",
+        "highlight": "Doğal Dil İşleme"
+      },
+      "generate": {
+        "title": "AI Büyüsü İş Başında",
+        "subtitle": "Gelişmiş Görüntü Üretimi",
+        "description": "Güçlü AI'miz açıklamanızı işler ve vizyonunuza uygun benzersiz görüntü seçenekleri oluşturur.",
+        "highlight": "Birden fazla stil seçeneği"
+      },
+      "refine": {
+        "title": "Sonuçları Düzeltin ve Mükemmelleştirin",
+        "subtitle": "Sonuçlarınızı Ayarlayın",
+        "description": "Oluşturulan görüntüleri beklentilerinize uygun hale getirene kadar ayarlamak ve mükemmelleştirmek için sezgisel araçlarımızı kullanın.",
+        "highlight": "Profesyonel Düzenleme Araçları"
+      },
+      "download": {
+        "title": "İndirin ve Kullanın",
+        "subtitle": "Projeleriniz İçin Hazır",
+        "description": "AI ile üretilmiş başyapıtınızı yüksek çözünürlükte indirin, yaratıcı projeleriniz için hazır.",
+        "highlight": "Yüksek Çözünürlüklü Çıktı"
+      }
+    }
+  },
+  "faq": {
+    "title": "Sıkça Sorulan Sorular",
+    "subtitle": "Flux AI hakkında ve yaratıcı iş akışınızı nasıl geliştirebileceği hakkında sıkça sorulan sorulara cevaplar alın",
+    "questions": {
+      "what": {
+        "question": "Flux AI Modeli Nedir?",
+        "answer": "Flux AI, yaratıcı görevlerde, görüntü oluşturma ve tasarım iş akışlarında yardımcı olmak için tasarlanmış, son teknoloji ürünü bir yapay zeka modelidir. Kullanıcı girişine dayalı olarak görsel içerik anlamak ve oluşturmak için gelişmiş makine öğrenimi algoritmalarını kullanır."
+      },
+      "versions": {
+        "question": "FLUX AI'nın farklı sürümleri nelerdir?",
+        "answer": "FLUX AI, üç varyantta sunulmaktadır: En iyi performans için FLUX.1 [pro], ticari olmayan uygulamalar için FLUX.1 [dev] ve hızlı, yerel geliştirme için FLUX.1 [schnell]."
+      },
+      "comparison": {
+        "question": "Flux AI diğer AI modelleriyle nasıl karşılaştırılır?",
+        "answer": "Flux AI, üstün görüntü kalitesi, daha hızlı üretim süreleri ve daha sezgisel kontroller ile öne çıkar. Model, özellikle tasarım ve sanatsal uygulamalar için etkili olan yüksek kaliteli yaratıcı içerikler üzerinde özel olarak eğitilmiştir."
+      },
+      "imageTypes": {
+        "question": "Flux AI hangi tür görüntüleri üretebilir?",
+        "answer": "Flux AI, illüstrasyonlar, konsept sanat, ürün tasarımları, karakter tasarımları ve çevresel sahneler dahil olmak üzere geniş bir yelpazede görsel içerik üretebilir. Model, çeşitli sanatsal stilleri destekler ve belirli görsel gereksinimlere uyum sağlar."
+      },
+      "requirements": {
+        "question": "Flux AI kullanmak için teknik gereksinimler nelerdir?",
+        "answer": "Flux AI bulutta çalışır ve herhangi bir modern web tarayıcısı üzerinden erişilebilir. Özel donanım gerekmez, ancak optimal performans için sabit bir internet bağlantısı önerilir."
+      },
+      "fineTuning": {
+        "question": "Kendi veri setim üzerinde FLUX AI Görüntü Üreticisini ince ayar yapabilir miyim?",
+        "answer": "İnce ayar seçenekleri, kurumsal müşteriler için mevcut olabilir. Lütfen özel ihtiyaçlarınızı görüşmek için doğrudan Black Forest Labs ile iletişime geçin."
+      },
+      "limits": {
+        "question": "Kaç görüntü üretebileceğim konusunda bir sınır var mı?",
+        "answer": "Kullanım sınırları, abonelik seviyenize bağlıdır. Ücretsiz kullanıcılar günde 3 görüntüye kadar oluşturabilirken, premium kullanıcılar sınırsız üretim ve öncelikli işlemden yararlanır."
+      },
+      "updates": {
+        "question": "FLUX AI Görüntü Üreticisi ne sıklıkla güncelleniyor?",
+        "answer": "Black Forest Labs, sürekli iyileştirme taahhüdü vermektedir. Spesifik güncelleme takvimleri sağlanmasa da, FLUX AI için düzenli iyileştirme ve güncellemeler bekleyebilirsiniz."
+      },
+      "feedback": {
+        "question": "FLUX AI ile ilgili geri bildirimde bulunmak veya sorun bildirmek için ne yapabilirim?",
+        "answer": "Black Forest Labs geri bildirimleri memnuniyetle karşılar. Resmi kanalları veya flux@blackforestlabs.ai adresini kullanarak destek almak ve herhangi bir sorunu bildirmek için bize ulaşabilirsiniz."
+      },
+      "commercial": {
+        "question": "FLUX AI Görüntü Üreticisini ticari projeler için kullanabilir miyim?",
+        "answer": "FLUX.1 [schnell] kişisel kullanım için ücretsizken, FLUX.1 [pro] ve FLUX.1 [dev] ticari uygulamalar için sunulmaktadır. Bu sürümler geliştirilmiş yetenekler sağlar ve API veya ortaklarımız aracılığıyla erişilebilir. FLUX AI Görüntü Üreticisinin ticari kullanımıyla ilgili sorularınız için juq1991@gmail.com adresinden bize ulaşın."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Fiyatlandırma",
+    "subtitle": "Size uygun planı seçin",
+    "tiers": {
+      "basic": {
+        "name": "Temel",
+        "price": "$9.9",
+        "features": [
+          "200 puan",
+          "Yüksek kaliteli görüntüler",
+          "Daha hızlı görüntü oluşturma",
+          "Abonelik yok"
+        ]
+      },
+      "premium": {
+        "name": "Premium Plan",
+        "price": "$29.9",
+        "features": [
+          "1000 puan",
+          "Yüksek kaliteli görüntüler",
+          "Daha hızlı görüntü oluşturma",
+          "Aylık abonelik"
+        ],
+        "recommended": "Önerilen"
+      },
+      "advanced": {
+        "name": "Gelişmiş Plan",
+        "price": "$99.9",
+        "features": [
+          "5000 puan",
+          "Yüksek kaliteli görüntüler",
+          "Daha hızlı görüntü oluşturma",
+          "Yıllık abonelik"
+        ]
+      },
+      "common": {
+        "buyNowButton": "Şimdi Satın Al",
+        "subscribeButton": "Abone Ol",
+        "processingButton": "İşleniyor...",
+        "comingSoonButton": "Çok Yakında"
+      }
+    }
+  },
+  "modelComparison": {
+    "title": "Flux AI Modelleri Karşılaştırması",
+    "subtitle": "Yaratıcı ihtiyaçlarınız için mükemmel modeli seçin",
+    "promptSection": {
+      "showPrompt": "Prompta Göster",
+      "hidePrompt": "Promptu Gizle",
+      "promptTitle": "Tüm modeller için kullanılan prompt",
+      "copyButton": "Promptu kopyala",
+      "copiedButton": "Kopyalandı!"
+    },
+    "modelDetails": {
+      "processingTime": "İşlem Süresi",
+      "outputSize": "Çıktı Boyutu",
+      "bestFor": "En İyi Kullanım",
+      "keyFeatures": "Temel Özellikler"
+    },
+    "models": {
+      "ultra": {
+        "name": "Flux 1.1 Pro Ultra",
+        "description": "Görüntüler 4 megapiksele kadar çıkar. Gerçekçilik için ham modunu kullanın.",
+        "features": [
+          "Daha Yüksek Çözünürlük",
+          "Hızda Ödün Vermez",
+          "Ham Modu"
+        ],
+        "suitableFor": [
+          "İnsan Konuları",
+          "Doğa Fotoğrafçılığı"
+        ],
+        "highlight": "Gerçekçilik",
+        "details": "FLUX1.1 [pro] için yeni yüksek çözünürlüklü özellikler, örnek başına sadece 10 saniye gibi etkileyici bir oluşturma süresi sağlarken, görüntü çözünürlüklerini 4 kat daha yüksek (4MP'ye kadar) desteklemek için işlevselliğini genişletiyor.",
+        "processingTime": "10 saniye",
+        "imageSize": "20962096"
+      },
+      "schnell": {
+        "name": "Flux Schnell",
+        "description": "Yerel geliştirme ve kişisel kullanım için özel olarak uyarlanmış en hızlı görüntü oluşturma modeli.",
+        "features": [
+          "Yüksek Performans",
+          "Hızlı Oluşturma",
+          "Açık Lisans"
+        ],
+        "suitableFor": [
+          "Kişisel",
+          "Bilimsel",
+          "Ticari Amaçlar"
+        ],
+        "highlight": "Hız için Optimize Edilmiş",
+        "details": "Hız ve verimlilik için optimize edilmiş Flux Schnell, ilk kavramlar ve hızlı prototipleme için mükemmel olan hızlı sonuçlar sağlar. Hızlı yinelemeler gerektiren geliştiriciler ve tasarımcılar için idealdir.",
+        "processingTime": "0,8 saniye",
+        "imageSize": "10241024"
+      },
+      "dev": {
+        "name": "Flux Dev",
+        "description": "Metin açıklamalarından görüntü oluşturabilen 12 milyar parametreli düzeltilmiş akış dönüştürücü.",
+        "features": [
+          "Rekabetçi Performans",
+          "Verimli Eğitim",
+          "Açık Araştırma"
+        ],
+        "suitableFor": [
+          "Kişisel",
+          "Bilimsel",
+          "Ticari Amaçlar"
+        ],
+        "highlight": "Daha Verimli",
+        "details": "Ticari kullanım desteği, optimize edilmiş performans ve sorumlu AI geliştirme için net etik yönergelerle yüksek kaliteli çıktılar sunan güçlü bir 12B parametreli görüntü oluşturma modeli.",
+        "processingTime": "3-5 saniye",
+        "imageSize": "1024*1024"
+      },
+      "pro11": {
+        "name": "Flux 1.1 Pro",
+        "description": "Daha hızlı, daha iyi FLUX Pro. Mükemmel,görüntü kalitesi, promptlara bağlılık ve çıktı çeşitliliği ile metin-görüntü modeli.",
+        "features": [
+          "6 Kat Daha Hızlı Oluşturma",
+          "Geliştirilmiş Kalite",
+          "Gelişmiş Mimari"
+        ],
+        "suitableFor": [
+          "Profesyonel İş Akışları",
+          "Kalite-Kritik Projeler",
+          "Üretim Ortamları"
+        ],
+        "highlight": "Geliştirilmiş Kalite",
+        "details": "Profesyonel ve üretim ortamları için multimodal ve paralel difüzyon dönüştürücü bloklarını birleştiren gelişmiş hibrit mimarisi ile oluşturulmuş, 6 kat daha hızlı hız, geliştirilmiş kalite ve sektör lideri performansı gösteren modern bir 12B parametreli görüntü oluşturma modeli.",
+        "processingTime": "8-10 saniye",
+        "imageSize": "1440*1440"
+      },
+      "pro": {
+        "name": "Flux Pro",
+        "description": "En üst düzey promt takibi, görsel kalite, görüntü detayı ve çıktı çeşitliliği ile son teknoloji görüntü oluşturma.",
+        "features": [
+          "En İyi Performans",
+          "Esnek Çözünürlük",
+          "Gelişmiş Mimari"
+        ],
+        "suitableFor": [
+          "Profesyonel Projeler",
+          "Çok yönlü Uygulamalar"
+        ],
+        "highlight": "Premium Kalite",
+        "details": "Multimodal ve paralel difüzyon dönüştürücü bloklarını birleştiren hibrit mimari ile desteklenen, üstün görsel kalite ve çok yönlü çözünürlük desteği ile modern performans sunan premium bir 12B parametreli görüntü oluşturma modeli.",
+        "processingTime": "15-25 saniye",
+        "imageSize": "1440*1440"
+      }
+    }
+  },
+  "imagePreview": {
+    "loading": "Şaheseriniz oluşturuluyor...",
+    "placeholder": "AI tarafından oluşturulan görüntünüz burada görünecek",
+    "downloadButton": "İndir",
+    "dimensions": {
+      "width": "Genişlik",
+      "height": "Yükseklik"
+    }
+  },
+  "autoLogout": {
+    "warningMessage": "Oturumunuzun süresi {minutes} dakika içinde sona erecek.",
+    "stayLoggedIn": "Oturumu açık tut"
+  },
+  "footer": {
+    "description": "Flux AI'nin gücüyle fikirlerinizi etkileyici görsellere dönüştürün",
+    "quickLinks": "Hızlı Bağlantılar",
+    "pricing": "Fiyatlar",
+    "contact": "İletişim",
+    "legal": "Yasal",
+    "terms": "Kullanım Koşulları",
+    "privacy": "Gizlilik Politikası",
+    "support": "Destek",
+    "allRightsReserved": "Tüm hakları saklıdır",
+    "fluxAI": {
+      "title": "Flux Görüntü AI",
+      "desc": "Flux AI'nin görüntü oluşturma araçlarını deneyimleyin"
+    },
+    "soraAI": {
+      "title": "SORA AI",
+      "desc": "SORA AI'nin yeteneklerini keşfedin"
+    },
+    "aiBestTool": {
+      "title": "En İyi AI Araçları",
+      "desc": "En iyi AI araçlarını keşfedin"
+    }
+  },
+  "auth": {
+    "signIn": "Hesabınıza giriş yapın",
+    "createAccount": "Yeni hesap oluştur",
+    "fullName": "Tam ad",
+    "emailAddress": "E-posta adresi",
+    "password": "Şifre",
+    "signInButton": "Giriş yap",
+    "registerButton": "Kayıt ol",
+    "noAccount": "Hesabınız yok mu? Kayıt olun",
+    "hasAccount": "Zaten hesabınız var mı? Giriş yapın",
+    "loading": "Yükleniyor...",
+    "errors": {
+      "unexpected": "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.",
+      "invalidFormat": "Beklenmeyen yanıt formatı",
+      "authFailed": "Kimlik doğrulama başarısız"
+    }
+  },
+  "imageGenerator": {
+    "title": "Flux AI ile etkileyici görüntüler oluşturun",
+    "subtitle": "Fikirlerinizi saniyeler içinde görsel başyapıtlara dönüştürün",
+    "pageTitle": "Flux AI Görüntü Oluşturucu",
+    "description": "Fikirlerinizi etkileyici görsellere dönüştürün",
+    "promptLabel": "Görüntü Açıklaması",
+    "promptPlaceholder": "Deneyin: Gün batımında dağın zirvesinde oturan görkemli bir aslan...",
+    "modelLabel": "AI Modeli",
+    "modelPoints": "Puan|Puan",
+    "modelPremium": "Premium",
+    "aspectRatioLabel": "En-Boy Oranı",
+    "outputFormatLabel": "Çıktı Formatı",
+    "generateButton": "Görüntü Oluştur",
+    "generatingButton": "Oluşturuluyor...",
+    "freeGenerations": "Ücretsiz oluşturma",
+    "points": "Puan",
+    "loginForMore": "Daha fazla oluşturma için giriş yapın",
+    "error": "Bir hata oluştu",
+    "guidanceLabel": "Rehberlik Gücü",
+    "outputQualityLabel": "Çıktı Kalitesi",
+    "inferenceStepsLabel": "Çıkarım Adımları",
+    "numOutputsLabel": "Çıktı Sayısı"
+  },
+  "ultraHero": {
+    "heroTitle": "FLUX 1.1 Ultra",
+    "heroSubtitle": "Yeni Nesil",
+    "heroDescription": "FLUX1.1 [pro]'ya yüksek çözünürlüklü yeni özellikler eklendi, işlevselliği 4 kat daha yüksek çözünürlüklü (4MP'ye kadar) görüntüler destekleyecek şekilde genişletildi ve yine de her örnek için yalnızca 10 saniyelik etkileyici bir üretim süresi korundu.",
+    "heroCallToAction": "Ultra'yı Şimdi Deneyin",
+    "heroExploreFeatures": "Özellikleri Keşfet",
+    "sectionNewRelease": "Yeni Sürüm",
+    "imageAlt": "FLUX 1.1 Ultra Örneği"
+  },
+  "faqData": [
+    {
+      "question": "Flux 1.1 Pro Ultra nedir?",
+      "answer": "Flux 1.1 Pro Ultra, 4 megapiksele kadar çözünürlükte son derece gerçekçi görüntüler oluşturabilen gelişmiş bir AI görüntü üretici modelidir. Görüntü oluşturmada maksimum esneklik için hem ultra hem de raw modları sunar."
+    },
+    {
+      "question": "Flux 1.1 Pro Ultra'yı nasıl deneyebilirim?",
+      "answer": "Hesabınıza giriş yaparak Flux 1.1 Pro Ultra'yı ücretsiz deneyebilirsiniz. Yeni kullanıcılar, bu gelişmiş modelin geliştirilmiş özelliklerini deneyimlemek için 3 puan (1 kez) alır."
+    },
+    {
+      "question": "Flux 1.1 Pro Ultra'nın temel özellikleri nelerdir?",
+      "answer": "Temel özellikler arasında 4 megapiksele kadar görüntü oluşturabilme yeteneği, fotogerçekçi çıktılar için optimize edilmiş raw modu ve önceki modellere kıyasla geliştirilmiş doğal görüntü oluşturma yetenekleri bulunur."
+    },
+    {
+      "question": "Ultra ve raw modları arasındaki fark nedir?",
+      "answer": "Her iki mod da yüksek kaliteli görüntüler oluşturabilirken, raw modu özellikle son derece gerçekçi ve doğal görünen görüntüler oluşturmak için optimize edilmiştir. Ultra mod daha genel amaçlı görüntü oluşturma özellikleri sunar."
+    },
+    {
+      "question": "Flux 1.1 Pro Ultra'yı diğer modellerden farklı kılan nedir?",
+      "answer": "Flux 1.1 Pro Ultra, daha büyük 4 megapiksel görüntüler oluşturabilme yeteneği, özellikle raw modunda geliştirilmiş gerçekçilik ve önceki versiyonlara kıyasla geliştirilmiş doğal görüntü oluşturma özellikleriyle öne çıkar."
+    }
+  ],
+  "ultraFeatures": {
+    "title": "FLUX 1.1 Ultra Özellikleri",
+    "subtitle": "Daha fazla gerçekçilik için raw modunu kullanın",
+    "features": {
+      "resolution": {
+        "title": "Ultra Yüksek Çözünürlük",
+        "subtitle": "FLUX 1.1 Ultra Çözünürlük Motoru",
+        "description": "Olağanüstü detay ve netlikle 2096x2096'ya kadar çözünürlükte etkileyici görüntüler oluşturun. Profesyonel kullanım ve büyük format baskı için mükemmel.",
+        "highlight": "2096x2096'ya kadar"
+      },
+      "speed": {
+        "title": "Hızdan Ödün Vermeden",
+        "subtitle": "Daha Hızlı",
+        "description": "Yüksek çözünürlüklerde önemli yavaşlamalar yaşayan diğer modellerin aksine, performans testlerimiz sürekli hızlı üretim süreleri gösteriyor - benzer yüksek çözünürlüklü tekliflerden 2.5 kat daha hızlı.",
+        "highlight": "10sn 2.5X hızlı"
+      },
+      "price": {
+        "title": "Rekabetçi Fiyat",
+        "subtitle": "Miktar artışı fiyat artışı olmadan",
+        "description": "Bu model, diğer Pro sürümleriyle aynı görüntü başına fiyatla rekabetçi bir şekilde fiyatlandırılmıştır.",
+        "highlight": "Maddi Avantajlar"
+      },
+      "rawMode": {
+        "title": "Raw Modu Gerçekçiliği",
+        "subtitle": "FLUX Ultra Üretimi",
+        "description": "FLUX1.1 [pro] – raw modu: Özgünlük arayan yaratıcılar için, yeni raw modumuz doğal fotoğrafçılığın gerçek hissini yakalar. Daha az sentetik, daha doğal bir estetik için bu özelliği etkinleştirin.",
+        "highlight": "İnsan Özneleri ve Doğa"
+      }
+    },
+    "tryNow": "Ultra'yı Şimdi Deneyin",
+    "viewPricing": "Fiyatlandırmayı Görüntüle"
+  },
+  "ultraFAQ": {
+    "title": "Sıkça Sorulan Sorular",
+    "subtitle": "Flux 1.1 Ultra hakkında sık sorulan soruların yanıtlarını alın ve yaratıcı iş akışınızı nasıl geliştirebileceğini öğrenin",
+    "questions": {
+      "what": {
+        "question": "Flux 1.1 Pro Ultra nedir?",
+        "answer": "Flux 1.1 Pro Ultra, 4 megapiksele kadar çözünürlükte son derece gerçekçi görüntüler oluşturabilen gelişmiş bir AI görüntü oluşturma modelidir. Görüntü oluşturmada maksimum esneklik için hem ultra hem de raw modları sunar."
+      },
+      "howToTry": {
+        "question": "Flux 1.1 Pro Ultra'yı nasıl deneyebilirim?",
+        "answer": "Hesabınıza giriş yaparak Flux 1.1 Pro Ultra'yı ücretsiz deneyebilirsiniz. Yeni kullanıcılar, bu gelişmiş modelin gelişmiş özelliklerini deneyimlemek için 3 puan (1 kullanım) alır."
+      },
+      "keyFeatures": {
+        "question": "Flux 1.1 Pro Ultra'nın temel özellikleri nelerdir?",
+        "answer": "Temel özellikler arasında 4 megapiksele kadar görüntü oluşturma yeteneği, fotogerçekçi çıktılar için optimize edilmiş raw modu ve önceki modellere kıyasla geliştirilmiş doğal görüntü oluşturma yetenekleri bulunur."
+      },
+      "modeDifference": {
+        "question": "Ultra ve raw modları arasındaki fark nedir?",
+        "answer": "Her iki mod da yüksek kaliteli görüntüler oluşturabilirken, raw modu özellikle son derece gerçekçi ve doğal görünümlü görüntüler oluşturmak için optimize edilmiştir. Ultra modu daha genel görüntü oluşturma özellikleri sunar."
+      },
+      "comparison": {
+        "question": "Flux 1.1 Pro Ultra'yı diğer modellerden farklı kılan nedir?",
+        "answer": "Flux 1.1 Pro Ultra, 4 megapiksellik daha büyük görüntüler oluşturma yeteneği, özellikle raw modunda geliştirilmiş gerçekçilik ve önceki sürümlere kıyasla geliştirilmiş doğal görüntü oluşturma özellikleriyle öne çıkar."
+      }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "En Boy Oranı",
+      "outputFormatLabel": "Çıktı Formatı",
+      "generateButton": "Görsel Oluştur",
+      "generating": "Oluşturuluyor...",
+      "downloadButton": "İndir",
+      "previewPlaceholder": "Başlamak için bir görsel yükleyin",
+      "invalidFileType": "JPG veya PNG formatında bir görsel yükleyin",
+      "noImageError": "Önce bir görsel yükleyin",
+      "generationError": "Oluşturma başarısız oldu, tekrar deneyin"
+    },
+    "redux": {
+      "title": "Flux Redux ile Harika Görseller Oluşturun",
+      "subtitle": "Fikirlerinizi saniyeler içinde görsel şaheserlere dönüştürün",
+      "pageTitle": "Flux Redux Görsel Oluşturma",
+      "description": "Yaratıcı fikirlerinizi gelişmiş AI teknolojimizle harika görsellere dönüştürün",
+      "guidanceLabel": "Yönlendirme Ölçeği",
+      "outputQualityLabel": "Çıktı Kalitesi",
+      "inferenceStepsLabel": "Çıkarım Adımları",
+      "numOutputsLabel": "Çıktı Sayısı"
+    },
+    "depth": {
+      "title": "Flux Depth ile Derinlik Haritaları Oluşturun",
+      "subtitle": "Görsellerinizi saniyeler içinde derinlik haritalarına dönüştürün",
+      "pageTitle": "Flux Depth Derinlik Haritası Oluşturma",
+      "description": "Gelişmiş AI teknolojimizle görselleriniz için hassas derinlik haritaları oluşturun",
+      "guidanceLabel": "Yönlendirme Ölçeği",
+      "outputQualityLabel": "Çıktı Kalitesi",
+      "inferenceStepsLabel": "Çıkarım Adımları",
+      "numOutputsLabel": "Çıktı Sayısı",
+      "cannyLowThresholdLabel": "Düşük Eşik",
+      "cannyHighThresholdLabel": "Yüksek Eşik",
+      "safetyToleranceLabel": "Güvenlik Toleransı",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Bir prompt girin, örn. şehir sokaklarında bir araba",
+      "promptUpsamplingLabel": "Prompt Yükseltme"
+    },
+    "fill": {
+      "title": "Flux Fill Görsel Onarımı",
+      "subtitle": "Görseldeki herhangi bir alanı akıllıca doldurun ve onarın",
+      "pageTitle": "Flux Fill Görsel Onarımı",
+      "description": "Gelişmiş AI teknolojimizle görseldeki herhangi bir alanı akıllıca doldurun ve onarın",
+      "maskLabel": "Onarılacak alanı seçin",
+      "clearMask": "Maskeyi temizle",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Ne doldurmak istediğinizi açıklayın, örn. yeşil bir çimen",
+      "guidanceLabel": "Yönlendirme Ölçeği",
+      "inferenceStepsLabel": "Çıkarım Adımları",
+      "outputFormatLabel": "Çıktı Formatı",
+      "safetyToleranceLabel": "Güvenlik Toleransı",
+      "promptUpsamplingLabel": "Prompt Yükseltme",
+      "promptUpsamplingEnabled": "Prompt yükseltmeyi etkinleştir",
+      "outpaintingLabel": "Görsel Genişletme",
+      "outpaintingOptions": {
+        "none": "Yok",
+        "zoomOut15": "1.5x uzaklaştır",
+        "zoomOut2": "2x uzaklaştır",
+        "makeSquare": "Kare yap",
+        "leftOutpaint": "Sola genişlet",
+        "rightOutpaint": "Sağa genişlet",
+        "topOutpaint": "Yukarı genişlet",
+        "bottomOutpaint": "Aşağı genişlet"
+      }
+    },
+    "canny": {
+      "title": "Flux Canny ile Kenar Haritaları Oluşturun",
+      "subtitle": "Görsellerinizi saniyeler içinde kenar haritalarına dönüştürün",
+      "pageTitle": "Flux Canny Kenar Tespiti",
+      "description": "Gelişmiş AI teknolojimizle görselleriniz için hassas kenar haritaları oluşturun",
+      "guidanceLabel": "Yönlendirme Ölçeği",
+      "outputQualityLabel": "Çıktı Kalitesi",
+      "inferenceStepsLabel": "Çıkarım Adımları",
+      "numOutputsLabel": "Çıktı Sayısı",
+      "cannyLowThresholdLabel": "Düşük Eşik",
+      "cannyHighThresholdLabel": "Yüksek Eşik",
+      "safetyToleranceLabel": "Güvenlik Toleransı",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Bir prompt girin, örn. şehir sokaklarında bir araba",
+      "promptUpsamplingLabel": "Prompt Yükseltme"
+    }
+  }
+}

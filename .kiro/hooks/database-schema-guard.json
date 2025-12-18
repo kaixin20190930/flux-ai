@@ -1,0 +1,20 @@
+{
+  "name": "数据库 Schema 修改保护",
+  "description": "修改 Prisma schema 时，提醒创建迁移并验证",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "prisma/schema.prisma"
+  },
+  "actions": [
+    {
+      "type": "sendMessage",
+      "message": "⚠️ 检测到 Prisma Schema 修改！\n\n必须执行的步骤：\n1. ✅ 运行 `npm run prisma:generate` 重新生成 Prisma Client\n2. ✅ 运行 `npm run prisma:migrate:dev` 创建迁移文件\n3. ✅ 检查迁移文件是否正确\n4. ✅ 更新相关的 TypeScript 类型定义\n5. ✅ 测试数据库操作是否正常\n\n正在重新生成 Prisma Client..."
+    },
+    {
+      "type": "executeCommand",
+      "command": "npm run prisma:generate",
+      "description": "重新生成 Prisma Client"
+    }
+  ],
+  "enabled": true
+}

@@ -1,0 +1,20 @@
+{
+  "name": "支付系统修改保护",
+  "description": "修改 Stripe 支付相关代码时的安全检查",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "{app/api/createCheckoutSession/**/*.ts,app/api/webhook/**/*.ts,utils/stripe.ts}"
+  },
+  "actions": [
+    {
+      "type": "sendMessage",
+      "message": "⚠️⚠️⚠️ 检测到支付系统修改！这是极其敏感的功能！\n\n必须检查的安全项：\n\n1. ✅ Stripe API Key 是否只在服务端使用？\n2. ✅ Webhook 签名验证是否正确？\n3. ✅ 积分发放逻辑是否防止重复？\n4. ✅ 金额计算是否正确（避免精度问题）？\n5. ✅ 是否记录了完整的支付日志？\n6. ✅ 错误处理是否会导致积分丢失？\n7. ✅ 是否测试了支付成功/失败/取消场景？\n8. ✅ 是否在测试模式下验证？\n\n⚠️ 强烈建议：\n- 在 Stripe 测试模式下完整测试\n- 使用测试卡号验证所有流程\n- 检查 webhook 日志\n- 验证数据库事务完整性"
+    },
+    {
+      "type": "executeCommand",
+      "command": "npm run type-check",
+      "description": "运行类型检查"
+    }
+  ],
+  "enabled": true
+}

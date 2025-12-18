@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Login State</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #4F46E5;
+            padding-bottom: 10px;
+        }
+        .status {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .logged-in {
+            background: #D1FAE5;
+            color: #065F46;
+            border: 2px solid #10B981;
+        }
+        .logged-out {
+            background: #FEE2E2;
+            color: #991B1B;
+            border: 2px solid #EF4444;
+        }
+        .data-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #F3F4F6;
+            border-radius: 5px;
+        }
+        .data-section h3 {
+            margin-top: 0;
+            color: #4F46E5;
+        }
+        pre {
+            background: #1F2937;
+            color: #F9FAFB;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        button {
+            background: #4F46E5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #4338CA;
+        }
+        button.danger {
+            background: #EF4444;
+        }
+        button.danger:hover {
+            background: #DC2626;
+        }
+        .actions {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Login State Test</h1>
+        
+        <div id="status" class="status"></div>
+        
+        <div class="actions">
+            <button onclick="checkState()">🔄 Refresh State</button>
+            <button onclick="testLogin()">✅ Test Login</button>
+            <button onclick="clearAuth()" class="danger">🗑️ Clear Auth Data</button>
+        </div>
+        
+        <div class="data-section">
+            <h3>📦 LocalStorage Data</h3>
+            <pre id="localStorage"></pre>
+        </div>
+        
+        <div class="data-section">
+            <h3>🍪 Cookies</h3>
+            <pre id="cookies"></pre>
+        </div>
+        
+        <div class="data-section">
+            <h3>📊 Event Log</h3>
+            <pre id="eventLog"></pre>
+        </div>
+    </div>
+
+    <script>
+        let eventLog = [];
+        
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            eventLog.unshift(`[${timestamp}] ${message}`);
+            if (eventLog.length > 10) eventLog.pop();
+            updateEventLog();
+        }
+        
+        function updateEventLog() {
+            document.getElementById('eventLog').textContent = eventLog.join('\n');
+        }
+        
+        function checkState() {
+            log('Checking authentication state...');
+            
+            // Check localStorage
+            const token = localStorage.getItem('token');
+            const userStr = localStorage.getItem('user');
+            let user = null;
+            
+            try {
+                user = userStr ? JSON.parse(userStr) : null;
+            } catch (e) {
+                log('❌ Error parsing user data: ' + e.message);
+            }
+            
+            // Update status
+            const statusDiv = document.getElementById('status');
+            if (token && user) {
+                statusDiv.className = 'status logged-in';
+                statusDiv.innerHTML = `
+                    ✅ <strong>LOGGED IN</strong><br>
+                    User: ${user.name || 'Unknown'}<br>
+                    Email: ${user.email || 'Unknown'}<br>
+                    ID: ${user.id || user.userId || 'Unknown'}
+                `;
+                log('✅ User is logged in: ' + user.email);
+            } else {
+                statusDiv.className = 'status logged-out';
+                statusDiv.innerHTML = '❌ <strong>NOT LOGGED IN</strong>';
+                log('❌ User is not logged in');
+            }
+            
+            // Update localStorage display
+            document.getElementById('localStorage').textContent = JSON.stringify({
+                token: token ? token.substring(0, 50) + '...' : null,
+                user: user
+            }, null, 2);
+            
+            // Update cookies display
+            document.getElementById('cookies').textContent = document.cookie || 'No cookies';
+        }
+        
+        function testLogin() {
+            log('Testing login with test@example.com...');
+            
+            fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: 'test@example.com',
+                    password: 'password'
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    log('✅ Login successful!');
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    // Trigger event
+                    const event = new CustomEvent('auth-state-changed', {
+                        detail: {
+                            isAuthenticated: true,
+                            user: data.user,
+                            timestamp: Date.now()
+                        }
+                    });
+                    window.dispatchEvent(event);
+                    log('📢 auth-state-changed event dispatched');
+                    
+                    setTimeout(checkState, 100);
+                } else {
+                    log('❌ Login failed: ' + (data.error?.message || 'Unknown error'));
+                }
+            })
+            .catch(err => {
+                log('❌ Login error: ' + err.message);
+            });
+        }
+        
+        function clearAuth() {
+            log('Clearing authentication data...');
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            log('✅ Auth data cleared');
+            checkState();
+        }
+        
+        // Listen to auth events
+        window.addEventListener('auth-state-changed', (e) => {
+            log('📢 Received auth-state-changed event');
+            console.log('Auth event detail:', e.detail);
+            checkState();
+        });
+        
+        window.addEventListener('storage', (e) => {
+            log('📢 Received storage event: ' + e.key);
+            checkState();
+        });
+        
+        // Initial check
+        checkState();
+        log('🚀 Test page loaded');
+    </script>
+</body>
+</html>

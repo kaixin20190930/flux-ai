@@ -1,0 +1,12 @@
+# Cloudflare Workers Development Secrets
+# Copy this file to .dev.vars and fill in your actual values
+# .dev.vars is gitignored and will not be committed
+
+# JWT Secret for authentication
+JWT_SECRET=your-jwt-secret-here
+
+# Database URL (if needed for local development)
+DATABASE_URL=your-database-url-here
+
+# Other secrets as needed
+NEXTAUTH_SECRET=your-nextauth-secret-here

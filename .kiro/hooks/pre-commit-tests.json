@@ -1,0 +1,20 @@
+{
+  "name": "保存前运行测试",
+  "description": "在保存关键文件时自动运行相关测试，确保修改不会破坏现有功能",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "{lib,utils,hooks,components,app/api}/**/*.{ts,tsx}"
+  },
+  "actions": [
+    {
+      "type": "sendMessage",
+      "message": "检测到关键文件修改，正在运行相关测试以确保功能完整性..."
+    },
+    {
+      "type": "executeCommand",
+      "command": "npm test -- --findRelatedTests ${filePath} --passWithNoTests",
+      "description": "运行与修改文件相关的测试"
+    }
+  ],
+  "enabled": true
+}

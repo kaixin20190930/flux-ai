@@ -1,0 +1,20 @@
+{
+  "name": "图片生成 API 保护",
+  "description": "修改核心图片生成 API 时，确保关键功能不被破坏",
+  "trigger": {
+    "type": "onFileSave",
+    "filePattern": "{app/api/generate/**/*.ts,app/api/fluxToolsGenerate/**/*.ts,utils/usageTrackingService.ts}"
+  },
+  "actions": [
+    {
+      "type": "sendMessage",
+      "message": "⚠️ 检测到图片生成核心 API 修改！\n\n这是最关键的业务功能，请确认：\n\n1. ✅ 用户认证检查是否正常？\n2. ✅ 积分扣除逻辑是否正确？\n3. ✅ 免费用户限额检查是否有效？\n4. ✅ 使用量追踪（IP/指纹/用户）是否正常？\n5. ✅ Replicate API 调用是否正确？\n6. ✅ 错误处理是否完善？\n7. ✅ 性能监控是否记录？\n8. ✅ 日志是否完整？\n\n建议手动测试：\n- 未登录用户生成\n- 已登录用户生成\n- 积分不足场景\n- 达到限额场景\n- 不同模型的生成"
+    },
+    {
+      "type": "executeCommand",
+      "command": "npm run type-check",
+      "description": "运行类型检查"
+    }
+  ],
+  "enabled": true
+}

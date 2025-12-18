@@ -1,0 +1,540 @@
+{
+  "metadata": {
+    "title": "Darmowy Generator Obrazów Flux AI",
+    "description": "Twórz niesamowite obrazy generowane przez AI z Flux AI",
+    "keywords": "AI, generator obrazów, sztuczna inteligencja, Flux AI, sztuka AI"
+  },
+  "navigation": {
+    "home": "Strona główna",
+    "create": "Utwórz",
+    "search": "Szukaj",
+    "hub": "Galeria",
+    "pricing": "Cennik",
+    "profile": "Profil",
+    "logout": "Wyloguj",
+    "login": "Zaloguj",
+    "flux11Ultra": "Flux 1.1 Ultra"
+  },
+  "hero": {
+    "mainTitle": "FLUX AI",
+    "subTitle1": "Zamień swoje pomysły w",
+    "subTitle2": "Zapierające dech w piersiach wizualizacje",
+    "description": "Twórz w kilka sekund wyjątkowe arcydzieła napędzane sztuczną inteligencją. Przekształć swoją wyobraźnię w rzeczywistość dzięki naszemu zaawansowanemu Flux AI.",
+    "startButton": "Zacznij tworzyć",
+    "learnMoreButton": "Dowiedz się więcej",
+    "examplesButton": "Przykłady",
+    "imageAlt": "Przykład sztuki generowanej przez AI"
+  },
+  "features": {
+    "title": "Dlaczego warto wybrać Flux AI",
+    "subtitle": "Profesjonalna generacja obrazów AI na poziomie korporacyjnym dla twórców",
+    "cards": {
+      "advancedAI": {
+        "title": "Zaawansowana Generacja Obrazów AI",
+        "subtitle": "FLUX AI Profesjonalny Twórca Obrazów",
+        "description": "Generuj wyjątkowe obrazy w rozdzielczości do 1440x1440 za pomocą naszego modelu AI opartego na transformatorach. Obsługuje modele generacji obrazów FLUX [pro], [dev] i [schnell] od BlackForestLabs.",
+        "highlight": "Do 1440x1440 rozdzielczości"
+      },
+      "multipleStyles": {
+        "title": "Kontrola Wielu Stylów",
+        "subtitle": "FLUX AI Silnik Stylów",
+        "description": "Twórz obrazy w różnych stylach, od fotorealistycznych po artystyczne. Obsługuje zaawansowane opcje stylów, takie jak anime, sztuka cyfrowa, malarstwo olejne i więcej, z precyzyjną kontrolą promptów.",
+        "highlight": "Wiele stylów artystycznych"
+      },
+      "advancedModel": {
+        "title": "Zaawansowana Architektura Modelu",
+        "subtitle": "Technologia FLUX AI",
+        "description": "Napędzany najnowocześniejszą architekturą transformatorową z ponad 12 miliardami parametrów, zapewnia wyjątkową jakość obrazu i precyzję interpretacji promptów dzięki naszym autorskim technikom szkolenia.",
+        "highlight": "12B+ parametrów"
+      },
+      "flexiblePricing": {
+        "title": "Elastyczne Plany Cenowe",
+        "subtitle": "Cennik FLUX AI",
+        "description": "Rozpocznij od darmowej opcji (3 darmowe generacje dziennie bez logowania) lub przejdź na plany premium od $9.9 za 200 generacji. Uzyskaj dostęp do zaawansowanych funkcji, w tym wyższej rozdzielczości, priorytetowej generacji i zwiększonych limitów generacji.",
+        "highlight": "Zaczyna się od darmowego"
+      }
+    },
+    "cta": {
+      "title": "Doświadcz Profesjonalnej Generacji Obrazów AI",
+      "tryButton": "Wypróbuj za darmo",
+      "pricingButton": "Zobacz ceny"
+    }
+  },
+  "examples": {
+    "title": "Przykłady Generacji AI",
+    "subtitle": "Odkryj, co możesz stworzyć za pomocą FLUX AI"
+  },
+  "userExperience": {
+    "title": "Jak To Działa",
+    "subtitle": "Twórz oszałamiające obrazy generowane przez AI za pomocą generatora obrazów Flux AI",
+    "steps": {
+      "describe": {
+        "title": "Opisz Swoją Wizję",
+        "subtitle": "AI Napędzane Rozumieniem Języka",
+        "description": "Wystarczy wpisać opis obrazu, który chcesz stworzyć. Nasza AI rozumie wejście w języku naturalnym.",
+        "highlight": "Przetwarzanie Języka Naturalnego"
+      },
+      "generate": {
+        "title": "Magia AI w akcji",
+        "subtitle": "Zaawansowana Generacja Obrazów",
+        "description": "Nasza potężna AI przetwarza twój opis i generuje unikalne opcje obrazów pasujących do twojej wizji.",
+        "highlight": "Opcje wielu stylów"
+      },
+      "refine": {
+        "title": "Dopracuj i Udoskonal",
+        "subtitle": "Dostosowywanie Wyników",
+        "description": "Użyj naszych intuicyjnych narzędzi, aby dostosować i udoskonalić wygenerowane obrazy tak, aby odpowiadały twoim oczekiwaniom.",
+        "highlight": "Profesjonalne Narzędzia Edycyjne"
+      },
+      "download": {
+        "title": "Pobierz i Użyj",
+        "subtitle": "Gotowe do Twoich Projektów",
+        "description": "Pobierz swoje dzieło generowane przez AI w wysokiej rozdzielczości, gotowe do twoich kreatywnych projektów.",
+        "highlight": "Wyjście w wysokiej rozdzielczości"
+      }
+    }
+  },
+  "faq": {
+    "title": "Często Zadawane Pytania",
+    "subtitle": "Otrzymaj odpowiedzi na często zadawane pytania dotyczące Flux AI i jak może ulepszyć twoją kreatywną pracę",
+    "questions": {
+      "what": {
+        "question": "Czym jest Model Flux AI?",
+        "answer": "Flux AI to najnowocześniejszy model sztucznej inteligencji zaprojektowany do wspierania kreatywnych zadań, generacji obrazów i przepływów pracy projektowej. Wykorzystuje zaawansowane algorytmy uczenia maszynowego do rozumienia i generowania treści wizualnych na podstawie danych wejściowych użytkownika."
+      },
+      "versions": {
+        "question": "Jakie są różne wersje FLUX AI?",
+        "answer": "FLUX AI występuje w trzech wariantach: FLUX.1 [pro] dla najlepszej wydajności, FLUX.1 [dev] dla zastosowań niekomercyjnych i FLUX.1 [schnell] dla szybkiego, lokalnego rozwoju."
+      },
+      "comparison": {
+        "question": "Jak Flux AI wypada na tle innych modeli AI?",
+        "answer": "Flux AI wyróżnia się doskonałą jakością obrazu, szybszymi czasami generacji i bardziej intuicyjną obsługą. Nasz model został specjalnie przeszkolony na wysokiej jakości treściach kreatywnych, dzięki czemu jest szczególnie skuteczny w zastosowaniach projektowych i artystycznych."
+      },
+      "imageTypes": {
+        "question": "Jakie typy obrazów może generować Flux AI?",
+        "answer": "Flux AI może generować szeroką gamę treści wizualnych, w tym ilustracje, koncepcje artystyczne, projekty produktów, projekty postaci i sceny środowiskowe. Model obsługuje różne style artystyczne i może dostosowywać się do określonych wymagań wizualnych."
+      },
+      "requirements": {
+        "question": "Jakie są wymagania techniczne do korzystania z Flux AI?",
+        "answer": "Flux AI działa w chmurze i jest dostępny za pośrednictwem każdej nowoczesnej przeglądarki internetowej. Nie jest wymagany specjalny sprzęt, choć zaleca się stabilne połączenie internetowe dla optymalnej wydajności."
+      },
+      "fineTuning": {
+        "question": "Czy mogę dostosować generator obrazów FLUX AI do własnego zestawu danych?",
+        "answer": "Opcje dostosowywania mogą być dostępne dla klientów korporacyjnych. Skontaktuj się z Black Forest Labs, aby omówić swoje konkretne potrzeby."
+      },
+      "limits": {
+        "question": "Czy istnieje limit liczby obrazów, które mogę wygenerować?",
+        "answer": "Limity użytkowania zależą od poziomu subskrypcji. Użytkownicy darmowi mogą generować do 3 obrazów dziennie, podczas gdy użytkownicy premium cieszą się nieograniczoną liczbą generacji i priorytetowym przetwarzaniem."
+      },
+      "updates": {
+        "question": "Jak często aktualizowany jest generator obrazów FLUX AI?",
+        "answer": "Black Forest Labs dąży do ciągłego doskonalenia. Chociaż nie są dostarczane konkretne harmonogramy aktualizacji, możesz oczekiwać regularnych ulepszeń i udoskonaleń FLUX AI."
+      },
+      "feedback": {
+        "question": "Jak mogę przekazać opinię lub zgłosić problemy z FLUX AI?",
+        "answer": "Black Forest Labs chętnie przyjmuje opinie. Możesz skontaktować się za pośrednictwem ich oficjalnych kanałów lub wysłać e-mail na adres flux@blackforestlabs.ai, aby uzyskać wsparcie i zgłosić problemy."
+      },
+      "commercial": {
+        "question": "Czy mogę korzystać z generatora obrazów FLUX AI w projektach komercyjnych?",
+        "answer": "Podczas gdy FLUX.1 [schnell] jest darmowy do użytku osobistego, oferujemy FLUX.1 [pro] i FLUX.1 [dev] do zastosowań komercyjnych generatora obrazów Flux AI. Te wersje oferują ulepszone możliwości i są dostępne za pośrednictwem naszego API lub partnerów. W przypadku pytań dotyczących komercyjnego wykorzystania generatora obrazów FLUX AI prosimy o kontakt pod adresem juq1991@gmail.com."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Cennik",
+    "subtitle": "Wybierz odpowiedni plan dla siebie",
+    "tiers": {
+      "basic": {
+        "name": "Podstawowy",
+        "price": "$9.9",
+        "features": [
+          "200 punktów",
+          "Obrazy wysokiej jakości",
+          "Szybsze generowanie obrazów",
+          "Brak subskrypcji"
+        ]
+      },
+      "premium": {
+        "name": "Plan Premium",
+        "price": "$29.9",
+        "features": [
+          "1000 punktów",
+          "Obrazy wysokiej jakości",
+          "Szybsze generowanie obrazów",
+          "Subskrypcja miesięczna"
+        ],
+        "recommended": "Polecany"
+      },
+      "advanced": {
+        "name": "Plan Zaawansowany",
+        "price": "$99.9",
+        "features": [
+          "5000 punktów",
+          "Obrazy wysokiej jakości",
+          "Szybsze generowanie obrazów",
+          "Subskrypcja roczna"
+        ]
+      },
+      "common": {
+        "buyNowButton": "Kup teraz",
+        "subscribeButton": "Subskrybuj",
+        "processingButton": "Przetwarzanie...",
+        "comingSoonButton": "Wkrótce"
+      }
+    }
+  },
+  "modelComparison": {
+    "title": "Porównanie modeli AI Flux",
+    "subtitle": "Wybierz idealny model dla swoich potrzeb twórczych",
+    "promptSection": {
+      "showPrompt": "Pokaż prompt",
+      "hidePrompt": "Ukryj prompt",
+      "promptTitle": "Prompt użyty dla wszystkich modeli",
+      "copyButton": "Kopiuj prompt",
+      "copiedButton": "Skopiowano!"
+    },
+    "modelDetails": {
+      "processingTime": "Czas przetwarzania",
+      "outputSize": "Rozmiar wyjściowy",
+      "bestFor": "Najlepsze dla",
+      "keyFeatures": "Kluczowe cechy"
+    },
+    "models": {
+      "ultra": {
+        "name": "Flux 1.1 Pro Ultra",
+        "description": "Obrazy mają do 4 megapikseli. Użyj trybu RAW dla realizmu.",
+        "features": [
+          "Wyższa rozdzielczość",
+          "Brak kompromisów w szybkości",
+          "Tryb RAW"
+        ],
+        "suitableFor": [
+          "Podmioty ludzkie",
+          "Fotografia przyrody"
+        ],
+        "highlight": "Realizm",
+        "details": "Nowe możliwości wysokiej rozdzielczości dla FLUX1.1 [pro], rozszerzające jego funkcjonalność o obsługę 4-krotnie wyższych rozdzielczości obrazu (do 4MP), przy zachowaniu imponującego czasu generacji wynoszącego zaledwie 10 sekund na próbkę.",
+        "processingTime": "10 sekund",
+        "imageSize": "20962096"
+      },
+      "schnell": {
+        "name": "Flux Schnell",
+        "description": "Najszybszy model generowania obrazów dostosowany do lokalnego rozwoju i użytku osobistego.",
+        "features": [
+          "Wysoka wydajność",
+          "Szybka generacja",
+          "Otwarta licencja"
+        ],
+        "suitableFor": [
+          "Osobiste",
+          "Naukowe",
+          "Cele komercyjne"
+        ],
+        "highlight": "Zoptymalizowany pod kątem szybkości",
+        "details": "Zoptymalizowany pod kątem szybkości i wydajności, Flux Schnell zapewnia szybkie wyniki idealne dla wstępnych koncepcji i szybkiego prototypowania. Idealny dla programistów i projektantów, którzy potrzebują szybkich iteracji.",
+        "processingTime": "0,8 sekundy",
+        "imageSize": "10241024"
+      },
+      "dev": {
+        "name": "Flux Dev",
+        "description": "12-miliardowy transformator przepływu skorygowanego zdolny do generowania obrazów z opisów tekstowych.",
+        "features": [
+          "Konkurencyjna wydajność",
+          "Wydajna szkolenie",
+          "Otwarte badania"
+        ],
+        "suitableFor": [
+          "Osobiste",
+          "Naukowe",
+          "Cele komercyjne"
+        ],
+        "highlight": "Bardziej wydajny",
+        "details": "Potężny 12B-parametrowy model generowania obrazów dostarczający wysokiej jakości wyniki z obsługą zastosowań komercyjnych, zoptymalizowaną wydajnością i jasnymi wytycznymi etycznymi dla odpowiedzialnego rozwoju AI.",
+        "processingTime": "3-5 sekund",
+        "imageSize": "10241024"
+      },
+      "pro11": {
+        "name": "Flux 1.1 Pro",
+        "description": "Szybszy, lepszy FLUX Pro. Model tekst-obraz z doskonałą jakością obrazu, przestrzeganiem promptów i różnorodnością wyników.",
+        "features": [
+          "6-krotnie szybsza generacja",
+          "Ulepszona jakość",
+          "Zaawansowana architektura"
+        ],
+        "suitableFor": [
+          "Profesjonalne przepływy pracy",
+          "Projekty krytyczne dla jakości",
+          "Środowiska produkcyjne"
+        ],
+        "highlight": "Ulepszona jakość",
+        "details": "Najnowocześniejszy 12B-parametrowy model generowania obrazów, charakteryzujący się 6-krotnie większą szybkością, ulepszoną jakością i wiodącą w branży wydajnością, zbudowany w oparciu o zaawansowaną hybrydową architekturę łączącą bloki wielomodalne i równoległe transformatory dyfuzji dla środowisk profesjonalnych i produkcyjnych.",
+        "processingTime": "8-10 sekund",
+        "imageSize": "14401440"
+      },
+      "pro": {
+        "name": "Flux Pro",
+        "description": "Najnowocześniejsza generacja obrazów z najlepszym w swojej klasie przestrzeganiem promptów, jakością wizualną, szczegółowością obrazu i różnorodnością wyników.",
+        "features": [
+          "Najwyższa wydajność",
+          "Elastyczna rozdzielczość",
+          "Zaawansowana architektura"
+        ],
+        "suitableFor": [
+          "Projekty profesjonalne",
+          "Wszechstronne zastosowania"
+        ],
+        "highlight": "Jakość premium",
+        "details": "Model generowania obrazów premium z 12 miliardami parametrów, oferujący najnowocześniejszą wydajność z doskonałą jakością wizualną i obsługą wszechstronnej rozdzielczości, napędzany hybrydową architekturą łączącą wielomodalne i równoległe bloki transformatorów dyfuzji.",
+        "processingTime": "15-25 sekund",
+        "imageSize": "1440*1440"
+      }
+    }
+  },
+  "imagePreview": {
+    "loading": "Tworzenie Twojego arcydzieła...",
+    "placeholder": "Twój obraz wygenerowany przez AI pojawi się tutaj",
+    "downloadButton": "Pobierz",
+    "dimensions": {
+      "width": "Szerokość",
+      "height": "Wysokość"
+    }
+  },
+  "autoLogout": {
+    "warningMessage": "Twoja sesja wygaśnie za {minutes} minut.",
+    "stayLoggedIn": "Pozostań zalogowany"
+  },
+  "footer": {
+    "description": "Przekształć swoje pomysły w niesamowite wizualizacje dzięki mocy Flux AI",
+    "quickLinks": "Szybkie linki",
+    "pricing": "Cennik",
+    "contact": "Kontakt",
+    "legal": "Informacje prawne",
+    "terms": "Warunki korzystania",
+    "privacy": "Polityka prywatności",
+    "support": "Wsparcie",
+    "allRightsReserved": "Wszelkie prawa zastrzeżone",
+    "fluxAI": {
+      "title": "Flux Image AI",
+      "desc": "Wypróbuj narzędzia do generowania obrazów Flux AI"
+    },
+    "soraAI": {
+      "title": "SORA AI",
+      "desc": "Odkryj możliwości SORA AI"
+    },
+    "aiBestTool": {
+      "title": "Najlepsze narzędzia AI",
+      "desc": "Odkryj najlepsze narzędzia AI"
+    }
+  },
+  "auth": {
+    "signIn": "Zaloguj się na swoje konto",
+    "createAccount": "Utwórz nowe konto",
+    "fullName": "Pełne imię i nazwisko",
+    "emailAddress": "Adres e-mail",
+    "password": "Hasło",
+    "signInButton": "Zaloguj się",
+    "registerButton": "Zarejestruj się",
+    "noAccount": "Nie masz konta? Zarejestruj się",
+    "hasAccount": "Masz już konto? Zaloguj się",
+    "loading": "Ładowanie trwa...",
+    "errors": {
+      "unexpected": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.",
+      "invalidFormat": "Nieoczekiwany format odpowiedzi",
+      "authFailed": "Uwierzytelnianie nie powiodło się"
+    }
+  },
+  "imageGenerator": {
+    "title": "Twórz zachwycające obrazy z Flux AI",
+    "subtitle": "Przekształć swoje pomysły w arcydzieła wizualne w kilka sekund",
+    "pageTitle": "Generator obrazów Flux AI",
+    "description": "Przekształć swoje pomysły w zachwycające wizualizacje",
+    "promptLabel": "Opis obrazu",
+    "promptPlaceholder": "Spróbuj: Majestatyczny lew siedzący na szczycie góry o zachodzie słońca...",
+    "modelLabel": "Model AI",
+    "modelPoints": "Punkt|Punkty",
+    "modelPremium": "Premium",
+    "aspectRatioLabel": "Proporcje obrazu",
+    "outputFormatLabel": "Format wyjściowy",
+    "generateButton": "Generuj obraz",
+    "generatingButton": "Generowanie...",
+    "freeGenerations": "Darmowe generacje",
+    "points": "Punkty",
+    "loginForMore": "Zaloguj się, aby uzyskać więcej generacji",
+    "error": "Wystąpił błąd",
+    "guidanceLabel": "Siła prowadzenia",
+    "outputQualityLabel": "Jakość wyjścia",
+    "inferenceStepsLabel": "Kroki wnioskowania",
+    "numOutputsLabel": "Liczba wyników"
+  },
+  "ultraHero": {
+    "heroTitle": "FLUX 1.1 Ultra",
+    "heroSubtitle": "Nowa Generacja",
+    "heroDescription": "Do FLUX1.1 [pro] dodano nowe możliwości wysokiej rozdzielczości, rozszerzające jego funkcjonalność o obsługę 4-krotnie wyższych rozdzielczości obrazu (do 4 MP), zachowując jednocześnie imponujący czas generacji wynoszący zaledwie 10 sekund na próbkę.",
+    "heroCallToAction": "Wypróbuj Ultra już teraz",
+    "heroExploreFeatures": "Poznaj funkcje",
+    "sectionNewRelease": "Nowa wersja",
+    "imageAlt": "Przykład FLUX 1.1 Ultra"
+  },
+  "faqData": [
+    {
+      "question": "Czym jest Flux 1.1 Pro Ultra?",
+      "answer": "Flux 1.1 Pro Ultra to zaawansowany model generatora obrazów AI, który może tworzyć wysoce realistyczne obrazy o rozdzielczości do 4 megapikseli. Oferuje zarówno tryb ultra, jak i raw dla maksymalnej elastyczności w generowaniu obrazów."
+    },
+    {
+      "question": "Jak mogę wypróbować Flux 1.1 Pro Ultra?",
+      "answer": "Możesz bezpłatnie wypróbować Flux 1.1 Pro Ultra, logując się na swoje konto. Nowi użytkownicy otrzymują 3 punkty (1 raz), aby doświadczyć rozszerzonych możliwości tego zaawansowanego modelu."
+    },
+    {
+      "question": "Jakie są główne cechy Flux 1.1 Pro Ultra?",
+      "answer": "Główne cechy obejmują możliwość generowania obrazów o wielkości do 4 megapikseli, tryb raw zoptymalizowany pod kątem fotorealistycznych wyników oraz ulepszone możliwości generowania naturalnych obrazów w porównaniu z poprzednimi modelami."
+    },
+    {
+      "question": "Jaka jest różnica między trybami ultra i raw?",
+      "answer": "Chociaż oba tryby mogą generować wysokiej jakości obrazy, tryb raw jest specjalnie zoptymalizowany do tworzenia wysoce realistycznych i naturalnie wyglądających obrazów. Tryb ultra oferuje bardziej uniwersalne możliwości generowania obrazów."
+    },
+    {
+      "question": "Co wyróżnia Flux 1.1 Pro Ultra spośród innych modeli?",
+      "answer": "Flux 1.1 Pro Ultra wyróżnia się możliwością generowania większych obrazów 4-megapikselowych, zwiększonym realizmem szczególnie w trybie raw oraz ulepszoną generacją naturalnych obrazów w porównaniu z poprzednimi wersjami."
+    }
+  ],
+  "ultraFeatures": {
+    "title": "Funkcje FLUX 1.1 Ultra",
+    "subtitle": "Użyj trybu raw dla większego realizmu",
+    "features": {
+      "resolution": {
+        "title": "Ultra Wysoka Rozdzielczość",
+        "subtitle": "Silnik rozdzielczości FLUX 1.1 Ultra",
+        "description": "Twórz zachwycające obrazy w rozdzielczości do 2096x2096 z wyjątkową szczegółowością i przejrzystością. Idealne do użytku profesjonalnego i druku wielkoformatowego.",
+        "highlight": "Do 2096x2096"
+      },
+      "speed": {
+        "title": "Bez kompromisów w prędkości",
+        "subtitle": "Szybciej",
+        "description": "W przeciwieństwie do wielu modeli wysokiej rozdzielczości, które doświadczają znacznych spowolnień, nasze testy wydajności pokazują stale szybkie czasy generowania - ponad 2,5 razy szybsze niż porównywalne oferty wysokiej rozdzielczości.",
+        "highlight": "10s 2.5X szybciej"
+      },
+      "price": {
+        "title": "Konkurencyjna cena",
+        "subtitle": "Zwiększona ilość bez zmiany ceny",
+        "description": "Ten model jest konkurencyjnie wyceniony, z taką samą ceną za obraz jak inne wersje Pro.",
+        "highlight": "Przewagi materialne"
+      },
+      "rawMode": {
+        "title": "Realizm trybu Raw",
+        "subtitle": "Generowanie FLUX Ultra",
+        "description": "FLUX1.1 [pro] – tryb raw: Dla twórców szukających autentyczności, nasz nowy tryb raw uchwytuje prawdziwe uczucie spontanicznej fotografii. Włącz tę funkcję, aby generować obrazy o mniej syntetycznej, bardziej naturalnej estetyce.",
+        "highlight": "Ludzie i natura"
+      }
+    },
+    "tryNow": "Wypróbuj Ultra teraz",
+    "viewPricing": "Zobacz ceny"
+  },
+  "ultraFAQ": {
+    "title": "Często zadawane pytania",
+    "subtitle": "Poznaj odpowiedzi na często zadawane pytania o Flux 1.1 Ultra i dowiedz się, jak może ulepszyć Twój przepływ pracy twórczej",
+    "questions": {
+      "what": {
+        "question": "Czym jest Flux 1.1 Pro Ultra?",
+        "answer": "Flux 1.1 Pro Ultra to zaawansowany model generowania obrazów AI, który może tworzyć wysoce realistyczne obrazy o rozdzielczości do 4 megapikseli. Oferuje zarówno tryb ultra, jak i raw dla maksymalnej elastyczności w generowaniu obrazów."
+      },
+      "howToTry": {
+        "question": "Jak mogę wypróbować Flux 1.1 Pro Ultra?",
+        "answer": "Możesz wypróbować Flux 1.1 Pro Ultra za darmo, logując się na swoje konto. Nowi użytkownicy otrzymują 3 punkty (1 użycie), aby doświadczyć rozszerzonych możliwości tego zaawansowanego modelu."
+      },
+      "keyFeatures": {
+        "question": "Jakie są główne cechy Flux 1.1 Pro Ultra?",
+        "answer": "Główne cechy obejmują możliwość generowania obrazów do 4 megapikseli, tryb raw zoptymalizowany pod kątem fotorealistycznych wyników oraz ulepszone możliwości generowania naturalnych obrazów w porównaniu z poprzednimi modelami."
+      },
+      "modeDifference": {
+        "question": "Jaka jest różnica między trybem ultra a raw?",
+        "answer": "Podczas gdy oba tryby mogą generować wysokiej jakości obrazy, tryb raw jest specjalnie zoptymalizowany do tworzenia wysoce realistycznych i naturalnie wyglądających obrazów. Tryb ultra oferuje bardziej ogólne możliwości generowania obrazów."
+      },
+      "comparison": {
+        "question": "Co wyróżnia Flux 1.1 Pro Ultra spośród innych modeli?",
+        "answer": "Flux 1.1 Pro Ultra wyróżnia się możliwością generowania większych obrazów 4-megapikselowych, ulepszonym realizmem szczególnie w trybie raw oraz ulepszonym generowaniem naturalnych obrazów w porównaniu z poprzednimi wersjami."
+      }
+    }
+  },
+  "fluxTools": {
+    "common": {
+      "aspectRatioLabel": "Proporcje",
+      "outputFormatLabel": "Format wyjściowy",
+      "generateButton": "Generuj obraz",
+      "generating": "Generowanie...",
+      "downloadButton": "Pobierz",
+      "previewPlaceholder": "Prześlij obraz, aby rozpocząć",
+      "invalidFileType": "Prześlij obraz w formacie JPG lub PNG",
+      "noImageError": "Najpierw prześlij obraz",
+      "generationError": "Generowanie nie powiodło się, spróbuj ponownie"
+    },
+    "redux": {
+      "title": "Twórz wspaniałe obrazy z Flux Redux",
+      "subtitle": "Przekształć swoje pomysły w wizualne arcydzieła w kilka sekund",
+      "pageTitle": "Generowanie obrazów Flux Redux",
+      "description": "Przekształć swoje kreatywne pomysły w wspaniałe obrazy dzięki naszej zaawansowanej technologii AI",
+      "guidanceLabel": "Skala prowadzenia",
+      "outputQualityLabel": "Jakość wyjściowa",
+      "inferenceStepsLabel": "Kroki wnioskowania",
+      "numOutputsLabel": "Liczba wyjść"
+    },
+    "depth": {
+      "title": "Twórz mapy głębi z Flux Depth",
+      "subtitle": "Przekształć swoje obrazy w mapy głębi w kilka sekund",
+      "pageTitle": "Generowanie map głębi Flux Depth",
+      "description": "Twórz precyzyjne mapy głębi dla swoich obrazów dzięki naszej zaawansowanej technologii AI",
+      "guidanceLabel": "Skala prowadzenia",
+      "outputQualityLabel": "Jakość wyjściowa",
+      "inferenceStepsLabel": "Kroki wnioskowania",
+      "numOutputsLabel": "Liczba wyjść",
+      "cannyLowThresholdLabel": "Niski próg",
+      "cannyHighThresholdLabel": "Wysoki próg",
+      "safetyToleranceLabel": "Tolerancja bezpieczeństwa",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Wprowadź prompt, np. samochód na ulicy miasta",
+      "promptUpsamplingLabel": "Upsampling promptu"
+    },
+    "fill": {
+      "title": "Naprawa obrazów Flux Fill",
+      "subtitle": "Inteligentnie wypełniaj i naprawiaj dowolny obszar obrazu",
+      "pageTitle": "Naprawa obrazów Flux Fill",
+      "description": "Inteligentnie wypełniaj i naprawiaj dowolny obszar obrazu dzięki naszej zaawansowanej technologii AI",
+      "maskLabel": "Wybierz obszar do naprawy",
+      "clearMask": "Wyczyść maskę",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Opisz, co chcesz wypełnić, np. zielona trawa",
+      "guidanceLabel": "Skala prowadzenia",
+      "inferenceStepsLabel": "Kroki wnioskowania",
+      "outputFormatLabel": "Format wyjściowy",
+      "safetyToleranceLabel": "Tolerancja bezpieczeństwa",
+      "promptUpsamplingLabel": "Upsampling promptu",
+      "promptUpsamplingEnabled": "Włącz upsampling promptu",
+      "outpaintingLabel": "Rozszerzenie obrazu",
+      "outpaintingOptions": {
+        "none": "Brak",
+        "zoomOut15": "Oddalenie 1.5x",
+        "zoomOut2": "Oddalenie 2x",
+        "makeSquare": "Zrób kwadrat",
+        "leftOutpaint": "Rozszerz w lewo",
+        "rightOutpaint": "Rozszerz w prawo",
+        "topOutpaint": "Rozszerz w górę",
+        "bottomOutpaint": "Rozszerz w dół"
+      }
+    },
+    "canny": {
+      "title": "Twórz mapy krawędzi z Flux Canny",
+      "subtitle": "Przekształć swoje obrazy w mapy krawędzi w kilka sekund",
+      "pageTitle": "Wykrywanie krawędzi Flux Canny",
+      "description": "Twórz precyzyjne mapy krawędzi dla swoich obrazów dzięki naszej zaawansowanej technologii AI",
+      "guidanceLabel": "Skala prowadzenia",
+      "outputQualityLabel": "Jakość wyjściowa",
+      "inferenceStepsLabel": "Kroki wnioskowania",
+      "numOutputsLabel": "Liczba wyjść",
+      "cannyLowThresholdLabel": "Niski próg",
+      "cannyHighThresholdLabel": "Wysoki próg",
+      "safetyToleranceLabel": "Tolerancja bezpieczeństwa",
+      "promptLabel": "Prompt",
+      "promptPlaceholder": "Wprowadź prompt, np. samochód na ulicy miasta",
+      "promptUpsamplingLabel": "Upsampling promptu"
+    }
+  }
+}

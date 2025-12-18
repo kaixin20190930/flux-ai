@@ -1,0 +1,42 @@
+# Cloudflare Workers 配置文件
+name = "flux-ai-worker"
+main = "worker/index.ts"
+compatibility_date = "2024-01-15"
+compatibility_flags = ["nodejs_compat"]
+
+# 环境变量
+[vars]
+ENVIRONMENT = "production"
+
+# D1 数据库绑定
+[[d1_databases]]
+binding = "DB"
+database_name = "flux-ai-db"
+database_id = "2f4a6138-a558-4722-8171-22f7d2fb081f"
+
+# R2 存储绑定
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "flux-ai-images"
+
+# KV 缓存绑定
+[[kv_namespaces]]
+binding = "KV"
+id = "8ef3875af54249d0bd55550188aa9ed9"
+preview_id = "43a1e656920b498da6ad18c80b709128"
+
+# 环境变量（生产环境）
+[env.production]
+[env.production.vars]
+NODE_ENV = "production"
+JWT_SECRET = "your-jwt-secret-here"
+DATABASE_URL = "your-d1-database-url"
+NEXTAUTH_SECRET = "your-nextauth-secret-here"
+NEXTAUTH_URL = "https://your-domain.com"
+
+# 环境变量（开发环境）
+[env.development]
+[env.development.vars]
+NODE_ENV = "development"
+JWT_SECRET = "dev-jwt-secret"
+DATABASE_URL = "your-dev-database-url"
