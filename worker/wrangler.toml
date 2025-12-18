@@ -29,8 +29,7 @@ id = "8ef3875af54249d0bd55550188aa9ed9"
 # 生产环境配置
 [env.production]
 name = "flux-ai-worker-prod"
-workers_dev = false
-route = "api.flux-ai-img.com/*"
+workers_dev = true
 
 [env.production.vars]
 ENVIRONMENT = "production"

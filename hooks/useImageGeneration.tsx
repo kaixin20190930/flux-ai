@@ -6,9 +6,11 @@
 import {useState, useEffect, useCallback} from 'react';
 import {useRouter} from "next/navigation";
 
-const WORKER_URL = process.env.NODE_ENV === 'production'
-    ? 'https://flux-ai-worker.liukai19911010.workers.dev'
-    : process.env.NEXT_PUBLIC_WORKER_URL || 'http://localhost:8787';
+// 从环境变量读取 Worker URL，如果没有则根据环境自动判断
+const WORKER_URL = process.env.NEXT_PUBLIC_WORKER_URL || 
+    (process.env.NODE_ENV === 'production'
+        ? 'https://flux-ai-worker-prod.liukai19911010.workers.dev'  // 生产环境默认值
+        : 'http://localhost:8787');  // 本地开发默认值
 
 // 生成并缓存指纹哈希
 const getOrCreateFingerprint = (): string => {
