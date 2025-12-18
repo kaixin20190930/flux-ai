@@ -81,7 +81,8 @@ export async function handleLogin(request: Request, env: Env): Promise<any> {
             }
         } else {
             // 原有的密码验证流程
-            if (!await verifyPassword(password, user.password as string)) {
+            const storedPassword = user.password_hash || user.password;
+            if (!storedPassword || !await verifyPassword(password, storedPassword as string)) {
                 return new Promise((resolve) => resolve(new Response('Invalid credentials', {
                     status: 401,
                     headers: corsHeaders,
