@@ -2,7 +2,7 @@
 export const API_CONFIG = {
   // 根据环境自动切换
   baseURL: process.env.NODE_ENV === 'production'
-    ? 'https://flux-ai-worker.liukai19911010.workers.dev'
+    ? 'https://flux-ai-worker-prod.liukai19911010.workers.dev'
     : 'http://localhost:8787',
   
   endpoints: {
