@@ -1,5 +1,7 @@
 'use client'
 
+export const runtime = 'edge'
+
 import { Locale } from '@/app/i18n/settings'
 import { Suspense, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
