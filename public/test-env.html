@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environment Variable Test - Flux AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .test-section {
+            background: #f7f9fc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .test-section h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .result {
+            background: white;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        
+        .result-label {
+            color: #666;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .result-value {
+            color: #333;
+            word-break: break-all;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+        
+        .button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .button-secondary {
+            background: #6c757d;
+        }
+        
+        .button-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .instructions {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+        
+        .instructions h3 {
+            color: #1976D2;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            color: #333;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        .code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        
+        .icon {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Environment Variable Test</h1>
+        <p class="subtitle">Flux AI - Production Environment Diagnostic Tool</p>
+        
+        <div class="test-section">
+            <h2><span class="icon">🌐</span> Environment Detection</h2>
+            <div class="result">
+                <div class="result-label">Current URL:</div>
+                <div class="result-value" id="current-url"></div>
+            </div>
+            <div class="result">
+                <div class="result-label">User Agent:</div>
+                <div class="result-value" id="user-agent"></div>
+            </div>
+            <div class="result">
+                <div class="result-label">Timestamp:</div>
+                <div class="result-value" id="timestamp"></div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2><span class="icon">🔧</span> Worker URL Configuration</h2>
+            <div class="result">
+                <div class="result-label">Expected Worker URL (Production):</div>
+                <div class="result-value">https://flux-ai-worker-prod.liukai19911010.workers.dev</div>
+            </div>
+            <div class="result">
+                <div class="result-label">Expected Worker URL (Development):</div>
+                <div class="result-value">http://localhost:8787</div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>
+                <span class="icon">🧪</span> 
+                API Connection Test
+                <span class="status status-warning" id="test-status">Not Tested</span>
+            </h2>
+            <div id="test-results"></div>
+            <button class="button" onclick="testWorkerConnection()">Test Worker Connection</button>
+            <button class="button button-secondary" onclick="copyResults()">Copy Results</button>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 How to Use This Tool</h3>
+            <ol>
+                <li>Click <span class="code">Test Worker Connection</span> to verify API connectivity</li>
+                <li>Check if the Worker URL is correct in the test results</li>
+                <li>Click <span class="code">Copy Results</span> to copy diagnostic information</li>
+                <li>Share the results with the development team</li>
+            </ol>
+        </div>
+        
+        <div class="instructions" style="margin-top: 15px; background: #fff3cd; border-left-color: #ffc107;">
+            <h3>⚠️ Expected Behavior</h3>
+            <ol>
+                <li>Production environment should use: <span class="code">https://flux-ai-worker-prod.liukai19911010.workers.dev</span></li>
+                <li>Development environment should use: <span class="code">http://localhost:8787</span></li>
+                <li>If the URL is incorrect, environment variables are not properly configured</li>
+            </ol>
+        </div>
+    </div>
+    
+    <script>
+        // Display basic environment info
+        document.getElementById('current-url').textContent = window.location.href;
+        document.getElementById('user-agent').textContent = navigator.userAgent;
+        document.getElementById('timestamp').textContent = new Date().toISOString();
+        
+        // Determine expected Worker URL based on hostname
+        function getExpectedWorkerUrl() {
+            const hostname = window.location.hostname;
+            if (hostname === 'localhost' || hostname === '127.0.0.1') {
+                return 'http://localhost:8787';
+            } else {
+                return 'https://flux-ai-worker-prod.liukai19911010.workers.dev';
+            }
+        }
+        
+        async function testWorkerConnection() {
+            const statusEl = document.getElementById('test-status');
+            const resultsEl = document.getElementById('test-results');
+            
+            statusEl.textContent = 'Testing...';
+            statusEl.className = 'status status-warning';
+            resultsEl.innerHTML = '<div class="result"><div class="result-value">🔄 Testing connection...</div></div>';
+            
+            const workerUrl = getExpectedWorkerUrl();
+            const testUrl = `${workerUrl}/health`;
+            
+            try {
+                const startTime = Date.now();
+                const response = await fetch(testUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const endTime = Date.now();
+                const responseTime = endTime - startTime;
+                
+                const data = await response.json();
+                
+                let html = '';
+                
+                // Test URL
+                html += `
+                    <div class="result">
+                        <div class="result-label">Test URL:</div>
+                        <div class="result-value">${testUrl}</div>
+                    </div>
+                `;
+                
+                // Response Status
+                html += `
+                    <div class="result">
+                        <div class="result-label">Response Status:</div>
+                        <div class="result-value">${response.status} ${response.statusText}</div>
+                    </div>
+                `;
+                
+                // Response Time
+                html += `
+                    <div class="result">
+                        <div class="result-label">Response Time:</div>
+                        <div class="result-value">${responseTime}ms</div>
+                    </div>
+                `;
+                
+                // Response Data
+                html += `
+                    <div class="result">
+                        <div class="result-label">Response Data:</div>
+                        <div class="result-value">${JSON.stringify(data, null, 2)}</div>
+                    </div>
+                `;
+                
+                resultsEl.innerHTML = html;
+                
+                if (response.ok) {
+                    statusEl.textContent = 'Success';
+                    statusEl.className = 'status status-success';
+                } else {
+                    statusEl.textContent = 'Failed';
+                    statusEl.className = 'status status-error';
+                }
+                
+            } catch (error) {
+                resultsEl.innerHTML = `
+                    <div class="result">
+                        <div class="result-label">❌ Connection Failed:</div>
+                        <div class="result-value">${error.message}</div>
+                    </div>
+                    <div class="result">
+                        <div class="result-label">Test URL:</div>
+                        <div class="result-value">${testUrl}</div>
+                    </div>
+                    <div class="result">
+                        <div class="result-label">Possible Causes:</div>
+                        <div class="result-value">
+                            1. Worker is not deployed<br>
+                            2. CORS configuration issue<br>
+                            3. Network connectivity problem<br>
+                            4. Worker URL is incorrect
+                        </div>
+                    </div>
+                `;
+                
+                statusEl.textContent = 'Error';
+                statusEl.className = 'status status-error';
+            }
+        }
+        
+        function copyResults() {
+            const results = {
+                timestamp: new Date().toISOString(),
+                currentUrl: window.location.href,
+                userAgent: navigator.userAgent,
+                expectedWorkerUrl: getExpectedWorkerUrl(),
+                testResults: document.getElementById('test-results').innerText
+            };
+            
+            const text = JSON.stringify(results, null, 2);
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ Results copied to clipboard!');
+            }).catch(err => {
+                alert('❌ Failed to copy: ' + err.message);
+            });
+        }
+    </script>
+</body>
+</html>

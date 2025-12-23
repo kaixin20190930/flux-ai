@@ -6,11 +6,36 @@
 import {useState, useEffect, useCallback} from 'react';
 import {useRouter} from "next/navigation";
 
-// 从环境变量读取 Worker URL，如果没有则根据环境自动判断
-const WORKER_URL = process.env.NEXT_PUBLIC_WORKER_URL || 
-    (process.env.NODE_ENV === 'production'
-        ? 'https://flux-ai-worker-prod.liukai19911010.workers.dev'  // 生产环境默认值
-        : 'http://localhost:8787');  // 本地开发默认值
+// 从环境变量读取 Worker URL，使用函数确保运行时获取
+const getWorkerUrl = () => {
+    // 优先使用环境变量
+    if (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_WORKER_URL) {
+        return process.env.NEXT_PUBLIC_WORKER_URL;
+    }
+    
+    // Fallback: 根据当前域名判断环境
+    if (typeof window !== 'undefined') {
+        const hostname = window.location.hostname;
+        if (hostname === 'localhost' || hostname === '127.0.0.1') {
+            return 'http://localhost:8787';
+        } else {
+            return 'https://flux-ai-worker-prod.liukai19911010.workers.dev';
+        }
+    }
+    
+    // 服务端渲染时的默认值
+    return 'https://flux-ai-worker-prod.liukai19911010.workers.dev';
+};
+
+const WORKER_URL = getWorkerUrl();
+
+// 调试日志
+console.log('🔧 Worker URL Configuration:', {
+    NEXT_PUBLIC_WORKER_URL: typeof process !== 'undefined' ? process.env.NEXT_PUBLIC_WORKER_URL : 'undefined',
+    NODE_ENV: typeof process !== 'undefined' ? process.env.NODE_ENV : 'undefined',
+    hostname: typeof window !== 'undefined' ? window.location.hostname : 'server',
+    WORKER_URL: WORKER_URL
+});
 
 // 生成并缓存指纹哈希
 const getOrCreateFingerprint = (): string => {
@@ -130,10 +155,11 @@ export const useImageGeneration = (locale: string) => {
                 hasToken: !!token,
                 hasFingerprintHash: !!fingerprintHash,
                 model: state.selectedModel,
-                promptLength: state.prompt.length
+                promptLength: state.prompt.length,
+                workerURL: WORKER_URL
             });
 
-            const response = await fetch('/api/generate', {
+            const response = await fetch(`${WORKER_URL}/generation/generate`, {
                 method: 'POST',
                 headers,
                 body: JSON.stringify(requestBody)

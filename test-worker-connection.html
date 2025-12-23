@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试 Worker 连接</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-result {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .loading {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Flux AI Worker 连接测试</h1>
+    
+    <div>
+        <h2>测试配置</h2>
+        <p><strong>Worker URL:</strong> <code id="worker-url">https://flux-ai-worker-prod.liukai19911010.workers.dev</code></p>
+    </div>
+
+    <button onclick="testWorkerConnection()">🚀 开始测试</button>
+
+    <div id="results"></div>
+
+    <script>
+        const WORKER_URL = 'https://flux-ai-worker-prod.liukai19911010.workers.dev';
+
+        async function testWorkerConnection() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<div class="test-result loading">⏳ 正在测试连接...</div>';
+
+            const tests = [
+                {
+                    name: '根路径健康检查',
+                    url: `${WORKER_URL}/`,
+                    method: 'GET'
+                },
+                {
+                    name: '生成状态检查',
+                    url: `${WORKER_URL}/generation/status`,
+                    method: 'GET',
+                    headers: {
+                        'x-fingerprint-hash': 'test-fingerprint-123'
+                    }
+                },
+                {
+                    name: '认证端点测试',
+                    url: `${WORKER_URL}/auth/verify-token`,
+                    method: 'POST',
+                    body: { token: 'test-token' }
+                }
+            ];
+
+            let html = '';
+
+            for (const test of tests) {
+                html += `<h3>📋 ${test.name}</h3>`;
+                
+                try {
+                    const options = {
+                        method: test.method,
+                        headers: {
+                            'Content-Type': 'application/json',
+                            ...(test.headers || {})
+                        }
+                    };
+
+                    if (test.body) {
+                        options.body = JSON.stringify(test.body);
+                    }
+
+                    const startTime = Date.now();
+                    const response = await fetch(test.url, options);
+                    const endTime = Date.now();
+                    const duration = endTime - startTime;
+
+                    const data = await response.json();
+
+                    html += `<div class="test-result ${response.ok ? 'success' : 'error'}">`;
+                    html += `<p><strong>状态:</strong> ${response.status} ${response.statusText}</p>`;
+                    html += `<p><strong>响应时间:</strong> ${duration}ms</p>`;
+                    html += `<p><strong>响应数据:</strong></p>`;
+                    html += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                    html += `</div>`;
+
+                } catch (error) {
+                    html += `<div class="test-result error">`;
+                    html += `<p><strong>❌ 错误:</strong> ${error.message}</p>`;
+                    html += `<p><strong>详情:</strong> ${error.stack || '无'}</p>`;
+                    html += `</div>`;
+                }
+            }
+
+            resultsDiv.innerHTML = html;
+        }
+
+        // 页面加载时自动测试
+        window.addEventListener('load', () => {
+            console.log('页面加载完成，准备测试 Worker 连接');
+        });
+    </script>
+</body>
+</html>
