@@ -7,14 +7,17 @@ compatibility_flags = ["nodejs_compat"]
 # Use .dev.vars for local development secrets (this file is gitignored)
 # Use `wrangler secret put <KEY>` for production secrets
 
+# ============================================================================
+# 默认配置 - 开发环境
+# ============================================================================
 [vars]
-ENVIRONMENT = "production"
+ENVIRONMENT = "development"
 
-# D1 数据库绑定 - 默认使用生产数据库
+# D1 数据库绑定 - 开发数据库
 [[d1_databases]]
 binding = "DB"
-database_name = "flux-ai"
-database_id = "011af577-7121-4de9-99b9-d925387ffacc"  # 需要替换为 flux-ai 的实际 ID
+database_name = "flux-ai-dev"
+database_id = "6cb4fc8d-02b7-40ad-833e-838b48c3ebbf"
 
 # R2 存储绑定
 [[r2_buckets]]
@@ -24,9 +27,11 @@ bucket_name = "flux-ai-images"
 # KV 缓存绑定
 [[kv_namespaces]]
 binding = "KV"
-id = "8ef3875af54249d0bd55550188aa9ed9"
+id = "43a1e656920b498da6ad18c80b709128"
 
+# ============================================================================
 # 生产环境配置
+# ============================================================================
 [env.production]
 name = "flux-ai-worker-prod"
 workers_dev = true
@@ -37,7 +42,7 @@ ENVIRONMENT = "production"
 [[env.production.d1_databases]]
 binding = "DB"
 database_name = "flux-ai"
-database_id = "011af577-7121-4de9-99b9-d925387ffacc"  # 需要替换为 flux-ai 的实际 ID
+database_id = "011af577-7121-4de9-99b9-d925387ffacc"
 
 [[env.production.r2_buckets]]
 binding = "R2"
@@ -46,24 +51,3 @@ bucket_name = "flux-ai-images"
 [[env.production.kv_namespaces]]
 binding = "KV"
 id = "8ef3875af54249d0bd55550188aa9ed9"
-
-# 开发环境配置
-[env.development]
-name = "flux-ai-worker-dev"
-workers_dev = true
-
-[env.development.vars]
-ENVIRONMENT = "development"
-
-[[env.development.d1_databases]]
-binding = "DB"
-database_name = "flux-ai-dev"
-database_id = "6cb4fc8d-02b7-40ad-833e-838b48c3ebbf"  # 需要替换为 flux-ai-dev 的实际 ID
-
-[[env.development.r2_buckets]]
-binding = "R2"
-bucket_name = "flux-ai-images"
-
-[[env.development.kv_namespaces]]
-binding = "KV"
-id = "43a1e656920b498da6ad18c80b709128"

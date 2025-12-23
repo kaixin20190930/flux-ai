@@ -102,4 +102,5 @@ app.onError((err, c) => {
   }, 500);
 });
 
+// 导出为 Cloudflare Worker 格式
 export default app;

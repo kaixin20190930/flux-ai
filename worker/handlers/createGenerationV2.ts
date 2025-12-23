@@ -104,7 +104,7 @@ export async function handleCreateGenerationV2(request: Request, env: Env): Prom
 
       // 记录交易
       await db.prepare(`
-        INSERT INTO points_transactions (id, user_id, type, amount, balance_before, balance_after, reason, generation_id)
+        INSERT INTO transactions (id, user_id, type, amount, balance_before, balance_after, reason, related_id)
         VALUES (?, ?, 'deduct', ?, ?, ?, 'Image generation', ?)
       `).bind(
         crypto.randomUUID(), 

@@ -159,9 +159,25 @@ auth.post('/register', zValidator('json', registerSchema), async (c) => {
     
     // 插入用户数据（新用户默认 3 积分）
     await db.prepare(
-      'INSERT INTO users (id, name, email, password_hash, is_google_user, points) VALUES (?, ?, ?, ?, ?, ?)'
+      'INSERT INTO users (id, name, email, password_hash, email_verified, points) VALUES (?, ?, ?, ?, ?, ?)'
     )
-      .bind(userId, name, email, hashedPassword, googleToken ? 1 : 0, 3)
+      .bind(userId, name, email, hashedPassword, 0, 3)
+      .run();
+    
+    // 如果是 Google 注册，创建 OAuth 账号绑定
+    if (googleToken) {
+      await db.prepare(
+        'INSERT INTO oauth_accounts (id, user_id, provider, provider_user_id, provider_email) VALUES (?, ?, ?, ?, ?)'
+      )
+        .bind(crypto.randomUUID(), userId, 'google', email, email)
+        .run();
+    }
+    
+    // 记录注册赠送积分的交易
+    await db.prepare(
+      'INSERT INTO transactions (id, user_id, type, amount, balance_before, balance_after, reason) VALUES (?, ?, ?, ?, ?, ?, ?)'
+    )
+      .bind(crypto.randomUUID(), userId, 'register_bonus', 3, 0, 3, 'Registration bonus')
       .run();
     
     // 创建 JWT token
