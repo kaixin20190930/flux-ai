@@ -10,6 +10,7 @@ import Script from "next/script";
 import { initializePerformanceMonitoring } from '@/utils/performanceInit';
 import { ErrorNotificationContainer } from '@/components/ErrorNotification';
 import { AuthProviderWrapper } from '@/components/providers/AuthProviderWrapper';
+import { GoogleOAuthProvider } from '@/components/providers/GoogleOAuthProvider';
 
 // 为根路径生成 metadata
 export async function generateMetadata(): Promise<Metadata> {
@@ -140,10 +141,12 @@ export default async function RootLayout({
             />
         </head>
         <body className="flex flex-col min-h-screen">
-        <AuthProviderWrapper>
-          {children}
-          <ErrorNotificationContainer />
-        </AuthProviderWrapper>
+        <GoogleOAuthProvider>
+          <AuthProviderWrapper>
+            {children}
+            <ErrorNotificationContainer />
+          </AuthProviderWrapper>
+        </GoogleOAuthProvider>
         <Script id="performance-init" strategy="afterInteractive">
           {`
             // 初始化客户端性能监控和错误处理

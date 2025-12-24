@@ -337,10 +337,35 @@
     "noAccount": "Hesabınız yok mu? Kayıt olun",
     "hasAccount": "Zaten hesabınız var mı? Giriş yapın",
     "loading": "Yükleniyor...",
+    "continueWith": "Veya devam edin",
+    "googleSignIn": "Google ile giriş yap",
+    "googleSignInButton": "Google ile devam et",
+    "googleLoading": "Google ile giriş yapılıyor...",
+    "success": {
+      "loginSuccess": "Tekrar hoş geldiniz! Yönlendiriliyor...",
+      "registerSuccess": "Hesap başarıyla oluşturuldu! Yönlendiriliyor...",
+      "googleLoginSuccess": "Google girişi başarılı!",
+      "googleRegisterSuccess": "Google ile hesap oluşturuldu! 3 ücretsiz puan kazandınız."
+    },
     "errors": {
       "unexpected": "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.",
       "invalidFormat": "Beklenmeyen yanıt formatı",
-      "authFailed": "Kimlik doğrulama başarısız"
+      "authFailed": "Kimlik doğrulama başarısız",
+      "googleAuthFailed": "Google kimlik doğrulaması başarısız. Lütfen tekrar deneyin.",
+      "googleTokenInvalid": "Geçersiz Google belirteci. Lütfen tekrar deneyin.",
+      "googleTokenExpired": "Google belirtecinin süresi doldu. Lütfen tekrar giriş yapın.",
+      "emailMismatch": "E-posta adresi eşleşmiyor. Lütfen tekrar deneyin.",
+      "emailExists": "Bu e-posta zaten kayıtlı. Lütfen şifre ile giriş yapın.",
+      "emailNotVerified": "E-posta adresi doğrulanmadı.",
+      "networkError": "Ağ bağlantısı başarısız. Lütfen tekrar deneyin.",
+      "timeoutError": "İstek zaman aşımına uğradı. Lütfen tekrar deneyin.",
+      "serverError": "Sunucu hatası oluştu. Lütfen daha sonra tekrar deneyin.",
+      "databaseError": "Veritabanı hatası oluştu. Lütfen daha sonra tekrar deneyin.",
+      "userNotFound": "Kullanıcı bulunamadı.",
+      "userCancelled": "Giriş iptal edildi.",
+      "googlePopupBlocked": "Google giriş açılır penceresi engellendi. Lütfen açılır pencerelere izin verin ve tekrar deneyin.",
+      "googleAuthCancelled": "Google girişi iptal edildi.",
+      "googleConfigError": "Google OAuth yapılandırma hatası. Lütfen destekle iletişime geçin."
     }
   },
   "imageGenerator": {

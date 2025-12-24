@@ -337,10 +337,35 @@
     "noAccount": "¿No tiene cuenta? Regístrese",
     "hasAccount": "¿Ya tiene cuenta? Inicie sesión",
     "loading": "Cargando...",
+    "continueWith": "O continuar con",
+    "googleSignIn": "Iniciar sesión con Google",
+    "googleSignInButton": "Continuar con Google",
+    "googleLoading": "Iniciando sesión con Google...",
+    "success": {
+      "loginSuccess": "¡Bienvenido de nuevo! Redirigiendo...",
+      "registerSuccess": "¡Cuenta creada exitosamente! Redirigiendo...",
+      "googleLoginSuccess": "¡Inicio de sesión con Google exitoso!",
+      "googleRegisterSuccess": "¡Cuenta creada con Google! Recibió 3 puntos gratis."
+    },
     "errors": {
       "unexpected": "Ha ocurrido un error inesperado. Por favor, inténtelo de nuevo.",
       "invalidFormat": "Formato de respuesta inesperado",
-      "authFailed": "Error de autenticación"
+      "authFailed": "Error de autenticación",
+      "googleAuthFailed": "Error de autenticación de Google. Por favor, inténtelo de nuevo.",
+      "googleTokenInvalid": "Token de Google inválido. Por favor, inténtelo de nuevo.",
+      "googleTokenExpired": "El token de Google ha expirado. Por favor, inicie sesión nuevamente.",
+      "emailMismatch": "La dirección de correo electrónico no coincide. Por favor, inténtelo de nuevo.",
+      "emailExists": "Este correo electrónico ya está registrado. Por favor, inicie sesión con contraseña.",
+      "emailNotVerified": "La dirección de correo electrónico no está verificada.",
+      "networkError": "Error de conexión de red. Por favor, inténtelo de nuevo.",
+      "timeoutError": "Tiempo de espera agotado. Por favor, inténtelo de nuevo.",
+      "serverError": "Error del servidor. Por favor, inténtelo más tarde.",
+      "databaseError": "Error de base de datos. Por favor, inténtelo más tarde.",
+      "userNotFound": "Usuario no encontrado.",
+      "userCancelled": "Inicio de sesión cancelado.",
+      "googlePopupBlocked": "La ventana emergente de inicio de sesión de Google fue bloqueada. Por favor, permita ventanas emergentes e inténtelo de nuevo.",
+      "googleAuthCancelled": "Inicio de sesión con Google cancelado.",
+      "googleConfigError": "Error de configuración de Google OAuth. Por favor, contacte con soporte."
     }
   },
   "imageGenerator": {

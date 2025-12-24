@@ -337,10 +337,35 @@
     "noAccount": "Belum punya akun? Daftar",
     "hasAccount": "Sudah punya akun? Masuk",
     "loading": "Sedang memuat...",
+    "continueWith": "Atau lanjutkan dengan",
+    "googleSignIn": "Masuk dengan Google",
+    "googleSignInButton": "Lanjutkan dengan Google",
+    "googleLoading": "Masuk dengan Google...",
+    "success": {
+      "loginSuccess": "Selamat datang kembali! Mengalihkan...",
+      "registerSuccess": "Akun berhasil dibuat! Mengalihkan...",
+      "googleLoginSuccess": "Masuk dengan Google berhasil!",
+      "googleRegisterSuccess": "Akun dibuat dengan Google! Anda mendapat 3 poin gratis."
+    },
     "errors": {
       "unexpected": "Terjadi kesalahan tak terduga. Silakan coba lagi.",
       "invalidFormat": "Format respons tidak sesuai",
-      "authFailed": "Autentikasi gagal"
+      "authFailed": "Autentikasi gagal",
+      "googleAuthFailed": "Autentikasi Google gagal. Silakan coba lagi.",
+      "googleTokenInvalid": "Token Google tidak valid. Silakan coba lagi.",
+      "googleTokenExpired": "Token Google telah kedaluwarsa. Silakan masuk lagi.",
+      "emailMismatch": "Alamat email tidak cocok. Silakan coba lagi.",
+      "emailExists": "Email ini sudah terdaftar. Silakan masuk dengan kata sandi.",
+      "emailNotVerified": "Alamat email belum diverifikasi.",
+      "networkError": "Koneksi jaringan gagal. Silakan coba lagi.",
+      "timeoutError": "Permintaan habis waktu. Silakan coba lagi.",
+      "serverError": "Terjadi kesalahan server. Silakan coba lagi nanti.",
+      "databaseError": "Terjadi kesalahan database. Silakan coba lagi nanti.",
+      "userNotFound": "Pengguna tidak ditemukan.",
+      "userCancelled": "Masuk dibatalkan.",
+      "googlePopupBlocked": "Popup masuk Google diblokir. Silakan izinkan popup dan coba lagi.",
+      "googleAuthCancelled": "Masuk dengan Google dibatalkan.",
+      "googleConfigError": "Kesalahan konfigurasi Google OAuth. Silakan hubungi dukungan."
     }
   },
   "imageGenerator": {

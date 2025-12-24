@@ -8,6 +8,7 @@ import {getany} from '../i18n/utils'
 import {Locale, defaultLocale, locales} from '../i18n/settings'
 import {redirect} from 'next/navigation'
 import {AuthProviderWrapper} from '@/components/providers/AuthProviderWrapper'
+import {GoogleOAuthProvider} from '@/components/providers/GoogleOAuthProvider'
 
 // 动态生成 metadata
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
@@ -62,13 +63,15 @@ export default async function RootLayout({
     const dictionary = await getany(validLocale)
 
     return (
-        <AuthProviderWrapper>
-            <Header dictionary={dictionary}/>
-            <main className="flex-grow">
-                {children}
-                <AutoLogoutWarning dictionary={dictionary} locale={locale}/>
-            </main>
-            <Footer dictionary={dictionary}/>
-        </AuthProviderWrapper>
+        <GoogleOAuthProvider>
+            <AuthProviderWrapper>
+                <Header dictionary={dictionary}/>
+                <main className="flex-grow">
+                    {children}
+                    <AutoLogoutWarning dictionary={dictionary} locale={locale}/>
+                </main>
+                <Footer dictionary={dictionary}/>
+            </AuthProviderWrapper>
+        </GoogleOAuthProvider>
     )
 }

@@ -419,10 +419,35 @@
     "noAccount": "Don't have an account? Sign up",
     "hasAccount": "Already have an account? Sign in",
     "loading": "Loading...",
+    "continueWith": "Or continue with",
+    "googleSignIn": "Sign in with Google",
+    "googleSignInButton": "Continue with Google",
+    "googleLoading": "Signing in with Google...",
+    "success": {
+      "loginSuccess": "Welcome back! Redirecting...",
+      "registerSuccess": "Account created successfully! Redirecting...",
+      "googleLoginSuccess": "Signed in with Google successfully!",
+      "googleRegisterSuccess": "Account created with Google! You received 3 free points."
+    },
     "errors": {
       "unexpected": "An unexpected error occurred. Please try again.",
       "invalidFormat": "Unexpected response format",
-      "authFailed": "Authentication failed"
+      "authFailed": "Authentication failed",
+      "googleAuthFailed": "Google authentication failed. Please try again.",
+      "googleTokenInvalid": "Invalid Google token. Please try again.",
+      "googleTokenExpired": "Google token has expired. Please sign in again.",
+      "emailMismatch": "Email address does not match. Please try again.",
+      "emailExists": "This email is already registered. Please sign in with password.",
+      "emailNotVerified": "Email address is not verified.",
+      "networkError": "Network connection failed. Please try again.",
+      "timeoutError": "Request timed out. Please try again.",
+      "serverError": "Server error occurred. Please try again later.",
+      "databaseError": "Database error occurred. Please try again later.",
+      "userNotFound": "User not found.",
+      "userCancelled": "Sign in was cancelled.",
+      "googlePopupBlocked": "Google sign-in popup was blocked. Please allow popups and try again.",
+      "googleAuthCancelled": "Google sign-in was cancelled.",
+      "googleConfigError": "Google OAuth configuration error. Please contact support."
     }
   },
   "imageGenerator": {

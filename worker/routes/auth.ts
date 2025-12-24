@@ -8,6 +8,13 @@ import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { Env } from '../types';
 import { SignJWT, jwtVerify } from 'jose';
+import {
+  verifyGoogleToken,
+  findUserByEmail,
+  findUserByOAuthProvider,
+  createGoogleUser,
+  ensureOAuthBinding,
+} from '../utils/google-oauth';
 
 const auth = new Hono<{ Bindings: Env }>();
 
@@ -33,6 +40,13 @@ const loginSchema = z.object({
 // 令牌验证 Schema
 const verifyTokenSchema = z.object({
   token: z.string().min(1, '令牌不能为空'),
+});
+
+// Google 登录 Schema
+const googleLoginSchema = z.object({
+  googleToken: z.string().min(1, 'Google token 不能为空'),
+  email: z.string().email('邮箱格式不正确'),
+  name: z.string().min(1, '姓名不能为空'),
 });
 
 // 辅助函数：哈希密码
@@ -387,6 +401,108 @@ auth.post('/verify-token', async (c) => {
         message: '令牌验证失败',
       },
     }, 401);
+  }
+});
+
+/**
+ * POST /auth/google-login - Google OAuth 登录
+ */
+auth.post('/google-login', zValidator('json', googleLoginSchema), async (c) => {
+  try {
+    const { googleToken, email, name } = c.req.valid('json');
+    const db = c.env.DB;
+    
+    // 1. 验证 Google token
+    let googleUser;
+    try {
+      googleUser = await verifyGoogleToken(googleToken);
+    } catch (error) {
+      console.error('[Google OAuth] Token 验证失败:', error);
+      return c.json({
+        success: false,
+        error: {
+          code: 'INVALID_GOOGLE_TOKEN',
+          message: 'Google 认证失败，请重试',
+        },
+      }, 401);
+    }
+    
+    // 2. 检查邮箱匹配
+    if (googleUser.email !== email) {
+      console.error('[Google OAuth] 邮箱不匹配:', {
+        provided: email,
+        google: googleUser.email,
+      });
+      return c.json({
+        success: false,
+        error: {
+          code: 'EMAIL_MISMATCH',
+          message: '邮箱不匹配',
+        },
+      }, 401);
+    }
+    
+    // 3. 查找或创建用户
+    // 首先尝试通过 OAuth provider ID 查找（更准确）
+    let user = await findUserByOAuthProvider(db, 'google', googleUser.id);
+    
+    if (!user) {
+      // 如果没有找到，尝试通过邮箱查找
+      user = await findUserByEmail(db, email);
+      
+      if (user) {
+        // 用户存在但没有 Google OAuth 绑定，创建绑定
+        console.log('[Google OAuth] 用户已存在，创建 OAuth 绑定:', { userId: user.id });
+        await ensureOAuthBinding(db, user.id, googleUser);
+      } else {
+        // 用户不存在，注册新用户
+        console.log('[Google OAuth] 创建新用户:', { email, name });
+        user = await createGoogleUser(db, googleUser);
+      }
+    } else {
+      // 通过 OAuth 找到用户，直接登录
+      console.log('[Google OAuth] 通过 OAuth 找到用户:', { userId: user.id });
+    }
+    
+    // 4. 生成 JWT token
+    const token = await createJWT(
+      {
+        userId: user.id,
+        username: user.name,
+        email: user.email,
+      },
+      c.env.JWT_SECRET
+    );
+    
+    // 5. 设置 HttpOnly Cookie
+    c.header('Set-Cookie', `token=${token}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=2592000`);
+    
+    // 6. 返回结果
+    console.log('[Google OAuth] 登录成功:', {
+      userId: user.id,
+      email: user.email,
+      points: user.points,
+    });
+    
+    return c.json({
+      success: true,
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        points: user.points,
+      },
+    }, 200);
+  } catch (error) {
+    console.error('[Google OAuth] 登录失败:', error);
+    return c.json({
+      success: false,
+      error: {
+        code: 'GOOGLE_LOGIN_ERROR',
+        message: '登录失败，请稍后重试',
+      },
+    }, 500);
   }
 });
 

@@ -337,10 +337,35 @@
     "noAccount": "アカウントをお持ちでない場合？登録",
     "hasAccount": "すでにアカウントをお持ちですか？サインイン",
     "loading": "読み込み中...",
+    "continueWith": "または次の方法で続行",
+    "googleSignIn": "Googleでサインイン",
+    "googleSignInButton": "Googleで続行",
+    "googleLoading": "Googleでサインイン中...",
+    "success": {
+      "loginSuccess": "おかえりなさい！リダイレクト中...",
+      "registerSuccess": "アカウントが正常に作成されました！リダイレクト中...",
+      "googleLoginSuccess": "Googleサインインに成功しました！",
+      "googleRegisterSuccess": "Googleでアカウントを作成しました！3ポイントを獲得しました。"
+    },
     "errors": {
       "unexpected": "予期せぬエラーが発生しました。もう一度お試しください。",
       "invalidFormat": "予期せぬ応答形式",
-      "authFailed": "認証に失敗しました"
+      "authFailed": "認証に失敗しました",
+      "googleAuthFailed": "Google認証に失敗しました。もう一度お試しください。",
+      "googleTokenInvalid": "無効なGoogleトークンです。もう一度お試しください。",
+      "googleTokenExpired": "Googleトークンの有効期限が切れています。再度サインインしてください。",
+      "emailMismatch": "メールアドレスが一致しません。もう一度お試しください。",
+      "emailExists": "このメールアドレスは既に登録されています。パスワードでサインインしてください。",
+      "emailNotVerified": "メールアドレスが確認されていません。",
+      "networkError": "ネットワーク接続に失敗しました。もう一度お試しください。",
+      "timeoutError": "リクエストがタイムアウトしました。もう一度お試しください。",
+      "serverError": "サーバーエラーが発生しました。後でもう一度お試しください。",
+      "databaseError": "データベースエラーが発生しました。後でもう一度お試しください。",
+      "userNotFound": "ユーザーが見つかりません。",
+      "userCancelled": "サインインがキャンセルされました。",
+      "googlePopupBlocked": "Googleサインインポップアップがブロックされました。ポップアップを許可して再試行してください。",
+      "googleAuthCancelled": "Googleサインインがキャンセルされました。",
+      "googleConfigError": "Google OAuth設定エラーです。サポートにお問い合わせください。"
     }
   },
   "imageGenerator": {

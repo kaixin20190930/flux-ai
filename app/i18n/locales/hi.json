@@ -337,10 +337,35 @@
     "noAccount": "खाता नहीं है? साइन अप करें",
     "hasAccount": "पहले से खाता है? लॉग इन करें",
     "loading": "लोड हो रहा है...",
+    "continueWith": "या जारी रखें",
+    "googleSignIn": "Google से लॉग इन करें",
+    "googleSignInButton": "Google के साथ जारी रखें",
+    "googleLoading": "Google से लॉग इन हो रहा है...",
+    "success": {
+      "loginSuccess": "वापसी पर स्वागत है! रीडायरेक्ट हो रहा है...",
+      "registerSuccess": "खाता सफलतापूर्वक बनाया गया! रीडायरेक्ट हो रहा है...",
+      "googleLoginSuccess": "Google लॉगिन सफल रहा!",
+      "googleRegisterSuccess": "Google से खाता बनाया गया! आपको 3 मुफ्त पॉइंट मिले।"
+    },
     "errors": {
       "unexpected": "एक अप्रत्याशित त्रुटि हुई। कृपया पुनः प्रयास करें।",
       "invalidFormat": "अप्रत्याशित प्रतिक्रिया प्रारूप",
-      "authFailed": "प्रमाणीकरण विफल"
+      "authFailed": "प्रमाणीकरण विफल",
+      "googleAuthFailed": "Google प्रमाणीकरण विफल। कृपया पुनः प्रयास करें।",
+      "googleTokenInvalid": "अमान्य Google टोकन। कृपया पुनः प्रयास करें।",
+      "googleTokenExpired": "Google टोकन समाप्त हो गया है। कृपया फिर से लॉग इन करें।",
+      "emailMismatch": "ईमेल पता मेल नहीं खाता। कृपया पुनः प्रयास करें।",
+      "emailExists": "यह ईमेल पहले से पंजीकृत है। कृपया पासवर्ड से लॉग इन करें।",
+      "emailNotVerified": "ईमेल पता सत्यापित नहीं है।",
+      "networkError": "नेटवर्क कनेक्शन विफल। कृपया पुनः प्रयास करें।",
+      "timeoutError": "अनुरोध समय समाप्त। कृपया पुनः प्रयास करें।",
+      "serverError": "सर्वर त्रुटि हुई। कृपया बाद में पुनः प्रयास करें।",
+      "databaseError": "डेटाबेस त्रुटि हुई। कृपया बाद में पुनः प्रयास करें।",
+      "userNotFound": "उपयोगकर्ता नहीं मिला।",
+      "userCancelled": "लॉगिन रद्द किया गया।",
+      "googlePopupBlocked": "Google लॉगिन पॉपअप ब्लॉक किया गया था। कृपया पॉपअप की अनुमति दें और पुनः प्रयास करें।",
+      "googleAuthCancelled": "Google लॉगिन रद्द किया गया।",
+      "googleConfigError": "Google OAuth कॉन्फ़िगरेशन त्रुटि। कृपया सहायता से संपर्क करें।"
     }
   },
   "imageGenerator": {

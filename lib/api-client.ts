@@ -87,6 +87,49 @@ export class APIClient {
     return response;
   }
 
+  /**
+   * Google OAuth 登录
+   * 
+   * 流程说明：
+   * 1. 接收前端传递的 Google token、邮箱和姓名
+   * 2. 调用 Worker API 的 /auth/google-login 端点
+   * 3. Worker 验证 Google token 的有效性
+   * 4. Worker 检查用户是否存在：
+   *    - 存在：执行登录流程
+   *    - 不存在：创建新用户并赠送 3 积分
+   * 5. Worker 生成 JWT token
+   * 6. 存储 JWT token 到 localStorage
+   * 7. 返回用户信息
+   * 
+   * 安全性：
+   * - Google token 在服务端验证，确保真实性
+   * - 前端只传递 token，后端会再次验证
+   * - JWT token 用于后续 API 调用的认证
+   * 
+   * @param data - Google 登录数据
+   * @param data.googleToken - Google 返回的 JWT token
+   * @param data.email - 用户邮箱（从 Google token 解码）
+   * @param data.name - 用户姓名（从 Google token 解码）
+   * @returns 包含 token 和用户信息的响应
+   */
+  async googleLogin(data: {
+    googleToken: string;
+    email: string;
+    name: string;
+  }) {
+    const response = await this.request(API_CONFIG.endpoints.auth.googleLogin, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+    
+    // 存储 JWT token 到 localStorage
+    if (response.token) {
+      this.setToken(response.token);
+    }
+    
+    return response;
+  }
+
   async verifyToken() {
     return this.request(API_CONFIG.endpoints.auth.verifyToken, {
       method: 'POST',

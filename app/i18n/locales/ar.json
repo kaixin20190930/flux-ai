@@ -337,10 +337,35 @@
     "noAccount": "ليس لديك حساب؟ سجل الآن",
     "hasAccount": "لديك حساب بالفعل؟ سجل الدخول",
     "loading": "جار التحميل...",
+    "continueWith": "أو تابع مع",
+    "googleSignIn": "تسجيل الدخول باستخدام Google",
+    "googleSignInButton": "المتابعة مع Google",
+    "googleLoading": "جار تسجيل الدخول باستخدام Google...",
+    "success": {
+      "loginSuccess": "مرحبًا بعودتك! جار إعادة التوجيه...",
+      "registerSuccess": "تم إنشاء الحساب بنجاح! جار إعادة التوجيه...",
+      "googleLoginSuccess": "تم تسجيل الدخول باستخدام Google بنجاح!",
+      "googleRegisterSuccess": "تم إنشاء الحساب باستخدام Google! لقد حصلت على 3 نقاط مجانية."
+    },
     "errors": {
       "unexpected": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
       "invalidFormat": "تنسيق استجابة غير متوقع",
-      "authFailed": "فشل المصادقة"
+      "authFailed": "فشل المصادقة",
+      "googleAuthFailed": "فشلت مصادقة Google. يرجى المحاولة مرة أخرى.",
+      "googleTokenInvalid": "رمز Google غير صالح. يرجى المحاولة مرة أخرى.",
+      "googleTokenExpired": "انتهت صلاحية رمز Google. يرجى تسجيل الدخول مرة أخرى.",
+      "emailMismatch": "عنوان البريد الإلكتروني غير متطابق. يرجى المحاولة مرة أخرى.",
+      "emailExists": "هذا البريد الإلكتروني مسجل بالفعل. يرجى تسجيل الدخول باستخدام كلمة المرور.",
+      "emailNotVerified": "عنوان البريد الإلكتروني غير مؤكد.",
+      "networkError": "فشل الاتصال بالشبكة. يرجى المحاولة مرة أخرى.",
+      "timeoutError": "انتهت مهلة الطلب. يرجى المحاولة مرة أخرى.",
+      "serverError": "حدث خطأ في الخادم. يرجى المحاولة لاحقًا.",
+      "databaseError": "حدث خطأ في قاعدة البيانات. يرجى المحاولة لاحقًا.",
+      "userNotFound": "المستخدم غير موجود.",
+      "userCancelled": "تم إلغاء تسجيل الدخول.",
+      "googlePopupBlocked": "تم حظر نافذة تسجيل الدخول المنبثقة من Google. يرجى السماح بالنوافذ المنبثقة والمحاولة مرة أخرى.",
+      "googleAuthCancelled": "تم إلغاء تسجيل الدخول باستخدام Google.",
+      "googleConfigError": "خطأ في تكوين Google OAuth. يرجى الاتصال بالدعم."
     }
   },
   "imageGenerator": {

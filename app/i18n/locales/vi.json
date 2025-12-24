@@ -337,10 +337,35 @@
     "noAccount": "Chưa có tài khoản? Đăng ký ngay",
     "hasAccount": "Đã có tài khoản? Đăng nhập",
     "loading": "Đang tải...",
+    "continueWith": "Hoặc tiếp tục với",
+    "googleSignIn": "Đăng nhập bằng Google",
+    "googleSignInButton": "Tiếp tục với Google",
+    "googleLoading": "Đang đăng nhập bằng Google...",
+    "success": {
+      "loginSuccess": "Chào mừng trở lại! Đang chuyển hướng...",
+      "registerSuccess": "Tạo tài khoản thành công! Đang chuyển hướng...",
+      "googleLoginSuccess": "Đăng nhập Google thành công!",
+      "googleRegisterSuccess": "Tạo tài khoản bằng Google! Bạn nhận được 3 điểm miễn phí."
+    },
     "errors": {
       "unexpected": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.",
       "invalidFormat": "Định dạng phản hồi không mong đợi",
-      "authFailed": "Xác thực thất bại"
+      "authFailed": "Xác thực thất bại",
+      "googleAuthFailed": "Xác thực Google thất bại. Vui lòng thử lại.",
+      "googleTokenInvalid": "Token Google không hợp lệ. Vui lòng thử lại.",
+      "googleTokenExpired": "Token Google đã hết hạn. Vui lòng đăng nhập lại.",
+      "emailMismatch": "Địa chỉ email không khớp. Vui lòng thử lại.",
+      "emailExists": "Email này đã được đăng ký. Vui lòng đăng nhập bằng mật khẩu.",
+      "emailNotVerified": "Địa chỉ email chưa được xác minh.",
+      "networkError": "Kết nối mạng thất bại. Vui lòng thử lại.",
+      "timeoutError": "Yêu cầu hết thời gian. Vui lòng thử lại.",
+      "serverError": "Lỗi máy chủ. Vui lòng thử lại sau.",
+      "databaseError": "Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.",
+      "userNotFound": "Không tìm thấy người dùng.",
+      "userCancelled": "Đăng nhập đã bị hủy.",
+      "googlePopupBlocked": "Cửa sổ đăng nhập Google bị chặn. Vui lòng cho phép cửa sổ bật lên và thử lại.",
+      "googleAuthCancelled": "Đăng nhập Google đã bị hủy.",
+      "googleConfigError": "Lỗi cấu hình Google OAuth. Vui lòng liên hệ hỗ trợ."
     }
   },
   "imageGenerator": {

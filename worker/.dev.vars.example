@@ -10,3 +10,8 @@ DATABASE_URL=your-database-url-here
 
 # Other secrets as needed
 NEXTAUTH_SECRET=your-nextauth-secret-here
+
+# Google OAuth Configuration
+# Get this from Google Cloud Console: https://console.cloud.google.com
+# Navigate to: APIs & Services > Credentials > OAuth 2.0 Client IDs
+GOOGLE_CLIENT_SECRET=your-google-client-secret-here

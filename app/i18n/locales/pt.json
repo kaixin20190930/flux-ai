@@ -337,10 +337,35 @@
     "noAccount": "Não tem uma conta? Registre-se",
     "hasAccount": "Já tem uma conta? Entre",
     "loading": "Carregando...",
+    "continueWith": "Ou continuar com",
+    "googleSignIn": "Entrar com Google",
+    "googleSignInButton": "Continuar com Google",
+    "googleLoading": "Entrando com Google...",
+    "success": {
+      "loginSuccess": "Bem-vindo de volta! Redirecionando...",
+      "registerSuccess": "Conta criada com sucesso! Redirecionando...",
+      "googleLoginSuccess": "Login com Google bem-sucedido!",
+      "googleRegisterSuccess": "Conta criada com Google! Você recebeu 3 pontos grátis."
+    },
     "errors": {
       "unexpected": "Ocorreu um erro inesperado. Por favor, tente novamente.",
       "invalidFormat": "Formato de resposta inesperado",
-      "authFailed": "Falha na autenticação"
+      "authFailed": "Falha na autenticação",
+      "googleAuthFailed": "Falha na autenticação do Google. Por favor, tente novamente.",
+      "googleTokenInvalid": "Token do Google inválido. Por favor, tente novamente.",
+      "googleTokenExpired": "O token do Google expirou. Por favor, faça login novamente.",
+      "emailMismatch": "O endereço de e-mail não corresponde. Por favor, tente novamente.",
+      "emailExists": "Este e-mail já está registrado. Por favor, faça login com senha.",
+      "emailNotVerified": "O endereço de e-mail não está verificado.",
+      "networkError": "Falha na conexão de rede. Por favor, tente novamente.",
+      "timeoutError": "Tempo limite da solicitação esgotado. Por favor, tente novamente.",
+      "serverError": "Erro do servidor. Por favor, tente novamente mais tarde.",
+      "databaseError": "Erro de banco de dados. Por favor, tente novamente mais tarde.",
+      "userNotFound": "Usuário não encontrado.",
+      "userCancelled": "Login cancelado.",
+      "googlePopupBlocked": "O pop-up de login do Google foi bloqueado. Por favor, permita pop-ups e tente novamente.",
+      "googleAuthCancelled": "Login com Google cancelado.",
+      "googleConfigError": "Erro de configuração do Google OAuth. Por favor, entre em contato com o suporte."
     }
   },
   "imageGenerator": {

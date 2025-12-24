@@ -337,10 +337,35 @@
     "noAccount": "Nie masz konta? Zarejestruj się",
     "hasAccount": "Masz już konto? Zaloguj się",
     "loading": "Ładowanie trwa...",
+    "continueWith": "Lub kontynuuj z",
+    "googleSignIn": "Zaloguj się przez Google",
+    "googleSignInButton": "Kontynuuj z Google",
+    "googleLoading": "Logowanie przez Google...",
+    "success": {
+      "loginSuccess": "Witaj ponownie! Przekierowywanie...",
+      "registerSuccess": "Konto utworzone pomyślnie! Przekierowywanie...",
+      "googleLoginSuccess": "Logowanie przez Google powiodło się!",
+      "googleRegisterSuccess": "Konto utworzone przez Google! Otrzymałeś 3 darmowe punkty."
+    },
     "errors": {
       "unexpected": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.",
       "invalidFormat": "Nieoczekiwany format odpowiedzi",
-      "authFailed": "Uwierzytelnianie nie powiodło się"
+      "authFailed": "Uwierzytelnianie nie powiodło się",
+      "googleAuthFailed": "Uwierzytelnianie Google nie powiodło się. Spróbuj ponownie.",
+      "googleTokenInvalid": "Nieprawidłowy token Google. Spróbuj ponownie.",
+      "googleTokenExpired": "Token Google wygasł. Zaloguj się ponownie.",
+      "emailMismatch": "Adres e-mail nie pasuje. Spróbuj ponownie.",
+      "emailExists": "Ten e-mail jest już zarejestrowany. Zaloguj się hasłem.",
+      "emailNotVerified": "Adres e-mail nie został zweryfikowany.",
+      "networkError": "Połączenie sieciowe nie powiodło się. Spróbuj ponownie.",
+      "timeoutError": "Upłynął limit czasu żądania. Spróbuj ponownie.",
+      "serverError": "Wystąpił błąd serwera. Spróbuj ponownie później.",
+      "databaseError": "Wystąpił błąd bazy danych. Spróbuj ponownie później.",
+      "userNotFound": "Użytkownik nie znaleziony.",
+      "userCancelled": "Logowanie anulowane.",
+      "googlePopupBlocked": "Okno logowania Google zostało zablokowane. Zezwól na wyskakujące okna i spróbuj ponownie.",
+      "googleAuthCancelled": "Logowanie przez Google anulowane.",
+      "googleConfigError": "Błąd konfiguracji Google OAuth. Skontaktuj się z pomocą techniczną."
     }
   },
   "imageGenerator": {

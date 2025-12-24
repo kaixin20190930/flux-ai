@@ -337,10 +337,35 @@
     "noAccount": "Pas de compte ? Inscrivez-vous",
     "hasAccount": "Déjà un compte ? Connectez-vous",
     "loading": "Chargement...",
+    "continueWith": "Ou continuer avec",
+    "googleSignIn": "Se connecter avec Google",
+    "googleSignInButton": "Continuer avec Google",
+    "googleLoading": "Connexion avec Google...",
+    "success": {
+      "loginSuccess": "Bon retour ! Redirection...",
+      "registerSuccess": "Compte créé avec succès ! Redirection...",
+      "googleLoginSuccess": "Connexion Google réussie !",
+      "googleRegisterSuccess": "Compte créé avec Google ! Vous avez reçu 3 points gratuits."
+    },
     "errors": {
       "unexpected": "Une erreur inattendue s'est produite. Veuillez réessayer.",
       "invalidFormat": "Format de réponse inattendu",
-      "authFailed": "Échec de l'authentification"
+      "authFailed": "Échec de l'authentification",
+      "googleAuthFailed": "Échec de l'authentification Google. Veuillez réessayer.",
+      "googleTokenInvalid": "Jeton Google invalide. Veuillez réessayer.",
+      "googleTokenExpired": "Le jeton Google a expiré. Veuillez vous reconnecter.",
+      "emailMismatch": "L'adresse e-mail ne correspond pas. Veuillez réessayer.",
+      "emailExists": "Cet e-mail est déjà enregistré. Veuillez vous connecter avec un mot de passe.",
+      "emailNotVerified": "L'adresse e-mail n'est pas vérifiée.",
+      "networkError": "Échec de la connexion réseau. Veuillez réessayer.",
+      "timeoutError": "Délai d'attente dépassé. Veuillez réessayer.",
+      "serverError": "Erreur du serveur. Veuillez réessayer plus tard.",
+      "databaseError": "Erreur de base de données. Veuillez réessayer plus tard.",
+      "userNotFound": "Utilisateur non trouvé.",
+      "userCancelled": "Connexion annulée.",
+      "googlePopupBlocked": "La fenêtre contextuelle de connexion Google a été bloquée. Veuillez autoriser les fenêtres contextuelles et réessayer.",
+      "googleAuthCancelled": "Connexion Google annulée.",
+      "googleConfigError": "Erreur de configuration Google OAuth. Veuillez contacter le support."
     }
   },
   "imageGenerator": {

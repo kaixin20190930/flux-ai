@@ -337,10 +337,35 @@
     "noAccount": "Geen account? Registreer nu",
     "hasAccount": "Al een account? Log in",
     "loading": "Bezig met laden...",
+    "continueWith": "Of ga verder met",
+    "googleSignIn": "Inloggen met Google",
+    "googleSignInButton": "Doorgaan met Google",
+    "googleLoading": "Inloggen met Google...",
+    "success": {
+      "loginSuccess": "Welkom terug! Doorverwijzen...",
+      "registerSuccess": "Account succesvol aangemaakt! Doorverwijzen...",
+      "googleLoginSuccess": "Inloggen met Google geslaagd!",
+      "googleRegisterSuccess": "Account aangemaakt met Google! U heeft 3 gratis punten ontvangen."
+    },
     "errors": {
       "unexpected": "Er is een onverwachte fout opgetreden. Probeer het opnieuw.",
       "invalidFormat": "Onverwacht antwoordformaat",
-      "authFailed": "Authenticatie mislukt"
+      "authFailed": "Authenticatie mislukt",
+      "googleAuthFailed": "Google-authenticatie mislukt. Probeer het opnieuw.",
+      "googleTokenInvalid": "Ongeldig Google-token. Probeer het opnieuw.",
+      "googleTokenExpired": "Google-token is verlopen. Log opnieuw in.",
+      "emailMismatch": "E-mailadres komt niet overeen. Probeer het opnieuw.",
+      "emailExists": "Dit e-mailadres is al geregistreerd. Log in met wachtwoord.",
+      "emailNotVerified": "E-mailadres is niet geverifieerd.",
+      "networkError": "Netwerkverbinding mislukt. Probeer het opnieuw.",
+      "timeoutError": "Verzoek time-out. Probeer het opnieuw.",
+      "serverError": "Serverfout opgetreden. Probeer het later opnieuw.",
+      "databaseError": "Databasefout opgetreden. Probeer het later opnieuw.",
+      "userNotFound": "Gebruiker niet gevonden.",
+      "userCancelled": "Inloggen geannuleerd.",
+      "googlePopupBlocked": "Google-inlogpopup werd geblokkeerd. Sta popups toe en probeer het opnieuw.",
+      "googleAuthCancelled": "Inloggen met Google geannuleerd.",
+      "googleConfigError": "Google OAuth-configuratiefout. Neem contact op met ondersteuning."
     }
   },
   "imageGenerator": {

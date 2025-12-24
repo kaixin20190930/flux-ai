@@ -15,6 +15,7 @@ Flux AI 是一个基于 Next.js 14 的 AI 图像生成平台，采用 **100% Clo
 
 - 🎨 **多模型支持** - Flux Schnell, Dev, Pro, 1.1 Pro, 1.1 Ultra
 - 🔐 **JWT 认证系统** - 安全的用户认证和会话管理
+- 🔑 **Google OAuth 登录** - 快速便捷的 Google 账号登录
 - 💎 **积分系统 V2** - 灵活的积分消费和充值机制
 - 🌍 **多语言支持** - 20+ 种语言的国际化支持
 - 🛠️ **图像工具** - Canny、Depth、Fill、Redux 等图像处理工具
@@ -110,6 +111,9 @@ STRIPE_SECRET_KEY=你的_Secret_Key
 STRIPE_WEBHOOK_SECRET=你的_Webhook_Secret
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=你的_Publishable_Key
 
+# Google OAuth
+NEXT_PUBLIC_GOOGLE_CLIENT_ID=你的_Google_Client_ID
+
 # Worker URL
 NEXT_PUBLIC_WORKER_URL=https://api.flux-ai-img.com
 
@@ -132,6 +136,7 @@ cd worker
 wrangler secret put JWT_SECRET
 wrangler secret put IP_SALT
 wrangler secret put REPLICATE_API_TOKEN
+wrangler secret put GOOGLE_CLIENT_SECRET
 ```
 
 ### 5. 运行数据库迁移
@@ -280,6 +285,137 @@ git push origin main              # 推送代码（Pages 自动部署）
 - 🇻🇳 Tiếng Việt
 - 🇹🇭 ไทย
 - 🇲🇾 Bahasa Melayu
+
+---
+
+## 🔑 Google OAuth 配置
+
+### 1. 创建 Google Cloud 项目
+
+1. 访问 [Google Cloud Console](https://console.cloud.google.com/)
+2. 创建新项目或选择现有项目
+3. 启用 Google+ API
+
+### 2. 配置 OAuth 同意屏幕
+
+1. 导航到 **APIs & Services** > **OAuth consent screen**
+2. 选择 **External** 用户类型
+3. 填写应用信息：
+   - **应用名称**: Flux AI
+   - **用户支持电子邮件**: 你的邮箱
+   - **应用徽标**: 可选
+   - **授权域**: `flux-ai-img.com`
+   - **开发者联系信息**: 你的邮箱
+4. 添加作用域：
+   - `userinfo.email`
+   - `userinfo.profile`
+5. 保存并继续
+
+### 3. 创建 OAuth 2.0 凭据
+
+1. 导航到 **APIs & Services** > **Credentials**
+2. 点击 **Create Credentials** > **OAuth client ID**
+3. 选择 **Web application**
+4. 配置：
+   - **名称**: Flux AI Web Client
+   - **授权的 JavaScript 来源**:
+     - `http://localhost:3000` (开发)
+     - `https://flux-ai-img.com` (生产)
+   - **授权的重定向 URI**:
+     - `http://localhost:3000` (开发)
+     - `https://flux-ai-img.com` (生产)
+5. 点击 **Create**
+6. 复制 **Client ID** 和 **Client Secret**
+
+### 4. 配置环境变量
+
+**前端 (Cloudflare Pages)**:
+```env
+NEXT_PUBLIC_GOOGLE_CLIENT_ID=你的_Client_ID
+```
+
+**后端 (Cloudflare Worker)**:
+```bash
+cd worker
+wrangler secret put GOOGLE_CLIENT_SECRET
+# 输入你的 Client Secret
+```
+
+### 5. 测试 Google 登录
+
+1. 启动开发服务器
+2. 访问登录页面
+3. 点击 "使用 Google 登录" 按钮
+4. 完成 Google 授权流程
+5. 验证登录成功并跳转到创建页面
+
+### 故障排查
+
+#### 问题 1: "redirect_uri_mismatch" 错误
+
+**原因**: 重定向 URI 不匹配
+
+**解决方案**:
+1. 检查 Google Cloud Console 中的授权重定向 URI
+2. 确保包含当前访问的域名
+3. 注意 `http` vs `https` 和尾部斜杠
+
+#### 问题 2: "invalid_client" 错误
+
+**原因**: Client ID 或 Client Secret 不正确
+
+**解决方案**:
+1. 验证 `NEXT_PUBLIC_GOOGLE_CLIENT_ID` 环境变量
+2. 验证 Worker 的 `GOOGLE_CLIENT_SECRET` secret
+3. 重新生成凭据并更新
+
+#### 问题 3: Google 授权页面显示 "This app isn't verified"
+
+**原因**: 应用未通过 Google 验证
+
+**解决方案**:
+- 开发阶段：点击 "Advanced" > "Go to [App Name] (unsafe)"
+- 生产阶段：提交应用进行 Google 验证
+
+#### 问题 4: 登录后没有跳转
+
+**原因**: 前端回调处理错误
+
+**解决方案**:
+1. 检查浏览器控制台错误
+2. 验证 Worker API 端点可访问
+3. 检查 JWT token 是否正确存储
+
+#### 问题 5: "Token verification failed" 错误
+
+**原因**: Google token 验证失败
+
+**解决方案**:
+1. 检查 Worker 日志: `wrangler tail --env production`
+2. 验证 Google API 响应
+3. 确认 token 未过期
+
+### 安全最佳实践
+
+1. ✅ **永远不要在前端暴露 Client Secret**
+2. ✅ **所有 token 验证在服务端完成**
+3. ✅ **使用 HTTPS（生产环境）**
+4. ✅ **定期轮换 Client Secret**
+5. ✅ **限制授权域名**
+6. ✅ **记录所有认证尝试**
+
+### 监控和日志
+
+查看 Google OAuth 相关日志：
+
+```bash
+# Worker 日志
+cd worker
+wrangler tail --env production
+
+# 过滤 Google OAuth 日志
+wrangler tail --env production | grep "Google OAuth"
+```
 
 ---
 

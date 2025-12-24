@@ -337,10 +337,35 @@
     "noAccount": "還沒有帳戶？立即註冊",
     "hasAccount": "已有帳戶？立即登入",
     "loading": "加載中...",
+    "continueWith": "或使用以下方式繼續",
+    "googleSignIn": "使用 Google 登入",
+    "googleSignInButton": "使用 Google 繼續",
+    "googleLoading": "正在使用 Google 登入...",
+    "success": {
+      "loginSuccess": "歡迎回來！正在跳轉...",
+      "registerSuccess": "帳戶創建成功！正在跳轉...",
+      "googleLoginSuccess": "Google 登入成功！",
+      "googleRegisterSuccess": "使用 Google 創建帳戶成功！您獲得了 3 個免費點數。"
+    },
     "errors": {
       "unexpected": "發生意外錯誤，請重試",
       "invalidFormat": "回應格式無效",
-      "authFailed": "認證失敗"
+      "authFailed": "認證失敗",
+      "googleAuthFailed": "Google 認證失敗，請重試",
+      "googleTokenInvalid": "Google token 無效，請重試",
+      "googleTokenExpired": "Google token 已過期，請重新登入",
+      "emailMismatch": "電子郵件地址不匹配，請重試",
+      "emailExists": "該電子郵件已被註冊，請使用密碼登入",
+      "emailNotVerified": "電子郵件地址未驗證",
+      "networkError": "網路連接失敗，請重試",
+      "timeoutError": "請求超時，請重試",
+      "serverError": "伺服器錯誤，請稍後重試",
+      "databaseError": "資料庫錯誤，請稍後重試",
+      "userNotFound": "用戶不存在",
+      "userCancelled": "登入已取消",
+      "googlePopupBlocked": "Google 登入彈窗被阻止，請允許彈窗後重試",
+      "googleAuthCancelled": "Google 登入已取消",
+      "googleConfigError": "Google OAuth 配置錯誤，請聯繫客服"
     }
   },
   "imageGenerator": {

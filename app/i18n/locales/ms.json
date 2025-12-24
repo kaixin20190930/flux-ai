@@ -337,10 +337,35 @@
     "noAccount": "Tiada akaun? Daftar sekarang",
     "hasAccount": "Sudah ada akaun? Log masuk",
     "loading": "Sedang memuat...",
+    "continueWith": "Atau teruskan dengan",
+    "googleSignIn": "Log masuk dengan Google",
+    "googleSignInButton": "Teruskan dengan Google",
+    "googleLoading": "Log masuk dengan Google...",
+    "success": {
+      "loginSuccess": "Selamat kembali! Mengalihkan...",
+      "registerSuccess": "Akaun berjaya dicipta! Mengalihkan...",
+      "googleLoginSuccess": "Log masuk Google berjaya!",
+      "googleRegisterSuccess": "Akaun dicipta dengan Google! Anda menerima 3 mata percuma."
+    },
     "errors": {
       "unexpected": "Ralat tidak dijangka berlaku. Sila cuba lagi.",
       "invalidFormat": "Format respons tidak dijangka",
-      "authFailed": "Pengesahan gagal"
+      "authFailed": "Pengesahan gagal",
+      "googleAuthFailed": "Pengesahan Google gagal. Sila cuba lagi.",
+      "googleTokenInvalid": "Token Google tidak sah. Sila cuba lagi.",
+      "googleTokenExpired": "Token Google telah tamat tempoh. Sila log masuk semula.",
+      "emailMismatch": "Alamat e-mel tidak sepadan. Sila cuba lagi.",
+      "emailExists": "E-mel ini sudah didaftarkan. Sila log masuk dengan kata laluan.",
+      "emailNotVerified": "Alamat e-mel belum disahkan.",
+      "networkError": "Sambungan rangkaian gagal. Sila cuba lagi.",
+      "timeoutError": "Permintaan tamat masa. Sila cuba lagi.",
+      "serverError": "Ralat pelayan berlaku. Sila cuba lagi kemudian.",
+      "databaseError": "Ralat pangkalan data berlaku. Sila cuba lagi kemudian.",
+      "userNotFound": "Pengguna tidak dijumpai.",
+      "userCancelled": "Log masuk dibatalkan.",
+      "googlePopupBlocked": "Tetingkap timbul log masuk Google disekat. Sila benarkan tetingkap timbul dan cuba lagi.",
+      "googleAuthCancelled": "Log masuk Google dibatalkan.",
+      "googleConfigError": "Ralat konfigurasi Google OAuth. Sila hubungi sokongan."
     }
   },
   "imageGenerator": {

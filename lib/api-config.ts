@@ -11,6 +11,7 @@ export const API_CONFIG = {
       login: '/auth/login',
       logout: '/auth/logout',
       verifyToken: '/auth/verify-token',
+      googleLogin: '/auth/google-login',
     },
     points: {
       balance: '/points/balance',

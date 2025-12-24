@@ -337,10 +337,35 @@
     "noAccount": "Non hai un account? Registrati",
     "hasAccount": "Hai già un account? Accedi",
     "loading": "Caricamento...",
+    "continueWith": "Oppure continua con",
+    "googleSignIn": "Accedi con Google",
+    "googleSignInButton": "Continua con Google",
+    "googleLoading": "Accesso con Google...",
+    "success": {
+      "loginSuccess": "Bentornato! Reindirizzamento...",
+      "registerSuccess": "Account creato con successo! Reindirizzamento...",
+      "googleLoginSuccess": "Accesso con Google riuscito!",
+      "googleRegisterSuccess": "Account creato con Google! Hai ricevuto 3 punti gratuiti."
+    },
     "errors": {
       "unexpected": "Si è verificato un errore imprevisto. Riprova.",
       "invalidFormat": "Formato di risposta imprevisto",
-      "authFailed": "Autenticazione fallita"
+      "authFailed": "Autenticazione fallita",
+      "googleAuthFailed": "Autenticazione Google fallita. Riprova.",
+      "googleTokenInvalid": "Token Google non valido. Riprova.",
+      "googleTokenExpired": "Il token Google è scaduto. Effettua nuovamente l'accesso.",
+      "emailMismatch": "L'indirizzo email non corrisponde. Riprova.",
+      "emailExists": "Questa email è già registrata. Accedi con la password.",
+      "emailNotVerified": "L'indirizzo email non è verificato.",
+      "networkError": "Connessione di rete fallita. Riprova.",
+      "timeoutError": "Richiesta scaduta. Riprova.",
+      "serverError": "Errore del server. Riprova più tardi.",
+      "databaseError": "Errore del database. Riprova più tardi.",
+      "userNotFound": "Utente non trovato.",
+      "userCancelled": "Accesso annullato.",
+      "googlePopupBlocked": "Il popup di accesso Google è stato bloccato. Consenti i popup e riprova.",
+      "googleAuthCancelled": "Accesso con Google annullato.",
+      "googleConfigError": "Errore di configurazione Google OAuth. Contatta il supporto."
     }
   },
   "imageGenerator": {

@@ -337,10 +337,35 @@
     "noAccount": "Kein Konto? Jetzt registrieren",
     "hasAccount": "Bereits ein Konto? Einloggen",
     "loading": "Wird geladen...",
+    "continueWith": "Oder fortfahren mit",
+    "googleSignIn": "Mit Google anmelden",
+    "googleSignInButton": "Mit Google fortfahren",
+    "googleLoading": "Anmeldung mit Google...",
+    "success": {
+      "loginSuccess": "Willkommen zurück! Weiterleitung...",
+      "registerSuccess": "Konto erfolgreich erstellt! Weiterleitung...",
+      "googleLoginSuccess": "Google-Anmeldung erfolgreich!",
+      "googleRegisterSuccess": "Konto mit Google erstellt! Sie haben 3 kostenlose Punkte erhalten."
+    },
     "errors": {
       "unexpected": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
       "invalidFormat": "Unerwartetes Antwortformat",
-      "authFailed": "Authentifizierung fehlgeschlagen"
+      "authFailed": "Authentifizierung fehlgeschlagen",
+      "googleAuthFailed": "Google-Authentifizierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "googleTokenInvalid": "Ungültiges Google-Token. Bitte versuchen Sie es erneut.",
+      "googleTokenExpired": "Google-Token ist abgelaufen. Bitte melden Sie sich erneut an.",
+      "emailMismatch": "E-Mail-Adresse stimmt nicht überein. Bitte versuchen Sie es erneut.",
+      "emailExists": "Diese E-Mail ist bereits registriert. Bitte melden Sie sich mit Passwort an.",
+      "emailNotVerified": "E-Mail-Adresse ist nicht verifiziert.",
+      "networkError": "Netzwerkverbindung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "timeoutError": "Zeitüberschreitung der Anfrage. Bitte versuchen Sie es erneut.",
+      "serverError": "Serverfehler aufgetreten. Bitte versuchen Sie es später erneut.",
+      "databaseError": "Datenbankfehler aufgetreten. Bitte versuchen Sie es später erneut.",
+      "userNotFound": "Benutzer nicht gefunden.",
+      "userCancelled": "Anmeldung abgebrochen.",
+      "googlePopupBlocked": "Google-Anmelde-Popup wurde blockiert. Bitte erlauben Sie Popups und versuchen Sie es erneut.",
+      "googleAuthCancelled": "Google-Anmeldung abgebrochen.",
+      "googleConfigError": "Google OAuth-Konfigurationsfehler. Bitte kontaktieren Sie den Support."
     }
   },
   "imageGenerator": {
