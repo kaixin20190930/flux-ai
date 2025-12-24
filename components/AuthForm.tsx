@@ -90,7 +90,8 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
      * 5. 调用后端 API (/auth/google-login) 完成登录/注册
      * 6. 后端验证 Google token 并创建/登录用户
      * 7. 返回 JWT token 并存储到 localStorage
-     * 8. 跳转到创建页面
+     * 8. 更新 AuthContext 状态（关键！）
+     * 9. 跳转到创建页面
      * 
      * 安全性：
      * - Google token 在后端验证，确保真实性
@@ -145,13 +146,23 @@ const AuthForm: React.FC<AuthFormProps> = ({dictionary}) => {
 
             console.log('[AuthForm] Google login successful:', response);
 
-            // 步骤 4: 显示成功提示
+            // 步骤 4: 触发 AuthContext 刷新用户状态
+            // 这一步很关键！确保页面显示登录状态
+            // apiClient.googleLogin 已经保存了 token 到 localStorage
+            // 现在需要让 AuthContext 知道用户已登录
+            await new Promise(resolve => setTimeout(resolve, 100)); // 短暂延迟确保 token 已保存
+            
+            // 刷新用户状态，这会触发 AuthContext 重新验证 token
+            // 从而更新全局登录状态，让 Header 显示用户信息
+            window.dispatchEvent(new Event('storage')); // 触发 storage 事件
+            
+            // 步骤 5: 显示成功提示
             setSuccessMessage({
                 message: dictionary.auth?.success?.googleLoginSuccess || 'Signed in with Google successfully!',
                 show: true
             });
 
-            // 步骤 5: 跳转到创建页面（延迟以显示成功消息）
+            // 步骤 6: 跳转到创建页面（延迟以显示成功消息）
             setTimeout(() => {
                 router.push(`/${currentLocale}/create`);
                 router.refresh();

@@ -39,7 +39,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } else {
       setIsLoading(false);
     }
-  }, []);
+
+    // 监听 storage 事件，当其他标签页或组件更新 token 时同步状态
+    // 这对于 Google 登录特别重要，因为 apiClient.googleLogin 会直接保存 token
+    const handleStorageChange = () => {
+      const newToken = apiClient.getToken();
+      if (newToken && newToken !== token) {
+        console.log('[AuthContext] Token changed, verifying...');
+        setToken(newToken);
+        verifyToken(newToken);
+      } else if (!newToken && token) {
+        console.log('[AuthContext] Token removed, logging out...');
+        setToken(null);
+        setUser(null);
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, [token]); // 添加 token 依赖，确保监听器使用最新的 token
 
   const verifyToken = async (token: string) => {
     try {

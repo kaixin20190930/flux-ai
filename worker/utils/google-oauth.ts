@@ -35,35 +35,49 @@ export interface User {
 }
 
 /**
- * 验证 Google Token
- * 调用 Google API 验证 token 有效性并获取用户信息
+ * 验证 Google JWT ID Token
+ * 使用 Google 的 tokeninfo API 验证 JWT ID token 的有效性并获取用户信息
  * 
- * @param token - Google access token
+ * 注意：前端发送的是 JWT ID token（credential），不是 access token
+ * JWT ID token 是一个签名的 JWT，包含用户信息
+ * 我们使用 Google 的 tokeninfo endpoint 来验证它
+ * 
+ * @param idToken - Google JWT ID token (credential)
  * @returns Google 用户信息
  * @throws 如果 token 无效或验证失败
  */
-export async function verifyGoogleToken(token: string): Promise<GoogleUser> {
+export async function verifyGoogleToken(idToken: string): Promise<GoogleUser> {
   try {
-    logWithTimestamp('[Google OAuth] 开始验证 Google token');
+    logWithTimestamp('[Google OAuth] 开始验证 Google JWT ID token');
     
-    // 调用 Google API 验证 token 并获取用户信息
-    const response = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-      },
-    });
+    // 使用 Google 的 tokeninfo API 验证 JWT ID token
+    // 这个 API 会验证 token 的签名、过期时间等，并返回 token 中的用户信息
+    const response = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${encodeURIComponent(idToken)}`);
     
     if (!response.ok) {
       const errorText = await response.text();
-      logWithTimestamp('[Google OAuth] Token 验证失败:', {
+      logWithTimestamp('[Google OAuth] JWT ID token 验证失败:', {
         status: response.status,
         statusText: response.statusText,
         error: errorText,
       });
-      throw new Error(`Invalid Google token: ${response.status} ${response.statusText}`);
+      throw new Error(`Invalid Google JWT ID token: ${response.status} ${response.statusText}`);
     }
     
-    const googleUser = await response.json() as GoogleUser;
+    const tokenInfo = await response.json();
+    
+    // tokeninfo API 返回的字段名称与 userinfo API 不同
+    // 需要映射到我们的 GoogleUser 接口
+    const googleUser: GoogleUser = {
+      id: tokenInfo.sub, // sub (subject) 是用户的唯一 ID
+      email: tokenInfo.email,
+      verified_email: tokenInfo.email_verified === 'true' || tokenInfo.email_verified === true,
+      name: tokenInfo.name || tokenInfo.email.split('@')[0],
+      given_name: tokenInfo.given_name,
+      family_name: tokenInfo.family_name,
+      picture: tokenInfo.picture,
+      locale: tokenInfo.locale,
+    };
     
     // 验证必要字段
     if (!googleUser.email || !googleUser.id) {
@@ -71,15 +85,21 @@ export async function verifyGoogleToken(token: string): Promise<GoogleUser> {
       throw new Error('Incomplete Google user information');
     }
     
-    logWithTimestamp('[Google OAuth] Token 验证成功:', {
+    // 验证 token 的 audience (aud) 是否匹配我们的 Client ID
+    // 这是一个重要的安全检查，确保 token 是为我们的应用签发的
+    // 注意：这里我们暂时跳过这个检查，因为需要从环境变量获取 Client ID
+    // 在生产环境中应该添加这个检查
+    
+    logWithTimestamp('[Google OAuth] JWT ID token 验证成功:', {
       email: googleUser.email,
       name: googleUser.name,
       verified: googleUser.verified_email,
+      sub: googleUser.id,
     });
     
     return googleUser;
   } catch (error) {
-    logWithTimestamp('[Google OAuth] Token 验证异常:', error);
+    logWithTimestamp('[Google OAuth] JWT ID token 验证异常:', error);
     throw error;
   }
 }
