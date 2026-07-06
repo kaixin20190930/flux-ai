@@ -13,8 +13,7 @@ import { ErrorNotificationContainer } from '@/components/ErrorNotification';
 import { AuthProviderWrapper } from '@/components/providers/AuthProviderWrapper';
 import { GoogleOAuthProvider } from '@/components/providers/GoogleOAuthProvider';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
-
-const GA_MEASUREMENT_ID = 'G-TH3L4SZ1R0';
+import SeoScript from '@/components/SeoScript';
 
 // 为根路径生成 metadata
 export async function generateMetadata(): Promise<Metadata> {
@@ -143,24 +142,13 @@ export default async function RootLayout({
                 crossOrigin="anonymous"
                 data-ad-client="ca-pub-5252543031076112" // 替换成你的发布商 ID
             />
-            {/* GA4 keeps the exact manual snippet in the rendered head so Google can verify it directly. */}
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
-            <script
-                dangerouslySetInnerHTML={{
-                    __html: `
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', '${GA_MEASUREMENT_ID}');
-                `,
-                }}
-            />
+            <SeoScript />
         </head>
         <body className="flex flex-col min-h-screen">
         <GoogleOAuthProvider>
           <AuthProviderWrapper>
             <Suspense fallback={null}>
-              <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
+              <GoogleAnalytics />
             </Suspense>
             {children}
             <ErrorNotificationContainer />

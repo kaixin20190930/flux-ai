@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
+import { GOOGLE_TRACKING_ID } from '@/lib/env';
 
 declare global {
   interface Window {
@@ -11,11 +12,7 @@ declare global {
   }
 }
 
-interface GoogleAnalyticsProps {
-  measurementId: string;
-}
-
-export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
+export default function GoogleAnalytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { user, isAuthenticated, isLoading } = useAuth();
@@ -24,7 +21,7 @@ export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps)
   const lastTrackedPagePathRef = useRef<string | null>(null);
   const lastTrackedPageLocationRef = useRef<string | null>(null);
   const hasSentInitialPageViewRef = useRef(false);
-  const isReady = Boolean(measurementId) && typeof window !== 'undefined';
+  const isReady = Boolean(GOOGLE_TRACKING_ID) && typeof window !== 'undefined';
   const [isGtagReady, setIsGtagReady] = useState(false);
 
   useEffect(() => {
@@ -105,7 +102,7 @@ export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps)
     }
 
     // Update user_id separately once auth settles, without creating another page_view.
-    window.gtag?.('config', measurementId, {
+    window.gtag?.('config', GOOGLE_TRACKING_ID, {
       send_page_view: false,
       user_id: currentUserId,
     });
