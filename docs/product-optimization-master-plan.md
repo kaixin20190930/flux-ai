@@ -51,9 +51,9 @@ This document combines the short-term execution plan and the broader product opt
 | ID | Task | Status | Update Trigger |
 | --- | --- | --- | --- |
 | P1 | Finish one complete paid workflow for AI Product Photo Generator. | 部分完成 | Update when upload, generation, download, history, and upgrade are all working smoothly. |
-| P2 | Add product image upload as the first step of the workflow. | 部分完成 | Update when upload is stable and used in the main path. |
+| P2 | Add product image upload as the first step of the workflow. | 已完成 | Update if the upload-first step disappears from the main path. |
 | P3 | Support product-background and lifestyle-scene generation. | 部分完成 | Update when both scene types are available in the main flow. |
-| P4 | Provide presets for Amazon, Shopify, Etsy, TikTok Shop, and Instagram. | 部分完成 | Update when the presets are covered and verified. |
+| P4 | Provide presets for Amazon, Shopify, Etsy, TikTok Shop, and Instagram. | 已完成 | Update if one of the platform presets is removed or no longer verified. |
 | P5 | Deliver 4-image batch output for paid users. | 已完成 | Update if paid batch output stops being reliable or tracked. |
 | P6 | Add history, download, and remix entry points. | 已完成 | Update if users lose the direct reuse path. |
 | P7 | Support free trial generation, then registration and credit/subscription upgrade. | 部分完成 | Update when the trial-to-paid handoff is measurable. |
@@ -181,6 +181,7 @@ Recommended status flow:
 - The remaining product-photo CTA wiring now uses generator terminology consistently, including the batch pricing bridge back to the main tool.
 - The product-photo reference image now carries across to the create draft and is reflected in the generation prompt, so the uploaded context survives the page jump.
 - The create page now shows the carried reference image as a visible draft element instead of hiding it in local state.
+- The create page now exposes an upload-first reference step on the main execution surface, so the workflow starts with the input instead of only the prompt.
 - Recent generation deduping now keeps reference-image variants separate, so different uploaded contexts do not collapse into one entry.
 - Reference image metadata now persists into generation history, and the dashboard history list shows the attached reference filename inline.
 - The history detail panel and compact grid cards now also surface reference image metadata for quick review.
@@ -229,6 +230,7 @@ Recommended status flow:
 - The checkout-session helpers and Stripe webhook fulfillment route now have focused unit coverage, which makes the remaining production verification gap easier to isolate.
 - The create page now exposes an explicit reference-image upload, paste, and clear step before prompt generation, which makes the upload-first workflow visible on the main execution page instead of only on the product-photo surface.
 - The production Worker is now deployed and returning a healthy smoke-check response, which closes the infrastructure part of the Stripe and analytics rollout.
+- The main product-photo workflow now has visible platform presets for Amazon, Shopify, Etsy, TikTok Shop, and Instagram, which keeps the common scenario entry points close to the same generation model.
 - The main product-photo generator now uses tighter CTA wording like `Generate 4` and `Regenerate`, which keeps the batch actions and rerun states more direct.
 - The main AI image generator now also uses `Regenerate` for its recent-item rerun action, which keeps the broader generator suite on the same wording.
 - The main AI image generator now also uses `Load setup` and `Copy setup` wording for recent-result actions, which makes the intent of those utility buttons easier to scan.
