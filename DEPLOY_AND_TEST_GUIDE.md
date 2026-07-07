@@ -28,6 +28,42 @@ wrangler secret put REPLICATE_API_TOKEN
 # 输入你的 Replicate API Token
 ```
 
+### 1.1 配置 Stripe 积分购买
+
+支付链路现在是：前端创建 Stripe Checkout → Stripe webhook 回调 Next.js → Next.js 用内部密钥通知 Worker → Worker 给用户加积分并写入 `transactions`。
+
+部署前先做本地配置自检：
+
+```bash
+npm run check:stripe
+```
+
+生产环境还需要执行积分到账幂等迁移：
+
+```bash
+cd worker
+wrangler d1 execute flux-ai --file=../migrations/d1-unique-purchase-related-id.sql --remote --env production
+wrangler d1 execute flux-ai --file=../migrations/d1-growth-events.sql --remote --env production
+```
+
+需要配置的关键变量：
+
+- Next.js: `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_FULFILL_SECRET`, `JWT_SECRET`, `NEXT_PUBLIC_WORKER_URL`
+- Next.js: `NEXT_PUBLIC_STRIPE_STARTER_PRICE_ID`, `NEXT_PUBLIC_STRIPE_BASIC_PRICE_ID`, `NEXT_PUBLIC_STRIPE_PREMIUM_PRICE_ID`, `NEXT_PUBLIC_STRIPE_PROFESSIONAL_PRICE_ID`, `NEXT_PUBLIC_STRIPE_ENTERPRISE_PRICE_ID`
+- Worker secret: `STRIPE_FULFILL_SECRET`
+
+Stripe webhook endpoint:
+
+```text
+https://flux-ai-img.com/api/stripe/webhook
+```
+
+订阅事件：
+
+```text
+checkout.session.completed
+```
+
 ### 2. 部署到开发环境
 
 ```bash
@@ -46,6 +82,13 @@ https://flux-ai-worker-dev.liukai19911010.workers.dev/
 ```bash
 cd worker
 wrangler deploy --env production
+```
+
+如果 Wrangler 在自动探测阶段卡住或超时，可以改用：
+
+```bash
+cd worker
+wrangler deploy --env production --autoconfig=false
 ```
 
 预期输出：
