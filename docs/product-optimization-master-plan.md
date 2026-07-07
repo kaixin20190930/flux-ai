@@ -227,6 +227,7 @@ Recommended status flow:
 - The payment success page now surfaces whether the Worker has already confirmed the credit transfer.
 - The Stripe points guide now includes the confirmed-transfer checkpoint in its acceptance test.
 - The checkout-session helpers and Stripe webhook fulfillment route now have focused unit coverage, which makes the remaining production verification gap easier to isolate.
+- The create page now exposes an explicit reference-image upload, paste, and clear step before prompt generation, which makes the upload-first workflow visible on the main execution page instead of only on the product-photo surface.
 - The main product-photo generator now uses tighter CTA wording like `Generate 4` and `Regenerate`, which keeps the batch actions and rerun states more direct.
 - The main AI image generator now also uses `Regenerate` for its recent-item rerun action, which keeps the broader generator suite on the same wording.
 - The main AI image generator now also uses `Load setup` and `Copy setup` wording for recent-result actions, which makes the intent of those utility buttons easier to scan.
