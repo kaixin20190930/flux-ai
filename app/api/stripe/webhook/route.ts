@@ -1,13 +1,46 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Stripe from 'stripe';
 
 export const runtime = 'edge';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2024-09-30.acacia',
-});
+type CheckoutSession = {
+  id: string;
+  amount_total?: number | null;
+  currency?: string | null;
+  client_reference_id?: string | null;
+  metadata?: {
+    userId?: string;
+    points?: string;
+    source?: string;
+  } | null;
+  payment_status?: string;
+};
 
-async function fulfillCheckoutSession(session: Stripe.Checkout.Session) {
+function parseStripeSignature(header: string) {
+  const parts = header.split(',').map((part) => part.trim());
+  const timestamp = parts.find((part) => part.startsWith('t='))?.slice(2);
+  const signature = parts.find((part) => part.startsWith('v1='))?.slice(3);
+
+  if (!timestamp || !signature) {
+    return null;
+  }
+
+  return { timestamp, signature };
+}
+
+async function hmacSha256Hex(secret: string, payload: string) {
+  const key = await crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(secret),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign'],
+  );
+
+  const signature = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(payload));
+  return Array.from(new Uint8Array(signature), (byte) => byte.toString(16).padStart(2, '0')).join('');
+}
+
+async function fulfillCheckoutSession(session: CheckoutSession) {
   const workerUrl = process.env.NEXT_PUBLIC_WORKER_URL;
   const fulfillSecret = process.env.STRIPE_FULFILL_SECRET;
   const userId = session.metadata?.userId || session.client_reference_id;
@@ -80,20 +113,29 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Missing Stripe signature' }, { status: 400 });
   }
 
-  let event: Stripe.Event;
+  const parsedSignature = parseStripeSignature(signature);
 
-  try {
-    event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
-  } catch (error) {
-    return NextResponse.json({
-      error: error instanceof Error ? error.message : 'Invalid Stripe signature',
-    }, { status: 400 });
+  if (!parsedSignature) {
+    return NextResponse.json({ error: 'Invalid Stripe signature header' }, { status: 400 });
   }
+
+  const expectedSignature = await hmacSha256Hex(webhookSecret, `${parsedSignature.timestamp}.${body}`);
+
+  if (expectedSignature !== parsedSignature.signature) {
+    return NextResponse.json({ error: 'Invalid Stripe signature' }, { status: 400 });
+  }
+
+  const event = JSON.parse(body) as {
+    type?: string;
+    data?: {
+      object?: CheckoutSession;
+    };
+  };
 
   try {
     if (event.type === 'checkout.session.completed') {
-      const session = event.data.object as Stripe.Checkout.Session;
-      if (session.payment_status === 'paid') {
+      const session = event.data?.object;
+      if (session?.payment_status === 'paid') {
         await fulfillCheckoutSession(session);
       }
     }
